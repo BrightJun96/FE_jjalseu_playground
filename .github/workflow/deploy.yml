@@ -1,0 +1,23 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install SSH key
+        run: |
+          echo "${{ secrets.EC2_PEM_KEY }}" > ec2_key.pem
+          chmod 400 ec2_key.pem
+
+      - name: Deploy to EC2
+        run: |
+          ssh -i ec2_key.pem -o StrictHostKeyChecking=no ubuntu@ec2-3-35-156-121.ap-northeast-2.compute.amazonaws.com 'cd /FE_jjalseu_playground && git pull origin main && yarn install && yarn build && pm2 restart all'
