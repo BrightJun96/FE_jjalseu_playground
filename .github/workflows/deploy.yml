@@ -11,13 +11,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install SSH key
         run: |
           echo "${{ secrets.EC2_PEM_KEY }}" | tr -d '\r' > enjoyjjalseu.pem
           chmod 400 enjoyjjalseu.pem
 
+      - name: Verify SSH key creation
+        run: ls -l enjoyjjalseu.pem
+
       - name: Deploy to EC2
         run: |
-          ssh -i enjoyjjalseu.pem -o StrictHostKeyChecking=no ubuntu@ec2-3-35-156-121.ap-northeast-2.compute.amazonaws.com 'cd /FE_jjalseu_playground && git pull origin main && yarn install && yarn build && pm2 restart all'
+          ssh -v -i enjoyjjalseu.pem -o StrictHostKeyChecking=no ubuntu@ec2-3-35-156-121.ap-northeast-2.compute.amazonaws.com 'cd /FE_jjalseu_playground && git pull origin main && yarn install && yarn build && pm2 restart all'
