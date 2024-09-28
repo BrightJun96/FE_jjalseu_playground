@@ -3,7 +3,7 @@ import React from 'react';
 const Page = async () => {
     return (
         <div>
-
+            회원가입 페이지
         </div>
     );
 };
