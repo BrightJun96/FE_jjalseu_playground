@@ -8,6 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      //색상
       colors: {
         background: "#333333",
         foreground: "var(--foreground)",
@@ -25,6 +26,7 @@ const config: Config = {
         },
         white:"#FFFFFF",
       },
+      // 폰트 사이즈
       fontSize: {
         headline1:[
           "72px",
@@ -33,7 +35,7 @@ const config: Config = {
           },
         ],
         headline2:[
-          "56px",
+          "48px",
           {
             fontWeight:"600"
           },
@@ -42,7 +44,7 @@ const config: Config = {
         headline3:[
           "32px",
           {
-            fontWeight:"600"
+            fontWeight:"500"
           },
         ],
         title1:[
@@ -100,7 +102,14 @@ const config: Config = {
           },
         ]
       },
-
+      // 배경 이미지
+      backgroundImage: {
+            "main": "url('/mainImage.png')",
+        },
+      // 배경 사이즈
+      backgroundSize: {
+        'full': '100% 100%',
+      }
     },
   },
   plugins: [],

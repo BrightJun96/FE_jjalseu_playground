@@ -36,11 +36,11 @@ const Header = () => {
         }
     }
     return (
-        <header className={"w-full h-[96px] bg-background flex justify-between items-center px-[32px]"}>
+        <header className={"w-full h-[80px] bg-background flex justify-between items-center px-[300px]"}>
             {/*로고,메뉴*/}
-            <div className={"flex gap-28 items-center"}>
+            <div className={"flex gap-10 items-center"}>
                 <Link href={"/"}>
-                <h1 className={"text-primary-normal text-title1"}>Dev Lounge</h1>
+                <h1 className={"text-primary-normal text-headline3 font-bold"}>코아</h1>
                 </Link>
                 <nav>
                     <ul className={"flex gap-3 text-title3Normal text-primary-normal"}>
