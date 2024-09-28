@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="font-[family-name:var(--font-geist-sans)]">
-      <div className={"bg-main w-full h-[calc(100vh-80px)] bg-no-repeat bg-center bg-cover "}>
+    <div className="font-[family-name:var(--font-geist-sans)] w-full">
+      <div className={"bg-main w-full h-[calc(100vh-80px)] bg-no-repeat bg-center bg-cover"}>
       {/* 내부 카피 컨텐츠  */}
           <div className={"flex justify-center items-center flex-col gap-[40px] pt-[250px]"}>
             <h1 className={"text-headline2 text-center"}>개발자들의 아지트</h1>

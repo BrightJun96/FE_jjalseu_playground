@@ -10,8 +10,10 @@ const config: Config = {
     extend: {
       //색상
       colors: {
-        background: "#333333",
-        foreground: "var(--foreground)",
+        // 헤더 배경
+        headerBackground: "#333333",
+        // 배경
+        background: "#FCFCFC",
         primary:{
           // PRIMARY
           normal:"#FF6F00",
@@ -109,7 +111,17 @@ const config: Config = {
       // 배경 사이즈
       backgroundSize: {
         'full': '100% 100%',
+      },
+      borderRadius:{
+        primary:"10px",
+      },
+      // 패딩
+      padding:{
+        container:"300px",
       }
+
+
+
     },
   },
   plugins: [],

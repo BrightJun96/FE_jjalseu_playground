@@ -36,7 +36,7 @@ const Header = () => {
         }
     }
     return (
-        <header className={"w-full h-[80px] bg-background flex justify-between items-center px-[300px]"}>
+        <header className={"w-full h-[80px] bg-headerBackground flex justify-between items-center px-container"}>
             {/*로고,메뉴*/}
             <div className={"flex gap-10 items-center"}>
                 <Link href={"/"}>
