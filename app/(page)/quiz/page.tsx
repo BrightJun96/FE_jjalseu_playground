@@ -1,7 +1,7 @@
 import React from 'react';
 import InnerContainer from "@/app/_layout/innerContainer";
 import Select from "@/app/_components/select/select";
-import {FIELD_OPTIONS, LANGUAGE_OPTIONS} from "@/app/quiz/constant";
+import {FIELD_OPTIONS, LANGUAGE_OPTIONS} from "@/app/(page)/quiz/constant";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 const Page = async () => {

@@ -8,7 +8,7 @@ const InnerContainer = ({children,className}:{
     className?: string
 }) => {
     return (
-        <section className={`flex flex-col justify-center items-center p-[20px] bg-background border-[1px] border-[#E0E0E0] w-[700px] h-[700px] rounded-primary shadow-sm ${className}`}>
+        <section className={`flex flex-col justify-center items-center p-[20px] bg-white border-[1px] border-[#E0E0E0] w-[700px] h-[700px] rounded-primary shadow-sm ${className}`}>
             {children}
         </section>
     );
