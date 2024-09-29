@@ -2,6 +2,16 @@ import PrimaryButton from "@/app/_components/button/primaryButton";
 import Link from "next/link";
 
 
+/**
+ * 메인 페이지
+ * SSG
+ */
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+    return []
+}
+
 export default function Home() {
   return (
     <div className="font-[family-name:var(--font-geist-sans)] w-full">
