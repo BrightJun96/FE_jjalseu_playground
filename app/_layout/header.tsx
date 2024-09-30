@@ -46,7 +46,10 @@ const Header = () => {
                     <ul className={"flex gap-3 text-title3Normal text-primary-normal"}>
                         {NAVMENU.map((item, index) => (
                             <li key={index} className={`cursor-pointer px-[12px] flex justify-center items-center w-[100px]  h-[32px] rounded-[8px] hover:bg-primary-dark hover:text-white ${getActiveClass(item.link)}`}>
-                                <Link href={`/${item.link}`}>{item.title}</Link>
+                                <Link
+                                    href={`/${item.link}`}
+                                    prefetch={true}
+                                >{item.title}</Link>
                             </li>
                         ))}
                     </ul>
@@ -54,10 +57,16 @@ const Header = () => {
             </div>
             {/* 로그인,회원가입 & 프로필 */}
             <div className={"flex gap-3 items-center"}>
-                <Link href={"/login"}>
+                <Link
+                    href={"/login"}
+                    prefetch={false}
+                >
                     <PrimaryButton text={"로그인"} color={"primary"} />
                 </Link>
-                <Link href={"/signup"}>
+                <Link
+                    href={"/signup"}
+                    prefetch={false}
+                >
                     <PrimaryButton text={"회원가입"} color={"primarySecondary"} />
                 </Link>
 
