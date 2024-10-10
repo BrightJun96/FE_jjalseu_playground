@@ -52,7 +52,8 @@ const Select = ({ options, handleOptionChange,label }: SelectProps) => {
         </div>
       {/*옵션목록*/}
       <div
-        className={`absolute right-0 z-10 mt-2 min-w-[120px] rounded-[12px] bg-white text-black shadow-primary outline-0 ${isClicked ? "block" : "hidden"}`}
+        className={`absolute right-0 z-10 
+        mt-2 min-w-[120px] rounded-[12px] bg-white text-black shadow-primary outline-0 border-[1px] border-gray-100 ${isClicked ? "block" : "hidden"}`}
       >
         <div className="py-1" role="none">
           <ul>
