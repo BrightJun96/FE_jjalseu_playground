@@ -18,14 +18,14 @@ const Header = () => {
             title: "퀴즈",
             link: "quiz",
         },
-        {
-            title: "코드 템플릿",
-            link: "codeTemplate",
-        },
-        {
-            title: "스터디",
-            link: "study",
-        },
+        // {
+        //     title: "코드 템플릿",
+        //     link: "codeTemplate",
+        // },
+        // {
+        //     title: "스터디",
+        //     link: "study",
+        // },
     ]
 
 
@@ -59,13 +59,13 @@ const Header = () => {
             <div className={"flex gap-3 items-center"}>
                 <Link
                     href={"/login"}
-                    prefetch={false}
+                    // prefetch={false}
                 >
                     <PrimaryButton text={"로그인"} color={"primary"} />
                 </Link>
                 <Link
                     href={"/signup"}
-                    prefetch={false}
+                    // prefetch={false}
                 >
                     <PrimaryButton text={"회원가입"} color={"primarySecondary"} />
                 </Link>
