@@ -5,6 +5,7 @@ import {QuizListResponse} from "@/app/services/quiz/types";
 import useQueryString from "@/app/_utils/hooks/useQueryString";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 import Link from "next/link";
+import Pagination from "@/app/_components/pagination/pagination";
 
 const QuizDetails = ({
     quizData
@@ -38,6 +39,7 @@ const QuizDetails = ({
                 <PrimaryButton text={"다음"} color={"primarySecondary"}/>
                 </Link>
             </div>
+            <Pagination totalPage={quizData.quizList.length} queryKey={"order"}/>
         </div>
     );
 };

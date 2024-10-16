@@ -11,7 +11,7 @@ interface TextInputProps {
   placeholder?: string;
   isReadOnly?: boolean;
   isDisabled?: boolean;
-  value?: string;
+  value?: string|number;
   onChange?: (value: string) => void;
   label?: string;
   includeButton?: React.ReactNode;
