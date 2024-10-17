@@ -1,22 +1,20 @@
 "use client"
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {QuizListResponse} from "@/app/services/quiz/types";
-import {getQuizDataCookie, setQuizDataCookie} from "@/app/(page)/quiz/action";
+import {getQuizDataCookie,  setQuizDataCookie} from "@/app/(page)/quiz/action";
 import useQueryString from "@/app/_utils/hooks/useQueryString";
 import QuizDetails from "@/app/(page)/quiz/details/components/client/quizDetails";
-
+import {IResponse} from "@/app/services/network.types";
 
 
 const QuizItem = ({
                       quizListResponse
                   }:{
-    quizListResponse:QuizListResponse|null
+    quizListResponse:IResponse<QuizListResponse>|null
 }) => {
-    // let quizData = null;
-    const quizRef = useRef<QuizListResponse|null>(null)
-//     const [quizData,setQuizData] = useState<QuizListResponse|null>(null)
-    const [state,setState] = useState("")
+// const quizRef = useRef<QuizListResponse|null>(null)
+    const [quizData,setQuizData] = useState<QuizListResponse|null>(null)
     const {
         getQueryString
         ,setQueryString
@@ -31,46 +29,43 @@ const QuizItem = ({
         if(!order){
             setQueryString("order", "1")
         }
-        console.log("effect")
 
         async function initDataConfig(){
             const quizDataCookie = await  getQuizDataCookie()
-            if(!quizDataCookie){
-                localStorage.setItem("quizData", JSON.stringify(quizListResponse))
+            if(!quizDataCookie && quizListResponse){
+                localStorage.setItem("quizData", JSON.stringify(quizListResponse.data))
                 await setQuizDataCookie()
 
-                return
 
             }
 
+            const data = localStorage.getItem("quizData")?
+                JSON.parse(localStorage.getItem("quizData") as string):null
 
-
-            // quizData = localStorage.getItem("quizData")?
-            //     JSON.parse(localStorage.getItem("quizData") as string):null
-            quizRef.current = localStorage.getItem("quizData")?
-                    JSON.parse(localStorage.getItem("quizData") as string):null
-            setState("rerender trigger")
-            // console.log("quizData", quizData)
-            // setQuizData(data)
+            setQuizData(data)
 
 
         }
 
         initDataConfig()
 
+        // localStorage 비우기 및 쿠키 비우기
+        // return () => {
+        //     localStorage.removeItem("quizData")
+        //     removeQuizDataCookie()
+        //
+        // }
+
     }, []);
 
 
-    console.log(
-        'quizRef.current', quizRef.current
-    )
 
 
 
 
     return (
-        quizRef.current?<QuizDetails
-            quizData={quizRef.current}
+        quizData?<QuizDetails
+            quizData={quizData}
         />:<div>데이터없음</div>
     );
 };

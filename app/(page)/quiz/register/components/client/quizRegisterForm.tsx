@@ -40,6 +40,7 @@ const QuizRegisterForm = () => {
     async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
             e.preventDefault()
             const response = await fetchRegisterQuiz(quizForm)
+        console.log("response",response)
             if (response.isSuccess) {
                 setQuizForm(initialQuizForm)
             }
@@ -55,6 +56,7 @@ const QuizRegisterForm = () => {
             onSubmit={handleSubmit}
             className={"flex flex-col gap-4 mt-[12px] items-center"}
         >
+
             <TextEditorWrapper
                 label={"퀴즈 제목"}
                 onHTMLChange={(value)=> commonHandleChange(value,"questionTitle")}

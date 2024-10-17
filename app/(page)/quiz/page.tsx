@@ -17,7 +17,9 @@ const Page = async () => {
                     <Select label={"분야"} options={FIELD_OPTIONS}/>
                     <Select label={"언어"} options={LANGUAGE_OPTIONS}/>
                 </div>
-                <Link href={"/quiz/details?order=1"}>
+                <Link
+                    prefetch={false}
+                    href={"/quiz/details?order=1"}>
                     <PrimaryButton text={"시작하기"} color={"primary"} className={"!w-full !h-[48px] !mt-14"}/>
                 </Link>
             </div>

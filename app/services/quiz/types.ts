@@ -11,6 +11,15 @@ export interface QuizItem {
     field: string;
     lang: string;
     time: number;
+    multipleChoices:MultipleChoiceContent[]
+}
+
+// 객관식 컨텐츠
+export interface MultipleChoiceContent{
+    multipleChoiceId:number;
+    content:string;
+    quizId:number;
+    number:number;
 }
 
 // 퀴즈 목록 응답 타입

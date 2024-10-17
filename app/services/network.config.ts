@@ -2,7 +2,7 @@ import {CustomRequestInit, IResponse} from "@/app/services/network.types";
 
 
 
-async function networkInstance(endpoint: string, options?: CustomRequestInit):Promise<IResponse<unknown>>{
+async function networkInstance<T>(endpoint: string, options?: CustomRequestInit):Promise<IResponse<T>>{
 
     if(!process.env.NEXT_PUBLIC_API_ENDPOINT){
         throw new Error("ENV 파일을 찾을 수 없거나 관련 변수가 없습니다.")
