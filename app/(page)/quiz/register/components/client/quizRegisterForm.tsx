@@ -15,6 +15,9 @@ import MultipleChoiceContents from "@/app/(page)/quiz/register/components/client
 import TextEditorWrapper from "@/app/_components/editor/textEditorWrapper";
 import {QuizForm, QuizFormKey} from "@/app/services/quiz/types";
 import {fetchRegisterQuiz} from "@/app/services/quiz/api.instance";
+import Checkbox from "@/app/_components/checkbox/checkbox";
+import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
+import {primitive} from "@/app/_types/primitive";
 
 // 퀴즈 등록 폼 컴포넌트
 const QuizRegisterForm = () => {
@@ -24,7 +27,7 @@ const QuizRegisterForm = () => {
         title:"", // 퀴즈 제목
         content:"", // 퀴즈 내용
         subjectiveAnswer:"", // 주관식 답안
-        multipleChoiceAnswer:[],
+        multipleChoiceAnswer:[], // 객관식 답안
         hint:"",
         explanation:"",
         type:TYPE_OPTIONS[0].value as "SUBJECTIVE"|"MULTIPLE_CHOICE",
@@ -48,10 +51,20 @@ const QuizRegisterForm = () => {
     }
 
     // onChange 함수
-    function commonHandleChange( value:string|number|boolean|string[],key:QuizFormKey) {
+    function commonHandleChange( value:primitive|primitive[],key:QuizFormKey) {
         setQuizForm((prev)=>({...prev,[key]:value}))
     }
 
+
+    // 객관식 답안 옵션
+    const checkBoxOptions = [
+        {label:"1번",value:1},
+        {label:"2번",value:2},
+        {label:"3번",value:3},
+        {label:"4번",value:4},
+        {label:"5번",value:5},
+    ]
+    console.log("quizForm",quizForm)
     return (
         <form
             onSubmit={handleSubmit}
@@ -126,6 +139,17 @@ const QuizRegisterForm = () => {
                     onChange={(value)=>commonHandleChange(value,"multipleChoiceContents")}
 
                 />}
+            {/*객관실일 경우, 나타날 필드(객관식 답안)*/}
+            {quizForm.type ==="MULTIPLE_CHOICE" &&
+                <GroupCheckBox
+                    className={"!px-2"}
+                    label={"객관식 답안"}
+                    options={checkBoxOptions}
+                    direction={"col"}
+                    onChange={(checkedList)=>commonHandleChange(checkedList,"multipleChoiceAnswer")}
+                />
+
+            }
 
             {/*문제풀이 소요시간*/}
             <TextInput
