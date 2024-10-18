@@ -21,9 +21,10 @@ const QuizRegisterForm = () => {
 
     // 초기값
     const initialQuizForm:QuizForm={
-        questionTitle:"",
-        questionContent:"",
-        answer:"",
+        title:"", // 퀴즈 제목
+        content:"", // 퀴즈 내용
+        subjectiveAnswer:"", // 주관식 답안
+        multipleChoiceAnswer:[],
         hint:"",
         explanation:"",
         type:TYPE_OPTIONS[0].value as "SUBJECTIVE"|"MULTIPLE_CHOICE",
@@ -59,13 +60,13 @@ const QuizRegisterForm = () => {
 
             <TextEditorWrapper
                 label={"퀴즈 제목"}
-                onHTMLChange={(value)=> commonHandleChange(value,"questionTitle")}
+                onHTMLChange={(value)=> commonHandleChange(value,"title")}
             />
 
             {/*퀴즈 내용 (텍스트 에디터)*/}
             <TextEditorWrapper
                 label={"퀴즈 내용"}
-                onHTMLChange={(value)=> commonHandleChange(value,"questionContent") }
+                onHTMLChange={(value)=> commonHandleChange(value,"content") }
             />
             {/*힌트 (텍스트 에디터)*/}
             <TextEditorWrapper
@@ -78,10 +79,10 @@ const QuizRegisterForm = () => {
                 onHTMLChange={(value)=> commonHandleChange(value,"explanation")}
             />
 
-            {/*정답*/}
+            {/*주관식 답안*/}
             <TextEditorWrapper
-                label={"정답"}
-                onHTMLChange={(value)=> commonHandleChange(value,"answer")}
+                label={"주관식 답안"}
+                onHTMLChange={(value)=> commonHandleChange(value,"subjectiveAnswer")}
             />
 
             <Select

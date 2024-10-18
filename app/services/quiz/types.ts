@@ -32,9 +32,10 @@ export interface QuizListResponse {
 
 // 퀴즈 요청 타입 & 퀴즈 폼 타입
 export interface QuizForm{
-    questionTitle:string,
-    questionContent:string,
-    answer:string,
+    title:string, // 퀴즈 제목
+    content:string, // 퀴즈 내용
+    subjectiveAnswer:string, // 주관식 답안
+    multipleChoiceAnswer:number[], // 객관식 답안
     hint:string,
     explanation:string,
     type:"MULTIPLE_CHOICE"|"SUBJECTIVE",
