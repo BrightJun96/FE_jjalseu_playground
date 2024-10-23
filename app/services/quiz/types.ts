@@ -2,9 +2,10 @@
 // 퀴즈 응답 타입
 export interface QuizItem {
     quizId: number;
-    questionTitle: string;
-    questionContent: string;
-    answer: string;
+    title: string;
+    content: string;
+    multipleChoiceAnswer: number[];
+    subjectiveAnswer: string;
     type: string;
     hint: string;
     explanation: string;
