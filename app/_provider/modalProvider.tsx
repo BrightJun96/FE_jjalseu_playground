@@ -1,23 +1,29 @@
-// "use client";
-//
-// import React from "react";
-// import Modal from "../_components/ui/modal/modal";
-// import { useAtomValue } from "jotai/index";
-// import { modalAtom } from "@/app/_store/modal/modal";
-//
-// const ModalProvider = ({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) => {
-//   const { isOpen } = useAtomValue(modalAtom);
-//
-//   return (
-//     <div className={"w-screen"}>
-//       {isOpen && <Modal />}
-//       {children}
-//     </div>
-//   );
-// };
-//
-// export default ModalProvider;
+"use client";
+
+import React, {useContext} from "react";
+import {ModalContext, ModalContextProps, ModalSetContext} from "@/app/_context/modalContext";
+
+const ModalProvider = ({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) => {
+
+  const [modal, setModal] = React.useState<ModalContextProps>({
+    isOpen:false
+  })
+
+  console.log("modal :",modal)
+
+  return (
+  <ModalContext.Provider value={modal}>
+    <ModalSetContext.Provider value={setModal}>
+    <div className={"w-screen"}>
+      {children}
+    </div>
+    </ModalSetContext.Provider>
+  </ModalContext.Provider>
+  );
+};
+
+export default ModalProvider;
