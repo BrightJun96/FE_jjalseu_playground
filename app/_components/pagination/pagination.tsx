@@ -40,7 +40,7 @@ const Pagination = ({ totalPage, queryKey = "page" }: PaginationProps) => {
             <button
               key={i}
               onClick={() => handlePageChange(page)}
-              className={`${currentPage === page && "bg-primary-normal text-achromatic-white"} flex h-[24px] w-[24px] items-center justify-center rounded-lg px-3 py-2 text-sm text-achromatic-assistive hover:bg-achromatic-darkAssistive`}
+              className={`${currentPage === page && "bg-primary-normal text-white"} flex h-[24px] w-[24px] items-center justify-center rounded-lg px-3 py-2 text-sm text-achromatic-assistive hover:bg-achromatic-darkAssistive`}
             >
               <span>{page}</span>
             </button>

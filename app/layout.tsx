@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/app/_layout/header";
+import ModalProvider from "@/app/_provider/modalProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,9 @@ export default function RootLayout({
       >
       <Header/>
       <main className={"w-full h-[calc(100vh-80px)] bg-background  flex justify-center items-center"}>
-        {children}
+          <ModalProvider>
+            {children}
+          </ModalProvider>
       </main>
       </body>
     </html>

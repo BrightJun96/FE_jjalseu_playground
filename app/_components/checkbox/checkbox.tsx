@@ -1,29 +1,41 @@
 "use client";
 
-import React, { ReactNode } from "react";
-import CheckedSVG from "@/app/_components/checkbox/_icons/checkedSVG";
-import NonCheckedSVG from "@/app/_components/checkbox/_icons/nonCheckedSVG";
+import React from "react";
 
-interface CheckboxProps {
-  checked: boolean;
-  label: ReactNode | string;
-  className?: string;
-  onClick?: () => void;
+
+export interface CheckBoxHandlerProps{
+    checked:boolean
+    value:string|number
 }
 
-const Checkbox = ({ checked, label, className, onClick }: CheckboxProps) => {
-  function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
-    if (onClick) {
-      onClick();
-    }
-  }
+interface CheckboxProps{
+    checked:boolean;
+    label:string|number;
+    value:string|number;
+    onChange:(value:CheckBoxHandlerProps)=>void;
+}
+
+
+function Checkbox ({ checked, label,value, onChange }: CheckboxProps)  {
+
 
   return (
-    <button className={"flex gap-[12px]"} type={"button"} onClick={handleClick}>
-      {checked ?<div className={"w-[24px] h-[24px]"}> <CheckedSVG /></div> :<div className={"w-[24px] h-[24px]"}> <NonCheckedSVG /></div>}
-      {<div className={`text-menu text-achromatic-dark lg:text-title3Bold ${className}`}>{label}</div>}
-    </button>
+  <label
+      className={"w-full flex cursor-pointer gap-2"}
+  >
+        <input
+            className={"accent-orange-600 w-5 h-5"}
+            type={"checkbox"}
+            checked={checked}
+            onChange={(e) => onChange({
+              checked:e.target.checked,
+              value
+            })}
+        />
+        <p>
+            {label}
+        </p>
+  </label>
   );
 };
 
