@@ -27,13 +27,15 @@ const QuizDetails = ({
     return (
         <div>
 
-            <h1
-                dangerouslySetInnerHTML={{__html: quizDetailsData.questionTitle}}
+            <div
+                className={"prose"}
+                dangerouslySetInnerHTML={{__html: quizDetailsData.title}}
             />
 
             {/*퀴즈내용*/}
             <div
-                dangerouslySetInnerHTML={{__html: quizDetailsData.questionContent}}
+                className={"prose"}
+                dangerouslySetInnerHTML={{__html: quizDetailsData.content}}
             ></div>
 
             {/*객관식인 경우, 객관시 문제 5게*/}

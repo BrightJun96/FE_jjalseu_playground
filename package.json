@@ -15,6 +15,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "@toast-ui/react-editor": "^3.2.3",
     "@types/node": "^20",
     "@types/prismjs": "^1.26.4",
