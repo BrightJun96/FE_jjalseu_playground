@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useContext} from "react";
+import React from "react";
 import {ModalContext, ModalContextProps, ModalSetContext} from "@/app/_context/modalContext";
 
 const ModalProvider = ({
@@ -13,7 +13,6 @@ const ModalProvider = ({
     isOpen:false
   })
 
-  console.log("modal :",modal)
 
   return (
   <ModalContext.Provider value={modal}>

@@ -15,7 +15,6 @@ import MultipleChoiceContents from "@/app/(page)/quiz/register/components/client
 import TextEditorWrapper from "@/app/_components/editor/textEditorWrapper";
 import {QuizForm, QuizFormKey} from "@/app/services/quiz/types";
 import {fetchRegisterQuiz} from "@/app/services/quiz/api.instance";
-import Checkbox from "@/app/_components/checkbox/checkbox";
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import {primitive} from "@/app/_types/primitive";
 
@@ -44,7 +43,6 @@ const QuizRegisterForm = () => {
     async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
             e.preventDefault()
             const response = await fetchRegisterQuiz(quizForm)
-        console.log("response",response)
             if (response.isSuccess) {
                 setQuizForm(initialQuizForm)
             }
@@ -64,7 +62,6 @@ const QuizRegisterForm = () => {
         {label:"4번",value:4},
         {label:"5번",value:5},
     ]
-    console.log("quizForm",quizForm)
     return (
         <form
             onSubmit={handleSubmit}
