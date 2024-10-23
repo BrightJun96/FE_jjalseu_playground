@@ -9,10 +9,9 @@ export async function fetchQuizList(){
         method:"GET",
         queryString:{
             count:"10",
-            lang:"javascript",
-            field:"frontend"
+            lang:"ALL",
+            field:"FRONTEND"
         },
-        // cache:"no-cache"
     })
 }
 
