@@ -12,11 +12,12 @@ export interface GroupCheckBoxOption{
 }
 
 interface GroupCheckBoxProps {
-    direction?:"row"|"col";
-    options:GroupCheckBoxOption[];
-    onChange:(value:primitive[])=>void;
-    label?:string;
+    direction?:"row"|"col"; // 방향
+    options:GroupCheckBoxOption[]; // 체크박스 그룹 옵션
+    onChange:(value:primitive[])=>void;// 체크박스 그룹 변경 핸들러
+    label?:string; //  라벨
     className?:string;
+    isMultiSelect?:boolean; // 다중 선택 가능 여부
 
 }
 
@@ -26,7 +27,8 @@ function GroupCheckBox({
                            direction="col",
                             options,
                             onChange,
-                            label
+                            label,
+                           isMultiSelect=true // 기본 다중 선택 가능
 
                        }:GroupCheckBoxProps) {
 
@@ -37,6 +39,14 @@ function GroupCheckBox({
     // 체크박스 그룹 핸들러
     function groupCheckHandler(value:CheckBoxHandlerProps){
 
+
+        // 다중 선택이 아닌 경우, 체크된 항목이 하나만 선택되도록
+        if(!isMultiSelect){
+            setCheckedList([value.value])
+            return
+        }
+
+        // 다중 선택인 경우
         if(value.checked) {
             setCheckedList(prev => Array.from(new Set([...prev, value.value])))
         }
