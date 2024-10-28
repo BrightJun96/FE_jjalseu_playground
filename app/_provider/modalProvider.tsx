@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
-import {ModalContext, ModalContextProps, ModalSetContext} from "@/app/_context/modalContext";
+import {initialModalContextValue, ModalContext, ModalContextProps, ModalSetContext} from "@/app/_context/modalContext";
+import ModalBackgroundLayout from "@/app/_components/modal/_ui/modalBackgorundLayout";
+import Modal from "@/app/_components/modal/modal";
 
 const ModalProvider = ({
   children,
@@ -9,17 +11,18 @@ const ModalProvider = ({
   children: React.ReactNode;
 }>) => {
 
-  const [modal, setModal] = React.useState<ModalContextProps>({
-    isOpen:false
-  })
+  const [modal, setModal] = React.useState<ModalContextProps>(initialModalContextValue)
 
 
   return (
   <ModalContext.Provider value={modal}>
     <ModalSetContext.Provider value={setModal}>
-    <div className={"w-screen"}>
       {children}
-    </div>
+      {modal.isOpen &&
+          <ModalBackgroundLayout>
+            <Modal/>
+          </ModalBackgroundLayout>
+      }
     </ModalSetContext.Provider>
   </ModalContext.Provider>
   );

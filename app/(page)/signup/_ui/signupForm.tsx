@@ -1,14 +1,18 @@
 "use client"
 
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import TextInput from "@/app/_components/input/textInput";
 import {ISignupForm} from "@/app/(page)/signup/_types/types";
 import PrimaryButton from "@/app/_components/button/primaryButton";
+import {ModalContext, ModalSetContext} from "@/app/_context/modalContext";
 
 /**
  * 회원가입 폼
  */
 const SignupForm = () => {
+
+    const setModal  = useContext(ModalSetContext)
+
 
     // 회원가입 폼
     const [signupForm, setSignupForm] = useState<ISignupForm>({
@@ -20,8 +24,28 @@ const SignupForm = () => {
     function handleChange(key: string, value: string) {
         setSignupForm((prev) => ({...prev, [key]: value}))
     }
+
+    // 회원가입 폼 제출
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>){
+        e.preventDefault()
+        // 회원가입 로직
+
+
+        setModal((prev)=> ({...prev, isOpen:true,modalTitle:"회원가입",modalContent:"회원가입이 완료되었습니다.",button:{
+            ...prev.button,
+            confirm:{
+                ...prev.button.confirm,
+                onClick:()=>{
+
+                }
+            },
+            }}))
+
+    }
     return (
-        <form className={"w-full flex flex-col gap-6"}>
+        <form
+            onSubmit={handleSubmit}
+            className={"w-full flex flex-col gap-6"}>
             <h1 className={"text-title1 text-center"}>회원가입</h1>
             <TextInput
                 placeholder={"아이디를 입력해주세요."}
