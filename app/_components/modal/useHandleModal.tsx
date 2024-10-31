@@ -7,7 +7,6 @@ const useHandleModal = () => {
    const setModal =  useContext(ModalSetContext)
    const modalValue = useContext(ModalContext)
 
-    console.log("modalValue",modalValue)
     // 모달 초기화
     function handleInitModal() {
         setModal(initialModalContextValue);

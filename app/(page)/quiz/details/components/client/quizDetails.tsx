@@ -44,7 +44,7 @@ const QuizDetails = ({
             userAnswer:userAnswer
         })
 
-        console.log("response",response)
+
     handleOpenModal()
     handleSetModalContent({
         title:"채점 결과",
