@@ -7,11 +7,42 @@ const useHandleModal = () => {
    const setModal =  useContext(ModalSetContext)
    const modalValue = useContext(ModalContext)
 
-
+    console.log("modalValue",modalValue)
     // 모달 초기화
     function handleInitModal() {
         setModal(initialModalContextValue);
     }
+
+
+    // 모달 열기
+     function handleOpenModal() {
+        setModal((prev) =>({
+            ...prev,
+            isOpen: true,
+
+        }));
+    }
+
+
+  // 모달 컨텐츠 정하가
+    function handleSetModalContent({title,content}:{title:React.ReactNode,content:React.ReactNode}) {
+        setModal((prev) =>({
+        ...prev,
+            modalTitle:title,
+        modalContent: content,
+        }));
+    }
+
+  // 버튼 내용
+     function handleSetModalButtonContent({confirm,cancel}:{confirm:{text:string,onClick:()=>void},cancel:{isShow:boolean,text:string,onClick:()=>void}}) {
+        setModal((prev) =>({
+        ...prev,
+        button:{
+            confirm,
+            cancel
+        }
+        }));
+     }
 
 
   // 모달 닫기
@@ -68,7 +99,7 @@ const useHandleModal = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []); // 빈 의존성 배열을 전달하여 이 훅이 컴포넌트가 마운트될 때만 실행되게 함
-  return {  handleBackgroundClick,handleInitModal };
+  return {  handleBackgroundClick,handleInitModal,handleOpenModal,handleSetModalContent,handleSetModalButtonContent };
 };
 
 export default useHandleModal;
