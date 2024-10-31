@@ -1,9 +1,9 @@
 "use server"
 
 import networkInstance from "@/app/services/network.config";
-import {QuizForm, QuizListResponse} from "@/app/services/quiz/types";
+import {CheckAnswerResponse, QuizForm, QuizItem, QuizListResponse} from "@/app/services/quiz/types";
 
-// 퀴즈 목록 가져오기
+// 퀴즈 목록 조회
 export async function fetchQuizList(){
     return networkInstance<QuizListResponse>("quiz/list",{
         method:"GET",
@@ -15,10 +15,37 @@ export async function fetchQuizList(){
     })
 }
 
+// 퀴즈 단일 조회
+export async function fetchQuizDetail({field,lang}:{
+    field:string,
+    lang:string
+}){
+    return networkInstance<QuizItem>(`quiz/item`,{
+        method:"GET",
+        queryString:{
+            field,
+            lang,
+        },
+        cache:"no-cache"
+    })
+}
+
 // 퀴즈 등록
 export async function fetchRegisterQuiz(quizForm:QuizForm){
     return networkInstance("quiz/register",{
         method:"POST",
         body:JSON.stringify(quizForm)
+    })
+}
+
+
+// 퀴즈 정답 확인
+export async function fetchCheckAnswer(checkAnswer:{
+    quizId:number,
+    userAnswer:number[]
+}){
+    return networkInstance<CheckAnswerResponse>(`quiz/check`,{
+        method:"POST",
+        body:JSON.stringify(checkAnswer)
     })
 }
