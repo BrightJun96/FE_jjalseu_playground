@@ -9,6 +9,7 @@ import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
 import {IResponse} from "@/app/services/network.types";
+import {fetchCheckAnswer} from "@/app/services/quiz/api.instance";
 
 const QuizDetails = ({
                          quizResponse
@@ -27,18 +28,31 @@ const QuizDetails = ({
    } = useHandleModal()
 
 
+    const [userAnswer,setUserAnswer] = React.useState<number[]>([])
+
     const {data} =quizResponse
 
 
 
+
+
     // 채점
-    function handleGetAnswer(){
+    async function handleGetAnswer(){
+
+ const response =   await fetchCheckAnswer({
+            quizId:data.quizId,
+            userAnswer:userAnswer
+        })
+
+        console.log("response",response)
     handleOpenModal()
     handleSetModalContent({
         title:"채점 결과",
         content:<div
         >
-            정답입니다!
+         <p>   {response.data.correct?"정답입니다 🥳":"오답입니다 🥲"}</p>
+            <p>정답 : {response.data.answer.join(",")}</p>
+            <p>사용자 답안 : {response.data.userAnswer.join(",")}</p>
         </div>
     })
 
@@ -86,8 +100,7 @@ const QuizDetails = ({
                     options={data.multipleChoices.map((v) => ({label: `${v.number}. ${v.content}`, value: v.number}))}
                     direction={"col"}
                     isMultiSelect={false}
-                    onChange={() => {
-                    }}/>
+                    onChange={(value) => setUserAnswer(value as number[]) }/>
             }
 
             <>

@@ -7,9 +7,9 @@ export const FIELD_OPTIONS = [
 // 언어 옵션
 export const LANGUAGE_OPTIONS = [
     // {text:"전체",value:"ALL"},
+    {text: '자바스크립트', value: 'JAVASCRIPT'},
     {text:"HTML",value:"HTML"},
     {text:"CSS",value:"CSS"},
-    {text: '자바스크립트', value: 'JAVASCRIPT'},
     {text:"타입스크립트",value:"TYPESCRIPT"},
     {text:"리액트",value:"REACT"},
     {text:"Next.js",value:"NEXTJS"},
