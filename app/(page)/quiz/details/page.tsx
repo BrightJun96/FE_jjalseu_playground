@@ -8,10 +8,20 @@ import QuizDetails from "@/app/(page)/quiz/details/components/client/quizDetails
 /**
  * 퀴즈 문제 페이지
  */
-const Page = async () => {
+const Page = async ({searchParams}:{
+    searchParams:Promise<{ [key: string]: string | string[] | undefined }>
+}) => {
+
+    const filters = await searchParams
+
+    const fetchRequestOption={
+        field:filters.field as string,
+        lang:filters.lang as string
+    }
 
 
-    const quizResponse = await fetchQuizDetail()
+
+    const quizResponse = await fetchQuizDetail(fetchRequestOption)
 
 
         return (

@@ -16,13 +16,16 @@ export async function fetchQuizList(){
 }
 
 // 퀴즈 단일 조회
-export async function fetchQuizDetail(){
+export async function fetchQuizDetail({field,lang}:{
+    field:string,
+    lang:string
+}){
     return networkInstance<QuizItem>(`quiz/item`,{
         method:"GET",
         queryString:{
-            field:"FRONTEND",
-            lang:"ALL",
-        }
+            field,
+            lang,
+        },
     })
 }
 

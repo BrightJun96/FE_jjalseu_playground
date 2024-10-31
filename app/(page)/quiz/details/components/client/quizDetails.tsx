@@ -4,10 +4,8 @@ import React from 'react';
 import {QuizItem, QuizListResponse} from "@/app/services/quiz/types";
 import useQueryString from "@/app/_utils/hooks/useQueryString";
 import PrimaryButton from "@/app/_components/button/primaryButton";
-import Link from "next/link";
-import Pagination from "@/app/_components/pagination/pagination";
+
 import 'prismjs/themes/prism.css';
-import MultipleChoiceContents from "@/app/(page)/quiz/details/components/client/multiChoiceContents/multipleChoiceContents";
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
 import {IResponse} from "@/app/services/network.types";
@@ -17,13 +15,10 @@ const QuizDetails = ({
                      }:{quizResponse:IResponse<QuizItem>}) => {
 
 
-    console.log("quizResponse",quizResponse)
     // 힌트 노출 여부
-    const [isHintVisible,setIsHintVisible] = React.useState<boolean>(false)
     const hintRef = React.useRef<HTMLDivElement>(null)
 
     const {
-        getQueryString
     } = useQueryString()
    const {
         handleOpenModal,
