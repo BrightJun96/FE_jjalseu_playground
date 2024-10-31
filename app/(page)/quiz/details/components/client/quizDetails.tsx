@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import {QuizListResponse} from "@/app/services/quiz/types";
+import {QuizItem, QuizListResponse} from "@/app/services/quiz/types";
 import useQueryString from "@/app/_utils/hooks/useQueryString";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 import Link from "next/link";
@@ -10,12 +10,14 @@ import 'prismjs/themes/prism.css';
 import MultipleChoiceContents from "@/app/(page)/quiz/details/components/client/multiChoiceContents/multipleChoiceContents";
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
+import {IResponse} from "@/app/services/network.types";
 
 const QuizDetails = ({
-    quizData
-                     }:{quizData:QuizListResponse}) => {
+                         quizResponse
+                     }:{quizResponse:IResponse<QuizItem>}) => {
 
 
+    console.log("quizResponse",quizResponse)
     // 힌트 노출 여부
     const [isHintVisible,setIsHintVisible] = React.useState<boolean>(false)
     const hintRef = React.useRef<HTMLDivElement>(null)
@@ -30,10 +32,8 @@ const QuizDetails = ({
    } = useHandleModal()
 
 
+    const {data} =quizResponse
 
-    const quizOrder = Number(getQueryString("order")??1)
-
-    const quizDetailsData = quizData.quizList[quizOrder-1]
 
 
     // 채점
@@ -70,25 +70,25 @@ const QuizDetails = ({
             >
                 <span
                 className={"text-title2Normal"}
-                >제한시간 : {quizDetailsData.time}초</span>
+                >제한시간 : {data.time}초</span>
             </div>
             {/*퀴즈 제목*/}
             <div
                 className={"prose text-title2Normal"}
-                dangerouslySetInnerHTML={{__html: quizDetailsData.title}}
+                dangerouslySetInnerHTML={{__html: data.title}}
             />
 
             {/*퀴즈내용*/}
             <div
                 className={"prose"}
-                dangerouslySetInnerHTML={{__html: quizDetailsData.content}}
+                dangerouslySetInnerHTML={{__html: data.content}}
             ></div>
 
             {/*객관식인 경우, 객관시 문제 5게*/}
-            {quizDetailsData.type === "MULTIPLE_CHOICE" &&
-                // <MultipleChoiceContents multipleChoiceContents={quizDetailsData.multipleChoices}/>
+            {data.type === "MULTIPLE_CHOICE" &&
+                // <MultipleChoiceContents multipleChoiceContents={data.multipleChoices}/>
                 <GroupCheckBox
-                    options={quizDetailsData.multipleChoices.map((v) => ({label: `${v.number}. ${v.content}`, value: v.number}))}
+                    options={data.multipleChoices.map((v) => ({label: `${v.number}. ${v.content}`, value: v.number}))}
                     direction={"col"}
                     isMultiSelect={false}
                     onChange={() => {
@@ -117,7 +117,7 @@ const QuizDetails = ({
                         ref={hintRef}
                         popover={"auto"}
                         className={"prose bg-black text-white min-w-[200px] min-h-[100px] rounded-[12px] p-[12px]"}
-                        // dangerouslySetInnerHTML={{__html: quizDetailsData.hint}}
+                        // dangerouslySetInnerHTML={{__html: data.hint}}
 
                     >
                         javascript에서 this는 함수가 호출될 때 결정된다. 함수가 호출될 때 결정된다는 것은 함수가 어떻게 호출되었느냐에 따라 this가 가리키는 대상이 달라진다는 것을

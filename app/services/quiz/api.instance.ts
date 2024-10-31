@@ -1,9 +1,9 @@
 "use server"
 
 import networkInstance from "@/app/services/network.config";
-import {QuizForm, QuizListResponse} from "@/app/services/quiz/types";
+import {QuizForm, QuizItem, QuizListResponse} from "@/app/services/quiz/types";
 
-// 퀴즈 목록 가져오기
+// 퀴즈 목록 조회
 export async function fetchQuizList(){
     return networkInstance<QuizListResponse>("quiz/list",{
         method:"GET",
@@ -12,6 +12,17 @@ export async function fetchQuizList(){
             lang:"ALL",
             field:"FRONTEND"
         },
+    })
+}
+
+// 퀴즈 단일 조회
+export async function fetchQuizDetail(){
+    return networkInstance<QuizItem>(`quiz/item`,{
+        method:"GET",
+        queryString:{
+            field:"FRONTEND",
+            lang:"ALL",
+        }
     })
 }
 

@@ -19,7 +19,7 @@ const Page = async () => {
                 </div>
                 <Link
                     prefetch={false}
-                    href={"/quiz/details?order=1"}>
+                    href={"/quiz/details"}>
                     <PrimaryButton text={"시작하기"} color={"primary"} className={"!w-full !h-[48px] !mt-14"}/>
                 </Link>
             </div>
