@@ -26,7 +26,7 @@ export async function fetchQuizDetail({field,lang}:{
             field,
             lang,
         },
-        cache:"no-cache"
+        // cache:"no-cache"
     })
 }
 
