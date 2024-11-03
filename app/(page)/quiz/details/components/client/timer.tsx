@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 /**
  * 제한시간
  */
-function Timer({ time }: { time: number }) {
+function Timer({ time,handleGetAnswer }: { time: number,handleGetAnswer:()=>void }) {
     // 서버에서 렌더링할 때는 기본값으로 time을 사용
     const [limitTime, setLimitTime] = useState<number>(time);
     // 클라이언트 렌더링 여부 확인
@@ -40,9 +40,12 @@ function Timer({ time }: { time: number }) {
 
     // 제한시간이 0이 되면 타이머 종료
     useEffect(() => {
+
+
         if (timeOverRef.current && limitTime === 0) {
             clearInterval(timeOverRef.current);
             localStorage.removeItem('limitTime'); // 제한시간이 끝나면 LocalStorage에서 제거
+            handleGetAnswer()
         }
     }, [limitTime]);
 
