@@ -10,6 +10,7 @@ import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
 import {IResponse} from "@/app/services/network.types";
 import {fetchCheckAnswer} from "@/app/services/quiz/api.instance";
+import Timer from "@/app/(page)/quiz/details/components/client/timer";
 
 const QuizDetails = ({
                          quizResponse
@@ -44,7 +45,6 @@ const QuizDetails = ({
             userAnswer:userAnswer
         })
 
-
     handleOpenModal()
     handleSetModalContent({
         title:"채점 결과",
@@ -52,7 +52,7 @@ const QuizDetails = ({
         >
          <p>   {response.data.correct?"정답입니다 🥳":"오답입니다 🥲"}</p>
             <p>정답 : {response.data.answer.join(",")}</p>
-            <p>사용자 답안 : {response.data.userAnswer.join(",")}</p>
+            <p>사용자 답안 : {response.data.userAnswer.length>0?response.data.userAnswer.join(","):"답안을 체크하지 않았어요 🥲"}</p>
         </div>
     })
 
@@ -74,13 +74,11 @@ const QuizDetails = ({
     return (
         <div>
             {/*제한시간*/}
-            <div
-                className={"flex justify-end"}
-            >
-                <span
-                className={"text-title2Normal"}
-                >제한시간 : {data.time}초</span>
-            </div>
+            <Timer
+                time={data.time}
+                handleGetAnswer={handleGetAnswer}
+
+            />
             {/*퀴즈 제목*/}
             <div
                 className={"prose text-title2Normal"}
