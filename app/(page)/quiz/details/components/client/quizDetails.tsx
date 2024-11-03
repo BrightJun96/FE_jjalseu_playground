@@ -11,6 +11,7 @@ import useHandleModal from "@/app/_components/modal/useHandleModal";
 import {IResponse} from "@/app/services/network.types";
 import {fetchCheckAnswer} from "@/app/services/quiz/api.instance";
 import Timer from "@/app/(page)/quiz/details/components/client/timer";
+import {useRouter} from "next/navigation";
 
 const QuizDetails = ({
                          quizResponse
@@ -20,18 +21,26 @@ const QuizDetails = ({
     // 힌트 노출 여부
     const hintRef = React.useRef<HTMLDivElement>(null)
 
-    const {
-    } = useQueryString()
+
+   const {
+        getQueryString,
+   }= useQueryString()
+
+    // 모달 관련 함수
    const {
         handleOpenModal,
        handleSetModalContent,
        handleSetModalButtonContent
    } = useHandleModal()
 
+    const router = useRouter()
 
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
     const {data} =quizResponse
+
+
+
 
 
 
@@ -60,12 +69,14 @@ const QuizDetails = ({
             confirm:{
                 text:"다음문제",
                 onClick:()=>{
+                    router.push(`/quiz/details?field=${getQueryString("field")}&lang=${getQueryString("lang")}&excludeQuizId=${getQueryString("excludeQuizId")?`${getQueryString("excludeQuizId")},${data.quizId}`:data.quizId}`)
                 }
             },
             cancel:{
                 isShow:true,
                 text:"해설",
                 onClick:()=>{
+
                 }
             }
      })
