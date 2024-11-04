@@ -13,10 +13,10 @@ const Page = async ({searchParams}:{
 }) => {
 
     const filters = await searchParams
-
     const fetchRequestOption={
         field:filters.field as string,
-        lang:filters.lang as string
+        lang:filters.lang as string,
+        excludeQuizId:(filters.excludeQuizId) as string
     }
 
 
