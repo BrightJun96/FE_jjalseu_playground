@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {QuizItem, QuizListResponse} from "@/app/services/quiz/types";
 import useQueryString from "@/app/_utils/hooks/useQueryString";
 import PrimaryButton from "@/app/_components/button/primaryButton";
@@ -11,7 +11,7 @@ import useHandleModal from "@/app/_components/modal/useHandleModal";
 import {IResponse} from "@/app/services/network.types";
 import {fetchCheckAnswer} from "@/app/services/quiz/api.instance";
 import Timer from "@/app/(page)/quiz/details/components/client/timer";
-import {useRouter} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 
 const QuizDetails = ({
                          quizResponse
@@ -24,60 +24,71 @@ const QuizDetails = ({
 
    const {
         getQueryString,
+       searchParams
    }= useQueryString()
+
+    const excludeQuizIdQueryString = getQueryString("excludeQuizId")
+
+    const pathname = usePathname()
 
     // 모달 관련 함수
    const {
         handleOpenModal,
+       handleInitModal,
        handleSetModalContent,
        handleSetModalButtonContent
    } = useHandleModal()
 
     const router = useRouter()
 
+    // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
-
-
     const {data} =quizResponse
-
 
 
     // 채점
     async function handleGetAnswer(){
 
- const response =   await fetchCheckAnswer({
-            quizId:data.quizId,
-            userAnswer:userAnswer
+     const response = await fetchCheckAnswer({
+                quizId:data.quizId,
+                userAnswer:userAnswer
+            })
+
+        handleOpenModal()
+        handleSetModalContent({
+            title:"채점 결과",
+            content:<div
+            >
+             <p>   {response.data.correct?"정답입니다 🥳":"오답입니다 🥲"}</p>
+                <p>정답 : {response.data.answer.join(",")}</p>
+                <p>사용자 답안 : {response.data.userAnswer.length>0?response.data.userAnswer.join(","):"답안을 체크하지 않았어요 🥲"}</p>
+            </div>
         })
+         handleSetModalButtonContent({
+                confirm:{
+                    text:"다음문제",
+                    onClick:()=>{
+                        router.push(`/quiz/details?field=${getQueryString("field")}&lang=${getQueryString("lang")}&excludeQuizId=${getQueryString("excludeQuizId")?`${getQueryString("excludeQuizId")},${data.quizId}`:data.quizId}`)
+                    }
+                },
+                cancel:{
+                    isShow:true,
+                    text:"해설",
+                    onClick:()=>{
 
-    handleOpenModal()
-    handleSetModalContent({
-        title:"채점 결과",
-        content:<div
-        >
-         <p>   {response.data.correct?"정답입니다 🥳":"오답입니다 🥲"}</p>
-            <p>정답 : {response.data.answer.join(",")}</p>
-            <p>사용자 답안 : {response.data.userAnswer.length>0?response.data.userAnswer.join(","):"답안을 체크하지 않았어요 🥲"}</p>
-        </div>
-    })
-
-     handleSetModalButtonContent({
-            confirm:{
-                text:"다음문제",
-                onClick:()=>{
-                    router.push(`/quiz/details?field=${getQueryString("field")}&lang=${getQueryString("lang")}&excludeQuizId=${getQueryString("excludeQuizId")?`${getQueryString("excludeQuizId")},${data.quizId}`:data.quizId}`)
+                    }
                 }
-            },
-            cancel:{
-                isShow:true,
-                text:"해설",
-                onClick:()=>{
-
-                }
-            }
-     })
+         })
     }
+
+
+    // pathname과 queryString이 변경되면 모달 닫아주기
+    useEffect(() => {
+        handleInitModal()
+
+
+    }, [pathname,searchParams.size,excludeQuizIdQueryString]);
 
     return (
         <div>

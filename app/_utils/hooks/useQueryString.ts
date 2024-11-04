@@ -37,7 +37,7 @@ const useQueryString = () => {
     replace(`${pathname}`, { scroll: false });
   }
 
-  return { getQueryString, setQueryString, removeQueryString, removeAllQueryStrings };
+  return { getQueryString, setQueryString,searchParams, removeQueryString, removeAllQueryStrings };
 };
 
 export default useQueryString;
