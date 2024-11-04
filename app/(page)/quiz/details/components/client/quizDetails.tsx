@@ -37,12 +37,9 @@ const QuizDetails = ({
 
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
+
+
     const {data} =quizResponse
-
-
-
-
-
 
 
 
@@ -88,6 +85,7 @@ const QuizDetails = ({
             <Timer
                 time={data.time}
                 handleGetAnswer={handleGetAnswer}
+                quizId={data.quizId}
 
             />
             {/*퀴즈 제목*/}
