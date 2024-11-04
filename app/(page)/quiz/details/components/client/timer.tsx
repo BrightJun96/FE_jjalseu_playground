@@ -3,14 +3,20 @@ import React, { useEffect, useRef, useState } from 'react';
 /**
  * 제한시간
  */
-function Timer({ time,handleGetAnswer }: { time: number,handleGetAnswer:()=>void }) {
+function Timer({ time,handleGetAnswer,quizId }: { time: number,handleGetAnswer:()=>void ,
+    quizId:number
+}) {
+
     // 서버에서 렌더링할 때는 기본값으로 time을 사용
     const [limitTime, setLimitTime] = useState<number>(time);
     // 클라이언트 렌더링 여부 확인
     const [isMounted, setIsMounted] = useState(false);
 
+
     // 타이머 ID 저장하기 위한 값
     const timeOverRef = useRef<number | null>(null);
+
+
 
     // 클라이언트 측에서만 실행: LocalStorage에서 제한시간 가져오기
     useEffect(() => {
@@ -21,6 +27,12 @@ function Timer({ time,handleGetAnswer }: { time: number,handleGetAnswer:()=>void
             setLimitTime(parseInt(storedTime, 10));
         }
     }, []);
+
+    // 퀴즈 ID가 변경되면 제한시간 초기화
+    useEffect(() => {
+
+        setLimitTime(time)
+    }, [quizId]);
 
     // 제한시간 Interval 설정 및 타이머 ID 저장
     useEffect(() => {
