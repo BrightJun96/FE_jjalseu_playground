@@ -23,10 +23,7 @@ const QuizDetails = ({
     const hintRef = React.useRef<HTMLDivElement>(null)
 
 
-   const {
-        getQueryString,
-       searchParams
-   }= useQueryString()
+
 
 
     const pathname = usePathname()
