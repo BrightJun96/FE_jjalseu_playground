@@ -13,6 +13,7 @@ import {fetchCheckAnswer} from "@/app/services/quiz/api.instance";
 import Timer from "@/app/(page)/quiz/details/components/client/timer";
 import {usePathname, useRouter} from "next/navigation";
 
+// 퀴즈 상세 컴포넌트
 const QuizDetails = ({
                          quizResponse
                      }:{quizResponse:IResponse<QuizItem>}) => {
@@ -47,6 +48,10 @@ const QuizDetails = ({
     const {data} =quizResponse
 
 
+    /**
+     * @TODO
+     * API 요청 과 모달 관련 로직 분리 필요
+     */
     // 채점
     async function handleGetAnswer(){
 
