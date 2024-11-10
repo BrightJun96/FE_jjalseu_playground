@@ -57,7 +57,7 @@ const Header = () => {
                 </nav>
             </div>
             {/* 로그인,회원가입 & 프로필 */}
-            <AuthContainer/>
+            {/*<AuthContainer/>*/}
         </header>
     );
 };
