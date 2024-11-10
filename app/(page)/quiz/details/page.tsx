@@ -6,7 +6,8 @@ import {IResponse} from "@/app/services/network.types";
 import QuizDetails from "@/app/(page)/quiz/details/components/client/quizDetails";
 
 /**
- * 퀴즈 문제 페이지
+ * 퀴즈 문제 페이지 - 다이나믹 렌더링 방식
+ * 사용자 요청에 따라 동적 렌더링
  */
 const Page = async ({searchParams}:{
     searchParams:Promise<{ [key: string]: string | string[] | undefined }>
