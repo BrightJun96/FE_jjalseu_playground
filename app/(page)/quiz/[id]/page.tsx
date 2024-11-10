@@ -28,20 +28,15 @@ const Page = async ({
     }
 }) => {
 
-
     const { id } = await params
+    const {data} = await fetchQuizDetailPk(Number(id))
 
-
-        const respose = await fetchQuizDetailPk(Number(id))
-
-
-
+    console.log("data :",data)
 
     return (
-            <div>{id}</div>
-        // <QuizDetails
-        //     quizResponse={quizResponse}
-        // />
+        <QuizDetails
+            quizData={data}
+        />
     );
 };
 
