@@ -5,7 +5,7 @@ import {MultipleChoiceContent} from "@/app/services/quiz/types";
 import MultiChoiceContentsItem
     , {
     CheckHandlerProps
-} from "@/app/(page)/quiz/[details]/components/client/multiChoiceContents/multiChoiceContentsItem";
+} from "@/app/(page)/quiz/[id]/components/client/multiChoiceContents/multiChoiceContentsItem";
 
 function MultipleChoiceContents({
     multipleChoiceContents
