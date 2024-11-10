@@ -53,3 +53,11 @@ export async function fetchCheckAnswer(checkAnswer:{
         body:JSON.stringify(checkAnswer)
     })
 }
+
+// 퀴즈 전체 PK 목록 조회
+export async function fetchQuizPkList(){
+    return networkInstance<number[]>("quiz/list-pk",{
+        method:"GET"
+    })
+}
+

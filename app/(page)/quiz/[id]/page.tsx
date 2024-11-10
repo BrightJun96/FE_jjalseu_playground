@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchQuizDetail, fetchQuizList} from "@/app/services/quiz/api.instance";
+import {fetchQuizDetail, fetchQuizList, fetchQuizPkList} from "@/app/services/quiz/api.instance";
 import {cookies} from "next/headers";
 import {QuizListResponse} from "@/app/services/quiz/types";
 import {IResponse} from "@/app/services/network.types";
@@ -13,8 +13,11 @@ import QuizDetails from "@/app/(page)/quiz/[id]/components/client/quizDetails";
  * @todo SEO를 위해 title,description 등 값 설정 필요
  */
 
-export function generateStaticParams() {
-    return [{ id: '1' }, { id: '2' }, { id: '3' }]
+export async function generateStaticParams() {
+
+    const {data} = await fetchQuizPkList()
+
+    return data.map((pk) => ({id:pk.toString()}))
 }
 
 const Page = async ({
@@ -24,6 +27,7 @@ const Page = async ({
         id:string
     }
 }) => {
+
 
     const { id } = await params
 
