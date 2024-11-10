@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchQuizDetail, fetchQuizList, fetchQuizPkList} from "@/app/services/quiz/api.instance";
+import {fetchQuizDetail, fetchQuizDetailPk, fetchQuizList, fetchQuizPkList} from "@/app/services/quiz/api.instance";
 import {cookies} from "next/headers";
 import {QuizListResponse} from "@/app/services/quiz/types";
 import {IResponse} from "@/app/services/network.types";
@@ -31,8 +31,8 @@ const Page = async ({
 
     const { id } = await params
 
-    console.log("id :",id)
 
+        const respose = await fetchQuizDetailPk(Number(id))
 
 
 

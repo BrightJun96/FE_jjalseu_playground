@@ -61,3 +61,10 @@ export async function fetchQuizPkList(){
     })
 }
 
+// 퀴즈 상세 조회 PK 기반
+export async function fetchQuizDetailPk(quizId:number){
+    return networkInstance<QuizItem>(`quiz/${quizId}`,{
+        method:"GET"
+    })
+}
+
