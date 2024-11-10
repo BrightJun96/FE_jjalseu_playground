@@ -23,12 +23,8 @@ const QuizDetails = ({
     const hintRef = React.useRef<HTMLDivElement>(null)
 
 
-   const {
-        getQueryString,
-       searchParams
-   }= useQueryString()
 
-    const excludeQuizIdQueryString = getQueryString("excludeQuizId")
+
 
     const pathname = usePathname()
 
@@ -73,7 +69,6 @@ const QuizDetails = ({
                 confirm:{
                     text:"다음문제",
                     onClick:()=>{
-                        router.push(`/quiz/details?field=${getQueryString("field")}&lang=${getQueryString("lang")}&excludeQuizId=${getQueryString("excludeQuizId")?`${getQueryString("excludeQuizId")},${quizData.quizId}`:quizData.quizId}`)
                     }
                 },
                 cancel:{
@@ -92,7 +87,7 @@ const QuizDetails = ({
         handleInitModal()
 
 
-    }, [pathname,searchParams.size,excludeQuizIdQueryString]);
+    }, [pathname]);
 
     return (
         <div>
