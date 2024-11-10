@@ -1,5 +1,6 @@
 "use client"
 
+import AuthContainer from "@/app/_layout/header/authContainer";
 import React from 'react';
 import Link from "next/link";
 import {usePathname} from "next/navigation";
@@ -56,21 +57,7 @@ const Header = () => {
                 </nav>
             </div>
             {/* 로그인,회원가입 & 프로필 */}
-            <div className={"flex gap-3 items-center"}>
-                <Link
-                    href={"/login"}
-                    // prefetch={false}
-                >
-                    <PrimaryButton text={"로그인"} color={"primary"} />
-                </Link>
-                <Link
-                    href={"/signup"}
-                    // prefetch={false}
-                >
-                    <PrimaryButton text={"회원가입"} color={"primarySecondary"} />
-                </Link>
-
-            </div>
+            {/*<AuthContainer/>*/}
         </header>
     );
 };
