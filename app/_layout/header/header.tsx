@@ -40,7 +40,7 @@ const Header = () => {
         <header className={"w-full h-[80px] bg-headerBackground flex justify-between items-center px-container"}>
             {/*로고,메뉴*/}
             <div className={"flex gap-10 items-center"}>
-                <Link href={"/public"}>
+                <Link href={"/"}>
                 <h1 className={"text-primary-normal text-headline3 font-bold"}>코아</h1>
                 </Link>
                 <nav>
