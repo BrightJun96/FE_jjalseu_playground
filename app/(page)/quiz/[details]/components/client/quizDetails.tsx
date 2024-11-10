@@ -10,7 +10,7 @@ import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
 import {IResponse} from "@/app/services/network.types";
 import {fetchCheckAnswer} from "@/app/services/quiz/api.instance";
-import Timer from "@/app/(page)/quiz/details/components/client/timer";
+import Timer from "@/app/(page)/quiz/[details]/components/client/timer";
 import {usePathname, useRouter} from "next/navigation";
 
 // 퀴즈 상세 컴포넌트
