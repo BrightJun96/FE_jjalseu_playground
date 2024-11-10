@@ -1,5 +1,6 @@
 "use client"
 
+import AuthContainer from "@/app/_layout/header/authContainer";
 import React from 'react';
 import Link from "next/link";
 import {usePathname} from "next/navigation";
@@ -39,7 +40,7 @@ const Header = () => {
         <header className={"w-full h-[80px] bg-headerBackground flex justify-between items-center px-container"}>
             {/*로고,메뉴*/}
             <div className={"flex gap-10 items-center"}>
-                <Link href={"/"}>
+                <Link href={"/public"}>
                 <h1 className={"text-primary-normal text-headline3 font-bold"}>코아</h1>
                 </Link>
                 <nav>
@@ -56,21 +57,7 @@ const Header = () => {
                 </nav>
             </div>
             {/* 로그인,회원가입 & 프로필 */}
-            <div className={"flex gap-3 items-center"}>
-                <Link
-                    href={"/login"}
-                    // prefetch={false}
-                >
-                    <PrimaryButton text={"로그인"} color={"primary"} />
-                </Link>
-                <Link
-                    href={"/signup"}
-                    // prefetch={false}
-                >
-                    <PrimaryButton text={"회원가입"} color={"primarySecondary"} />
-                </Link>
-
-            </div>
+            <AuthContainer/>
         </header>
     );
 };
