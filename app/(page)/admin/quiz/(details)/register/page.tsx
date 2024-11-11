@@ -1,7 +1,10 @@
 import React from 'react';
-import QuizRegisterForm from "@/app/(page)/quiz/register/components/client/quizRegisterForm";
+import QuizRegisterForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/quizRegisterForm";
 
 
+/**
+ * 퀴즈 관리-등록 페이지
+ */
 const Page = async () => {
     return (
         <div className={"w-full"}>

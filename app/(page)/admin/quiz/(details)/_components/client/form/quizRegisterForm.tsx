@@ -1,5 +1,7 @@
 "use client"
 
+import MetaDataForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/metaDataSection";
+import MultipleChoiceForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/multipleChoiceForm";
 import React, {useState} from 'react';
 import TextInput from "@/app/_components/input/textInput";
 import Select from "@/app/_components/select/select";
@@ -11,7 +13,7 @@ import {
     TYPE_OPTIONS
 } from "@/app/(page)/quiz/constant";
 import PrimaryButton from "@/app/_components/button/primaryButton";
-import MultipleChoiceContents from "@/app/(page)/quiz/register/components/client/multipleChoiceContents";
+import MultipleChoiceContents from "@/app/(page)/admin/quiz/(details)/_components/client/multipleChoiceContents";
 import TextEditorWrapper from "@/app/_components/editor/textEditorWrapper";
 import {QuizForm, QuizFormKey} from "@/app/services/quiz/types";
 import {fetchRegisterQuiz} from "@/app/services/quiz/api.instance";
@@ -35,11 +37,17 @@ const QuizRegisterForm = () => {
         level:1,
         isMultiple:false,
         time:0,
-        multipleChoiceContents:["","","","",""]
+        multipleChoiceContents:["","","","",""], // 객관식 선택지
+        // 메타데이터
+        metaTitle:"", // 제목
+        metaDescription:"", // 설명
+        metaImageUrl:"" // 이미지 URL
     }
 
+    // 퀴즈 폼 상태
     const [quizForm,setQuizForm]=useState<QuizForm>(initialQuizForm);
 
+    // 등록 핸들러
     async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
             e.preventDefault()
             const response = await fetchRegisterQuiz(quizForm)
@@ -53,15 +61,6 @@ const QuizRegisterForm = () => {
         setQuizForm((prev)=>({...prev,[key]:value}))
     }
 
-
-    // 객관식 답안 옵션
-    const checkBoxOptions = [
-        {label:"1번",value:1},
-        {label:"2번",value:2},
-        {label:"3번",value:3},
-        {label:"4번",value:4},
-        {label:"5번",value:5},
-    ]
     return (
         <form
             onSubmit={handleSubmit}
@@ -88,31 +87,24 @@ const QuizRegisterForm = () => {
                 label={"해설"}
                 onHTMLChange={(value)=> commonHandleChange(value,"explanation")}
             />
-
-            {/*주관식 답안*/}
-            <TextEditorWrapper
-                label={"주관식 답안"}
-                onHTMLChange={(value)=> commonHandleChange(value,"subjectiveAnswer")}
-            />
-
+            {/*분야*/}
             <Select
                 options={FIELD_OPTIONS}
                 label={"분야"}
                 handleOptionChange={(value) => commonHandleChange(value,"field")}
             />
-
+            {/*언어*/}
             <Select
                 options={LANGUAGE_OPTIONS}
                 label={"언어"}
                 handleOptionChange={(value) => commonHandleChange(value,"lang")}
             />
-
+            {/*문제 난이도*/}
             <Select
                 options={LEVEL_OPTIONS}
                 label={"문제 난이도"}
                 handleOptionChange={(value) => commonHandleChange(value,"level")}
             />
-
             {/*문제 타입(객관식 or 주관식)*/}
             <Select
                 options={TYPE_OPTIONS}
@@ -120,34 +112,16 @@ const QuizRegisterForm = () => {
                 handleOptionChange={(value)=>commonHandleChange(value,"type")}
 
             />
-
-            {/*객관식일 경우,나타날 필드(중복 선택 여부)*/}
+            {/*주관식 답안*/}
+            {quizForm.type==="SUBJECTIVE"&&
+                <TextEditorWrapper
+                label={"주관식 답안"}
+                onHTMLChange={(value) => commonHandleChange(value, "subjectiveAnswer")}
+            />}
+            {/*객관식 폼*/}
             {quizForm.type==="MULTIPLE_CHOICE"&&
-                <Select
-                    options={DUPLICATE_OPTIONS}
-                    label={"객관식 - 중복 선택 여부"}
-                    handleOptionChange={(value) => commonHandleChange(value,"isMultiple")}
-                />}
-
-            {/*객관식일 경우,나타날 필드(객관식 선택지 리스트)*/}
-            {quizForm.type==="MULTIPLE_CHOICE"&&
-                <MultipleChoiceContents
-                    quizForm={quizForm}
-                    onChange={(value)=>commonHandleChange(value,"multipleChoiceContents")}
-
-                />}
-            {/*객관실일 경우, 나타날 필드(객관식 답안)*/}
-            {quizForm.type ==="MULTIPLE_CHOICE" &&
-                <GroupCheckBox
-                    className={"!px-2"}
-                    label={"객관식 답안"}
-                    options={checkBoxOptions}
-                    direction={"col"}
-                    onChange={(checkedList)=>commonHandleChange(checkedList,"multipleChoiceAnswer")}
-                />
-
+            <MultipleChoiceForm quizForm={quizForm} commonHandleChange={commonHandleChange}/>
             }
-
             {/*문제풀이 소요시간*/}
             <TextInput
                 value={quizForm.time}
@@ -157,8 +131,16 @@ const QuizRegisterForm = () => {
                 placeholder={"문제풀이 소요시간을 입력해주세요."}
                 onChange={(value)=>commonHandleChange(value,"time")}
             />
-
-            {/*문제*/}
+            {/*메타데이터 섹션(제목,설명,이미지 URL)*/}
+            <MetaDataForm
+                metaData={{
+                    metaTitle:quizForm.metaTitle,
+                    metaDescription:quizForm.metaDescription,
+                    metaImageUrl:quizForm.metaImageUrl,
+                    commonHandleChange
+                }}
+            />
+            {/*등록*/}
             <PrimaryButton
                 text={"퀴즈 등록"}
                 color={"primary"}

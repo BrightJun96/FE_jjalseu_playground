@@ -46,6 +46,10 @@ export interface QuizForm{
     isMultiple:boolean,// 객관식일 경우 중복 선택 여부
     time:number,
     multipleChoiceContents:string[]
+
+    metaTitle:string, // 제목
+    metaDescription:string, // 설명
+    metaImageUrl:string // 이미지 URL
 }
 
 // QuizForm keys
