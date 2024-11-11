@@ -6,7 +6,7 @@ import PrimaryButton from "@/app/_components/button/primaryButton";
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
-import clientQuizApi from "@/app/services/quiz/client/api.instance";
+import ClientQuizApi from "@/app/services/quiz/client/api.instance";
 import {QuizItem} from "@/app/services/quiz/types";
 import {usePathname, useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
@@ -33,7 +33,7 @@ const QuizDetails = ({
 
     // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
-    
+
     /**
      * @TODO
      * API 요청 과 모달 관련 로직 분리 필요
@@ -41,7 +41,7 @@ const QuizDetails = ({
     // 채점
     async function handleGetAnswer(){
 
-     const response = await clientQuizApi.fetchCheckAnswer({
+     const response = await ClientQuizApi.fetchCheckAnswer({
                 quizId:quizData.quizId,
                 userAnswer:userAnswer
             })

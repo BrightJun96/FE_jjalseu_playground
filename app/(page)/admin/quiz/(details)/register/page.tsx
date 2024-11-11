@@ -1,5 +1,5 @@
+import QuizDetailsForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/quizDetailsForm";
 import React from 'react';
-import QuizRegisterForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/quizRegisterForm";
 
 
 /**
@@ -9,7 +9,9 @@ const Page = async () => {
     return (
         <div className={"w-full"}>
             <h1 className={"text-title1"}>퀴즈 등록</h1>
-            <QuizRegisterForm/>
+            <QuizDetailsForm
+                detailsData={null}
+            />
         </div>
     );
 };

@@ -2,26 +2,20 @@
 
 import MetaDataForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/metaDataForm";
 import MultipleChoiceForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/multipleChoiceForm";
-import adminQuizApi from "@/app/services/quiz/admin/api.instance";
-import React, {useState} from 'react';
+import {FIELD_OPTIONS, LANGUAGE_OPTIONS, LEVEL_OPTIONS, TYPE_OPTIONS} from "@/app/(page)/quiz/constant";
+import PrimaryButton from "@/app/_components/button/primaryButton";
+import TextEditorWrapper from "@/app/_components/editor/textEditorWrapper";
 import TextInput from "@/app/_components/input/textInput";
 import Select from "@/app/_components/select/select";
-import {
-    DUPLICATE_OPTIONS,
-    FIELD_OPTIONS,
-    LANGUAGE_OPTIONS,
-    LEVEL_OPTIONS,
-    TYPE_OPTIONS
-} from "@/app/(page)/quiz/constant";
-import PrimaryButton from "@/app/_components/button/primaryButton";
-import MultipleChoiceContents from "@/app/(page)/admin/quiz/(details)/_components/client/multipleChoiceContents";
-import TextEditorWrapper from "@/app/_components/editor/textEditorWrapper";
-import {QuizForm, QuizFormKey} from "@/app/services/quiz/types";
-import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import {primitive} from "@/app/_types/primitive";
+import AdminQuizApi from "@/app/services/quiz/admin/api.instance";
+import {QuizForm, QuizFormKey, QuizItem, QuizType} from "@/app/services/quiz/types";
+import React, {useEffect, useState} from 'react';
 
 // 퀴즈 등록 폼 컴포넌트
-const QuizRegisterForm = () => {
+const QuizDetailsForm = ({detailsData}:{detailsData:QuizItem|null}) => {
+
+    console.log("detailsData",detailsData)
 
     // 초기값
     const initialQuizForm:QuizForm={
@@ -31,7 +25,7 @@ const QuizRegisterForm = () => {
         multipleChoiceAnswer:[], // 객관식 답안
         hint:"",
         explanation:"",
-        type:TYPE_OPTIONS[0].value as "SUBJECTIVE"|"MULTIPLE_CHOICE",
+        type:TYPE_OPTIONS[0].value as QuizType,
         field: FIELD_OPTIONS[0].value,
         lang:LANGUAGE_OPTIONS[0].value,
         level:1,
@@ -50,7 +44,7 @@ const QuizRegisterForm = () => {
     // 등록 핸들러
     async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
             e.preventDefault()
-            const response = await adminQuizApi.fetchRegisterQuiz(quizForm)
+            const response = await AdminQuizApi.fetchRegisterQuiz(quizForm)
             if (response.isSuccess) {
                 setQuizForm(initialQuizForm)
             }
@@ -60,6 +54,30 @@ const QuizRegisterForm = () => {
     function commonHandleChange( value:primitive|primitive[],key:QuizFormKey) {
         setQuizForm((prev)=>({...prev,[key]:value}))
     }
+
+
+    useEffect(() => {
+        if(detailsData){
+
+            const {level,title,content,multipleChoiceAnswer,subjectiveAnswer,type,hint,explanation,field,lang,time,metaTitle,metaDescription,metaImageUrl} =detailsData
+            setQuizForm(prev => ({...prev,
+                title,
+                content,
+                multipleChoiceAnswer ,
+                subjectiveAnswer,
+                type,
+                hint,
+                explanation,
+                field,
+                lang,
+                time,
+                metaTitle,
+                metaDescription,
+                metaImageUrl:metaImageUrl??"",
+
+            }))
+        }
+    }, [detailsData]);
 
     return (
         <form
@@ -153,4 +171,4 @@ const QuizRegisterForm = () => {
     );
 };
 
-export default QuizRegisterForm;
+export default QuizDetailsForm;
