@@ -18,7 +18,6 @@ const QuizDetails = ({
                          quizData
                      }:{quizData:QuizItem}) => {
 
-
     // 힌트 노출 여부
     const hintRef = React.useRef<HTMLDivElement>(null)
 
