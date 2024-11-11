@@ -1,10 +1,4 @@
-import {Metadata} from "next";
 import React from 'react';
-import {fetchQuizDetail, fetchQuizDetailPk, fetchQuizList, fetchQuizPkList} from "@/app/services/quiz/api.instance";
-import {cookies} from "next/headers";
-import {QuizListResponse} from "@/app/services/quiz/types";
-import {IResponse} from "@/app/services/network.types";
-import QuizDetails from "@/app/(page)/quiz/[id]/components/client/quizDetails";
 
 /**
  * 퀴즈 문제 페이지

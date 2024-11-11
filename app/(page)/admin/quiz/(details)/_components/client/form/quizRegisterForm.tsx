@@ -2,6 +2,7 @@
 
 import MetaDataForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/metaDataForm";
 import MultipleChoiceForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/multipleChoiceForm";
+import adminQuizApi from "@/app/services/quiz/admin/api.instance";
 import React, {useState} from 'react';
 import TextInput from "@/app/_components/input/textInput";
 import Select from "@/app/_components/select/select";
@@ -16,7 +17,6 @@ import PrimaryButton from "@/app/_components/button/primaryButton";
 import MultipleChoiceContents from "@/app/(page)/admin/quiz/(details)/_components/client/multipleChoiceContents";
 import TextEditorWrapper from "@/app/_components/editor/textEditorWrapper";
 import {QuizForm, QuizFormKey} from "@/app/services/quiz/types";
-import {fetchRegisterQuiz} from "@/app/services/quiz/api.instance";
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import {primitive} from "@/app/_types/primitive";
 
@@ -50,7 +50,7 @@ const QuizRegisterForm = () => {
     // 등록 핸들러
     async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
             e.preventDefault()
-            const response = await fetchRegisterQuiz(quizForm)
+            const response = await adminQuizApi.fetchRegisterQuiz(quizForm)
             if (response.isSuccess) {
                 setQuizForm(initialQuizForm)
             }
