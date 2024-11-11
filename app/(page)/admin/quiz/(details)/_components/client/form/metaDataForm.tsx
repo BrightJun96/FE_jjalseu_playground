@@ -26,7 +26,7 @@ function MetaDataForm({
             >메타데이터</span>
             {/*제목*/}
             <TextInput
-                label={"제목"}
+                label={"메타데이터-제목"}
                 placeholder={"제목을 입력하세요"}
                 className={"w-full"}
                 value={metaTitle}
@@ -34,7 +34,7 @@ function MetaDataForm({
             />
             {/*설명*/}
             <TextInput
-                label={"설명"}
+                label={"메타데이터-설명"}
                 placeholder={"설명을 입력하세요"}
                 className={"w-full"}
                 value={metaDescription}
@@ -42,7 +42,7 @@ function MetaDataForm({
             />
             {/*이미지 URL*/}
             <TextInput
-                label={"이미지 URL"}
+                label={"메타데이터-이미지 URL"}
                 placeholder={"이미지 URL을 입력하세요"}
                 className={"w-full"}
                 value={metaImageUrl}

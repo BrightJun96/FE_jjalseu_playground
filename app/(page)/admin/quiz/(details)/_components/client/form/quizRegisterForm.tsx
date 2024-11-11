@@ -1,6 +1,6 @@
 "use client"
 
-import MetaDataForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/metaDataSection";
+import MetaDataForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/metaDataForm";
 import MultipleChoiceForm from "@/app/(page)/admin/quiz/(details)/_components/client/form/multipleChoiceForm";
 import React, {useState} from 'react';
 import TextInput from "@/app/_components/input/textInput";
@@ -66,10 +66,13 @@ const QuizRegisterForm = () => {
             onSubmit={handleSubmit}
             className={"flex flex-col gap-4 mt-[12px] items-center"}
         >
-
-            <TextEditorWrapper
-                label={"퀴즈 제목"}
-                onHTMLChange={(value)=> commonHandleChange(value,"title")}
+            {/*제목*/}
+            <TextInput
+                label={"메타데이터-제목"}
+                placeholder={"제목을 입력하세요"}
+                className={"w-full"}
+                value={quizForm.title}
+                onChange={(value) => commonHandleChange(value, "title")}
             />
 
             {/*퀴즈 내용 (텍스트 에디터)*/}

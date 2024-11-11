@@ -24,6 +24,7 @@ function MultipleChoiceForm({quizForm,commonHandleChange}:{
     ]
     return (
         <>
+            <span>객관식</span>
             {/*객관식일 경우,나타날 필드(중복 선택 여부)*/}
                 <Select
                     options={DUPLICATE_OPTIONS}
