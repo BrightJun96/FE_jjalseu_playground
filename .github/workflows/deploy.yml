@@ -23,7 +23,7 @@ jobs:
 
       - name: 환경 변수를 설정합니다.
         run: |
-          echo "NEXT_PUBLIC_API_ENDPOINT=$NEXT_PUBLIC_API_ENDPOINT" >> .env.production
+          echo "NEXT_PUBLIC_API_ENDPOINT=$NEXT_PUBLIC_API_ENDPOINT" >> .env
         env:
           NEXT_PUBLIC_API_ENDPOINT: ${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}
 
