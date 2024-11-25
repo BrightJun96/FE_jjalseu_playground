@@ -1,9 +1,17 @@
+import {Metadata} from "next";
 import React from 'react';
 
 import QuizOptionSettingPart from "@/app/(page)/quiz/_components/quizOptionSettingPart";
 
-const Page = async () => {
+export const metadata: Metadata = {
+    title: '퀴즈 시작하기',
+    description: '퀴즈를 통해 개발 지식을 테스트해 보세요.' +
+        '프론트 엔드, 백엔드, 데이터베이스, 네트워크, 알고리즘 등 다양한 주제의 퀴즈를 풀어보세요.',
 
+}
+
+
+const Page = async () => {
 
     return (
             <div className={"w-full"}>

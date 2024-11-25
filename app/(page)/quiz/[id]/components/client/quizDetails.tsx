@@ -1,17 +1,15 @@
 "use client"
 
-import React, {useEffect} from 'react';
-import {QuizItem, QuizListResponse} from "@/app/services/quiz/types";
-import useQueryString from "@/app/_utils/hooks/useQueryString";
+import Timer from "@/app/(page)/quiz/[id]/components/client/timer";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
-import {IResponse} from "@/app/services/network.types";
-import {fetchCheckAnswer} from "@/app/services/quiz/api.instance";
-import Timer from "@/app/(page)/quiz/[id]/components/client/timer";
+import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
+import {QuizItem} from "@/app/services/quiz/types";
 import {usePathname, useRouter} from "next/navigation";
+import React, {useEffect} from 'react';
 
 // 퀴즈 상세 컴포넌트
 const QuizDetails = ({
@@ -20,10 +18,6 @@ const QuizDetails = ({
 
     // 힌트 노출 여부
     const hintRef = React.useRef<HTMLDivElement>(null)
-
-
-
-
 
     const pathname = usePathname()
 
@@ -40,8 +34,6 @@ const QuizDetails = ({
     // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
-
-
     /**
      * @TODO
      * API 요청 과 모달 관련 로직 분리 필요
@@ -49,7 +41,7 @@ const QuizDetails = ({
     // 채점
     async function handleGetAnswer(){
 
-     const response = await fetchCheckAnswer({
+     const response = await clientQuizApi.fetchCheckAnswer({
                 quizId:quizData.quizId,
                 userAnswer:userAnswer
             })

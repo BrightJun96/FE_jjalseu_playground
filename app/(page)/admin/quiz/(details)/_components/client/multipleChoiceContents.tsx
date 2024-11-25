@@ -1,8 +1,8 @@
 "use client"
 
-import React from 'react';
 import TextInput from "@/app/_components/input/textInput";
 import {QuizForm} from "@/app/services/quiz/types";
+import React from 'react';
 
 // 객관식 문제 컨텐츠
 const MultipleChoiceContents = ({
@@ -19,8 +19,6 @@ const MultipleChoiceContents = ({
         onChange(quizForm.multipleChoiceContents.map((v,i)=>i===index?value:v))
 
     }
-
-
 
 
     return (

@@ -6,13 +6,19 @@ export interface QuizItem {
     content: string;
     multipleChoiceAnswer: number[];
     subjectiveAnswer: string;
-    type: string;
+    type: QuizType;
     hint: string;
     explanation: string;
     field: string;
+    level: number;
     lang: string;
     time: number;
     multipleChoices:MultipleChoiceContent[]
+    metaTitle:string;
+    metaDescription:string;
+    metaImageUrl:string|null;
+    createdAt: string;
+    updatedAt: string;
 }
 
 // 객관식 컨텐츠
@@ -30,6 +36,7 @@ export interface QuizListResponse {
     totalCount: number;
 }
 
+export type QuizType = "MULTIPLE_CHOICE" | "SUBJECTIVE";
 
 // 퀴즈 요청 타입 & 퀴즈 폼 타입
 export interface QuizForm{
@@ -39,13 +46,17 @@ export interface QuizForm{
     multipleChoiceAnswer:number[], // 객관식 답안
     hint:string,
     explanation:string,
-    type:"MULTIPLE_CHOICE"|"SUBJECTIVE",
+    type:QuizType,
     field:string,
     lang:string,
     level:number,
     isMultiple:boolean,// 객관식일 경우 중복 선택 여부
     time:number,
     multipleChoiceContents:string[]
+
+    metaTitle:string, // 제목
+    metaDescription:string, // 설명
+    metaImageUrl:string // 이미지 URL
 }
 
 // QuizForm keys
