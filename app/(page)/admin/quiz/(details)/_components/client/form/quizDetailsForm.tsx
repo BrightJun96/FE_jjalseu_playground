@@ -8,14 +8,14 @@ import TextEditorWrapper from "@/app/_components/editor/textEditorWrapper";
 import TextInput from "@/app/_components/input/textInput";
 import Select from "@/app/_components/select/select";
 import {primitive} from "@/app/_types/primitive";
-import AdminQuizApi from "@/app/services/quiz/admin/api.instance";
+import {fetchRegisterQuiz} from "@/app/services/quiz/admin/api.action";
 import {QuizForm, QuizFormKey, QuizItem, QuizType} from "@/app/services/quiz/types";
 import React, {useEffect, useState} from 'react';
 
 // 퀴즈 등록 폼 컴포넌트
 const QuizDetailsForm = ({detailsData}:{detailsData:QuizItem|null}) => {
 
-    console.log("detailsData",detailsData)
+    // console.log("detailsData",detailsData)
 
     // 초기값
     const initialQuizForm:QuizForm={
@@ -44,7 +44,7 @@ const QuizDetailsForm = ({detailsData}:{detailsData:QuizItem|null}) => {
     // 등록 핸들러
     async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
             e.preventDefault()
-            const response = await AdminQuizApi.fetchRegisterQuiz(quizForm)
+            const response = await fetchRegisterQuiz(quizForm)
             if (response.isSuccess) {
                 setQuizForm(initialQuizForm)
             }

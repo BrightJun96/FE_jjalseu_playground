@@ -6,6 +6,7 @@ class AdminQuizApi {
 
     // 퀴즈 목록 조회
     static async fetchQuizList(){
+
         return networkInstance<QuizListResponse>("quiz/list",{
             method:"GET",
             queryString:{
@@ -25,6 +26,7 @@ class AdminQuizApi {
 
      // 퀴즈 등록
     static async fetchRegisterQuiz(quizForm:QuizForm){
+
         return networkInstance("quiz/register",{
             method:"POST",
             body:JSON.stringify(quizForm)

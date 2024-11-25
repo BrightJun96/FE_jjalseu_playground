@@ -6,7 +6,7 @@ import PrimaryButton from "@/app/_components/button/primaryButton";
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
-import ClientQuizApi from "@/app/services/quiz/client/api.instance";
+import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
 import {QuizItem} from "@/app/services/quiz/types";
 import {usePathname, useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
@@ -41,7 +41,7 @@ const QuizDetails = ({
     // 채점
     async function handleGetAnswer(){
 
-     const response = await ClientQuizApi.fetchCheckAnswer({
+     const response = await clientQuizApi.fetchCheckAnswer({
                 quizId:quizData.quizId,
                 userAnswer:userAnswer
             })

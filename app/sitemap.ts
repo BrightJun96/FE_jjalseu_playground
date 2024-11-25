@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next'
+import type {MetadataRoute} from 'next'
 
 
 export async function generateSitemaps() {
@@ -31,7 +31,7 @@ export default async function sitemap({
         {
             url: 'https://thedevlounge.com/quiz/:id',
             lastModified: new Date(),
-            changeFrequency: 'weekly',
+            changeFrequency: 'daily',
             priority: 1,
         },
     ]
