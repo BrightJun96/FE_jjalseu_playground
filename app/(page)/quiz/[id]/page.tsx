@@ -49,7 +49,6 @@ const Page = async ({
     const { id } = await params
     const {data} = await clientQuizApi.fetchQuizDetail(Number(id))
 
-    console.log("data",data)
     return (
         <QuizDetails
             quizData={data}

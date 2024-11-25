@@ -9,19 +9,18 @@ export async function generateSitemaps() {
 
     return data.map((pk) => ({id:pk.toString()}))
 }
-/**
- * @todo 퀴즈 API 호출해서 퀴즈 목록을 가져와서 Sitemap 생성
- */
+
 export default async function sitemap({
                                           id,
                                       }: {
     id: number
 }):Promise<MetadataRoute.Sitemap>{
 
+   const {data} =  await clientQuizApi.fetchQuizDetail(id)
 
     return  [{
         url: `${BASE_URL}/quiz/${id}`,
-        lastModified: new Date(),
+        lastModified: data.updatedAt,
         changeFrequency: 'daily',
         priority: 1,
     }]
