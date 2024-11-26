@@ -1,6 +1,6 @@
 "use client"
 
-import Timer from "@/app/(page)/quiz/[id]/components/client/timer";
+import Timer from "@/app/(page)/quiz/[detailUrl]/components/client/timer";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
