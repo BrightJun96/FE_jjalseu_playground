@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 
 }
 
-// SEO를 위해 설정
+// SEO를 위해 메타데이터(title, description) 설정
 export async function generateMetadata({
                                            params
                                        }:{
