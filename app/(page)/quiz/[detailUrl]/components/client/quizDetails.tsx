@@ -90,10 +90,10 @@ const QuizDetails = ({
 
             />
             {/*퀴즈 제목*/}
-            <div
-                className={"prose text-title2Normal"}
-                dangerouslySetInnerHTML={{__html: quizData.title}}
-            />
+            <h1
+                className={"text-title2Normal"}
+
+            >{quizData.title}</h1>
 
             {/*퀴즈내용*/}
             <div
