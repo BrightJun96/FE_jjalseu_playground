@@ -5,6 +5,10 @@ import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
 
 class QuizHelper{
 
+    constructor() {
+        this.startQuiz = this.startQuiz.bind(this)
+    }
+
     // 배열에서 랜덤한 요소를 반환
     pickRandomOne<T>(arr: T[]): T  {
             if (arr.length === 0) {
