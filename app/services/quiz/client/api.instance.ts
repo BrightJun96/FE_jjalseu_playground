@@ -15,6 +15,14 @@ import {CheckAnswerResponse, QuizItem} from "@/app/services/quiz/types";
          })
      }
 
+     // 퀴즈 전체 DetailUrl 목록 조회
+        async fetchQuizDetailUrlList(){
+            return networkInstance<string[]>("quiz/list-detail-url",{
+                method:"GET"
+            })
+       }
+
+
       // 퀴즈 전체 PK 목록 조회
        async fetchQuizPkList(){
          return networkInstance<number[]>("quiz/list-pk",{
@@ -28,6 +36,13 @@ import {CheckAnswerResponse, QuizItem} from "@/app/services/quiz/types";
              method: "GET"
          })
      }
+
+     // 퀴즈 상세 조회(상세 URL)
+        async fetchQuizDetailByUrl(detailUrl:string){
+            return networkInstance<QuizItem>(`quiz/detail-url/${detailUrl}`,{
+                method:"GET"
+            })
+        }
  }
 
  export const clientQuizApi = new ClientQuizApi();

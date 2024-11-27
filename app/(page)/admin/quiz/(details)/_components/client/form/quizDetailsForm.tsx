@@ -35,7 +35,8 @@ const QuizDetailsForm = ({detailsData}:{detailsData:QuizItem|null}) => {
         // 메타데이터
         metaTitle:"", // 제목
         metaDescription:"", // 설명
-        metaImageUrl:"" // 이미지 URL
+        metaImageUrl:"" ,// 이미지 URL
+        detailUrl:"" // 상세 URL
     }
 
     // 퀴즈 폼 상태
@@ -86,7 +87,7 @@ const QuizDetailsForm = ({detailsData}:{detailsData:QuizItem|null}) => {
         >
             {/*제목*/}
             <TextInput
-                label={"메타데이터-제목"}
+                label={"제목"}
                 placeholder={"제목을 입력하세요"}
                 className={"w-full"}
                 value={quizForm.title}
@@ -160,6 +161,14 @@ const QuizDetailsForm = ({detailsData}:{detailsData:QuizItem|null}) => {
                     metaImageUrl:quizForm.metaImageUrl,
                     commonHandleChange
                 }}
+            />
+            {/*상세 URL*/}
+            <TextInput
+                value={quizForm.detailUrl}
+                label={"상세 URL"}
+                className={"w-full"}
+                placeholder={"상세 URL을 입력해주세요."}
+                onChange={(value)=>commonHandleChange(value,"detailUrl")}
             />
             {/*등록*/}
             <PrimaryButton

@@ -57,6 +57,7 @@ export interface QuizForm{
     metaTitle:string, // 제목
     metaDescription:string, // 설명
     metaImageUrl:string // 이미지 URL
+    detailUrl:string // 상세 URL
 }
 
 // QuizForm keys

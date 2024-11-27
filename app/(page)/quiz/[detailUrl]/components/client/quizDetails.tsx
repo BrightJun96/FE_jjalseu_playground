@@ -1,6 +1,6 @@
 "use client"
 
-import Timer from "@/app/(page)/quiz/[id]/components/client/timer";
+import Timer from "@/app/(page)/quiz/[detailUrl]/components/client/timer";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
@@ -90,10 +90,10 @@ const QuizDetails = ({
 
             />
             {/*퀴즈 제목*/}
-            <div
-                className={"prose text-title2Normal"}
-                dangerouslySetInnerHTML={{__html: quizData.title}}
-            />
+            <h1
+                className={"text-title2Normal"}
+
+            >{quizData.title}</h1>
 
             {/*퀴즈내용*/}
             <div
