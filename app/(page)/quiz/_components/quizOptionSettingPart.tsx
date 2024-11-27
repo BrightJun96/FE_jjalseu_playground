@@ -5,7 +5,7 @@ import {FIELD_OPTIONS, LANGUAGE_OPTIONS} from "@/app/(page)/quiz/constant";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 import Select from "@/app/_components/select/select";
 import useIsClient from "@/app/_utils/hooks/useIsClient";
-import {localStorageService} from "@/app/_utils/StorageService";
+import {StorageAdapter} from "@/app/_utils/StorageService";
 import {useRouter} from "next/navigation";
 import React from 'react';
 
@@ -39,13 +39,12 @@ function QuizOptionSettingPart() {
 
                 />
             </div>
-                <PrimaryButton
-                    onClick={async() => {
-                        if(isClient) await quizHelper.startQuiz(localStorageService, router.push)
-                    }}
-                    text={"시작하기"}
-                    color={"primary"}
-                    className={"!w-full !h-[48px] !mt-14"}/>
+            {isClient&&<PrimaryButton
+                onClick={async () => await quizHelper.startQuiz(new StorageAdapter(window.localStorage), router.push)}
+                text={"시작하기"}
+                color={"primary"}
+                className={"!w-full !h-[48px] !mt-14"}
+            />}
         </>
     );
 }
