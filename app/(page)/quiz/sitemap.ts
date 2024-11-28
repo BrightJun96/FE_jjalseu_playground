@@ -4,21 +4,21 @@ import type {MetadataRoute} from 'next'
 
 export async function generateSitemaps() {
 
-    const {data} = await clientQuizApi.fetchQuizPkList();
+    const {data} = await clientQuizApi.fetchQuizDetailUrlList();
 
-    return data.map((pk) => ({id:pk.toString()}))
+    return data.map((url) => ({detailUrl:url}))
 }
 
 export default async function sitemap({
-                                          id,
+                                          detailUrl,
                                       }: {
-    id: number
+    detailUrl: string
 }):Promise<MetadataRoute.Sitemap>{
 
-   const {data} =  await clientQuizApi.fetchQuizDetail(id)
+   const {data} =  await clientQuizApi.fetchQuizDetailByUrl(detailUrl)
 
     return  [{
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/quiz/${id}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/quiz/${detailUrl}`,
         lastModified: data.updatedAt,
         changeFrequency: 'daily',
         priority: 1,
