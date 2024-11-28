@@ -3,6 +3,8 @@ import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
 import {Metadata} from "next";
 import React from 'react';
 
+
+// export const config = { amp: true }
 /**
  * 퀴즈 문제 페이지
  * 정적 렌더링 방식
