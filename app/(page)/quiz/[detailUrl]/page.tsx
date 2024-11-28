@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 
     const {data} = await clientQuizApi.fetchQuizDetailUrlList();
 
-    return data.map((pk) => ({detailUrl:pk.toString()}))
+    return data.map((url) => ({detailUrl:url}))
 
 }
 
