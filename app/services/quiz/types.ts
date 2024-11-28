@@ -19,6 +19,7 @@ export interface QuizItem {
     metaImageUrl:string|null;
     createdAt: string;
     updatedAt: string;
+    detailUrl:string // 상세 URL
 }
 
 // 객관식 컨텐츠

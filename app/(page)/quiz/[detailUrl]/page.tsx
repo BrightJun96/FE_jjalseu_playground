@@ -17,6 +17,7 @@ export async function generateStaticParams() {
 
 }
 
+
 // SEO를 위해 메타데이터(title, description) 설정
 export async function generateMetadata({
                                            params
@@ -32,7 +33,10 @@ export async function generateMetadata({
 
     return {
         title:data.metaTitle,
-        description:data.metaDescription
+        description:data.metaDescription,
+        alternates:{
+            canonical:`/quiz/${data.detailUrl}`
+        }
     }
 }
 
