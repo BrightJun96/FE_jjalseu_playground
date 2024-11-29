@@ -79,7 +79,7 @@ class QuizHelper{
             const filteredQuizList = this.filterSolvedQuiz(quizUrlList,solvedQuiz)
 
             // 퀴즈가 모두 풀렸다면 퀴즈 완료 페이지로 이동
-            if(ArrayUtils.isEmpty<string>(filteredQuizList)) navigate("/quiz/completed")
+            if(this.isAllQuizSolved(storage)) navigate("/quiz/completed")
 
             // 데이터 중 랜덤으로 하나뽑기
             const randomOne = this.pickRandomOne<string>(filteredQuizList)
@@ -106,6 +106,13 @@ class QuizHelper{
     // 푼 문제, 스토리지로부터 조회
     getSolvedQuiz(storage:StorageService):string[] {
         return storage.getParsed<string[]>(SOLVED_QUIZ_LIST)??[]
+    }
+
+    // 모든 퀴즈가 풀렸는지 확인
+    isAllQuizSolved(storage:StorageService):boolean{
+        const quizUrlList = storage.getParsed<string[]>(QUIZ_URL_LIST)
+        const solvedQuiz = storage.getParsed<string[]>(SOLVED_QUIZ_LIST)
+        return ArrayUtils.isEqualLength<string>(quizUrlList??[],solvedQuiz??[])
     }
 
     // 퀴즈 관련 스토리지 초기화
