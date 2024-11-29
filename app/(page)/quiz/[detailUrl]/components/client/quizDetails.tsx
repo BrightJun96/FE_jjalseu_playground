@@ -80,12 +80,12 @@ const QuizDetails = ({
     }
 
 
-    // pathname과 queryString이 변경되면 모달 닫아주기
     useEffect(() => {
-        handleInitModal()
 
-
-    }, [pathname]);
+        if(quizHelper.isAllQuizSolved(new StorageAdapter(window.localStorage))){
+            router.push("/quiz/completed")
+        }
+    }, [])
 
     return (
         <div>
