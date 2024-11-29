@@ -22,4 +22,9 @@ export class ArrayUtils{
       return arrA.length === arrB.length;
     }
 
+    // 중복 제거
+    static removeDuplicate<T>(arr: T[]): T[] {
+      return [...new Set(arr)];
+    }
+
 }
