@@ -1,8 +1,10 @@
 // 퀴즈 페이지에서 사용할 헬퍼 함수들
 import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
-import {StorageService} from "@/app/_utils/StorageService";
+import {QUIZ_URL_LIST, SOLVED_QUIZ_LIST, StorageService} from "@/app/_utils/StorageService";
 import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
 
+
+// @todo localstorage key 값 상수화
 class QuizHelper{
 
     constructor() {
@@ -25,7 +27,7 @@ class QuizHelper{
             const {data} = await clientQuizApi.fetchQuizDetailUrlList()
 
             // 퀴즈 URL 목록을 localStorage에 저장
-            storage.save("quizUrlList", JSON.stringify(data))
+            storage.save(QUIZ_URL_LIST, JSON.stringify(data))
 
             // 데이터 중 랜덤으로 하나뽑기
             const randomOne = this.pickRandomOne<string>(data)
@@ -37,7 +39,71 @@ class QuizHelper{
         catch (error){
             console.error(error)
         }
+    }
 
+    // 푼 문제 저장, 기존에 푼 문제가 있다면 추가,없다면 새로 저장
+    storeSolvedQuiz(quiz:string,storage:StorageService){
+
+        const solvedQuizList= storage.get(SOLVED_QUIZ_LIST)
+
+        if(solvedQuizList){
+            const solvedQuizListArray = JSON.parse(solvedQuizList)
+            solvedQuizListArray.push(quiz)
+            storage.save(SOLVED_QUIZ_LIST,JSON.stringify(solvedQuizListArray))
+        }else{
+            storage.save(SOLVED_QUIZ_LIST,JSON.stringify([quiz]))
+        }
+
+    }
+
+    // 퀴즈목록에 있는 퀴즈 URL 중 푼 문제 필터링하기
+    filterSolvedQuiz(quizUrlList:string[],solvedQuiz:string[]):string[]{
+        return quizUrlList.filter((quizUrl) => !solvedQuiz.includes(quizUrl))
+    }
+
+    // 다음 문제로 이동
+    async moveToNextQuiz(storage:StorageService,navigate:(path:string) => void,currentQuiz:string){
+        try {
+            // 퀴즈 URL 없을 때 , 퀴즈 시작페이지로 이동
+            await this.moveToQuizStartPage(storage, navigate)
+
+            // 퀴즈 URL 목록 조회(위에서 예외처리를 해줬기 때문에 타입 단언)
+            const quizUrlList:string[] = storage.getParsed<string[]>(QUIZ_URL_LIST)!
+
+            // 현재 문제 푼 문제로 저장
+            this.storeSolvedQuiz(currentQuiz,storage)
+
+            // 푼 문제 조회
+            const solvedQuiz = this.getSolvedQuiz(storage)
+
+            // 푼 문제가 있다면 퀴즈목록에서 제외
+            const filteredQuizList = this.filterSolvedQuiz(quizUrlList,solvedQuiz)
+
+            // 데이터 중 랜덤으로 하나뽑기
+            const randomOne = this.pickRandomOne<string>(filteredQuizList)
+
+            // 랜덤으로 뽑은 퀴즈 URL로 이동
+            navigate(`/quiz/${randomOne}`)
+
+        }
+        catch (error){
+            console.error(error)
+        }
+    }
+
+    // 퀴즈 URL 목록이 없다면 퀴즈 시작페이지로 돌아가기
+    async moveToQuizStartPage(storage:StorageService,navigate:(path:string) => void){
+            // 퀴즈 URL 목록 조회
+            const quizUrlList = storage.get("quizUrlList")
+            // 퀴즈 URL 목록이 없다면 퀴즈 시작페이지로 이동
+            if (!quizUrlList) {
+                navigate("/quiz")
+            }
+    }
+
+    // 푼 문제, 스토리지로부터 조회
+    getSolvedQuiz(storage:StorageService):string[] {
+        return storage.getParsed<string[]>(SOLVED_QUIZ_LIST)??[]
     }
 }
 
