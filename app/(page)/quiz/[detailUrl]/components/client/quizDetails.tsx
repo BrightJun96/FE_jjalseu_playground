@@ -10,7 +10,7 @@ import useHandleModal from "@/app/_components/modal/useHandleModal";
 import {StorageAdapter} from "@/app/_utils/StorageService";
 import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
 import {QuizItem} from "@/app/services/quiz/types";
-import {usePathname, useRouter} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
 
 // 퀴즈 상세 컴포넌트
@@ -21,7 +21,7 @@ const QuizDetails = ({
     // 힌트 노출 여부
     const hintRef = React.useRef<HTMLDivElement>(null)
 
-    const pathname = usePathname()
+    const {detailUrl} = useParams()
 
     // 모달 관련 함수
    const {
@@ -32,6 +32,7 @@ const QuizDetails = ({
    } = useHandleModal()
 
     const router = useRouter()
+
 
     // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
@@ -82,10 +83,19 @@ const QuizDetails = ({
 
     useEffect(() => {
 
-        if(quizHelper.isAllQuizSolved(new StorageAdapter(window.localStorage))){
+        const storage = new StorageAdapter(window.localStorage)
+
+        // 현재 경로가 solvedQuizList 스토리지에 있는 url에 있는 경우, 다른 문제로 이동
+        if(quizHelper.getSolvedQuiz(storage).includes(detailUrl as string)){
+             const unsolvedOne=  quizHelper.pickRandomOne<string>(quizHelper.getUnsolvedQuiz(storage))
+            router.push(`/quiz/${unsolvedOne}`)
+        }
+
+        // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
+        if(quizHelper.isAllQuizSolved(storage)){
             router.push("/quiz/completed")
         }
-    }, [])
+    }, [detailUrl])
 
     return (
         <div>
