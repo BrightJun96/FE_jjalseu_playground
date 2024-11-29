@@ -55,10 +55,7 @@ class QuizHelper{
 
     }
 
-    // 퀴즈목록에 있는 퀴즈 URL 중 푼 문제 필터링하기
-    filterSolvedQuiz(quizUrlList:string[],solvedQuiz:string[]):string[]{
-        return ArrayUtils.getDifference<string>(quizUrlList,solvedQuiz)
-    }
+
 
     // 다음 문제로 이동
     async moveToNextQuiz(storage:StorageService,navigate:(path:string) => void,currentQuiz:string){
@@ -76,7 +73,7 @@ class QuizHelper{
             const solvedQuiz = this.getSolvedQuiz(storage)
 
             // 푼 문제가 있다면 퀴즈목록에서 제외
-            const filteredQuizList = this.filterSolvedQuiz(quizUrlList,solvedQuiz)
+            const filteredQuizList = ArrayUtils.getDifference<string>(quizUrlList,solvedQuiz)
 
             // 퀴즈가 모두 풀렸다면 퀴즈 완료 페이지로 이동
             if(this.isAllQuizSolved(storage)) navigate("/quiz/completed")
