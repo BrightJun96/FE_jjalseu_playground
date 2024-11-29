@@ -4,7 +4,6 @@ import {QUIZ_URL_LIST, SOLVED_QUIZ_LIST, StorageService} from "@/app/_utils/Stor
 import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
 
 
-// @todo localstorage key 값 상수화
 class QuizHelper{
 
     constructor() {
@@ -58,7 +57,7 @@ class QuizHelper{
 
     // 퀴즈목록에 있는 퀴즈 URL 중 푼 문제 필터링하기
     filterSolvedQuiz(quizUrlList:string[],solvedQuiz:string[]):string[]{
-        return quizUrlList.filter((quizUrl) => !solvedQuiz.includes(quizUrl))
+        return ArrayUtils.getDifference<string>(quizUrlList,solvedQuiz)
     }
 
     // 다음 문제로 이동
@@ -79,6 +78,9 @@ class QuizHelper{
             // 푼 문제가 있다면 퀴즈목록에서 제외
             const filteredQuizList = this.filterSolvedQuiz(quizUrlList,solvedQuiz)
 
+            // 퀴즈가 모두 풀렸다면 퀴즈 완료 페이지로 이동
+            if(ArrayUtils.isEmpty<string>(filteredQuizList)) navigate("/quiz/completed")
+
             // 데이터 중 랜덤으로 하나뽑기
             const randomOne = this.pickRandomOne<string>(filteredQuizList)
 
@@ -94,7 +96,7 @@ class QuizHelper{
     // 퀴즈 URL 목록이 없다면 퀴즈 시작페이지로 돌아가기
     async moveToQuizStartPage(storage:StorageService,navigate:(path:string) => void){
             // 퀴즈 URL 목록 조회
-            const quizUrlList = storage.get("quizUrlList")
+            const quizUrlList = storage.get(QUIZ_URL_LIST)
             // 퀴즈 URL 목록이 없다면 퀴즈 시작페이지로 이동
             if (!quizUrlList) {
                 navigate("/quiz")
