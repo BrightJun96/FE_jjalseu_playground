@@ -51,7 +51,7 @@ class QuizHelper{
             solvedQuizListArray.push(quiz)
             storage.save(SOLVED_QUIZ_LIST,JSON.stringify(solvedQuizListArray))
         }else{
-            storage.save(SOLVED_QUIZ_LIST,quiz)
+            storage.save(SOLVED_QUIZ_LIST,JSON.stringify([quiz]))
         }
 
     }
@@ -68,14 +68,14 @@ class QuizHelper{
             await this.moveToQuizStartPage(storage, navigate)
 
             // 퀴즈 URL 목록 조회(위에서 예외처리를 해줬기 때문에 타입 단언)
-            const quizUrlList = JSON.parse(storage.get("quizUrlList") as string)
+            const quizUrlList:string[] = storage.getParsed<string[]>(QUIZ_URL_LIST)!
 
             // 현재 문제 푼 문제로 저장
             this.storeSolvedQuiz(currentQuiz,storage)
 
             // 푼 문제 조회
             const solvedQuiz = this.getSolvedQuiz(storage)
-            
+
             // 푼 문제가 있다면 퀴즈목록에서 제외
             const filteredQuizList = this.filterSolvedQuiz(quizUrlList,solvedQuiz)
 
