@@ -34,7 +34,7 @@ const PrimaryButton = ({text,onClick,className,disabled,color}:IPrimaryButtonPro
     return (
         <button
 
-            className={`${colors[color]} rounded-[8px] px-[16px] text-menu flex justify-center items-center w-[84px] h-[32px] ${className}`}
+            className={`${colors[color]} rounded-[8px] px-[16px] text-menu flex justify-center items-center min-w-[84px] h-[32px] ${className}`}
             onClick={onClick}
             disabled={disabled}
         >
