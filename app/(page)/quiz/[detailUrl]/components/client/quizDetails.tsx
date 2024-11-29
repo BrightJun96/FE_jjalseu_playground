@@ -1,11 +1,13 @@
 "use client"
 
+import quizHelper from "@/app/(page)/quiz/[detailUrl]/_helper/QuizHelper";
 import Timer from "@/app/(page)/quiz/[detailUrl]/components/client/timer";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
+import {StorageAdapter} from "@/app/_utils/StorageService";
 import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
 import {QuizItem} from "@/app/services/quiz/types";
 import {usePathname, useRouter} from "next/navigation";
@@ -46,6 +48,8 @@ const QuizDetails = ({
                 userAnswer:userAnswer
             })
 
+
+        console.log("quizData",quizData)
         handleOpenModal()
         handleSetModalContent({
             title:"채점 결과",
@@ -59,13 +63,16 @@ const QuizDetails = ({
          handleSetModalButtonContent({
                 confirm:{
                     text:"다음문제",
-                    onClick:()=>{
+                    onClick:async ()=>{
+                        console.log("다음문제 함수")
+                        await quizHelper.moveToNextQuiz(new StorageAdapter(window.localStorage),router.push,quizData.detailUrl)
                     }
                 },
                 cancel:{
                     isShow:true,
                     text:"해설",
                     onClick:()=>{
+                        // @todo
 
                     }
                 }
