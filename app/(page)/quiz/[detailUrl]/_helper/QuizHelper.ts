@@ -107,6 +107,12 @@ class QuizHelper{
     getSolvedQuiz(storage:StorageService):string[] {
         return storage.getParsed<string[]>(SOLVED_QUIZ_LIST)??[]
     }
+
+    // 퀴즈 관련 스토리지 초기화
+    clearQuizStorage(storage:StorageService){
+        storage.remove(SOLVED_QUIZ_LIST)
+        storage.remove(QUIZ_URL_LIST)
+    }
 }
 
 const quizHelper = new QuizHelper();
