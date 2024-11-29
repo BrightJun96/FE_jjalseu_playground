@@ -13,10 +13,13 @@ export class ArrayUtils{
     }
 
     // 배열 길이가 0일 때, 특정 함수를 실행
-    static runIfEmpty<T>(arr: T[], func: () => void): void {
-        if (arr.length === 0) {
-            func();
-        }
+    static isEmpty<T>(arr: T[]): boolean {
+      return arr.length === 0;
+    }
+
+    // 두 배열을 비교하여, 두 배열의 length가 같은지 비교
+    static isEqualLength<T>(arrA: T[], arrB: T[]): boolean {
+      return arrA.length === arrB.length;
     }
 
 }
