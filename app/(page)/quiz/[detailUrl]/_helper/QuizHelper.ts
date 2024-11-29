@@ -48,7 +48,7 @@ class QuizHelper{
         if(solvedQuizList){
             const solvedQuizListArray = JSON.parse(solvedQuizList)
             solvedQuizListArray.push(quiz)
-            storage.save(SOLVED_QUIZ_LIST,JSON.stringify(solvedQuizListArray))
+            storage.save(SOLVED_QUIZ_LIST,JSON.stringify(ArrayUtils.removeDuplicate(solvedQuizListArray)))
         }else{
             storage.save(SOLVED_QUIZ_LIST,JSON.stringify([quiz]))
         }
