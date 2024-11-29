@@ -6,7 +6,7 @@ export interface StorageService {
     save(key: string, value: string): void; // 저장
     remove(key:string):void // 제거
     get(key: string): string | null; // 가져오기
-    getParsed<T>(key: string,valueInNullCase:unknown): T | unknown; // 파싱하여 가져오기
+    getParsed<T>(key: string): T|null; // 파싱하여 가져오기
 }
 // 스토리지 서비스 구현 클래스
  export class StorageAdapter implements StorageService {
@@ -32,12 +32,12 @@ export interface StorageService {
     }
 
     // 파싱하여 가져오기
-     getParsed<T>(key: string,valueInNullCase:unknown): T | unknown { {
+     getParsed<T>(key: string): T| null { {
         const value = this.get(key);
         if (value) {
             return JSON.parse(value);
         }
-        return valueInNullCase;
+        return null;
 
      }
 
@@ -46,3 +46,10 @@ export interface StorageService {
 
 
 
+// Storage 상수
+
+// 퀴즈 URL 목록
+export const QUIZ_URL_LIST = "quizUrlList"
+
+// 푼 퀴즈 목록
+export const SOLVED_QUIZ_LIST = "solvedQuizList"
