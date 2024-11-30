@@ -1,5 +1,5 @@
 import QuizDetails from "@/app/(page)/quiz/[detailUrl]/components/client/quizDetails";
-import clientQuizApi from "@/app/services/quiz/QuizApi";
+import quizApiHandler from "@/app/services/quiz/QuizApiHandler";
 import {Metadata} from "next";
 import React from 'react';
 
@@ -13,7 +13,7 @@ import React from 'react';
 // SSG 실행할 페이지 ID 추출, 서버에 받아오는 PK들은 모두 SSG 방식으로 구현
 export async function generateStaticParams() {
 
-    const {data} = await clientQuizApi.fetchQuizDetailUrlList();
+    const {data} = await quizApiHandler.fetchQuizDetailUrlList();
 
     return data.map((url) => ({detailUrl:url}))
 
@@ -31,7 +31,7 @@ export async function generateMetadata({
 
     const detailUrl = (await params).detailUrl
 
-    const {data} = await clientQuizApi.fetchQuizDetailByUrl(detailUrl)
+    const {data} = await quizApiHandler.fetchQuizDetailByUrl(detailUrl)
 
     return {
         title:data.metaTitle,
@@ -51,7 +51,7 @@ const Page = async ({
 }) => {
 
     const { detailUrl } = await params
-    const {data} = await clientQuizApi.fetchQuizDetailByUrl(detailUrl)
+    const {data} = await quizApiHandler.fetchQuizDetailByUrl(detailUrl)
 
     return (
         <QuizDetails

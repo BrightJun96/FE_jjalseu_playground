@@ -8,7 +8,7 @@ import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
 import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
 import {StorageAdapter} from "@/app/_utils/StorageService";
-import clientQuizApi from "@/app/services/quiz/QuizApi";
+import quizApiHandler from "@/app/services/quiz/QuizApiHandler";
 import {QuizItem} from "@/app/services/quiz/types";
 import {useParams, useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
@@ -41,7 +41,7 @@ const QuizDetails = ({
     // 채점
     async function handleGetAnswer(){
 
-     const response = await clientQuizApi.fetchCheckAnswer({
+     const response = await quizApiHandler.fetchCheckAnswer({
                 quizId:quizData.quizId,
                 userAnswer:userAnswer
             })

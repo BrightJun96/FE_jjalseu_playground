@@ -1,10 +1,9 @@
-// 퀴즈 페이지에서 사용할 헬퍼 함수들
 import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
 import ExceptionManager from "@/app/_utils/function/ExceptionManager";
 import {QUIZ_URL_LIST, SOLVED_QUIZ_LIST, StorageService} from "@/app/_utils/StorageService";
-import clientQuizApi from "@/app/services/quiz/QuizApi";
+import quizApiHandler from "@/app/services/quiz/QuizApiHandler";
 
-
+// 퀴즈 페이지에서 사용할 헬퍼 함수들
 class QuizHelper{
 
     constructor() {
@@ -17,7 +16,7 @@ class QuizHelper{
     async startQuiz(storage:StorageService,navigate:(path:string) => void){
         try {
             // 퀴즈 URL 목록 조회
-            const {data} = await clientQuizApi.fetchQuizDetailUrlList()
+            const {data} = await quizApiHandler.fetchQuizDetailUrlList()
 
             // 배열이 비어있는 경우, 예외 처리
             ExceptionManager.throwIfArrayEmpty<string>(data,"퀴즈 URL 목록이 비어있습니다.")
