@@ -10,28 +10,33 @@ class QuizHelper{
     }
 
 
-
-    // 퀴즈 시작하기
-    async startQuiz(storage:StorageService,navigate:(path:string) => void){
+    // 퀴즈 URL 목록 조회 후 저장
+    async saveQuizUrlList(storage:StorageService){
         try {
             // 퀴즈 URL 목록 조회
             const {data} = await quizApiHandler.fetchQuizDetailUrlList()
 
             // 퀴즈 URL 목록을 localStorage에 저장
             storage.save(QUIZ_URL_LIST, JSON.stringify(data))
-
-
-
-            // 데이터 중 랜덤으로 하나뽑기
-            const randomOne = ArrayUtils.pickRandomOne<string>(data)
-
-            // 랜덤으로 뽑은 퀴즈 URL로 이동
-            navigate(`/quiz/${randomOne}`)
-
         }
         catch (error){
             console.error(error)
         }
+    }
+
+
+    // 퀴즈 시작하기
+    async startQuiz(storage:StorageService,navigate:(path:string) => void){
+
+            // 퀴즈 URL 목록 조회 후 저장
+            await this.saveQuizUrlList(storage)
+
+            // 데이터 중 랜덤으로 하나뽑기
+            const randomOne = ArrayUtils.pickRandomOne<string>(this.getQuizUrlList(storage))
+
+            // 랜덤으로 뽑은 퀴즈 URL로 이동
+            navigate(`/quiz/${randomOne}`)
+
     }
 
     // 푼 문제 저장, 기존에 푼 문제가 있다면 추가,없다면 새로 저장
