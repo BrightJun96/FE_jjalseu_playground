@@ -42,15 +42,14 @@ class QuizHelper{
     // 푼 문제 저장, 기존에 푼 문제가 있다면 추가,없다면 새로 저장
     storeSolvedQuiz(quiz:string,storage:StorageService){
 
-        const solvedQuizList= storage.get(SOLVED_QUIZ_LIST)
+        const solvedQuizList= this.getSolvedQuiz(storage)
 
-        if(solvedQuizList){
-            const solvedQuizListArray = JSON.parse(solvedQuizList)
-            solvedQuizListArray.push(quiz)
-            storage.save(SOLVED_QUIZ_LIST,JSON.stringify(ArrayUtils.removeDuplicate(solvedQuizListArray)))
-        }else{
-            storage.save(SOLVED_QUIZ_LIST,JSON.stringify([quiz]))
-        }
+            storage
+                .save(
+                    SOLVED_QUIZ_LIST,
+                    JSON.stringify(ArrayUtils.removeDuplicate([...solvedQuizList,quiz]))
+                )
+
 
     }
 
