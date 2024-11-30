@@ -1,7 +1,6 @@
 "use client"
 
 import quizHelper from "@/app/(page)/quiz/[detailUrl]/_helper/QuizHelper";
-import Timer from "@/app/(page)/quiz/[detailUrl]/components/client/timer";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
@@ -99,17 +98,9 @@ const QuizDetails = ({
 
     return (
         <div>
-            {/*제한시간*/}
-            <Timer
-                time={quizData.time}
-                handleGetAnswer={handleGetAnswer}
-                quizId={quizData.quizId}
-
-            />
             {/*퀴즈 제목*/}
             <h1
                 className={"text-title2Normal"}
-
             >{quizData.title}</h1>
 
             {/*퀴즈내용*/}
