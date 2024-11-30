@@ -6,8 +6,9 @@ import PrimaryButton from "@/app/_components/button/primaryButton";
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
+import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
 import {StorageAdapter} from "@/app/_utils/StorageService";
-import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
+import clientQuizApi from "@/app/services/quiz/QuizApi";
 import {QuizItem} from "@/app/services/quiz/types";
 import {useParams, useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
@@ -16,9 +17,6 @@ import React, {useEffect} from 'react';
 const QuizDetails = ({
                          quizData
                      }:{quizData:QuizItem}) => {
-
-    // 힌트 노출 여부
-    const hintRef = React.useRef<HTMLDivElement>(null)
 
     const {detailUrl} = useParams()
 
@@ -86,7 +84,7 @@ const QuizDetails = ({
 
         // 현재 경로가 solvedQuizList 스토리지에 있는 url에 있는 경우, 다른 문제로 이동
         if(quizHelper.getSolvedQuiz(storage).includes(detailUrl as string)){
-             const unsolvedOne=  quizHelper.pickRandomOne<string>(quizHelper.getUnsolvedQuiz(storage))
+             const unsolvedOne=  ArrayUtils.pickRandomOne<string>(quizHelper.getUnsolvedQuiz(storage))
             router.push(`/quiz/${unsolvedOne}`)
         }
 
@@ -97,7 +95,7 @@ const QuizDetails = ({
     }, [detailUrl])
 
     return (
-        <div>
+        <>
             {/*퀴즈 제목*/}
             <h1
                 className={"text-title2Normal"}
@@ -124,8 +122,7 @@ const QuizDetails = ({
                         text={"채점"}
                         color={"primary"}/>
             </div>
-            {/*<Pagination totalPage={quizData.quizList.length} queryKey={"order"}/>*/}
-        </div>
+        </>
     );
 };
 
