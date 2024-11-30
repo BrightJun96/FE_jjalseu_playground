@@ -1,6 +1,8 @@
-// fetch option 타입 확장
+
+export type QueryString = string | URLSearchParams | Record<string, string> | string[][];
+
 export interface CustomRequestInit extends RequestInit {
-    queryString?:(string[][] | Record<string, string> | string | URLSearchParams)
+    queryString?: QueryString;
 }
 
 
