@@ -2,7 +2,7 @@
 import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
 import ExceptionManager from "@/app/_utils/function/ExceptionManager";
 import {QUIZ_URL_LIST, SOLVED_QUIZ_LIST, StorageService} from "@/app/_utils/StorageService";
-import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
+import clientQuizApi from "@/app/services/quiz/QuizApi";
 
 
 class QuizHelper{
@@ -72,7 +72,7 @@ class QuizHelper{
             if(this.isAllQuizSolved(storage)) navigate("/quiz/completed")
 
             // 데이터 중 랜덤으로 하나뽑기
-            const randomOne = this.pickRandomOne<string>(this.getUnsolvedQuiz(storage))
+            const randomOne = ArrayUtils.pickRandomOne<string>(this.getUnsolvedQuiz(storage))
 
             // 랜덤으로 뽑은 퀴즈 URL로 이동
             navigate(`/quiz/${randomOne}`)

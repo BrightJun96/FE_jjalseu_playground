@@ -62,5 +62,6 @@ class QuizApi extends BaseApi implements IQuizApi {
 }
 
 export const clientQuizApi = new QuizApi();
+
 export default clientQuizApi;
 

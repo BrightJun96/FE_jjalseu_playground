@@ -1,5 +1,5 @@
 import QuizDetails from "@/app/(page)/quiz/[detailUrl]/components/client/quizDetails";
-import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
+import clientQuizApi from "@/app/services/quiz/QuizApi";
 import {Metadata} from "next";
 import React from 'react';
 

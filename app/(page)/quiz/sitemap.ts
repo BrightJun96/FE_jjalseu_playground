@@ -1,4 +1,4 @@
-import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
+import clientQuizApi from "@/app/services/quiz/QuizApi";
 import type {MetadataRoute} from 'next'
 
 
