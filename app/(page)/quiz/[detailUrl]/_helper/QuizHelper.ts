@@ -1,5 +1,6 @@
 // 퀴즈 페이지에서 사용할 헬퍼 함수들
 import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
+import ExceptionManager from "@/app/_utils/function/ExceptionManager";
 import {QUIZ_URL_LIST, SOLVED_QUIZ_LIST, StorageService} from "@/app/_utils/StorageService";
 import {clientQuizApi} from "@/app/services/quiz/client/api.instance";
 
@@ -10,14 +11,7 @@ class QuizHelper{
         this.startQuiz = this.startQuiz.bind(this)
     }
 
-    // 배열에서 랜덤한 요소를 반환
-    pickRandomOne<T>(arr: T[]): T  {
-            if (arr.length === 0) {
-                throw new Error("배열이 비어있습니다. 랜덤 선택이 불가능합니다.");
-            }
 
-        return ArrayUtils.pickRandomOne(arr);
-    }
 
     // 퀴즈 시작하기
     async startQuiz(storage:StorageService,navigate:(path:string) => void){
@@ -25,11 +19,19 @@ class QuizHelper{
             // 퀴즈 URL 목록 조회
             const {data} = await clientQuizApi.fetchQuizDetailUrlList()
 
+            // 배열이 비어있는 경우, 예외 처리
+            ExceptionManager.throwIfArrayEmpty<string>(data,"퀴즈 URL 목록이 비어있습니다.")
+
+            // 데이터가 없을 경우, 예외 처리
+            ExceptionManager.throwIfNullOrUndefined(data,"퀴즈 URL 목록이 없습니다.")
+
             // 퀴즈 URL 목록을 localStorage에 저장
             storage.save(QUIZ_URL_LIST, JSON.stringify(data))
 
+
+
             // 데이터 중 랜덤으로 하나뽑기
-            const randomOne = this.pickRandomOne<string>(data)
+            const randomOne = ArrayUtils.pickRandomOne<string>(data)
 
             // 랜덤으로 뽑은 퀴즈 URL로 이동
             navigate(`/quiz/${randomOne}`)
@@ -65,7 +67,7 @@ class QuizHelper{
 
             // 현재 문제 푼 문제로 저장
             this.storeSolvedQuiz(currentQuiz,storage)
-            
+
             // 퀴즈가 모두 풀렸다면 퀴즈 완료 페이지로 이동
             if(this.isAllQuizSolved(storage)) navigate("/quiz/completed")
 
