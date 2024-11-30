@@ -1,10 +1,10 @@
 import {CustomRequestInit, IResponse, QueryString} from "@/app/services/network.types";
 
-class BaseApi{
+abstract class BaseApi{
 
     private readonly baseUrl: string;
 
-    constructor(baseUrl: string) {
+    protected constructor(baseUrl: string) {
         if (!baseUrl) {
             throw new Error("API 엔드포인트가 필요합니다.");
         }
