@@ -1,3 +1,4 @@
+import ExceptionManager from "@/app/_utils/function/ExceptionManager";
 import {IResponse} from "@/app/services/network.types";
 import QuizApi from "@/app/services/quiz/QuizApi";
 import {CheckAnswerResponse, QuizItem} from "@/app/services/quiz/types";
@@ -14,9 +15,21 @@ class QuizApiHandler extends QuizApi {
 
     // 퀴즈 전체 DetailUrl 목록 조회
     async fetchQuizDetailUrlList(): Promise<IResponse<string[]>> {
-        return this.request<string[]>("quiz/list-detail-url", {
+
+        const response =  await this.request<string[]>("quiz/list-detail-url", {
             method: "GET",
         });
+
+        const {data} = response
+
+        // 배열이 비어있는 경우, 예외 처리
+        ExceptionManager.throwIfArrayEmpty<string>(data,"퀴즈 URL 목록이 비어있습니다.")
+
+        // 데이터가 없을 경우, 예외 처리
+        ExceptionManager.throwIfNullOrUndefined(data,"퀴즈 URL 목록이 없습니다.")
+
+        return response
+
     }
 
     // 퀴즈 전체 PK 목록 조회

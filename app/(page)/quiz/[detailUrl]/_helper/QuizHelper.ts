@@ -1,5 +1,4 @@
 import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
-import ExceptionManager from "@/app/_utils/function/ExceptionManager";
 import {QUIZ_URL_LIST, SOLVED_QUIZ_LIST, StorageService} from "@/app/_utils/StorageService";
 import quizApiHandler from "@/app/services/quiz/QuizApiHandler";
 
@@ -17,12 +16,6 @@ class QuizHelper{
         try {
             // 퀴즈 URL 목록 조회
             const {data} = await quizApiHandler.fetchQuizDetailUrlList()
-
-            // 배열이 비어있는 경우, 예외 처리
-            ExceptionManager.throwIfArrayEmpty<string>(data,"퀴즈 URL 목록이 비어있습니다.")
-
-            // 데이터가 없을 경우, 예외 처리
-            ExceptionManager.throwIfNullOrUndefined(data,"퀴즈 URL 목록이 없습니다.")
 
             // 퀴즈 URL 목록을 localStorage에 저장
             storage.save(QUIZ_URL_LIST, JSON.stringify(data))
