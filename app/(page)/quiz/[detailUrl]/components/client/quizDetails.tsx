@@ -1,11 +1,11 @@
 "use client"
 
-import {useQuizHelper} from "@/app/(page)/quiz/[detailUrl]/_helper/useQuizHelper";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useHandleModal from "@/app/_components/modal/useHandleModal";
+import useQuizHelperContext from "@/app/_context/useQuizContext";
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {QuizItem} from "@/app/services/quiz/types";
 import {useParams, useRouter} from "next/navigation";
@@ -17,8 +17,7 @@ const QuizDetails = ({
                      }:{quizData:QuizItem}) => {
 
     const {detailUrl} = useParams()
-    const quizHelper = useQuizHelper()
-
+    const quizHelper = useQuizHelperContext();
     // 모달 관련 함수
    const {
         handleOpenModal,
@@ -62,7 +61,7 @@ const QuizDetails = ({
                     text:"다음문제",
                     onClick:async ()=>{
                         console.log("다음문제 함수")
-                        await quizHelper.moveToNextQuiz(quizData.detailUrl)
+                        await quizHelper?.moveToNextQuiz(quizData.detailUrl)
                     }
                 },
                 cancel:{
@@ -80,10 +79,10 @@ const QuizDetails = ({
     useEffect(() => {
 
         // 현재 경로가 solvedQuizList 스토리지에 있는 url에 있는 경우, 다른 문제로 이동
-        quizHelper.redirectIfQuizSolved(detailUrl as string)
+        quizHelper?.redirectIfQuizSolved(detailUrl as string)
 
         // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
-        quizHelper.redirectToCompletionPageIfAllSolved()
+        quizHelper?.redirectToCompletionPageIfAllSolved()
 
 
 
