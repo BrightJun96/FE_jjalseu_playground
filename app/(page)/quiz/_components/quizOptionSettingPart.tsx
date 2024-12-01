@@ -1,23 +1,22 @@
 "use client"
 
-import quizHelper from "@/app/(page)/quiz/[detailUrl]/_helper/QuizHelper";
+import {useQuizHelper} from "@/app/(page)/quiz/[detailUrl]/_helper/useQuizHelper";
 import {FIELD_OPTIONS, LANGUAGE_OPTIONS} from "@/app/(page)/quiz/constant";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 import Select from "@/app/_components/select/select";
 import useIsClient from "@/app/_utils/hooks/useIsClient";
-import {StorageAdapter} from "@/app/_utils/StorageService";
-import {useRouter} from "next/navigation";
+import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import React from 'react';
 
 // 퀴즈 옵션 설정 컴포넌트
 function QuizOptionSettingPart() {
 
     const isClient= useIsClient()
-
+    const quizHelper = useQuizHelper()
     const [option,setOption] = React.useState<{field:string,lang:string}>({field:FIELD_OPTIONS[0].value,lang:LANGUAGE_OPTIONS[0].value});
 
 
-    const router = useRouter();
+
 
     function handleOptionChange(value:string,key:"field"|"lang"){
         setOption({...option,[key]:value})
@@ -40,7 +39,7 @@ function QuizOptionSettingPart() {
                 />
             </div>
             {isClient&&<PrimaryButton
-                onClick={async () => await quizHelper.startQuiz(new StorageAdapter(window.localStorage), router.push)}
+                onClick={async () => await quizHelper.startQuiz(quizApiHandler)}
                 text={"시작하기"}
                 color={"primary"}
                 className={"!w-full !h-[48px] !mt-14"}
