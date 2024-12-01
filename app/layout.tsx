@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/app/_layout/header";
+import Header from "@/app/_layout/header/header";
 import ModalProvider from "@/app/_provider/modalProvider";
 
 const geistSans = localFont({
@@ -18,6 +18,13 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "개발자들의 아지트, 코아",
   description: "퀴즈를 풀고 함께 성장하세요.",
+    generator: 'Next.js',
+    applicationName: '개발 퀴즈 앱',
+    referrer: 'origin-when-cross-origin',
+    keywords: ['Next.js', '퀴즈', 'quiz',"코아","개발자","개발지식","개발자들을 위한 퀴즈","개발 퀴즈"],
+    authors: [{ name: 'jjalseu', url: 'https://github.com/BrightJun96' }],
+    creator: 'jjalseu',
+    publisher: 'jjalseu',
 };
 
 export default function RootLayout({

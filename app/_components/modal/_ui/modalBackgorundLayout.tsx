@@ -8,13 +8,9 @@ const ModalBackgroundLayout = ({
   children?: React.ReactNode;
 }) => {
 
- const {handleBackgroundClick,handleInitModal}= useHandleModal()
+ const {handleBackgroundClick}= useHandleModal()
 
-  useEffect(() => {
-    return () => {
-      handleInitModal()
-    }
-  }, []);
+
   return (
     <div
       className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/30"

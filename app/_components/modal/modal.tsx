@@ -1,11 +1,13 @@
 "use client"
 
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import ModalBackgroundLayout from "@/app/_components/modal/_ui/modalBackgorundLayout";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 import {ModalContext, ModalSetContext} from "@/app/_context/modalContext";
 import ModalContentContainer from "@/app/_components/modal/_ui/modalContentContainer";
 
+
+// 모달 컴포넌트
 function Modal() {
 
     const modal = useContext(ModalContext)
