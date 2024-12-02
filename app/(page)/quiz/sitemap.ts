@@ -1,4 +1,4 @@
-import quizApiHandler from "@/app/services/quiz/QuizApiHandler";
+import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import type {MetadataRoute} from 'next'
 
 

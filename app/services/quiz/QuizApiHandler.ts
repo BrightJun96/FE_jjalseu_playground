@@ -4,7 +4,7 @@ import QuizApi from "@/app/services/quiz/QuizApi";
 import {CheckAnswerResponse, QuizItem} from "@/app/services/quiz/types";
 
 // 예외 처리와 비즈니스 로직을 포함한 메서드
-class QuizApiHandler extends QuizApi {
+export class QuizApiHandler extends QuizApi {
     // 퀴즈 정답 확인
     async fetchCheckAnswer(checkAnswer: { quizId: number; userAnswer: number[] }): Promise<IResponse<CheckAnswerResponse>> {
         return this.request<CheckAnswerResponse>("quiz/check", {
@@ -55,4 +55,3 @@ class QuizApiHandler extends QuizApi {
 }
 
 export const quizApiHandler = new QuizApiHandler();
-export default quizApiHandler;

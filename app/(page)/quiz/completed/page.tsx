@@ -1,8 +1,7 @@
 "use client"
 
-import quizHelper from "@/app/(page)/quiz/[detailUrl]/_helper/QuizHelper";
 import PrimaryButton from "@/app/_components/button/primaryButton";
-import {StorageAdapter} from "@/app/_utils/StorageService";
+import useQuizHelperContext from "@/app/_context/useQuizContext";
 import Link from "next/link";
 import React from 'react';
 
@@ -10,6 +9,8 @@ import React from 'react';
 // @question 페이지 자체를 클라이언트 컴포넌트로 만드는 거랑 서버컴포넌트로 만드는 것이랑 차이?
 // 퀴즈를 다 풀었을 때, 페이지
 function Page() {
+
+    const quizHelper = useQuizHelperContext()
     return (
         <div>
             <h1>퀴즈 완료</h1>
@@ -18,7 +19,7 @@ function Page() {
                 <PrimaryButton
                     text={"다른 퀴즈 풀러가기"}
                     color={"primary"}
-                    onClick={() => quizHelper.clearQuizStorage(new StorageAdapter(window.localStorage))  }
+                    onClick={() => quizHelper?.clearQuizStorage()  }
                 />
             </Link>
         </div>

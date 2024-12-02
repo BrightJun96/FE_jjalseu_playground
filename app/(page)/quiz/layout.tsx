@@ -1,5 +1,6 @@
-import React from 'react';
 import InnerContainer from "@/app/_layout/innerContainer";
+import QuizHelperProvider from "@/app/_provider/quizHelperProvider";
+import React from 'react';
 
 const QuizLayout = ({
     children
@@ -7,9 +8,11 @@ const QuizLayout = ({
     children:React.ReactNode
 }) => {
     return (
-        <InnerContainer className={"!justify-start"}>
-            {children}
-        </InnerContainer>
+        <QuizHelperProvider>
+            <InnerContainer className={"!justify-start"}>
+                {children}
+            </InnerContainer>
+        </QuizHelperProvider>
     );
 };
 
