@@ -21,7 +21,6 @@ const QuizDetails = ({
     // 모달 관련 함수
    const {
         handleOpenModal,
-       handleInitModal,
        handleSetModalContent,
        handleSetModalButtonContent
    } = useHandleModal()
@@ -60,7 +59,6 @@ const QuizDetails = ({
                 confirm:{
                     text:"다음문제",
                     onClick:async ()=>{
-                        console.log("다음문제 함수")
                         await quizHelper?.moveToNextQuiz(quizData.detailUrl)
                     }
                 },
@@ -68,7 +66,7 @@ const QuizDetails = ({
                     isShow:true,
                     text:"해설",
                     onClick:()=>{
-                        // @todo
+                        router.push(`/quiz/${quizData.detailUrl}/explanation`)
 
                     }
                 }

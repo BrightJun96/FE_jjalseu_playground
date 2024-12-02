@@ -1,3 +1,6 @@
+import ButtonContainer from "@/app/(page)/quiz/[detailUrl]/explanation/_components/buttonContainer";
+import NextQuizButton from "@/app/(page)/quiz/[detailUrl]/explanation/_components/nextQuizButton";
+import ReturnButton from "@/app/(page)/quiz/[detailUrl]/explanation/_components/returnButton";
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {Metadata} from "next";
 import React from 'react';
@@ -49,6 +52,10 @@ async function Page({
         <>
             <h1>해설</h1>
             <div dangerouslySetInnerHTML={{__html:data.explanation}}></div>
+            <ButtonContainer>
+                <ReturnButton returnUrl={detailUrl}/>
+                <NextQuizButton currentUrl={detailUrl}/>
+            </ButtonContainer>
         </>
     );
 }
