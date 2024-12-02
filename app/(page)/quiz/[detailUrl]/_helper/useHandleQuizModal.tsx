@@ -1,6 +1,6 @@
 import useHandleModal from "@/app/_components/modal/useHandleModal";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
-import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
+import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 import {CheckAnswerResponse} from "@/app/services/quiz/types";
 import {useRouter} from "next/navigation";
 import React from "react";

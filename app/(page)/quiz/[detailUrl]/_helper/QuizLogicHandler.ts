@@ -1,5 +1,5 @@
 import {QuizStorageManager} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizStoreManager";
-import {ArrayUtils} from "@/app/_utils/function/ArrayUtils";
+import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 import {QuizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 
 // 퀴즈 관련 데이터의 로직 처리.
