@@ -1,14 +1,14 @@
 "use client"
 
+import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQuizModal";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
-import useHandleModal from "@/app/_components/modal/useHandleModal";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {QuizItem} from "@/app/services/quiz/types";
-import {useParams, useRouter} from "next/navigation";
+import {useParams} from "next/navigation";
 import React, {useEffect} from 'react';
 
 // 퀴즈 상세 컴포넌트
@@ -18,61 +18,26 @@ const QuizDetails = ({
 
     const {detailUrl} = useParams()
     const quizHelper = useQuizHelperContext();
-    // 모달 관련 함수
-   const {
-        handleOpenModal,
-       handleInitModal,
-       handleSetModalContent,
-       handleSetModalButtonContent
-   } = useHandleModal()
 
-    const router = useRouter()
-
+    const {handleEmptyUserAnswer,handleShowQuizResultModal} =  useHandleQuizModal()
 
     // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
-    /**
-     * @TODO
-     * API 요청 과 모달 관련 로직 분리 필요
-     */
     // 채점
-    async function handleGetAnswer(){
+    async function handleGetAnswer(userAnswer:number[],quizId:number){
 
-     const response = await quizApiHandler.fetchCheckAnswer({
-                quizId:quizData.quizId,
-                userAnswer:userAnswer
-            })
+        // 사용자 답안이 체크되지 않았을 경우, 경고창을 띄우는 함수
+        if(handleEmptyUserAnswer(userAnswer)) return
 
+        // 채점 결과 요청
+         const {data:checkAnswerData} = await quizApiHandler.fetchCheckAnswer({
+                    quizId,
+                    userAnswer
+                })
 
-        console.log("quizData",quizData)
-        handleOpenModal()
-        handleSetModalContent({
-            title:"채점 결과",
-            content:<div
-            >
-             <p>   {response.data.correct?"정답입니다 🥳":"오답입니다 🥲"}</p>
-                <p>정답 : {response.data.answer.join(",")}</p>
-                <p>사용자 답안 : {response.data.userAnswer.length>0?response.data.userAnswer.join(","):"답안을 체크하지 않았어요 🥲"}</p>
-            </div>
-        })
-         handleSetModalButtonContent({
-                confirm:{
-                    text:"다음문제",
-                    onClick:async ()=>{
-                        console.log("다음문제 함수")
-                        await quizHelper?.moveToNextQuiz(quizData.detailUrl)
-                    }
-                },
-                cancel:{
-                    isShow:true,
-                    text:"해설",
-                    onClick:()=>{
-                        // @todo
-
-                    }
-                }
-         })
+        // 채점 결과에 대한 모달을 띄우는 함수
+        handleShowQuizResultModal({checkAnswerData,detailUrl:detailUrl as string})
     }
 
 
@@ -83,8 +48,6 @@ const QuizDetails = ({
 
         // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
         quizHelper?.redirectToCompletionPageIfAllSolved()
-
-
 
     }, [detailUrl])
 
@@ -112,7 +75,7 @@ const QuizDetails = ({
             }
             <div className={"flex justify-center gap-1"}>
                     <PrimaryButton
-                        onClick={handleGetAnswer}
+                        onClick={async () => await handleGetAnswer(userAnswer,quizData.quizId)}
                         text={"채점"}
                         color={"primary"}/>
             </div>
