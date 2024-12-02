@@ -28,12 +28,12 @@ function QuizOptionSettingPart() {
                     options={FIELD_OPTIONS}
                     handleOptionChange={(value) => handleOptionChange(value as string,"field")}
                 />
-                <Select
-                    label={"언어"}
-                    options={LANGUAGE_OPTIONS}
-                    handleOptionChange={(value) => handleOptionChange(value as string,"lang")}
+                {/*<Select*/}
+                {/*    label={"언어"}*/}
+                {/*    options={LANGUAGE_OPTIONS}*/}
+                {/*    handleOptionChange={(value) => handleOptionChange(value as string,"lang")}*/}
 
-                />
+                {/*/>*/}
             </div>
             {isClient&&<PrimaryButton
                 onClick={async () => await quizHelper?.startQuiz(quizApiHandler)}
