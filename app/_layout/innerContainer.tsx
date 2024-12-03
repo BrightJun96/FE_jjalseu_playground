@@ -10,7 +10,7 @@ const InnerContainer = ({children,className}:{
     return (
         <section className={`flex flex-col justify-center items-center 
         p-[20px] bg-white border-[1px] border-[#E0E0E0] 
-        min-w-[700px] max-w-[1000px] min-h-[700px] max-h-[800px]
+        lg:min-w-[700px] lg:max-w-[1000px] lg:min-h-[700px] lg:max-h-[800px]
         rounded-primary 
         shadow-sm 
         overflow-y-scroll

@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
 import Header from "@/app/_layout/header/header";
 import ModalProvider from "@/app/_provider/modalProvider";
+import type {Metadata} from "next";
+import localFont from "next/font/local";
+import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,7 +38,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <Header/>
-      <main className={"w-full h-[calc(100vh-80px)] bg-background  flex justify-center items-center"}>
+      <main className={"w-full lg:h-[calc(100vh-80px)] md:h-[calc(100vh-80px)] sm:h-[calc(100vh-80px)] bg-background  lg:flex lg:justify-center lg:items-center md:flex md:justify-center md:items-center sm:px-[10px] sm:mt-[40px]"}>
           <ModalProvider>
             {children}
           </ModalProvider>
