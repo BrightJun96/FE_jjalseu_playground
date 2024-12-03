@@ -3,6 +3,7 @@ import ModalProvider from "@/app/_provider/modalProvider";
 import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Head from "next/head";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     authors: [{ name: 'jjalseu', url: 'https://github.com/BrightJun96' }],
     creator: 'jjalseu',
     publisher: 'jjalseu',
+    manifest: '/site.json',
 };
 
 export default function RootLayout({
@@ -37,10 +39,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <Head>
+          <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+          <link rel="shortcut icon" href="/favicon.ico"/>
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+          <meta name="apple-mobile-web-app-title" content="코아"/>
+          <link rel="manifest" href="/site.json"/>
+      </Head>
       <Header/>
-      <main className={"w-full lg:h-[calc(100vh-80px)] md:h-[calc(100vh-80px)] sm:h-[calc(100vh-80px)] bg-background  lg:flex lg:justify-center lg:items-center md:flex md:justify-center md:items-center sm:px-[10px] sm:mt-[40px]"}>
+      <main
+          className={"w-full lg:h-[calc(100vh-80px)] md:h-[calc(100vh-80px)] sm:h-[calc(100vh-80px)] bg-background  lg:flex lg:justify-center lg:items-center md:flex md:justify-center md:items-center sm:px-[10px] sm:mt-[40px]"}>
           <ModalProvider>
-            {children}
+              {children}
           </ModalProvider>
       </main>
       </body>
