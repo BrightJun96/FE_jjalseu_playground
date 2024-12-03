@@ -1,10 +1,8 @@
 "use client"
 
-import AuthContainer from "@/app/_layout/header/authContainer";
-import React from 'react';
 import Link from "next/link";
 import {usePathname} from "next/navigation";
-import PrimaryButton from "@/app/_components/button/primaryButton";
+import React from 'react';
 
 /**
  * 헤더
@@ -37,11 +35,11 @@ const Header = () => {
         }
     }
     return (
-        <header className={"w-full h-[80px] bg-headerBackground flex justify-between items-center px-container"}>
+        <header className={"w-full h-[80px] md:h-[60px] sm:h-[60px] bg-headerBackground flex justify-between items-center lg:px-container md:px-10 sm:px-10"}>
             {/*로고,메뉴*/}
             <div className={"flex gap-10 items-center"}>
                 <Link href={"/"}>
-                <h1 className={"text-primary-normal text-headline3 font-bold"}>코아</h1>
+                    <h1 className={"text-primary-normal text-title1 font-bold"}>코아</h1>
                 </Link>
                 <nav>
                     <ul className={"flex gap-3 text-title3Normal text-primary-normal"}>
