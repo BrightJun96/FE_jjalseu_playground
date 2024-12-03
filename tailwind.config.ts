@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type {Config} from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -118,8 +118,12 @@ const config: Config = {
       // 패딩
       padding:{
         container:"300px",
-      }
-
+      },
+      screens: {
+        sm: { min: "320px", max: "767px" },
+        md: { min: "768px", max: "1079px" },
+        lg: { min: "1080px" },
+      },
 
 
     },
