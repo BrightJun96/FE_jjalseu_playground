@@ -18,6 +18,7 @@ export class QuizApiHandler extends QuizApi {
 
         const response =  await this.request<string[]>("quiz/list-detail-url", {
             method: "GET",
+            cache: "no-store"
         });
 
         const {data} = response
@@ -50,7 +51,9 @@ export class QuizApiHandler extends QuizApi {
     async fetchQuizDetailByUrl(detailUrl: string): Promise<IResponse<QuizItem>> {
         return this.request<QuizItem>(`quiz/detail-url/${detailUrl}`, {
             method: "GET",
-            cache: "no-cache",
+            next:{
+                revalidate:30
+            }
         });
     }
 }
