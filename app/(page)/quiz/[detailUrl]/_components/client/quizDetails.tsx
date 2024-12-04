@@ -60,7 +60,7 @@ const QuizDetails = ({
 
             {/*퀴즈내용*/}
             <div
-                className={"prose"}
+                className={"w-full"}
                 dangerouslySetInnerHTML={{__html: quizData.content}}
             ></div>
 
@@ -68,7 +68,7 @@ const QuizDetails = ({
             {quizData.type === "MULTIPLE_CHOICE" &&
                 // <MultipleChoiceContents multipleChoiceContents={quizData.multipleChoices}/>
                 <GroupCheckBox
-                    options={quizData.multipleChoices.map((v) => ({label: `${v.number}. ${v.content}`, value: v.number}))}
+                    options={quizData.multipleChoiceContents.map((v) => ({label: `${v.content}`, value: v.number}))}
                     direction={"col"}
                     isMultiSelect={false}
                     onChange={(value) => setUserAnswer(value as number[]) }/>

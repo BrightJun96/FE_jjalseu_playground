@@ -50,6 +50,7 @@ export class QuizApiHandler extends QuizApi {
     async fetchQuizDetailByUrl(detailUrl: string): Promise<IResponse<QuizItem>> {
         return this.request<QuizItem>(`quiz/detail-url/${detailUrl}`, {
             method: "GET",
+            cache: "no-cache",
         });
     }
 }

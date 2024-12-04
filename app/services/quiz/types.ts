@@ -13,7 +13,7 @@ export interface QuizItem {
     level: number;
     lang: string;
     time: number;
-    multipleChoices:MultipleChoiceContent[]
+    multipleChoiceContents:MultipleChoiceContent[]
     metaTitle:string;
     metaDescription:string;
     metaImageUrl:string|null;
