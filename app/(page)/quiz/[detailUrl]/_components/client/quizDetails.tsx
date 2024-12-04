@@ -54,7 +54,7 @@ const QuizDetails = ({
     return (
         <>
             {/*퀴즈 제목*/}
-            <h1 className={"text-title1"}>{quizData.metaTitle}</h1>
+            <h1 className={"lg:text-title1 md:text-title2Bold sm:text-title2Bold"}>{quizData.metaTitle}</h1>
             <p
                 className={"text-body"}
             >{quizData.title}</p>
