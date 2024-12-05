@@ -18,7 +18,6 @@ const QuizDetails = ({
     const {detailUrl} = useParams()
     const quizHelper = useQuizHelperContext();
 
-    console.log("quizData",quizData)
     const {handleEmptyUserAnswer,handleShowQuizResultModal} =  useHandleQuizModal()
 
     // 사용자 답안
