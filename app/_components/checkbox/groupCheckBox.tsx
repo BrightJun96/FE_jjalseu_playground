@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
 import Checkbox, {CheckBoxHandlerProps} from "@/app/_components/checkbox/checkbox";
 import {primitive} from "@/app/_types/primitive";
 import {className} from "postcss-selector-parser";
+import React, {useEffect} from 'react';
 
 
 // 체크박스 그룹 옵션
@@ -68,13 +68,18 @@ function GroupCheckBox({
             {label&&<span className={"text-title3Normal"}>{label}</span>}
             {
                 options.map((v,i)=>
-                    <Checkbox
+                    <div
+                        className={`flex items-center gap-1`}
                         key={i}
+                    >
+                        <span>{i+1}.</span>
+                    <Checkbox
                         checked={checkedList.includes(v.value)}
                         label={v.label}
                         value={v.value}
                         onChange={groupCheckHandler}
                     />
+                    </div>
                 )
             }
         </div>

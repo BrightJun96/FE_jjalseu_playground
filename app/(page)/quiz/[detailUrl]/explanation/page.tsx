@@ -4,6 +4,7 @@ import ReturnButton from "@/app/(page)/quiz/[detailUrl]/explanation/_components/
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {Metadata} from "next";
 import React from 'react';
+import 'prismjs/themes/prism.css';
 
 export async function generateStaticParams() {
 
@@ -50,8 +51,10 @@ async function Page({
 
     return (
         <>
-            <h1>해설</h1>
-            <div dangerouslySetInnerHTML={{__html:data.explanation}}></div>
+            <h1 className={"text-title1"}>{data.metaTitle} 해설</h1>
+            <div
+                className={"prose"}
+                dangerouslySetInnerHTML={{__html:data.explanation}}></div>
             <ButtonContainer>
                 <ReturnButton returnUrl={detailUrl}/>
                 <NextQuizButton currentUrl={detailUrl}/>
