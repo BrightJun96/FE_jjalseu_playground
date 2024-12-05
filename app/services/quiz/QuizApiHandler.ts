@@ -1,5 +1,5 @@
 import ExceptionManager from "@/app/_utils/class/ExceptionManager";
-import {IResponse} from "@/app/services/network.types";
+import {CustomRequestInit, IResponse} from "@/app/services/network.types";
 import QuizApi from "@/app/services/quiz/QuizApi";
 import {CheckAnswerResponse, QuizItem} from "@/app/services/quiz/types";
 
@@ -14,11 +14,11 @@ export class QuizApiHandler extends QuizApi {
     }
 
     // 퀴즈 전체 DetailUrl 목록 조회
-    async fetchQuizDetailUrlList(): Promise<IResponse<string[]>> {
+    async fetchQuizDetailUrlList(options?: CustomRequestInit): Promise<IResponse<string[]>> {
 
         const response =  await this.request<string[]>("quiz/list-detail-url", {
             method: "GET",
-            cache: "no-store"
+            ...options
         });
 
         const {data} = response
