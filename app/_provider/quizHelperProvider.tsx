@@ -18,7 +18,10 @@ function QuizHelperProvider({children}:{children:React.ReactNode}) {
 
     useEffect(() => {
         const storageManager = new QuizStorageManager(new StorageAdapter(localStorage));
-        const navigator = new QuizNavigator((path) => router.push(path));
+        const navigator = new QuizNavigator({
+            navigate: (url: string) => router.push(url),
+            prefetch: (url: string) => router.prefetch(url)
+        });
         const logicHandler = new QuizLogicHandler(storageManager);
         const quizHelper =   new QuizHelper(storageManager, navigator, logicHandler)
         setQuizHelper(quizHelper);
