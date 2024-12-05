@@ -4,6 +4,7 @@ import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQ
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
+import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {QuizItem} from "@/app/services/quiz/types";
@@ -65,14 +66,14 @@ const QuizDetails = ({
             ></div>
 
             {/*객관식인 경우, 객관시 문제 5게*/}
-            {/*{quizData.type === "MULTIPLE_CHOICE" &&*/}
-            {/*    // <MultipleChoiceContents multipleChoiceContents={quizData.multipleChoices}/>*/}
-            {/*    <GroupCheckBox*/}
-            {/*        options={quizData.multipleChoiceContents.map((v) => ({label: `${v.content}`, value: v.number}))}*/}
-            {/*        direction={"col"}*/}
-            {/*        isMultiSelect={false}*/}
-            {/*        onChange={(value) => setUserAnswer(value as number[]) }/>*/}
-            {/*}*/}
+            {quizData.type === "MULTIPLE_CHOICE" &&
+                // <MultipleChoiceContents multipleChoiceContents={quizData.multipleChoices}/>
+                <GroupCheckBox
+                    options={quizData.multipleChoiceContents.map((v) => ({label: `${v.content}`, value: v.number}))}
+                    direction={"col"}
+                    isMultiSelect={false}
+                    onChange={(value) => setUserAnswer(value as number[]) }/>
+            }
             <div className={"flex justify-center gap-1"}>
                     <PrimaryButton
                         onClick={async () => await handleGetAnswer(userAnswer,quizData.quizId)}
