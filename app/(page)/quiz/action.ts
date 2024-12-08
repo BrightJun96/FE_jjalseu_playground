@@ -31,7 +31,6 @@ export async function checkAnswerAction(prevState:CheckAnswerResponseExtends,for
 
     const {data:checkAnswerData}  = await quizApiHandler.fetchCheckAnswer(checkAnswer)
 
-    console.log("",checkAnswerData)
 
     return {...checkAnswerData,check:true}
 }
