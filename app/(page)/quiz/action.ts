@@ -10,7 +10,7 @@ import {CheckAnswerResponse} from "@/app/services/quiz/types";
 
 // 퀴즈 URL 목록
 export async function getQuizDetailUrlListAction(){
-    await quizApiHandler.fetchQuizDetailUrlList()
+   return await quizApiHandler.fetchQuizDetailUrlList()
 }
 
 interface CheckAnswerResponseExtends extends CheckAnswerResponse{
