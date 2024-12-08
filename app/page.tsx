@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 export default function Home() {
   return (
     <div className="font-[family-name:var(--font-geist-sans)] w-full">
-      <div className={"w-full h-[calc(100vh-80px)] bg-no-repeat bg-center bg-cover"}>
+      <div className={"w-full h-[calc(100vh-80px)]"}>
       {/* 내부 카피 컨텐츠  */}
           <div className={"flex justify-center items-center flex-col gap-[40px] pt-[250px]"}>
             <h1 className={"lg:text-headline2 md:text-headline3 sm:text-headline3 text-center"}>개발자들의 아지트</h1>

@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
       <Head>
           <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
@@ -49,7 +49,7 @@ export default function RootLayout({
       </Head>
       <Header/>
       <main
-          className={"w-full lg:h-[calc(100vh-80px)] md:h-[calc(100vh-80px)] sm:h-[calc(100vh-80px)] bg-background  lg:flex lg:justify-center lg:items-center md:flex md:justify-center md:items-center sm:px-[10px] sm:mt-[40px]"}>
+          className={"w-full lg:h-[calc(100vh-80px)] md:h-[calc(100vh-60px)] sm:h-[calc(100vh-60px)] lg:flex lg:justify-center lg:items-center md:flex md:justify-center md:items-center sm:px-[10px] "}>
           <ModalProvider>
               {children}
           </ModalProvider>
