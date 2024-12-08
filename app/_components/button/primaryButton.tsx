@@ -19,7 +19,7 @@ const PrimaryButton = ({text,onClick,className,disabled,color}:IPrimaryButtonPro
 
     const colors = {
         primary:
-            "bg-primary-normal text-white hover:bg-primary-dark",
+            "bg-primary-normal text-white hover:bg-primary-dark disabled:bg-primary-disabled",
         primarySecondary: "bg-primary-secondary-normal text-white hover:bg-primary-secondary-dark",
         // assistive: "bg-achromatic-assistive text-achromatic-white ",
         // darkAssistive:
@@ -34,7 +34,7 @@ const PrimaryButton = ({text,onClick,className,disabled,color}:IPrimaryButtonPro
     return (
         <button
 
-            className={`${colors[color]} rounded-[8px] px-[16px] text-menu flex justify-center items-center min-w-[84px] h-[32px] ${className}`}
+            className={`${colors[color]} rounded-[8px] px-[16px] text-menu flex justify-center items-center min-w-[84px] h-[32px]  ${className}`}
             onClick={onClick}
             disabled={disabled}
         >
