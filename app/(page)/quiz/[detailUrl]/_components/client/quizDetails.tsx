@@ -1,8 +1,9 @@
 "use client"
 
+import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
+import CheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButton";
 import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQuizModal";
 import {checkAnswerAction} from "@/app/(page)/quiz/action";
-import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
@@ -90,17 +91,8 @@ const QuizDetails = ({
                     isMultiSelect={false}
                     onChange={(value) => setUserAnswer(value as number[]) }/>
             }
-
-
-            <div
-                className={"flex justify-center gap-1"}
-            >
-                    <PrimaryButton
-                        disabled={userAnswer.length === 0}
-                        type={"submit"}
-                        text={"채점"}
-                        color={"primary"}/>
-            </div>
+            {/*채점 버튼*/}
+                {state.check?<CheckButton userAnswer={userAnswer}/>:<AfterCheckButtons detailUrl={detailUrl as string}/>}
             </form>
 
         </>
