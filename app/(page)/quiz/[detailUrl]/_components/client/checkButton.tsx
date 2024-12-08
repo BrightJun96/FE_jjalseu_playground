@@ -1,19 +1,16 @@
-import PrimaryButton from "@/app/_components/button/primaryButton";
+import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
+import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/beforeCheckButton";
 import React from 'react';
 
-// 채점 버튼
-function CheckButton({userAnswer}:{userAnswer:number[]}) {
+// 채점 버튼(채점 전, 채점 후 버튼)
+function CheckButton({
+                         check,
+                        userAnswer,
+                        detailUrl
+                     }:{check:boolean, userAnswer:number[], detailUrl:string}) {
     return (
-        <div
-            className={"flex justify-center gap-1"}
-        >
-            <PrimaryButton
-                disabled={userAnswer.length === 0}
-                type={"submit"}
-                text={"채점"}
-                color={"primary"}/>
-        </div>
-    );
+        check?
+            <AfterCheckButtons detailUrl={detailUrl as string}/>:<BeforeCheckButton userAnswer={userAnswer}/>    );
 }
 
 export default CheckButton;

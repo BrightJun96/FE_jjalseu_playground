@@ -1,6 +1,5 @@
 "use client"
 
-import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
 import CheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButton";
 import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQuizModal";
 import {checkAnswerAction} from "@/app/(page)/quiz/action";
@@ -39,6 +38,7 @@ const QuizDetails = ({
         check:false
     })
 
+    console.log("state",state)
 
     useEffect(() => {
 
@@ -92,7 +92,11 @@ const QuizDetails = ({
                     onChange={(value) => setUserAnswer(value as number[]) }/>
             }
             {/*채점 버튼*/}
-                {state.check?<CheckButton userAnswer={userAnswer}/>:<AfterCheckButtons detailUrl={detailUrl as string}/>}
+               <CheckButton
+                   check={state.check}
+                   userAnswer={userAnswer}
+                   detailUrl={detailUrl as string}
+               />
             </form>
 
         </>
