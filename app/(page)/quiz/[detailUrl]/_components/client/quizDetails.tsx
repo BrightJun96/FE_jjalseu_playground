@@ -1,15 +1,16 @@
 "use client"
 
 import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQuizModal";
+import {checkAnswerAction} from "@/app/(page)/quiz/action";
 import PrimaryButton from "@/app/_components/button/primaryButton";
 
 import 'prismjs/themes/prism.css';
 import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
-import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {QuizItem} from "@/app/services/quiz/types";
 import {useParams} from "next/navigation";
 import React, {useEffect} from 'react';
+import {useFormState} from 'react-dom'
 
 // 퀴즈 상세 컴포넌트
 const QuizDetails = ({
@@ -19,26 +20,23 @@ const QuizDetails = ({
     const {detailUrl} = useParams()
     const quizHelper = useQuizHelperContext();
 
-    const {handleEmptyUserAnswer,handleShowQuizResultModal} =  useHandleQuizModal()
+
+    const {handleShowQuizResultModal} =  useHandleQuizModal()
 
     // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
-    // 채점
-    async function handleGetAnswer(userAnswer:number[],quizId:number){
 
-        // 사용자 답안이 체크되지 않았을 경우, 경고창을 띄우는 함수
-        if(handleEmptyUserAnswer(userAnswer)) return
 
-        // 채점 결과 요청
-         const {data:checkAnswerData} = await quizApiHandler.fetchCheckAnswer({
-                    quizId,
-                    userAnswer
-                })
 
-        // 채점 결과에 대한 모달을 띄우는 함수
-        handleShowQuizResultModal({checkAnswerData,detailUrl:detailUrl as string})
-    }
+
+
+    const [state,formAction]= useFormState(checkAnswerAction,{
+        correct:false,
+        userAnswer:[],
+        answer:[],
+        check:false
+    })
 
 
     useEffect(() => {
@@ -50,6 +48,16 @@ const QuizDetails = ({
         quizHelper?.redirectToCompletionPageIfAllSolved()
 
     }, [detailUrl])
+
+
+    useEffect(() => {
+
+        if(state.check) {
+            handleShowQuizResultModal({checkAnswerData:state, detailUrl: detailUrl as string})
+        }
+
+
+    }, [state.check]);
 
     return (
         <>
@@ -65,6 +73,14 @@ const QuizDetails = ({
                 dangerouslySetInnerHTML={{__html: quizData.content}}
             ></div>
 
+            <form
+                action={formAction}
+            >
+                <input
+                    type={"hidden"}
+                    name={"quizId"}
+                    value={quizData.quizId}
+                />
             {/*객관식인 경우, 객관시 문제 5게*/}
             {quizData.type === "MULTIPLE_CHOICE" &&
                 // <MultipleChoiceContents multipleChoiceContents={quizData.multipleChoices}/>
@@ -74,12 +90,19 @@ const QuizDetails = ({
                     isMultiSelect={false}
                     onChange={(value) => setUserAnswer(value as number[]) }/>
             }
-            <div className={"flex justify-center gap-1"}>
+
+
+            <div
+                className={"flex justify-center gap-1"}
+            >
                     <PrimaryButton
-                        onClick={async () => await handleGetAnswer(userAnswer,quizData.quizId)}
+                        disabled={userAnswer.length === 0}
+                        type={"submit"}
                         text={"채점"}
                         color={"primary"}/>
             </div>
+            </form>
+
         </>
     );
 };
