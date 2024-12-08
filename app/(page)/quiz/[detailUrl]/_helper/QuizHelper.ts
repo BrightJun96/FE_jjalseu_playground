@@ -1,8 +1,8 @@
 import {QuizLogicHandler} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizLogicHandler";
 import {QuizNavigator} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizNavigator";
 import {QuizStorageManager} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizStoreManager";
+import {getQuizDetailUrlListAction} from "@/app/(page)/quiz/action";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
-import {QuizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 
 
 export class QuizHelper {
@@ -14,8 +14,8 @@ export class QuizHelper {
     ) {}
 
     // 퀴즈 시작
-    async startQuiz(apiHandler: QuizApiHandler) {
-        await this.logicHandler.fetchAndSaveQuizUrlList(apiHandler);
+    async startQuiz() {
+        await getQuizDetailUrlListAction();
         const unsolvedQuiz = this.logicHandler.getUnsolvedQuiz();
         if (unsolvedQuiz.length > 0) {
             const randomQuiz = ArrayUtils.pickRandomOne<string>(unsolvedQuiz);

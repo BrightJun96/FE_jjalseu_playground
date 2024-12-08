@@ -1,20 +1,12 @@
 "use server"
 
-import {cookies} from "next/headers";
+import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 
+/**
+ * @description
+ * QUIZ API를 서버 액션으로 가져오기 위한 액션 함수
+ */
 
-// 쿠키에 quizData가 있는지 확인
-export async function getQuizDataCookie () {
-    return cookies().get("quizData")?.value
-}
-
-
-// 쿠키에 quizData가 있음을 저장
-export async function setQuizDataCookie(){
-    cookies().set("quizData", "true")
-}
-
-// 쿠키에 quizData를 삭제
-export async function removeQuizDataCookie(){
-    cookies().delete("quizData")
+export async function getQuizDetailUrlListAction(){
+    await quizApiHandler.fetchQuizDetailUrlList()
 }
