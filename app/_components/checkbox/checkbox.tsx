@@ -13,10 +13,11 @@ interface CheckboxProps{
     label:string|number;
     value:string|number;
     onChange:(value:CheckBoxHandlerProps)=>void;
+    name?:string;
 }
 
 
-function Checkbox ({ checked, label,value, onChange }: CheckboxProps)  {
+function Checkbox ({ checked, label,value, onChange, name="options"}: CheckboxProps)  {
 
 
   return (
@@ -24,7 +25,9 @@ function Checkbox ({ checked, label,value, onChange }: CheckboxProps)  {
       className={"w-full flex cursor-pointer gap-2"}
   >
         <input
+            name={name}
             className={"accent-orange-600 w-5 h-5"}
+            value={value}
             type={"checkbox"}
             checked={checked}
             onChange={(e) => onChange({
@@ -37,6 +40,6 @@ function Checkbox ({ checked, label,value, onChange }: CheckboxProps)  {
         </p>
   </label>
   );
-};
+}
 
 export default Checkbox;

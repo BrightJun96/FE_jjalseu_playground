@@ -19,6 +19,7 @@ const config: Config = {
           normal:"#FF6F00",
           light:"#FF8C33",
           dark:"#E65A00",
+          disabled:"#B25400",
           // SECONDARY
           secondary:{
             normal:"#8A75FF",

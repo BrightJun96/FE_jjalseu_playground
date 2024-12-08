@@ -1,20 +1,37 @@
 "use server"
 
-import {cookies} from "next/headers";
+import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
+import {CheckAnswerResponse} from "@/app/services/quiz/types";
 
+/**
+ * @description
+ * QUIZ API를 서버 액션으로 가져오기 위한 액션 함수
+ */
 
-// 쿠키에 quizData가 있는지 확인
-export async function getQuizDataCookie () {
-    return cookies().get("quizData")?.value
+// 퀴즈 URL 목록
+export async function getQuizDetailUrlListAction(){
+   return await quizApiHandler.fetchQuizDetailUrlList()
 }
 
-
-// 쿠키에 quizData가 있음을 저장
-export async function setQuizDataCookie(){
-    cookies().set("quizData", "true")
+interface CheckAnswerResponseExtends extends CheckAnswerResponse{
+    check:boolean
 }
 
-// 쿠키에 quizData를 삭제
-export async function removeQuizDataCookie(){
-    cookies().delete("quizData")
+// 퀴즈 정답 확인
+export async function checkAnswerAction(prevState:CheckAnswerResponseExtends,formData:FormData){
+
+
+   const options =  formData.getAll("options").map((option) => Number(option))
+
+    const checkAnswer = {
+        quizId:Number(formData.get("quizId")),
+        userAnswer:options
+    }
+
+
+    const {data:checkAnswerData}  = await quizApiHandler.fetchCheckAnswer(checkAnswer)
+
+
+    return {...checkAnswerData,check:true}
 }
+
