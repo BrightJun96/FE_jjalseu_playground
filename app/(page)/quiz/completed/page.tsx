@@ -1,8 +1,6 @@
-"use client"
-
-import PrimaryButton from "@/app/_components/button/primaryButton";
-import useQuizHelperContext from "@/app/_context/useQuizContext";
-import Link from "next/link";
+import QuizCompletedDescription from "@/app/(page)/quiz/completed/_components/quizCompletedDescription";
+import QuizCompletedLink from "@/app/(page)/quiz/completed/_components/quizCompletedLink";
+import QuizCompletedTitle from "@/app/(page)/quiz/completed/_components/quizCompletedTitle";
 import React from 'react';
 
 export const dynamic = 'force-static'
@@ -11,18 +9,15 @@ export const dynamic = 'force-static'
 // 퀴즈를 다 풀었을 때, 페이지
 function Page() {
 
-    const quizHelper = useQuizHelperContext()
     return (
         <>
-            <h1>퀴즈 완료</h1>
-            <p>축하드립니다. 모든 퀴즈를 다 푸셨습니다.</p>
-            <Link href={"/quiz"}>
-                <PrimaryButton
-                    text={"다른 퀴즈 풀러가기"}
-                    color={"primary"}
-                    onClick={() => quizHelper?.clearQuizStorage()  }
-                />
-            </Link>
+            <QuizCompletedTitle
+                title={"퀴즈 완료"}
+            />
+            <QuizCompletedDescription
+                description={"축하드립니다. 모든 퀴즈를 다 푸셨습니다."}
+            />
+            <QuizCompletedLink/>
         </>
     );
 }
