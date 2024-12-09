@@ -1,6 +1,9 @@
 "use client"
 
 import CheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButton";
+import QuizContent from "@/app/(page)/quiz/[detailUrl]/_components/client/quizContent";
+import QuizQuestion from "@/app/(page)/quiz/[detailUrl]/_components/client/quizQuestion";
+import QuizTitle from "@/app/(page)/quiz/[detailUrl]/_components/client/quizTitle";
 import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQuizModal";
 import {checkAnswerAction} from "@/app/(page)/quiz/action";
 
@@ -38,7 +41,6 @@ const QuizDetails = ({
         check:false
     })
 
-    console.log("state",state)
 
     useEffect(() => {
 
@@ -63,17 +65,18 @@ const QuizDetails = ({
     return (
         <>
             {/*퀴즈 제목*/}
-            <h1 className={"lg:text-title1 md:text-title2Bold sm:text-title2Bold"}>{quizData.metaTitle}</h1>
-            <p
-                className={"text-menu"}
-            >{quizData.title}</p>
+            <QuizTitle
+                title={quizData.metaTitle}
+            />
+            {/*퀴즈 문제*/}
+           <QuizQuestion
+               question={quizData.title}
+           />
 
             {/*퀴즈내용*/}
-            <div
-                className={"prose w-full"}
-                dangerouslySetInnerHTML={{__html: quizData.content}}
-            ></div>
-
+            <QuizContent
+                content={quizData.content}
+            />
             <form
                 action={formAction}
             >

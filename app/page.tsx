@@ -1,5 +1,8 @@
-import PrimaryButton from "@/app/_components/button/primaryButton";
-import Link from "next/link";
+import HomeDescription from "@/app/_home_components/homeDescription";
+import HomeInnerContainer from "@/app/_home_components/homeInnerContainer";
+import HomeLink from "@/app/_home_components/homeLink";
+import HomeOuterContainer from "@/app/_home_components/homeOuterContainer";
+import HomeTitle from "@/app/_home_components/homeTitle";
 
 
 /**
@@ -8,23 +11,23 @@ import Link from "next/link";
  */
 export const dynamic = 'force-static'
 
-export async function generateStaticParams() {
-    return []
-}
 
 export default function Home() {
   return (
-    <div className="font-[family-name:var(--font-geist-sans)] w-full h-full
-    lg:pt-[250px] md:pt-[150px] sm:pt-[100px]">
-
+    <HomeOuterContainer>
       {/* 내부 카피 컨텐츠  */}
-          <div className={"flex justify-center items-center flex-col gap-[40px] "}>
-            <h1 className={"lg:text-headline2 md:text-headline3 sm:text-headline3 text-center"}>개발자들의 아지트</h1>
-            <p className={"lg:text-headline3 md:text-title2Bold sm:text-title2Bold"}>퀴즈로 실력을 키우고, 함께 성장하세요.</p>
-              <Link href={"/quiz"}>
-                <PrimaryButton text={"퀴즈 풀어보기"} color={"primary"} className={"!w-[130px] !h-[42px]"}/>
-              </Link>
-          </div>
-    </div>
+          <HomeInnerContainer>
+            {/* 메인 타이틀 */}
+            <HomeTitle
+            title={"개발자들의 아지트, 코아"}
+            />
+            {/* 메인 설명 */}
+            <HomeDescription
+                description={"퀴즈로 실력을 키우고, 함께 성장하세요."}
+            />
+            {/* 메인 링크  */}
+            <HomeLink/>
+          </HomeInnerContainer>
+    </HomeOuterContainer>
   );
 }

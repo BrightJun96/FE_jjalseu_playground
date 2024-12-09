@@ -1,5 +1,7 @@
 import ButtonContainer from "@/app/(page)/quiz/[detailUrl]/explanation/_components/buttonContainer";
 import NextQuizButton from "@/app/(page)/quiz/[detailUrl]/explanation/_components/nextQuizButton";
+import QuizExplanationContent from "@/app/(page)/quiz/[detailUrl]/explanation/_components/quizExplanationContent";
+import QuizExplanationTitle from "@/app/(page)/quiz/[detailUrl]/explanation/_components/quizExplanationTitle";
 import ReturnButton from "@/app/(page)/quiz/[detailUrl]/explanation/_components/returnButton";
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {Metadata} from "next";
@@ -51,12 +53,18 @@ async function Page({
 
     return (
         <>
-            <h1 className={"text-title1"}>{data.metaTitle} 해설</h1>
-            <div
-                className={"prose"}
-                dangerouslySetInnerHTML={{__html:data.explanation}}></div>
+            {/*퀴즈 설명 타이틀*/}
+            <QuizExplanationTitle
+                title={data.metaTitle}
+            />
+            {/*퀴즈 설명 내용*/}
+            <QuizExplanationContent
+                content={data.explanation}
+                />
             <ButtonContainer>
+                {/*돌아가기 버튼*/}
                 <ReturnButton returnUrl={detailUrl}/>
+                {/*다음 퀴즈 버튼*/}
                 <NextQuizButton currentUrl={detailUrl}/>
             </ButtonContainer>
         </>
