@@ -5,6 +5,8 @@ import QuizStartTitle from "@/app/(page)/quiz/_components/quizStartTitle";
 import {Metadata} from "next";
 import React from 'react';
 
+export const dynamic = 'force-static'
+
 export const metadata: Metadata = {
     title: '퀴즈 시작하기',
     description: '퀴즈를 통해 개발 지식을 테스트해 보세요.' +
