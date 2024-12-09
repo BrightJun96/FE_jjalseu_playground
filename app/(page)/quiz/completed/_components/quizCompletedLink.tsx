@@ -1,3 +1,5 @@
+"use client"
+
 import PrimaryButton from "@/app/_components/button/primaryButton";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
 import Link from "next/link";
