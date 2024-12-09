@@ -1,7 +1,9 @@
+import QuizIntroSection from "@/app/(page)/quiz/_components/quizIntroSection";
+import QuizOptionSettingPart from "@/app/(page)/quiz/_components/quizOptionSettingPart";
+import QuizStartDescription from "@/app/(page)/quiz/_components/quizStartDescription";
+import QuizStartTitle from "@/app/(page)/quiz/_components/quizStartTitle";
 import {Metadata} from "next";
 import React from 'react';
-
-import QuizOptionSettingPart from "@/app/(page)/quiz/_components/quizOptionSettingPart";
 
 export const metadata: Metadata = {
     title: '퀴즈 시작하기',
@@ -10,19 +12,25 @@ export const metadata: Metadata = {
 
 }
 
-
-const Page = async () => {
-
+// 퀴즈 시작하기 페이지
+async function Page (){
     return (
-            <div className={"w-full"}>
-                <div className={"flex flex-col gap-2 mt-24"}>
-                    <h1 className={"text-title1 text-center"}>개발 퀴즈</h1>
-                    <p className={"mb-10 text-title2Normal text-center"}>퀴즈를 통해 개발 지식을 테스트해 보세요!</p>
-                </div>
+            <>
+                {/*퀴즈 시작하기 페이지의 설명을 나타내는 컴포넌트*/}
+                <QuizIntroSection>
+                    {/*타이틀*/}
+                    <QuizStartTitle
+                        title={"퀴즈 시작하기"}
+                    />
+                    {/*설명*/}
+                    <QuizStartDescription
+                        description={"퀴즈를 통해 개발 지식을 테스트해 보세요!"}
+                    />
+                </QuizIntroSection>
                 <QuizOptionSettingPart/>
-            </div>
+            </>
 
     );
-};
+}
 
 export default Page;
