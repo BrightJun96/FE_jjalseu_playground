@@ -2,7 +2,7 @@
 
 import PrimaryButton from "@/app/_components/button/primaryButton";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
-import Link from "next/link";
+import {Link} from 'next-view-transitions';
 import React from 'react';
 
 // 퀴즈 완료 링크
