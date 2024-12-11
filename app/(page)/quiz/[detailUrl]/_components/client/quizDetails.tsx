@@ -29,11 +29,6 @@ const QuizDetails = ({
     // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
-
-
-
-
-
     const [state,formAction]= useFormState(checkAnswerAction,{
         correct:false,
         userAnswer:[],
