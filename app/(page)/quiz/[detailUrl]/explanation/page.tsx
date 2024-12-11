@@ -10,7 +10,7 @@ import 'prismjs/themes/prism.css';
 
 export async function generateStaticParams() {
 
-    const {data} = await quizApiHandler.fetchQuizDetailUrlList();
+    const {data} = await quizApiHandler.fetchQuizDetailUrlList({cache:"no-store"});
 
     return data.map((url) => ({detailUrl:url}))
 
