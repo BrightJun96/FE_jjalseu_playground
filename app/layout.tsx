@@ -39,7 +39,7 @@ export default function RootLayout({
   <ViewTransitions>
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
+        className={`${geistSans.className} ${geistMono.className} antialiased bg-gray-100`}
       >
       <Head>
           <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
