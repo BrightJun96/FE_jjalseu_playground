@@ -1,5 +1,5 @@
 import PrimaryButton from "@/app/_components/button/primaryButton";
-import Link from "next/link";
+import {Link} from 'next-view-transitions';
 import React from 'react';
 
 // 돌아가기 버튼

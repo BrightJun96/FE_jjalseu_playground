@@ -20,10 +20,12 @@ export class QuizHelper {
         const unsolvedQuiz = this.logicHandler.getUnsolvedQuiz();
         if (unsolvedQuiz.length > 0) {
             const randomQuiz = ArrayUtils.pickRandomOne<string>(unsolvedQuiz);
-            this.navigator.moveToQuizPage(randomQuiz);
-        } else {
-            this.navigator.moveToStartPage();
+             return randomQuiz
+            // this.navigator.moveToQuizPage(randomQuiz);
         }
+        // else {
+        //     this.navigator.moveToStartPage();
+        // }
     }
 
     // 다음 문제 이동

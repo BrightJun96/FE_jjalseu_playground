@@ -1,6 +1,7 @@
 import Header from "@/app/_layout/header/header";
 import ModalProvider from "@/app/_provider/modalProvider";
 import type {Metadata} from "next";
+import {ViewTransitions} from 'next-view-transitions';
 import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
@@ -35,6 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+  <ViewTransitions>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
@@ -56,5 +58,6 @@ export default function RootLayout({
       </main>
       </body>
     </html>
+  </ViewTransitions>
   );
 }
