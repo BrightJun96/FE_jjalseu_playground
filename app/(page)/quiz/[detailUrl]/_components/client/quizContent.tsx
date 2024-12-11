@@ -6,7 +6,7 @@ function QuizContent({
                      }:{content:string}) {
     return (
         <div
-            className={"prose w-full"}
+            className={"w-full"}
             dangerouslySetInnerHTML={{__html: content}}
         ></div>
     );

@@ -7,7 +7,9 @@ function HomeTitle({
     title: string
 }) {
     return (
-        <div></div>
+        <h1 className={"lg:text-headline2 md:text-headline3 sm:text-headline3 text-center"}>
+            {title}
+        </h1>
     );
 }
 

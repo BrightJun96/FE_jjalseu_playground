@@ -22,7 +22,7 @@ function Checkbox ({ checked, label,value, onChange, name="options"}: CheckboxPr
 
   return (
   <label
-      className={"w-full flex cursor-pointer gap-2"}
+      className={"w-full flex cursor-pointer gap-2 items-center"}
   >
         <input
             name={name}
@@ -35,9 +35,7 @@ function Checkbox ({ checked, label,value, onChange, name="options"}: CheckboxPr
               value
             })}
         />
-        <p>
             {label}
-        </p>
   </label>
   );
 }
