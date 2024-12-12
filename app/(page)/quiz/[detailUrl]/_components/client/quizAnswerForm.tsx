@@ -30,6 +30,10 @@ function QuizAnswerForm({
     // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
+    const processedMultipleChoiceContents =
+        quizMultipleChoiceContents
+        .map((v) => ({label: `${v.content}`, value: v.number}))
+
     useEffect(() => {
 
         if(state.check) {
@@ -50,7 +54,7 @@ function QuizAnswerForm({
             {/*객관식인 경우, 객관시 문제 5게*/}
             {quizType === "MULTIPLE_CHOICE" &&
                 <MultipleChoiceGroupCheckBox
-                    options={quizMultipleChoiceContents.map((v) => ({label: `${v.content}`, value: v.number}))}
+                    options={processedMultipleChoiceContents}
                     direction={"col"}
                     isMultiSelect={false}
                     onChange={(value) => setUserAnswer(value as number[])}/>
