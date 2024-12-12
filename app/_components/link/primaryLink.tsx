@@ -9,7 +9,7 @@ interface PrimaryLinkProps {
     href: string;
     children: ReactNode;
     className?: string;
-    color?: "primary" | "primarySecondary";
+    color?: "primary" | "primarySecondary"|"none";
 }
 
 function PrimaryLink({
@@ -21,6 +21,7 @@ function PrimaryLink({
     const colors = {
         primary: "bg-primary-normal text-white hover:bg-primary-dark",
         primarySecondary: "bg-primary-secondary-normal text-white hover:bg-primary-secondary-dark",
+        none:""
     };
 
     return (
