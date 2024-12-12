@@ -8,6 +8,9 @@ import {Metadata} from "next";
 import React from 'react';
 import 'prismjs/themes/prism.css';
 
+
+type Params = Promise<{detailUrl:string}>
+
 export async function generateStaticParams() {
 
     const {data} = await quizApiHandler.fetchQuizDetailUrlList({cache:"no-store"});
@@ -20,12 +23,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
                                            params
                                        }:{
-    params:{
-        detailUrl:string
-    }
+    params:Params
 }):Promise<Metadata>{
 
-    const detailUrl = (await params).detailUrl
+    const {detailUrl} = await params
 
     const {data} = await quizApiHandler.fetchQuizDetailByUrl(detailUrl)
 
@@ -42,9 +43,7 @@ export async function generateMetadata({
 async function Page({
                         params
                     }:{
-    params:{
-        detailUrl:string
-    }
+    params:Params
 }) {
 
     const { detailUrl } = await params

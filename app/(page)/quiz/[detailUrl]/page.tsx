@@ -15,6 +15,7 @@ export const revalidate = 60
 
 export const dynamicParams = true // or false, to 404 on unknown paths
 
+type Params = Promise<{detailUrl:string}>
 
 // SSG 실행할 페이지 ID 추출, 서버에 받아오는 PK들은 모두 SSG 방식으로 구현
 export async function generateStaticParams() {
@@ -30,12 +31,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
                                            params
                                        }:{
-    params:{
-        detailUrl:string
-    }
+    params:Params
 }):Promise<Metadata>{
 
-    const detailUrl = (await params).detailUrl
+    const {detailUrl} = (await params)
 
     const {data} = await quizApiHandler.fetchQuizDetailByUrl(detailUrl)
 
@@ -48,15 +47,14 @@ export async function generateMetadata({
     }
 }
 
+
 const Page = async ({
     params
                     }:{
-    params:{
-        detailUrl:string
-    }
+    params:Params
 }) => {
 
-    const { detailUrl } = await params
+    const {detailUrl} = await params
     const {data} = await quizApiHandler.fetchQuizDetailByUrl(detailUrl)
 
     return (
