@@ -3,6 +3,7 @@
 import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
 import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/beforeCheckButton";
 import CheckButtonContainer from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButtonContainer";
+import QuizAnswerFormContainer from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerFormContainer";
 import QuizAnswers from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswers";
 import QuizFormId from "@/app/(page)/quiz/[detailUrl]/_components/client/quizFormId";
 import useQuizFormAction from "@/app/(page)/quiz/[detailUrl]/_helper/useQuizFormAction";
@@ -27,7 +28,7 @@ function QuizAnswerForm({
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
     return (
-        <form
+        <QuizAnswerFormContainer
             action={formAction}
         >
             {/*퀴즈 ID*/}
@@ -49,7 +50,7 @@ function QuizAnswerForm({
                         userAnswer={userAnswer}
                     />}
             </CheckButtonContainer>
-        </form>
+        </QuizAnswerFormContainer>
     );
 }
 
