@@ -1,10 +1,10 @@
-const nextConfig = {
-    // logging:{
-    //     fetches:{
-    //         fullUrl: true,
-    //     }
-    // }
-};
+/** @type {import('next').NextConfig} */
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
-// export default withPWA({...nextConfig,dest: 'build'});
-export default  nextConfig
+const nextConfig = {};
+
+const bundleAnalyzer = withBundleAnalyzer({
+    enabled: process.env.ANALYZE === 'true',
+});
+
+export default bundleAnalyzer(nextConfig);
