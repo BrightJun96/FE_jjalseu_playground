@@ -4,6 +4,7 @@ import useQuizHelperContext from "@/app/_context/useQuizContext";
 import {useParams} from "next/navigation";
 import React, {useEffect} from 'react';
 
+// 퀴즈 상세 페이지 로직 관리
 function QuizDetailsManager({
     children
                              }:{
