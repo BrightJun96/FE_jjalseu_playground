@@ -8,7 +8,7 @@ import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQ
 import {checkAnswerAction} from "@/app/(page)/quiz/action";
 
 import 'prismjs/themes/prism.css';
-import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
+import MultipleChoiceGroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
 import {QuizItem} from "@/app/services/quiz/types";
 import {useParams} from "next/navigation";
@@ -82,8 +82,7 @@ const QuizDetails = ({
                 />
             {/*객관식인 경우, 객관시 문제 5게*/}
             {quizData.type === "MULTIPLE_CHOICE" &&
-                // <MultipleChoiceContents multipleChoiceContents={quizData.multipleChoices}/>
-                <GroupCheckBox
+                <MultipleChoiceGroupCheckBox
                     options={quizData.multipleChoiceContents.map((v) => ({label: `${v.content}`, value: v.number}))}
                     direction={"col"}
                     isMultiSelect={false}
