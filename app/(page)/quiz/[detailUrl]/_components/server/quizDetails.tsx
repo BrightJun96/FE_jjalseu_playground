@@ -1,6 +1,6 @@
 "use server"
 
-import QuizAnswerForm from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm";
+import QuizAnswerForm from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/quizAnswerForm";
 import QuizDetailsManager from "@/app/(page)/quiz/[detailUrl]/_components/client/quizDetailsManager";
 import QuizContent from "@/app/(page)/quiz/[detailUrl]/_components/server/quizContent";
 import QuizQuestion from "@/app/(page)/quiz/[detailUrl]/_components/server/quizQuestion";

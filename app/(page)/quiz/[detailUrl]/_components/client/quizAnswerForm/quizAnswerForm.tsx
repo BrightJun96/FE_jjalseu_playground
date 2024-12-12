@@ -1,11 +1,12 @@
 "use client"
 
-import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
-import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/beforeCheckButton";
-import CheckButtonContainer from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButtonContainer";
-import QuizAnswerFormContainer from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerFormContainer";
-import QuizAnswers from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswers";
-import QuizFormId from "@/app/(page)/quiz/[detailUrl]/_components/client/quizFormId";
+import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons";
+import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/beforeCheckButton";
+import CheckButtonContainer from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/checkButtonContainer";
+import QuizAnswerFormContainer
+    from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/quizAnswerFormContainer";
+import QuizAnswers from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/quizAnswers";
+import QuizFormId from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/quizFormId";
 import useQuizFormAction from "@/app/(page)/quiz/[detailUrl]/_helper/useQuizFormAction";
 import {MultipleChoiceContent} from "@/app/services/quiz/types";
 import React from 'react';

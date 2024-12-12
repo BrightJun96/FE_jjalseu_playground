@@ -1,4 +1,5 @@
-import MultipleChoiceAnswers from "@/app/(page)/quiz/[detailUrl]/_components/client/multipleChoiceAnswers";
+import MultipleChoiceAnswers
+    from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/multipleChoiceAnswers";
 import {MultipleChoiceContent} from "@/app/services/quiz/types";
 import React from 'react';
 
