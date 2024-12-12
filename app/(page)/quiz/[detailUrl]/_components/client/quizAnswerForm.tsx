@@ -3,13 +3,13 @@
 import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
 import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/beforeCheckButton";
 import CheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButton";
+import QuizFormId from "@/app/(page)/quiz/[detailUrl]/_components/client/quizFormId";
 import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQuizModal";
 import {checkAnswerAction} from "@/app/(page)/quiz/action";
 import MultipleChoiceGroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import {MultipleChoiceContent} from "@/app/services/quiz/types";
 import {useParams} from "next/navigation";
-import React, {useEffect} from 'react';
-import {useFormState} from "react-dom";
+import React, {useActionState, useEffect} from 'react';
 
 // 퀴즈 답안 입력 폼
 function QuizAnswerForm({
@@ -22,7 +22,7 @@ function QuizAnswerForm({
 
     const {handleShowQuizResultModal} =  useHandleQuizModal()
 
-    const [state,formAction]= useFormState(checkAnswerAction,{
+    const [state,formAction]= useActionState(checkAnswerAction,{
         correct:false,
         userAnswer:[],
         answer:[],
@@ -48,11 +48,8 @@ function QuizAnswerForm({
         <form
             action={formAction}
         >
-            <input
-                type={"hidden"}
-                name={"quizId"}
-                value={quizId}
-            />
+            {/*퀴즈 ID*/}
+            <QuizFormId quizId={quizId}/>
             {/*객관식인 경우, 객관시 문제 5게*/}
             {quizType === "MULTIPLE_CHOICE" &&
                 <MultipleChoiceGroupCheckBox
@@ -64,8 +61,8 @@ function QuizAnswerForm({
             {/*채점 버튼*/}
             <CheckButton
             >
-                check?
-                <AfterCheckButtons detailUrl={detailUrl as string}/>:<BeforeCheckButton userAnswer={userAnswer}/>
+                {state.check ?
+                    <AfterCheckButtons detailUrl={detailUrl as string}/> : <BeforeCheckButton userAnswer={userAnswer}/>}
             </CheckButton>
         </form>
     );
