@@ -1,3 +1,5 @@
+"use server"
+
 import React from 'react';
 
 // 퀴즈 제목

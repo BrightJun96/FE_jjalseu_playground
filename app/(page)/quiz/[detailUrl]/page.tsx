@@ -1,4 +1,4 @@
-import QuizDetails from "@/app/(page)/quiz/[detailUrl]/_components/client/quizDetails";
+import QuizDetails from "@/app/(page)/quiz/[detailUrl]/_components/server/quizDetails";
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {Metadata} from "next";
 import React from 'react';
