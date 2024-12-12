@@ -1,5 +1,7 @@
 "use client"
 
+import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
+import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/beforeCheckButton";
 import CheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButton";
 import QuizContent from "@/app/(page)/quiz/[detailUrl]/_components/client/quizContent";
 import QuizQuestion from "@/app/(page)/quiz/[detailUrl]/_components/client/quizQuestion";
@@ -90,10 +92,10 @@ const QuizDetails = ({
             }
             {/*채점 버튼*/}
                <CheckButton
-                   check={state.check}
-                   userAnswer={userAnswer}
-                   detailUrl={detailUrl as string}
-               />
+               >
+                   check?
+                   <AfterCheckButtons detailUrl={detailUrl as string}/>:<BeforeCheckButton userAnswer={userAnswer}/>
+               </CheckButton>
             </form>
 
         </>
