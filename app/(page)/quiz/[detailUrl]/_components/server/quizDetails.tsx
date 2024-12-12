@@ -15,8 +15,6 @@ const QuizDetails = ({
                          quizData
                      }:{quizData:QuizItem}) => {
 
-
-
     return (
         <QuizDetailsManager>
             {/*퀴즈 제목*/}
