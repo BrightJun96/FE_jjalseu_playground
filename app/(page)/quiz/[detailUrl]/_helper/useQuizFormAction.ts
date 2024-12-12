@@ -8,8 +8,10 @@ function useQuizFormAction() {
 
     const {detailUrl} = useParams()
 
+    // 퀴즈 결과 모달 관련 커스텀 훅
     const {handleShowQuizResultModal} =  useHandleQuizModal()
 
+    // 퀴즈 답안 채점 액션
     const [state,formAction]= useActionState(checkAnswerAction,{
         correct:false,
         userAnswer:[],
@@ -18,6 +20,7 @@ function useQuizFormAction() {
     })
 
 
+    // 퀴즈 답안 채점 후 결과 모달 띄우기
     useEffect(() => {
 
         if(state.check) {

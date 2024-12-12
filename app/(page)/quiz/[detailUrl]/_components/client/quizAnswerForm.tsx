@@ -2,7 +2,7 @@
 
 import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
 import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/beforeCheckButton";
-import CheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButton";
+import CheckButtonContainer from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButtonContainer";
 import QuizAnswers from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswers";
 import QuizFormId from "@/app/(page)/quiz/[detailUrl]/_components/client/quizFormId";
 import useQuizFormAction from "@/app/(page)/quiz/[detailUrl]/_helper/useQuizFormAction";
@@ -26,7 +26,6 @@ function QuizAnswerForm({
     // 사용자 답안
     const [userAnswer,setUserAnswer] = React.useState<number[]>([])
 
-
     return (
         <form
             action={formAction}
@@ -41,7 +40,7 @@ function QuizAnswerForm({
                 quizMultipleChoiceContents={quizMultipleChoiceContents}
                 setUserAnswer={setUserAnswer}/>
             {/*채점 버튼*/}
-            <CheckButton
+            <CheckButtonContainer
             >
                 {isAnswerCheck ?
                     <AfterCheckButtons
@@ -49,7 +48,7 @@ function QuizAnswerForm({
                     : <BeforeCheckButton
                         userAnswer={userAnswer}
                     />}
-            </CheckButton>
+            </CheckButtonContainer>
         </form>
     );
 }
