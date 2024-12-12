@@ -20,11 +20,11 @@ function Modal() {
                         modal.modalTitle
                     }</h1>}
                 {modal.modalContent&&
-                    <p className={"text-center"}>
+                    <div className={"text-center"}>
                         {
                             modal.modalContent
                         }
-                    </p>}
+                    </div>}
                 <div className={"flex justify-center gap-2"}>
                     { modal.button.cancel.isShow&&<PrimaryButton
                         onClick={modal.button.cancel.onClick}
