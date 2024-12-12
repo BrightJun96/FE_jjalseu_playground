@@ -1,21 +1,15 @@
 "use client"
 
-import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/afterCheckButtons";
-import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/beforeCheckButton";
-import CheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/checkButton";
+import QuizAnswerForm from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm";
 import QuizContent from "@/app/(page)/quiz/[detailUrl]/_components/client/quizContent";
 import QuizQuestion from "@/app/(page)/quiz/[detailUrl]/_components/client/quizQuestion";
 import QuizTitle from "@/app/(page)/quiz/[detailUrl]/_components/client/quizTitle";
-import useHandleQuizModal from "@/app/(page)/quiz/[detailUrl]/_helper/useHandleQuizModal";
-import {checkAnswerAction} from "@/app/(page)/quiz/action";
 
 import 'prismjs/themes/prism.css';
-import MultipleChoiceGroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
 import {QuizItem} from "@/app/services/quiz/types";
 import {useParams} from "next/navigation";
 import React, {useEffect} from 'react';
-import {useFormState} from 'react-dom'
 
 // 퀴즈 상세 컴포넌트
 const QuizDetails = ({
@@ -24,19 +18,6 @@ const QuizDetails = ({
 
     const {detailUrl} = useParams()
     const quizHelper = useQuizHelperContext();
-
-
-    const {handleShowQuizResultModal} =  useHandleQuizModal()
-
-    // 사용자 답안
-    const [userAnswer,setUserAnswer] = React.useState<number[]>([])
-
-    const [state,formAction]= useFormState(checkAnswerAction,{
-        correct:false,
-        userAnswer:[],
-        answer:[],
-        check:false
-    })
 
 
     useEffect(() => {
@@ -50,14 +31,7 @@ const QuizDetails = ({
     }, [detailUrl])
 
 
-    useEffect(() => {
 
-        if(state.check) {
-            handleShowQuizResultModal({checkAnswerData:state, detailUrl: detailUrl as string})
-        }
-
-
-    }, [state.check]);
 
     return (
         <>
@@ -74,29 +48,12 @@ const QuizDetails = ({
             <QuizContent
                 content={quizData.content}
             />
-            <form
-                action={formAction}
-            >
-                <input
-                    type={"hidden"}
-                    name={"quizId"}
-                    value={quizData.quizId}
+            {/*퀴즈 답안 폼*/}
+            <QuizAnswerForm
+                quizId={quizData.quizId}
+                quizType={quizData.type}
+                quizMultipleChoiceContents={quizData.multipleChoiceContents}
                 />
-            {/*객관식인 경우, 객관시 문제 5게*/}
-            {quizData.type === "MULTIPLE_CHOICE" &&
-                <MultipleChoiceGroupCheckBox
-                    options={quizData.multipleChoiceContents.map((v) => ({label: `${v.content}`, value: v.number}))}
-                    direction={"col"}
-                    isMultiSelect={false}
-                    onChange={(value) => setUserAnswer(value as number[]) }/>
-            }
-            {/*채점 버튼*/}
-               <CheckButton
-               >
-                   check?
-                   <AfterCheckButtons detailUrl={detailUrl as string}/>:<BeforeCheckButton userAnswer={userAnswer}/>
-               </CheckButton>
-            </form>
 
         </>
     );
