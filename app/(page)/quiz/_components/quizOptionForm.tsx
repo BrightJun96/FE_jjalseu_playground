@@ -45,8 +45,9 @@ function QuizOptionForm() {
                 type={"submit"}
                 color={"primary"}
                 className={"!w-full !h-[48px] !mt-14"}
-                text={"퀴즈 시작하기"}
-                />
+            >
+                퀴즈 시작하기
+            </PrimaryButton>
 
         </form>
     );

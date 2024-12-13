@@ -28,11 +28,15 @@ function Modal() {
                 <div className={"flex justify-center gap-2"}>
                     { modal.button.cancel.isShow&&<PrimaryButton
                         onClick={modal.button.cancel.onClick}
-                        text={modal.button.cancel.text} color={"primarySecondary"}/>}
+                        color={"primarySecondary"}>
+                        {modal.button.cancel.text}
+                    </PrimaryButton>
+                    }
                     <PrimaryButton
                         onClick={modal.button.confirm.onClick}
-                        text={modal.button.confirm.text}
-                        color={"primary"}/>
+                        color={"primary"}>
+                        {modal.button.confirm.text}
+                    </PrimaryButton>
                 </div>
           </ModalContentContainer>
         </ModalBackgroundLayout>
