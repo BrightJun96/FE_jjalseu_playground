@@ -1,5 +1,5 @@
+import PrimaryLink from "@/app/_components/link/primaryLink";
 import Image from "next/image";
-import Link from 'next/link';
 import notFoundImage from "../public/not_found.svg"
 
 export default function NotFound() {
@@ -22,11 +22,11 @@ export default function NotFound() {
             </p>
 
             {/* 메인 페이지로 이동 버튼 */}
-            <Link href="/">
+            <PrimaryLink href="/">
                 <button className="mt-6 px-6 py-3 bg-[#FF6F00] text-white rounded-lg shadow-md hover:bg-opacity-90 transition duration-300">
                     메인 페이지로 이동하기
                 </button>
-            </Link>
+            </PrimaryLink>
         </div>
     );
 }
