@@ -14,6 +14,7 @@ function ModalLinks() {
                 <PrimaryLink
                     key={index}
                     href={link.href}
+                    color={link.color}
                 >
                     {link.text}
                 </PrimaryLink>

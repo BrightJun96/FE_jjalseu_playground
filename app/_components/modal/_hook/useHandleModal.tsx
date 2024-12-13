@@ -1,5 +1,5 @@
+import {initialModalContextValue, ModalContext, ModalLinkType, ModalSetContext} from "@/app/_context/modalContext";
 import React, {useContext, useEffect} from "react";
-import {initialModalContextValue, ModalContext, ModalSetContext} from "@/app/_context/modalContext";
 
 
 const useHandleModal = () => {
@@ -42,6 +42,15 @@ const useHandleModal = () => {
         }
         }));
      }
+
+     // 링크 내용
+        function handleSetModalLinkContent(links:ModalLinkType[]) {
+            setModal((prev) =>({
+            ...prev,
+                buttonType:"LINK",
+                links
+            }));
+        }
 
 
   // 모달 닫기
@@ -98,7 +107,14 @@ const useHandleModal = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []); // 빈 의존성 배열을 전달하여 이 훅이 컴포넌트가 마운트될 때만 실행되게 함
-  return {  handleBackgroundClick,handleInitModal,handleOpenModal,handleSetModalContent,handleSetModalButtonContent };
+  return {
+      handleBackgroundClick,
+      handleInitModal,
+      handleOpenModal,
+      handleSetModalContent,
+      handleSetModalButtonContent,
+      handleSetModalLinkContent
+  };
 };
 
 export default useHandleModal;

@@ -3,9 +3,10 @@ import {createContext} from "react";
 /**
  * Modal Context
  */
-interface ModalLink{
+export interface ModalLinkType{
     href:string
     text:string
+    color?:"primary"|"primarySecondary"
 }
 
 export interface ModalContextProps{
@@ -14,7 +15,7 @@ export interface ModalContextProps{
     modalTitle?:React.ReactNode|null // 모달 타이틀
     buttonType:"BUTTON"|"LINK" ,// 버튼 타입
     // 링크
-    links?:ModalLink[]
+    links?:ModalLinkType[]
     // 버튼
     button:{
         confirm:{
