@@ -2,7 +2,7 @@ import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNa
 import {QuizStorageManager} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizStoreManager";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 
-
+// 퀴즈 로직 관련 클래스
 export class QuizHelper {
 
     constructor(
@@ -28,7 +28,7 @@ export class QuizHelper {
             this.navigator.moveToCompletedPage();
         }
     }
-    
+
     // 안 푼 문제 조회
     getUnsolvedQuiz(): string[] {
         const quizUrlList = this.storageManager.getQuizUrlList();

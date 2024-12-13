@@ -1,4 +1,13 @@
-import {QUIZ_URL_LIST, SOLVED_QUIZ_LIST, StorageService} from "@/app/_utils/StorageService";
+import {StorageService} from "@/app/_utils/StorageService";
+
+
+// Storage 상수
+
+// 퀴즈 URL 목록
+export const QUIZ_URL_LIST = "quizUrlList"
+// 푼 퀴즈 목록
+export const SOLVED_QUIZ_LIST = "solvedQuizList"
+
 
 // 퀴즈 데이터 저장과 관련된 로직을 처리하는 클래스
 export class QuizStorageManager {
@@ -30,3 +39,4 @@ export class QuizStorageManager {
         this.storage.remove(QUIZ_URL_LIST);
     }
 }
+
