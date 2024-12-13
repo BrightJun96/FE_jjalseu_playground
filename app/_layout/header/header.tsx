@@ -1,6 +1,6 @@
 "use client"
 
-import {Link} from 'next-view-transitions';
+import PrimaryLink from "@/app/_components/link/primaryLink";
 import {usePathname} from "next/navigation";
 import React from 'react';
 
@@ -38,17 +38,21 @@ const Header = () => {
         <header className={"w-full h-[80px] md:h-[60px] sm:h-[60px] bg-headerBackground flex justify-between items-center lg:px-container md:px-10 sm:px-10"}>
             {/*로고,메뉴*/}
             <div className={"flex gap-10 items-center"}>
-                <Link href={"/"}>
-                    <h1 className={"text-primary-normal text-title1 font-bold"}>코아</h1>
-                </Link>
+                <PrimaryLink
+                    href={"/"}
+                    color={"none"}
+                    className={"text-primary-normal text-title1 font-bold"}
+                >
+                   코아
+                </PrimaryLink>
                 <nav>
                     <ul className={"flex gap-3 text-title3Normal text-primary-normal"}>
                         {NAVMENU.map((item, index) => (
                             <li key={index} className={`cursor-pointer px-[12px] flex justify-center items-center w-[100px]  h-[32px] rounded-[8px] hover:bg-primary-dark hover:text-white ${getActiveClass(item.link)}`}>
-                                <Link
+                                <PrimaryLink
+                                    color={"none"}
                                     href={`/${item.link}`}
-                                    prefetch={true}
-                                >{item.title}</Link>
+                                >{item.title}</PrimaryLink>
                             </li>
                         ))}
                     </ul>

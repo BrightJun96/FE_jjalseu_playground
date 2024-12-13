@@ -13,10 +13,11 @@ function NextQuizButton({currentUrl}:{currentUrl:string}) {
 
     return (
             <PrimaryButton
-                text={"다음 문제"}
                 color={"primarySecondary"}
                 onClick={async () => await quizHelper?.moveToNextQuiz(currentUrl)}
-            />
+            >
+                다음 문제
+            </PrimaryButton>
     );
 }
 

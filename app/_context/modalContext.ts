@@ -3,10 +3,20 @@ import {createContext} from "react";
 /**
  * Modal Context
  */
+export interface ModalLinkType{
+    href:string
+    text:string
+    color?:"primary"|"primarySecondary"
+}
+
 export interface ModalContextProps{
     isOpen:boolean // 모달 오픈 여부
     modalContent?:React.ReactNode|null // 모달 컨텐츠
     modalTitle?:React.ReactNode|null // 모달 타이틀
+    buttonType:"BUTTON"|"LINK" ,// 버튼 타입
+    // 링크
+    links?:ModalLinkType[]
+    // 버튼
     button:{
         confirm:{
             text:string
@@ -25,6 +35,7 @@ export const initialModalContextValue:ModalContextProps = {
     isOpen:false,
     modalContent:null,
     modalTitle:null,
+    buttonType:"BUTTON",
     button:{
         confirm:{
             text:"확인",

@@ -1,13 +1,13 @@
-import PrimaryButton from "@/app/_components/button/primaryButton";
-import {Link} from 'next-view-transitions';
+import PrimaryLink from "@/app/_components/link/primaryLink";
 import React from 'react';
 
 // 돌아가기 버튼
 function ReturnButton({returnUrl}:{returnUrl:string}) {
     return (
-        <Link href={`/quiz/${returnUrl}`}>
-            <PrimaryButton text={"돌아가기"} color={"primary"}/>
-        </Link>
+        <PrimaryLink
+            href={`/quiz/${returnUrl}`}>
+            돌아가기
+        </PrimaryLink>
     );
 }
 

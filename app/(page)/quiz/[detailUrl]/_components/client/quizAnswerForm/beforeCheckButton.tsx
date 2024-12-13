@@ -10,8 +10,9 @@ function BeforeCheckButton({userAnswer}:{userAnswer:number[]}) {
             <PrimaryButton
                 disabled={userAnswer.length === 0}
                 type={"submit"}
-                text={"채점"}
-                color={"primary"}/>
+                color={"primary"}>
+                채점
+            </PrimaryButton>
         </div>
     );
 }
