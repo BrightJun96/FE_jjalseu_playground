@@ -30,12 +30,6 @@ export class QuizHelper {
         }
     }
 
-    // 퀴즈 URL 목록 데이터가 없는 경우, 퀴즈 시작 페이지로 리다이렉트
-    redirectToQuizStartPageIfNoQuizData() {
-        if(this.storageManager.getQuizUrlList().length === 0) {
-            this.navigator.navigate("/quiz");
-        }
-    }
 
     // 안 푼 문제 조회
     getUnsolvedQuiz(): string[] {
