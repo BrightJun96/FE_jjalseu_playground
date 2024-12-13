@@ -48,7 +48,13 @@ export class QuizHelper {
     isAllQuizSolved(): boolean {
         const quizUrlList = this.storageManager.getQuizUrlList();
         const solvedQuiz = this.storageManager.getSolvedQuiz();
-        return ArrayUtils.isEqualLength<string>(quizUrlList, solvedQuiz);
+
+        const isNotEmptyQuizUrlList = quizUrlList.length > 0;
+        const isNotEmptySolvedQuiz = solvedQuiz.length > 0;
+
+        return isNotEmptyQuizUrlList
+            &&isNotEmptySolvedQuiz
+            &&ArrayUtils.isEqualLength<string>(quizUrlList, solvedQuiz);
     }
 
 }
