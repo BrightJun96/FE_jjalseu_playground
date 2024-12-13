@@ -6,7 +6,7 @@ import ModalBackgroundLayout from "@/app/_components/modal/_ui/modalBackgorundLa
 import ModalButtonContainer from "@/app/_components/modal/_ui/modalButtonContainer";
 import ModalContent from "@/app/_components/modal/_ui/modalContent";
 import ModalContentContainer from "@/app/_components/modal/_ui/modalContentContainer";
-import ModalLink from "@/app/_components/modal/_ui/modalLink";
+import ModalLinks from "@/app/_components/modal/_ui/modalLinks";
 import ModalTitle from "@/app/_components/modal/_ui/modalTitle";
 import {ModalContext} from "@/app/_context/modalContext";
 import React, {useContext} from 'react';
@@ -34,7 +34,7 @@ function Modal() {
                             <ConfirmButton/>
                         </>
                         // 링크 타입
-                        :<ModalLink/>
+                        :<ModalLinks/>
                     }
                 </ModalButtonContainer>
           </ModalContentContainer>

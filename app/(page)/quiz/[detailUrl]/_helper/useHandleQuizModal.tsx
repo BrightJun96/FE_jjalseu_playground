@@ -1,4 +1,4 @@
-import useHandleModal from "@/app/_components/modal/useHandleModal";
+import useHandleModal from "@/app/_components/modal/_hook/useHandleModal";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
 import {CheckAnswerResponse} from "@/app/services/quiz/types";
 import {useRouter} from "next/navigation";

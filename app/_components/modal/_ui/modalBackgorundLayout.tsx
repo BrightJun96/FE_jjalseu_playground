@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import useHandleModal from "@/app/_components/modal/useHandleModal";
+import useHandleModal from "@/app/_components/modal/_hook/useHandleModal";
+import React from "react";
 
 // 모달 백그라운드 레이아웃
 const ModalBackgroundLayout = ({

@@ -3,16 +3,18 @@ import {createContext} from "react";
 /**
  * Modal Context
  */
+interface ModalLink{
+    href:string
+    text:string
+}
+
 export interface ModalContextProps{
     isOpen:boolean // 모달 오픈 여부
     modalContent?:React.ReactNode|null // 모달 컨텐츠
     modalTitle?:React.ReactNode|null // 모달 타이틀
     buttonType:"BUTTON"|"LINK" ,// 버튼 타입
     // 링크
-    link?:{
-        href:string
-        text:string
-    }
+    links?:ModalLink[]
     // 버튼
     button:{
         confirm:{
