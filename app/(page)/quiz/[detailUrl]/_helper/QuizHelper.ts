@@ -12,22 +12,6 @@ export class QuizHelper {
         private logicHandler: QuizLogicHandler
     ) {}
 
-    // 퀴즈 시작
-    async startQuiz() {
-
-        // await this.logicHandler.fetchAndSaveQuizUrlList();
-
-        const unsolvedQuiz = this.logicHandler.getUnsolvedQuiz();
-        if (unsolvedQuiz.length > 0) {
-            const randomQuiz = ArrayUtils.pickRandomOne<string>(unsolvedQuiz);
-             return randomQuiz
-            // this.navigator.moveToQuizPage(randomQuiz);
-        }
-        // else {
-        //     this.navigator.moveToStartPage();
-        // }
-    }
-
     // 다음 문제 이동
     async moveToNextQuiz(currentQuiz: string) {
         this.logicHandler.addSolvedQuiz(currentQuiz);

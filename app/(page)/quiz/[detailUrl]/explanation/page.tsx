@@ -1,5 +1,6 @@
+import NextQuizLink
+    from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/nextQuizLink";
 import ButtonContainer from "@/app/(page)/quiz/[detailUrl]/explanation/_components/buttonContainer";
-import NextQuizButton from "@/app/(page)/quiz/[detailUrl]/explanation/_components/nextQuizButton";
 import QuizExplanationContent from "@/app/(page)/quiz/[detailUrl]/explanation/_components/quizExplanationContent";
 import QuizExplanationTitle from "@/app/(page)/quiz/[detailUrl]/explanation/_components/quizExplanationTitle";
 import ReturnButton from "@/app/(page)/quiz/[detailUrl]/explanation/_components/returnButton";
@@ -64,7 +65,7 @@ async function Page({
                 {/*돌아가기 버튼*/}
                 <ReturnButton returnUrl={detailUrl}/>
                 {/*다음 퀴즈 버튼*/}
-                <NextQuizButton currentUrl={detailUrl}/>
+                <NextQuizLink/>
             </ButtonContainer>
         </>
     );
