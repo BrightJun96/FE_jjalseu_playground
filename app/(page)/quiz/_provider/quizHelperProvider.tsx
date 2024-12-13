@@ -2,9 +2,8 @@
 
 import {QuizHelper} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizHelper";
 import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNavigator";
-import {QuizStorageManager} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizStoreManager";
+import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
 import QuizHelperContext from "@/app/(page)/quiz/_context/quizHelperContext";
-import {StorageAdapter} from "@/app/_utils/StorageService";
 import {useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
 
@@ -12,18 +11,18 @@ import React, {useEffect} from 'react';
 function QuizHelperProvider({children}:{children:React.ReactNode}) {
 
     const router = useRouter();
-
+    const quizStorage = useQuizStorageContext()
     const [quizHelper, setQuizHelper] = React.useState<QuizHelper | null>(null);
 
     useEffect(() => {
-        const storageManager = new QuizStorageManager(new StorageAdapter(localStorage));
-        const navigator = new QuizNavigator({
-            navigate: (url: string) => router.push(url),
-            prefetch: (url: string) => router.prefetch(url)
-        });
-        const quizHelper =   new QuizHelper(storageManager, navigator)
-        setQuizHelper(quizHelper);
-    }, []);
+        if(quizStorage) {
+            const navigator = new QuizNavigator({
+                navigate: (url: string) => router.push(url),
+            });
+            const quizHelper = new QuizHelper(quizStorage, navigator)
+            setQuizHelper(quizHelper);
+        }
+    }, [quizStorage]);
 
 
     return (
