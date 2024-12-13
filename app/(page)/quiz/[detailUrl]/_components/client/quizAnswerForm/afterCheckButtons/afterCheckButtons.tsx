@@ -2,8 +2,7 @@ import AfterCheckButtonContainer
     from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/afterCheckButtonContainer";
 import ExplanationLink
     from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/explanationLink";
-import NextQuizLink
-    from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/nextQuizLink";
+import NextQuizLink from "@/app/(page)/quiz/_common_ui/client/nextQuizLink";
 import React from 'react';
 
 // 채점 후 버튼(해설, 다음문제)
