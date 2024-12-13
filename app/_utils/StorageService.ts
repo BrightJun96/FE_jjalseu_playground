@@ -46,10 +46,4 @@ export interface StorageService {
 
 
 
-// Storage 상수
 
-// 퀴즈 URL 목록
-export const QUIZ_URL_LIST = "quizUrlList"
-
-// 푼 퀴즈 목록
-export const SOLVED_QUIZ_LIST = "solvedQuizList"
