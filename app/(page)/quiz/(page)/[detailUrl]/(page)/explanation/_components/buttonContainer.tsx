@@ -5,7 +5,7 @@ function ButtonContainer({children}:{
     children:React.ReactNode
 }) {
     return (
-        <div className={"flex gap-2"}>
+        <div className={"flex gap-2 justify-center"}>
             {children}
         </div>
     );
