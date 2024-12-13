@@ -18,16 +18,9 @@ function QuizDetailsManager({
     const allQuizUrls = quizStorage?.getQuizUrlList()
 
     useEffect(() => {
-
-        // // 현재 경로가 solvedQuizList 스토리지에 있는 url에 있는 경우, 다른 문제로 이동
-        // quizHelper?.redirectIfQuizSolved(detailUrl as string)
-
+        
         // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
         quizHelper?.redirectToCompletionPageIfAllSolved()
-
-        // 퀴즈 데이터가 없는 경우, 시작 페이지로 이동
-        quizHelper?.redirectToQuizStartPageIfNoQuizData()
-
 
         return () => {
             // 현재 URL 벗어날 시, 푼 문제 리스트에 저장
