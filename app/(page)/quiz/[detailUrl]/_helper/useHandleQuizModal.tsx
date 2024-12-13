@@ -1,6 +1,5 @@
 import useHandleModal from "@/app/_components/modal/useHandleModal";
 import useQuizHelperContext from "@/app/_context/useQuizContext";
-import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 import {CheckAnswerResponse} from "@/app/services/quiz/types";
 import {useRouter} from "next/navigation";
 import React from "react";
@@ -18,11 +17,6 @@ function useHandleQuizModal() {
         handleSetModalContent,
         handleSetModalButtonContent
     } = useHandleModal()
-
-    // 사용자 답안이 체크되지 않았는지 확인하는 함수
-    function isUserAnswerEmpty(userAnswer:number[]) {
-        return ArrayUtils.isEmpty<number>(userAnswer)
-    }
 
     // 채점 결과에 대한 모달을 띄우는 함수
     function handleShowQuizResultModal({checkAnswerData,detailUrl}:{
@@ -57,32 +51,7 @@ function useHandleQuizModal() {
         })
     }
 
-    // 사용자 답안이 체크되지 않았을 경우, 경고창을 띄우는 함수
-    function handleEmptyUserAnswer(userAnswer:number[]) {
-        if (isUserAnswerEmpty(userAnswer)) {
-            handleOpenModal()
-            handleSetModalContent({
-                title:"답안 체크",
-                content: <p>답안을 체크해주세요</p>,
-            })
-            handleSetModalButtonContent({
-                confirm:{
-                    text:"확인",
-                    onClick:()=>{}
-                },
-                cancel:{
-                    isShow:false,
-                    text:"",
-                    onClick:()=>{}
-                }
-            })
-
-            return true
-        }
-        return false
-    }
-
-    return {handleShowQuizResultModal,handleEmptyUserAnswer}
+    return {handleShowQuizResultModal}
 }
 
 export default useHandleQuizModal;
