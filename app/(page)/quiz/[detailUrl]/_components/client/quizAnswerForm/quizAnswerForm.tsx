@@ -1,6 +1,7 @@
 "use client"
 
-import AfterCheckButtons from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons";
+import AfterCheckButtons
+    from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/afterCheckButtons";
 import BeforeCheckButton from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/beforeCheckButton";
 import CheckButtonContainer from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/checkButtonContainer";
 import QuizAnswerFormContainer
