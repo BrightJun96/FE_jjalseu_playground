@@ -5,6 +5,7 @@ import React from 'react';
 function ReturnButton({returnUrl}:{returnUrl:string}) {
     return (
         <PrimaryLink
+            color={"primarySecondary"}
             href={`/quiz/${returnUrl}`}>
             돌아가기
         </PrimaryLink>
