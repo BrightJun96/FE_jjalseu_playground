@@ -1,6 +1,6 @@
 "use client"
 
-import useQuizHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizHelperContext";
+import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
 import React, {useEffect} from 'react';
 
 // 퀴즈 완료 로직 관리
@@ -11,12 +11,11 @@ function QuizCompletedManager({
     children: React.ReactNode
 }) {
 
-    const quizHelper = useQuizHelperContext()
-
+    const quizStorage = useQuizStorageContext()
 
     useEffect(() => {
-        quizHelper?.clearQuizStorage()
-    }, [quizHelper]);
+        quizStorage?.clearStorage()
+    }, [quizStorage]);
 
     return (
         <>
