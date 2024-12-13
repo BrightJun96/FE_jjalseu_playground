@@ -1,9 +1,9 @@
 "use client"
 
-import {QuizHelper} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizHelper";
-import {QuizLogicHandler} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizLogicHandler";
-import {QuizNavigator} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizNavigator";
-import {QuizStorageManager} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizStoreManager";
+import {QuizHelper} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizHelper";
+import {QuizLogicHandler} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizLogicHandler";
+import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNavigator";
+import {QuizStorageManager} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizStoreManager";
 import QuizHelperContext from "@/app/_context/quizHelperContext";
 import {StorageAdapter} from "@/app/_utils/StorageService";
 import {useRouter} from "next/navigation";

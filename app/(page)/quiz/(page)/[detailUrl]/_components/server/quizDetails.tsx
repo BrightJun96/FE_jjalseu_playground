@@ -1,10 +1,10 @@
 "use server"
 
-import QuizAnswerForm from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/quizAnswerForm";
-import QuizDetailsManager from "@/app/(page)/quiz/[detailUrl]/_components/client/quizDetailsManager";
-import QuizContent from "@/app/(page)/quiz/[detailUrl]/_components/server/quizContent";
-import QuizQuestion from "@/app/(page)/quiz/[detailUrl]/_components/server/quizQuestion";
-import QuizTitle from "@/app/(page)/quiz/[detailUrl]/_components/server/quizTitle";
+import QuizAnswerForm from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizAnswerForm";
+import QuizDetailsManager from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizDetailsManager";
+import QuizContent from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizContent";
+import QuizQuestion from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizQuestion";
+import QuizTitle from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizTitle";
 
 import 'prismjs/themes/prism.css';
 import {QuizItem} from "@/app/services/quiz/types";

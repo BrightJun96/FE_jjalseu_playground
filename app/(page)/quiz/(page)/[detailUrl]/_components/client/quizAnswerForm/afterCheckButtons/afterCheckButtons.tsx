@@ -1,7 +1,7 @@
 import AfterCheckButtonContainer
-    from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/afterCheckButtonContainer";
+    from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/afterCheckButtonContainer";
 import ExplanationLink
-    from "@/app/(page)/quiz/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/explanationLink";
+    from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/explanationLink";
 import NextQuizLink from "@/app/(page)/quiz/_common_ui/client/nextQuizLink";
 import React from 'react';
 

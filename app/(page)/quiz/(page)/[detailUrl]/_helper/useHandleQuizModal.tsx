@@ -1,4 +1,4 @@
-import useRandomUrl from "@/app/(page)/quiz/[detailUrl]/_helper/useRandomUrl";
+import useRandomUrl from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/useRandomUrl";
 import useHandleModal from "@/app/_components/modal/_hook/useHandleModal";
 import {CheckAnswerResponse} from "@/app/services/quiz/types";
 import React from "react";

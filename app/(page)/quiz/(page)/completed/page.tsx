@@ -1,7 +1,7 @@
-import QuizCompletedDescription from "@/app/(page)/quiz/completed/_components/quizCompletedDescription";
-import QuizCompletedLink from "@/app/(page)/quiz/completed/_components/quizCompletedLink";
-import QuizCompletedManager from "@/app/(page)/quiz/completed/_components/quizCompletedManager";
-import QuizCompletedTitle from "@/app/(page)/quiz/completed/_components/quizCompletedTitle";
+import QuizCompletedDescription from "@/app/(page)/quiz/(page)/completed/_components/quizCompletedDescription";
+import QuizCompletedLink from "@/app/(page)/quiz/(page)/completed/_components/quizCompletedLink";
+import QuizCompletedManager from "@/app/(page)/quiz/(page)/completed/_components/quizCompletedManager";
+import QuizCompletedTitle from "@/app/(page)/quiz/(page)/completed/_components/quizCompletedTitle";
 import React from 'react';
 
 export const dynamic = 'force-static'

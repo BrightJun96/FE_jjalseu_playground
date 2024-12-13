@@ -1,6 +1,6 @@
 "use client"
 
-import useRandomUrl from "@/app/(page)/quiz/[detailUrl]/_helper/useRandomUrl";
+import useRandomUrl from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/useRandomUrl";
 import PrimaryLink from "@/app/_components/link/primaryLink";
 import React from 'react';
 

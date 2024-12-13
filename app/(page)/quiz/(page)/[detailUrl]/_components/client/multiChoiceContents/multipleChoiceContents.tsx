@@ -2,7 +2,7 @@
 
 import MultiChoiceContentsItem, {
     CheckHandlerProps
-} from "@/app/(page)/quiz/[detailUrl]/_components/client/multiChoiceContents/multiChoiceContentsItem";
+} from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/multiChoiceContents/multiChoiceContentsItem";
 import {MultipleChoiceContent} from "@/app/services/quiz/types";
 import React from 'react';
 

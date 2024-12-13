@@ -1,4 +1,4 @@
-import {QuizHelper} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizHelper";
+import {QuizHelper} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizHelper";
 import {createContext} from "react";
 
 // 퀴즈 헬퍼 컨텍스트

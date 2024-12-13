@@ -1,6 +1,6 @@
-import {QuizLogicHandler} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizLogicHandler";
-import {QuizNavigator} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizNavigator";
-import {QuizStorageManager} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizStoreManager";
+import {QuizLogicHandler} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizLogicHandler";
+import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNavigator";
+import {QuizStorageManager} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizStoreManager";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 
 
