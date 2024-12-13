@@ -14,7 +14,8 @@ export class QuizHelper {
     saveSolvedQuiz(currentQuiz: string) {
         const solvedQuizList = this.storageManager.getSolvedQuiz();
         const updatedList = ArrayUtils.removeDuplicate([...solvedQuizList, currentQuiz]);
-        this.storageManager.saveSolvedQuiz(updatedList);    }
+        this.storageManager.saveSolvedQuiz(updatedList);
+    }
 
     // 안 푼 문제 중 랜덤으로 하나 반환
      getRandomOneFromUnsolvedQuiz() {
@@ -25,7 +26,14 @@ export class QuizHelper {
     // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
     redirectToCompletionPageIfAllSolved(){
         if(this.isAllQuizSolved()) {
-            this.navigator.moveToCompletedPage();
+            this.navigator.navigate("/quiz/completed");
+        }
+    }
+
+    // 퀴즈 URL 목록 데이터가 없는 경우, 퀴즈 시작 페이지로 리다이렉트
+    redirectToQuizStartPageIfNoQuizData() {
+        if(this.storageManager.getQuizUrlList().length === 0) {
+            this.navigator.navigate("/quiz");
         }
     }
 
