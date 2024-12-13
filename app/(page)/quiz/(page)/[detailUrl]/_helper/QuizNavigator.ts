@@ -5,11 +5,9 @@ export class QuizNavigator {
         navigate:(path: string) => void,
     }) {}
 
-
-    // 퀴즈 완료 페이지로 이동
-    moveToCompletedPage() {
-        this.router.navigate("/quiz/completed");
+    // 페이지 이동
+    navigate(path: string) {
+        this.router.navigate(path);
     }
-
 
 }
