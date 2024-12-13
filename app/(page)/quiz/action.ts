@@ -9,8 +9,14 @@ import {CheckAnswerResponse} from "@/app/services/quiz/types";
  */
 
 // 퀴즈 URL 목록
-export async function getQuizDetailUrlListAction(){
-   return await quizApiHandler.fetchQuizDetailUrlList()
+export async function getQuizDetailUrlListAction(prevState:{
+    urlList:string[],
+    isAction:boolean
+},formData:FormData){
+
+    const field = formData.get("field")
+    const {data:urlList} = await quizApiHandler.fetchQuizDetailUrlList()
+    return {urlList,isAction:true}
 }
 
 interface CheckAnswerResponseExtends extends CheckAnswerResponse{

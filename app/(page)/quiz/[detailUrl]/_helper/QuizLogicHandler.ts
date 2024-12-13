@@ -1,5 +1,4 @@
 import {QuizStorageManager} from "@/app/(page)/quiz/[detailUrl]/_helper/QuizStoreManager";
-import {getQuizDetailUrlListAction} from "@/app/(page)/quiz/action";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 
 // 퀴즈 관련 데이터의 로직 처리.
@@ -7,14 +6,14 @@ export class QuizLogicHandler {
     constructor(private storageManager: QuizStorageManager) {}
 
     // 퀴즈 URL 목록 조회 후 저장
-    async fetchAndSaveQuizUrlList() {
-        try {
-            const {data} = await getQuizDetailUrlListAction();
-            this.storageManager.saveQuizUrlList(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    // async fetchAndSaveQuizUrlList() {
+    //     try {
+    //         const {data} = await getQuizDetailUrlListAction();
+    //         this.storageManager.saveQuizUrlList(data);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
 
     // 안 푼 문제 조회
     getUnsolvedQuiz(): string[] {

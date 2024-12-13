@@ -25,7 +25,6 @@ const QuizDetails = ({
            <QuizQuestion
                question={quizData.title}
            />
-
             {/*퀴즈내용*/}
             <QuizContent
                 content={quizData.content}

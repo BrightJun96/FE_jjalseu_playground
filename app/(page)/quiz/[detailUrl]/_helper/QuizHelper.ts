@@ -15,7 +15,7 @@ export class QuizHelper {
     // 퀴즈 시작
     async startQuiz() {
 
-        await this.logicHandler.fetchAndSaveQuizUrlList();
+        // await this.logicHandler.fetchAndSaveQuizUrlList();
 
         const unsolvedQuiz = this.logicHandler.getUnsolvedQuiz();
         if (unsolvedQuiz.length > 0) {
@@ -63,6 +63,11 @@ export class QuizHelper {
         if(this.logicHandler.isAllQuizSolved()) {
             this.navigator.moveToCompletedPage();
         }
+    }
+
+    // 퀴즈 URL 저장
+    saveQuizUrlList(urlList: string[]) {
+        this.storageManager.saveQuizUrlList(urlList);
     }
 
     clearQuizStorage() {
