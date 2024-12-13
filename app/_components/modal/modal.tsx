@@ -1,7 +1,9 @@
 "use client"
 
-import PrimaryButton from "@/app/_components/button/primaryButton";
+import CancelButton from "@/app/_components/modal/_ui/cancelButton";
+import ConfirmButton from "@/app/_components/modal/_ui/confirmButton";
 import ModalBackgroundLayout from "@/app/_components/modal/_ui/modalBackgorundLayout";
+import ModalButtonContainer from "@/app/_components/modal/_ui/modalButtonContainer";
 import ModalContentContainer from "@/app/_components/modal/_ui/modalContentContainer";
 import {ModalContext} from "@/app/_context/modalContext";
 import React, {useContext} from 'react';
@@ -25,19 +27,13 @@ function Modal() {
                             modal.modalContent
                         }
                     </div>}
-                <div className={"flex justify-center gap-2"}>
-                    { modal.button.cancel.isShow&&<PrimaryButton
-                        onClick={modal.button.cancel.onClick}
-                        color={"primarySecondary"}>
-                        {modal.button.cancel.text}
-                    </PrimaryButton>
-                    }
-                    <PrimaryButton
-                        onClick={modal.button.confirm.onClick}
-                        color={"primary"}>
-                        {modal.button.confirm.text}
-                    </PrimaryButton>
-                </div>
+                {/*버튼*/}
+                <ModalButtonContainer>
+                    {/*취소 버튼*/}
+                    <CancelButton/>
+                    {/*확인 버튼*/}
+                    <ConfirmButton/>
+                </ModalButtonContainer>
           </ModalContentContainer>
         </ModalBackgroundLayout>
     );
