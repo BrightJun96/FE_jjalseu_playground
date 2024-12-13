@@ -28,16 +28,7 @@ export class QuizHelper {
             this.navigator.moveToCompletedPage();
         }
     }
-
-    // 퀴즈 URL 저장
-    saveQuizUrlList(urlList: string[]) {
-        this.storageManager.saveQuizUrlList(urlList);
-    }
-
-    clearQuizStorage() {
-        this.storageManager.clearStorage();
-    }
-
+    
     // 안 푼 문제 조회
     getUnsolvedQuiz(): string[] {
         const quizUrlList = this.storageManager.getQuizUrlList();
