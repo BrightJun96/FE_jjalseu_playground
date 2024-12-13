@@ -1,8 +1,9 @@
-import ButtonContainer from "@/app/(page)/quiz/(page)/[detailUrl]/explanation/_components/buttonContainer";
+import ButtonContainer from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/buttonContainer";
 import QuizExplanationContent
-    from "@/app/(page)/quiz/(page)/[detailUrl]/explanation/_components/quizExplanationContent";
-import QuizExplanationTitle from "@/app/(page)/quiz/(page)/[detailUrl]/explanation/_components/quizExplanationTitle";
-import ReturnButton from "@/app/(page)/quiz/(page)/[detailUrl]/explanation/_components/returnButton";
+    from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationContent";
+import QuizExplanationTitle
+    from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationTitle";
+import ReturnButton from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/returnButton";
 import NextQuizLink from "@/app/(page)/quiz/_common_ui/client/nextQuizLink";
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {Metadata} from "next";
