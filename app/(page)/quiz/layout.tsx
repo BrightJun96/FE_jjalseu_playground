@@ -1,6 +1,6 @@
+import QuizHelperProvider from "@/app/(page)/quiz/_provider/quizHelperProvider";
+import QuizStorageProvider from "@/app/(page)/quiz/_provider/quizStorageProvider";
 import InnerContainer from "@/app/_layout/innerContainer";
-import QuizHelperProvider from "@/app/_provider/quizHelperProvider";
-import QuizStorageProvider from "@/app/_provider/quizStorageProvider";
 import React from 'react';
 
 const QuizLayout = ({
