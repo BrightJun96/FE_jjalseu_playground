@@ -1,6 +1,6 @@
 "use client"
 
-import useQuizHelperContext from "@/app/_context/useQuizContext";
+import useQuizHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizHelperContext";
 import {useParams} from "next/navigation";
 import React, {useEffect} from 'react';
 

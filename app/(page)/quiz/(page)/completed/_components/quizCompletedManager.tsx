@@ -1,6 +1,6 @@
 "use client"
 
-import useQuizHelperContext from "@/app/_context/useQuizContext";
+import useQuizHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizHelperContext";
 import React, {useEffect} from 'react';
 
 // 퀴즈 완료 로직 관리

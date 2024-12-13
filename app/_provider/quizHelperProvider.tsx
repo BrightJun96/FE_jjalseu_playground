@@ -1,10 +1,9 @@
 "use client"
 
 import {QuizHelper} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizHelper";
-import {QuizLogicHandler} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizLogicHandler";
 import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNavigator";
 import {QuizStorageManager} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizStoreManager";
-import QuizHelperContext from "@/app/_context/quizHelperContext";
+import QuizHelperContext from "@/app/(page)/quiz/_context/quizHelperContext";
 import {StorageAdapter} from "@/app/_utils/StorageService";
 import {useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
@@ -22,14 +21,16 @@ function QuizHelperProvider({children}:{children:React.ReactNode}) {
             navigate: (url: string) => router.push(url),
             prefetch: (url: string) => router.prefetch(url)
         });
-        const logicHandler = new QuizLogicHandler(storageManager);
-        const quizHelper =   new QuizHelper(storageManager, navigator, logicHandler)
+        const quizHelper =   new QuizHelper(storageManager, navigator)
         setQuizHelper(quizHelper);
     }, []);
 
 
     return (
-        <QuizHelperContext.Provider value={quizHelper}>{ children}</QuizHelperContext.Provider>
+        <QuizHelperContext.Provider
+            value={quizHelper}>
+            {children}
+        </QuizHelperContext.Provider>
     );
 }
 

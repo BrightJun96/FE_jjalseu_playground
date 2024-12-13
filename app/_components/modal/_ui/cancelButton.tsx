@@ -1,5 +1,5 @@
 import PrimaryButton from "@/app/_components/button/primaryButton";
-import {ModalContext} from "@/app/_context/modalContext";
+import {ModalContext} from "@/app/_components/modal/_context/modalContext";
 import React, {useContext} from 'react';
 
 // 취소 버튼

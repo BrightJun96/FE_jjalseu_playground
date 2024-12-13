@@ -1,5 +1,6 @@
 "use client"
 
+import {ModalContext} from "@/app/_components/modal/_context/modalContext";
 import CancelButton from "@/app/_components/modal/_ui/cancelButton";
 import ConfirmButton from "@/app/_components/modal/_ui/confirmButton";
 import ModalBackgroundLayout from "@/app/_components/modal/_ui/modalBackgorundLayout";
@@ -8,7 +9,6 @@ import ModalContent from "@/app/_components/modal/_ui/modalContent";
 import ModalContentContainer from "@/app/_components/modal/_ui/modalContentContainer";
 import ModalLinks from "@/app/_components/modal/_ui/modalLinks";
 import ModalTitle from "@/app/_components/modal/_ui/modalTitle";
-import {ModalContext} from "@/app/_context/modalContext";
 import React, {useContext} from 'react';
 
 // 모달 컴포넌트

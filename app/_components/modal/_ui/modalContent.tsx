@@ -1,4 +1,4 @@
-import {ModalContext} from "@/app/_context/modalContext";
+import {ModalContext} from "@/app/_components/modal/_context/modalContext";
 import React, {useContext} from 'react';
 
 // 모달 내용

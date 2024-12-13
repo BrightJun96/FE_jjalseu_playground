@@ -1,4 +1,4 @@
-import QuizHelperContext from "@/app/_context/quizHelperContext";
+import QuizHelperContext from "@/app/(page)/quiz/_context/quizHelperContext";
 import {useContext} from 'react';
 
 // 퀴즈 헬퍼 컨텍스트 사용

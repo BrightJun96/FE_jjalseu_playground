@@ -1,4 +1,9 @@
-import {initialModalContextValue, ModalContext, ModalLinkType, ModalSetContext} from "@/app/_context/modalContext";
+import {
+    initialModalContextValue,
+    ModalContext,
+    ModalLinkType,
+    ModalSetContext
+} from "@/app/_components/modal/_context/modalContext";
 import React, {useContext, useEffect} from "react";
 
 

@@ -1,9 +1,14 @@
 "use client";
 
-import React from "react";
-import {initialModalContextValue, ModalContext, ModalContextProps, ModalSetContext} from "@/app/_context/modalContext";
+import {
+  initialModalContextValue,
+  ModalContext,
+  ModalContextProps,
+  ModalSetContext
+} from "@/app/_components/modal/_context/modalContext";
 import ModalBackgroundLayout from "@/app/_components/modal/_ui/modalBackgorundLayout";
 import Modal from "@/app/_components/modal/modal";
+import React from "react";
 
 const ModalProvider = ({
   children,

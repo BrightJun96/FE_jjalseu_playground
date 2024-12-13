@@ -1,4 +1,3 @@
-import {QuizLogicHandler} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizLogicHandler";
 import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNavigator";
 import {QuizStorageManager} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizStoreManager";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
@@ -9,42 +8,23 @@ export class QuizHelper {
     constructor(
         private storageManager: QuizStorageManager,
         private navigator: QuizNavigator,
-        private logicHandler: QuizLogicHandler
     ) {}
 
-    // 다음 문제 이동
-    async moveToNextQuiz(currentQuiz: string) {
-        this.logicHandler.addSolvedQuiz(currentQuiz);
-
-        if (this.logicHandler.isAllQuizSolved()) {
-            this.navigator.moveToCompletedPage();
-        }
-        // else {
-        //     return this.getUnsolvedQuiz();
-        // }
-    }
     // 푼 문제 저장, 기존에 푼 문제가 있다면 추가,없다면 새로 저장
     saveSolvedQuiz(currentQuiz: string) {
-        this.logicHandler.addSolvedQuiz(currentQuiz);
-    }
+        const solvedQuizList = this.storageManager.getSolvedQuiz();
+        const updatedList = ArrayUtils.removeDuplicate([...solvedQuizList, currentQuiz]);
+        this.storageManager.saveSolvedQuiz(updatedList);    }
 
     // 안 푼 문제 중 랜덤으로 하나 반환
      getRandomOneFromUnsolvedQuiz() {
-        const unsolvedQuiz = this.logicHandler.getUnsolvedQuiz();
+        const unsolvedQuiz = this.getUnsolvedQuiz();
         return ArrayUtils.pickRandomOne<string>(unsolvedQuiz);
-    }
-
-    // 현재 경로가 solvedQuizList 스토리지에 있는 url에 있는 경우, 다른 문제로 이동
-    redirectIfQuizSolved(currentQuizUrl:string){
-        if(this.storageManager.getSolvedQuiz().includes(currentQuizUrl)){
-            const unsolvedOne=  ArrayUtils.pickRandomOne<string>(this.logicHandler.getUnsolvedQuiz())
-            this.navigator.moveToQuizPage(unsolvedOne);
-        }
     }
 
     // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
     redirectToCompletionPageIfAllSolved(){
-        if(this.logicHandler.isAllQuizSolved()) {
+        if(this.isAllQuizSolved()) {
             this.navigator.moveToCompletedPage();
         }
     }
@@ -57,5 +37,20 @@ export class QuizHelper {
     clearQuizStorage() {
         this.storageManager.clearStorage();
     }
+
+    // 안 푼 문제 조회
+    getUnsolvedQuiz(): string[] {
+        const quizUrlList = this.storageManager.getQuizUrlList();
+        const solvedQuiz = this.storageManager.getSolvedQuiz();
+        return ArrayUtils.getDifference<string>(quizUrlList, solvedQuiz);
+    }
+
+    // 모든 퀴즈가 풀렸는지 확인
+    isAllQuizSolved(): boolean {
+        const quizUrlList = this.storageManager.getQuizUrlList();
+        const solvedQuiz = this.storageManager.getSolvedQuiz();
+        return ArrayUtils.isEqualLength<string>(quizUrlList, solvedQuiz);
+    }
+
 }
 

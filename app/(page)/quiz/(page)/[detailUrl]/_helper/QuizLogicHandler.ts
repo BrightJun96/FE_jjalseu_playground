@@ -5,16 +5,6 @@ import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 export class QuizLogicHandler {
     constructor(private storageManager: QuizStorageManager) {}
 
-    // 퀴즈 URL 목록 조회 후 저장
-    // async fetchAndSaveQuizUrlList() {
-    //     try {
-    //         const {data} = await getQuizDetailUrlListAction();
-    //         this.storageManager.saveQuizUrlList(data);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
     // 안 푼 문제 조회
     getUnsolvedQuiz(): string[] {
         const quizUrlList = this.storageManager.getQuizUrlList();
