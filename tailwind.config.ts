@@ -28,6 +28,7 @@ const config: Config = {
           }
         },
         white:"#FFFFFF",
+        black:"#0A0A0A",
       },
       // 폰트 사이즈
       fontSize: {
