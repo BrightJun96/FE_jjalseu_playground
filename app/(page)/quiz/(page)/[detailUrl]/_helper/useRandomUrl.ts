@@ -7,11 +7,11 @@ function useRandomUrl() {
     const quizHelper = useQuizHelperContext()
     useEffect(() => {
 
-            const url = quizHelper?.getRandomOneFromUnsolvedQuiz()
-            if(url){
+        if(quizHelper){
+            const url = quizHelper.getRandomOneFromUnsolvedQuiz()
                 setRandomUrl(url)
+        }
 
-            }
 
     }, [quizHelper]);
     return randomUrl

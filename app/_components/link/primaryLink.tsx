@@ -19,7 +19,7 @@ function PrimaryLink({
     className = ""
                      }: PrimaryLinkProps) {
     const colors = {
-        primary: "bg-primary-normal text-white hover:bg-primary-dark",
+        primary: "bg-primary-normal text-black hover:bg-primary-dark ",
         primarySecondary: "bg-primary-secondary-normal text-white hover:bg-primary-secondary-dark",
         none:""
     };

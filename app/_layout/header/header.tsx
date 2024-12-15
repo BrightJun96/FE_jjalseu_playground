@@ -31,7 +31,7 @@ const Header = () => {
     // 현재 페이지에 맞는 클래스명
     function getActiveClass(link:string){
         if(pathname===`/${link}`){
-            return "bg-primary-normal text-white hover:bg-primary-dark "
+            return "bg-primary-normal text-black hover:bg-primary-dark "
         }
     }
     return (
@@ -48,7 +48,7 @@ const Header = () => {
                 <nav>
                     <ul className={"flex gap-3 text-title3Normal text-primary-normal"}>
                         {NAVMENU.map((item, index) => (
-                            <li key={index} className={`cursor-pointer px-[12px] flex justify-center items-center w-[100px]  h-[32px] rounded-[8px] hover:bg-primary-dark hover:text-white ${getActiveClass(item.link)}`}>
+                            <li key={index} className={`cursor-pointer px-[12px] flex justify-center items-center w-[100px]  h-[32px] rounded-[8px] hover:bg-primary-dark hover:text-black ${getActiveClass(item.link)}`}>
                                 <PrimaryLink
                                     color={"none"}
                                     href={`/${item.link}`}

@@ -18,14 +18,12 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
-    "@toast-ui/react-editor": "^3.2.3",
     "@types/node": "^20",
     "@types/prismjs": "^1.26.4",
     "@types/react": "19.0.1",
     "@types/react-dom": "19.0.2",
     "eslint": "^8",
     "eslint-config-next": "15.1.0",
-    "next-pwa": "^5.6.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

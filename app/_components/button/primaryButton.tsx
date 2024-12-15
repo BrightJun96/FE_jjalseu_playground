@@ -18,7 +18,7 @@ interface IPrimaryButtonProps {
 const PrimaryButton = ({children,onClick,className,disabled,color}:IPrimaryButtonProps) => {
 
     const colors = {
-        primary: "bg-primary-normal text-white hover:bg-primary-dark disabled:bg-primary-disabled",
+        primary: "bg-primary-normal text-black hover:bg-primary-dark disabled:bg-primary-disabled disabled:text-white",
         primarySecondary: "bg-primary-secondary-normal text-white hover:bg-primary-secondary-dark",
     };
     return (
