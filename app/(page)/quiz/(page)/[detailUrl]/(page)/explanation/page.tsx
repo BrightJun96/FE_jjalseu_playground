@@ -36,7 +36,7 @@ export async function generateMetadata({
         title:`해설-${data.metaTitle}`,
         description: `해설-${data.metaDescription}`,
         alternates:{
-            canonical:`/quiz/explanation/${data.detailUrl}`
+            canonical:`${process.env.NEXT_PUBLIC_BASE_URL}/quiz/explanation/${data.detailUrl}`
         }
     }
 }
