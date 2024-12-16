@@ -6,11 +6,11 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -39,7 +39,7 @@ export default function RootLayout({
   <ViewTransitions>
     <html lang="en">
       <body
-        className={`${geistSans.className} ${geistMono.className} antialiased bg-gray-100`}
+        className={`${geistMono.className} antialiased bg-gray-100`}
       >
       <Head>
           <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
