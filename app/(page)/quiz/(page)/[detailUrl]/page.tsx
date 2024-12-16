@@ -42,7 +42,7 @@ export async function generateMetadata({
         title:data.metaTitle,
         description:data.metaDescription,
         alternates:{
-            canonical:`/quiz/${data.detailUrl}`
+            canonical:`${process.env.NEXT_PUBLIC_BASE_URL}/quiz/${data.detailUrl}`
         }
     }
 }
