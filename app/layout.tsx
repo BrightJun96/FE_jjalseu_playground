@@ -1,4 +1,5 @@
 import ModalProvider from "@/app/_components/modal/_provider/modalProvider";
+import {WebVitals} from "@/app/_components/webVitals/webVitails";
 import Header from "@/app/_layout/header/header";
 import type {Metadata} from "next";
 import {ViewTransitions} from 'next-view-transitions';
@@ -15,6 +16,7 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+    display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -41,6 +43,7 @@ export default function RootLayout({
       <body
         className={`${geistMono.className} antialiased bg-gray-100`}
       >
+      <WebVitals/>
       <Head>
           <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
           <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
