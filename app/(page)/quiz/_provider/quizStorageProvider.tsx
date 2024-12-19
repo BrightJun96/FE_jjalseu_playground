@@ -1,7 +1,7 @@
 "use client";
 
-import {QuizStorageManager} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizStoreManager";
 import QuizStorageContext from "@/app/(page)/quiz/_context/quizStorageContext";
+import {QuizStorageManager} from "@/app/(page)/quiz/_helper/QuizStoreManager";
 import {StorageAdapter} from "@/app/_utils/StorageService";
 import React from 'react';
 

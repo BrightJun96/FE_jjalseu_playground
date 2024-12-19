@@ -10,7 +10,7 @@ import QuizAnswerFormContainer
     from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizAnswerFormContainer";
 import QuizAnswers from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizAnswers";
 import QuizFormId from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizFormId";
-import useQuizFormAction from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/useQuizFormAction";
+import useQuizFormAction from "@/app/(page)/quiz/_helper/useQuizFormAction";
 import {MultipleChoiceContent} from "@/app/services/quiz/types";
 import React from 'react';
 

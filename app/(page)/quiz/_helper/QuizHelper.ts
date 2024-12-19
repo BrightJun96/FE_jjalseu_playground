@@ -1,5 +1,5 @@
-import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNavigator";
-import {QuizStorageManager} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizStoreManager";
+import {QuizNavigator} from "@/app/(page)/quiz/_helper/QuizNavigator";
+import {QuizStorageManager} from "@/app/(page)/quiz/_helper/QuizStoreManager";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 
 // 퀴즈 로직 관련 클래스

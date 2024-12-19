@@ -1,9 +1,9 @@
 "use client"
 
-import {QuizHelper} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizHelper";
-import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNavigator";
 import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
 import QuizHelperContext from "@/app/(page)/quiz/_context/quizHelperContext";
+import {QuizHelper} from "@/app/(page)/quiz/_helper/QuizHelper";
+import {QuizNavigator} from "@/app/(page)/quiz/_helper/QuizNavigator";
 import {useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
 
