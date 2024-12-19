@@ -1,4 +1,4 @@
-import {CustomRequestInit, IResponse, QueryString} from "@/app/services/network.types";
+import {CustomRequestInit, IResponse, QueryString} from "@/app/services/api.types";
 
 abstract class BaseApi{
 
