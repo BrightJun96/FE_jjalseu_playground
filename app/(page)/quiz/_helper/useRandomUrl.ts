@@ -4,16 +4,15 @@ import {useEffect, useState} from 'react';
 // 안푼 문제 중 랜덤 URL 생성
 function useRandomUrl() {
     const [randomUrl,setRandomUrl] = useState<string>("")
-    const quizHelper = useQuizStorageHelperContext()
+    const quizStorageHelper = useQuizStorageHelperContext()
     useEffect(() => {
 
-        if(quizHelper){
-            const url = quizHelper.getRandomOneFromUnsolvedQuiz()
+        if(quizStorageHelper){
+            const url = quizStorageHelper.getRandomOneFromUnsolvedQuiz()
                 setRandomUrl(url)
         }
 
-
-    }, [quizHelper]);
+    }, [quizStorageHelper]);
     return randomUrl
 }
 
