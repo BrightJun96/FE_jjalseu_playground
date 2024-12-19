@@ -10,7 +10,7 @@ export const SOLVED_QUIZ_LIST = "solvedQuizList"
 
 
 // 퀴즈 데이터 저장과 관련된 로직을 처리하는 클래스
-export class QuizStorageManager {
+export class QuizStorage {
     constructor(private storage: StorageService) {}
 
     // 퀴즈 URL 목록 저장

@@ -1,7 +1,7 @@
 "use client"
 
-import useQuizHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizHelperContext";
 import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
+import useQuizHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageHelperContext";
 import {useParams} from "next/navigation";
 import React, {useEffect} from 'react';
 
@@ -18,7 +18,7 @@ function QuizDetailsManager({
     const allQuizUrls = quizStorage?.getQuizUrlList()
 
     useEffect(() => {
-        
+
         // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
         quizHelper?.redirectToCompletionPageIfAllSolved()
 

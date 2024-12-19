@@ -1,12 +1,12 @@
 import {QuizNavigator} from "@/app/(page)/quiz/_helper/QuizNavigator";
-import {QuizStorageManager} from "@/app/(page)/quiz/_helper/QuizStoreManager";
+import {QuizStorage} from "@/app/(page)/quiz/_helper/QuizStorage";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 
 // 퀴즈 로직 관련 클래스
-export class QuizHelper {
+export class QuizStorageHelper {
 
     constructor(
-        private storageManager: QuizStorageManager,
+        private storageManager: QuizStorage,
         private navigator: QuizNavigator,
     ) {}
 
