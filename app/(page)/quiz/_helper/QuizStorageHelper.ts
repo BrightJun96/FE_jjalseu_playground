@@ -1,4 +1,3 @@
-import {QuizNavigator} from "@/app/(page)/quiz/_helper/QuizNavigator";
 import {QuizStorage} from "@/app/(page)/quiz/_helper/QuizStorage";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 
@@ -7,7 +6,6 @@ export class QuizStorageHelper {
 
     constructor(
         private storageManager: QuizStorage,
-        private navigator: QuizNavigator,
     ) {}
 
     // 푼 문제 저장, 기존에 푼 문제가 있다면 추가,없다면 새로 저장
@@ -24,9 +22,9 @@ export class QuizStorageHelper {
     }
 
     // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
-    redirectToCompletionPageIfAllSolved(){
+    redirectToCompletionPageIfAllSolved(navigate: (url: string) => void){
         if(this.isAllQuizSolved()) {
-            this.navigator.navigate("/quiz/completed");
+            navigate("/quiz/completed");
         }
     }
 

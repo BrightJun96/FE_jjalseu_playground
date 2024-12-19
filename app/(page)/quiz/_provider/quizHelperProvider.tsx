@@ -19,7 +19,7 @@ function QuizStorageHelperProvider({children}:{children:React.ReactNode}) {
             const navigator = new QuizNavigator({
                 navigate: (url: string) => router.push(url),
             });
-            const quizHelper = new QuizStorageHelper(quizStorage, navigator)
+            const quizHelper = new QuizStorageHelper(quizStorage)
             setQuizHelper(quizHelper);
         }
     }, [quizStorage]);

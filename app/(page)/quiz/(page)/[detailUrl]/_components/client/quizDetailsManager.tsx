@@ -2,7 +2,7 @@
 
 import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
 import useQuizStorageHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageHelperContext";
-import {useParams} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
 import React, {useEffect} from 'react';
 
 // 퀴즈 상세 페이지 로직 관리
@@ -12,6 +12,7 @@ function QuizDetailsManager({
     children:React.ReactNode
 }) {
 
+    const router = useRouter();
     const {detailUrl} = useParams()
     const quizStorageHelper = useQuizStorageHelperContext();
     const quizStorage = useQuizStorageContext();
@@ -21,7 +22,7 @@ function QuizDetailsManager({
 
         // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
         if(quizStorageHelper) {
-            quizStorageHelper.redirectToCompletionPageIfAllSolved()
+            quizStorageHelper.redirectToCompletionPageIfAllSolved(router.push)
         }
 
         return () => {
