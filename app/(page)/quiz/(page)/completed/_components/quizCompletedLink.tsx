@@ -6,6 +6,7 @@ import React from 'react';
 function QuizCompletedLink() {
     return (
         <PrimaryLink
+            className={"h-[48px]"}
             href={`/${PATHS.QUIZ}`}
         >
             다른 퀴즈 풀러가기

@@ -2,13 +2,16 @@ import React from 'react';
 
 // 퀴즈 완료 타이틀
 function QuizCompletedTitle({
-    title
+                                children
                             }:{
-    title: string
+    children: React.ReactNode
 }) {
     return (
-        <h1>
-            {title}
+        <h1
+            className="lg:text-title1 md:text-title2Bold sm:text-title2Bold
+             text-center"
+        >
+            {children}
         </h1>
     );
 }
