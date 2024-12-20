@@ -1,6 +1,7 @@
 import ModalProvider from "@/app/_components/modal/_provider/modalProvider";
 import {WebVitals} from "@/app/_components/webVitals/webVitails";
 import Header from "@/app/_layout/header/header";
+import MainContainer from "@/app/_layout/mainContainer";
 import type {Metadata} from "next";
 import {ViewTransitions} from 'next-view-transitions';
 import localFont from "next/font/local";
@@ -42,12 +43,11 @@ export default function RootLayout({
       <WebVitals/>
       {/*헤더*/}
       <Header/>
-      <main
-          className={"w-full lg:h-[calc(100vh-80px)] md:h-[calc(100vh-60px)] sm:h-[calc(100vh-60px)] lg:flex lg:justify-center lg:items-center md:flex md:justify-center md:items-center sm:px-[10px] "}>
+     <MainContainer>
           <ModalProvider>
               {children}
           </ModalProvider>
-      </main>
+     </MainContainer>
       </body>
     </html>
   </ViewTransitions>

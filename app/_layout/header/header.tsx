@@ -8,9 +8,6 @@ import React from 'react';
  */
 const Header = () => {
 
-
-
-
     return (
         <HeaderContainer>
             {/*로고*/}
