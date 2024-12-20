@@ -8,7 +8,7 @@ function ModalTitle() {
     return (
         modal.modalTitle &&
         <h1
-            className={"text-center text-title2Bold sm:text-title3Bold"}
+            className={"text-center text-title1"}
         >
             {modal.modalTitle}
         </h1>

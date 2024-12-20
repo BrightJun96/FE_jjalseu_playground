@@ -3,6 +3,7 @@
 const nextConfig = {
     experimental: {
         inlineCss: true,
+
     },
 };
 

@@ -1,4 +1,5 @@
 import PrimaryLink from "@/app/_components/link/primaryLink";
+import PATHS from "@/app/_constants/paths";
 import React from 'react';
 
 // 로고
@@ -6,7 +7,7 @@ function Logo() {
     return (
         <h1>
             <PrimaryLink
-                href={"/"}
+                href={PATHS.HOME}
                 color={"none"}
                 className={"text-primary-normal text-title1 font-bold"}
             >

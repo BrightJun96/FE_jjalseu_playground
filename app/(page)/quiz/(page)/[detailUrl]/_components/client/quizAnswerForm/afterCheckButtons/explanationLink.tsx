@@ -1,4 +1,5 @@
 import PrimaryLink from "@/app/_components/link/primaryLink";
+import PATHS from "@/app/_constants/paths";
 import {useParams} from "next/navigation";
 import React from 'react';
 
@@ -8,7 +9,7 @@ function ExplanationLink() {
     return (
         <PrimaryLink
             color={"primarySecondary"}
-            href={`/quiz/${detailUrl}/explanation`}>
+            href={`/${PATHS.QUIZ_EXPLANATION(detailUrl as string)}`}>
             해설
         </PrimaryLink>
     );

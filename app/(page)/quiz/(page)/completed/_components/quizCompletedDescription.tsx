@@ -2,14 +2,14 @@ import React from 'react';
 
 // 퀴즈 완료 설명
 function QuizCompletedDescription({
-    description
+    children
                                   }:{
-    description: string
+    children: React.ReactNode
 }) {
     return (
-        <p>
-            {description}
-        </p>
+        <h2 className={"text-title2Bold text-center"}>
+            {children}
+        </h2>
     );
 }
 

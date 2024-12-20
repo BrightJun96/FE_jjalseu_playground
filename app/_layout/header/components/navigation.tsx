@@ -1,6 +1,7 @@
 "use client";
 
 import PrimaryLink from "@/app/_components/link/primaryLink";
+import PATHS from "@/app/_constants/paths";
 import {usePathname} from "next/navigation";
 import React from 'react';
 
@@ -19,7 +20,7 @@ function Navigation() {
     const NAVMENU = [
         {
             title: "퀴즈",
-            link: "quiz",
+            link: PATHS.QUIZ,
         },
         // {
         //     title: "코드 템플릿",

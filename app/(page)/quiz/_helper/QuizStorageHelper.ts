@@ -1,4 +1,5 @@
 import {QuizStorage} from "@/app/(page)/quiz/_helper/QuizStorage";
+import PATHS from "@/app/_constants/paths";
 import {ArrayUtils} from "@/app/_utils/class/ArrayUtils";
 
 // 퀴즈 로직 관련 클래스
@@ -24,7 +25,7 @@ export class QuizStorageHelper {
     // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
     redirectToCompletionPageIfAllSolved(navigate: (url: string) => void){
         if(this.isAllQuizSolved()) {
-            navigate("/quiz/completed");
+            navigate(`/${PATHS.QUIZ_COMPLETED}`);
         }
     }
 

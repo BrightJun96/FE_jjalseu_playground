@@ -18,7 +18,7 @@ function QuizCompletedManager({
     }, [quizStorage]);
 
     return (
-        <section>
+        <section className={"w-full flex flex-col gap-3 lg:mt-[50px]"}>
             {children}
         </section>
     );
