@@ -1,6 +1,6 @@
 "use client"
 
-import QuizField from "@/app/(page)/quiz/_components/quizOptionForm/quizOptions/quizField";
+import QuizFieldOption from "@/app/(page)/quiz/_components/quizOptionForm/quizOptions/quizFieldOption";
 import useQuizOptionHandler from "@/app/(page)/quiz/_helper/useQuizOptionHandler";
 import React from 'react';
 
@@ -14,9 +14,11 @@ function QuizOptions() {
 
     return (
         <fieldset className={"flex flex-col gap-10 w-full"}>
-            <legend>퀴즈 옵션</legend>
+            <legend
+                className={"text-title3Normal"}
+            >퀴즈 옵션</legend>
             {/*분야*/}
-            <QuizField
+            <QuizFieldOption
                 handleOptionChange={handleOptionChange}
                 option={option}
             />
