@@ -1,3 +1,5 @@
+import QuizResultModalContent
+    from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/modal/quizResultModalContent";
 import useRandomUrl from "@/app/(page)/quiz/_helper/useRandomUrl";
 import useHandleModal from "@/app/_components/modal/_hook/useHandleModal";
 import PATHS from "@/app/_constants/paths";
@@ -24,12 +26,9 @@ function useHandleQuizModal() {
         handleOpenModal()
         handleSetModalContent({
             title:"채점 결과",
-            content:<div
-            >
-                <p>   {checkAnswerData.correct?"정답입니다 🥳":"오답입니다 🥲"}</p>
-                <p>정답 : {checkAnswerData.answer.join(",")}</p>
-                <p>사용자 답안 : {checkAnswerData.userAnswer.length>0?checkAnswerData.userAnswer.join(","):"답안을 체크하지 않았어요 🥲"}</p>
-            </div>
+            content:<QuizResultModalContent
+                checkAnswerData={checkAnswerData}
+            />
         },
         )
 
