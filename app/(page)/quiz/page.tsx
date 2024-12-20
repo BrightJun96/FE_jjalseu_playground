@@ -1,6 +1,6 @@
 import QuizIntroSection from "@/app/(page)/quiz/_components/quizIntroSection";
 import QuizOptionForm from "@/app/(page)/quiz/_components/quizOptionForm";
-import QuizStartDescription from "@/app/(page)/quiz/_components/quizStartDescription";
+import QuizStartSubTitle from "@/app/(page)/quiz/_components/quizStartSubTitle";
 import QuizStartTitle from "@/app/(page)/quiz/_components/quizStartTitle";
 import {Metadata} from "next";
 import React from 'react';
@@ -25,7 +25,7 @@ async function Page (){
                         title={"퀴즈 시작하기"}
                     />
                     {/*설명*/}
-                    <QuizStartDescription
+                    <QuizStartSubTitle
                         description={"퀴즈를 통해 개발 지식을 테스트해 보세요!"}
                     />
                 </QuizIntroSection>
