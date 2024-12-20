@@ -35,15 +35,17 @@ function QuizAnswerForm({
         <QuizAnswerFormContainer
             action={formAction}
         >
-            {/*퀴즈 ID*/}
-            <QuizFormId
-                quizId={quizId}
-            />
-            {/*퀴즈 답안*/}
-            <QuizAnswers
-                quizType={quizType}
-                quizMultipleChoiceContents={quizMultipleChoiceContents}
-                setUserAnswer={setUserAnswer}/>
+            <fieldset>
+                {/*퀴즈 ID*/}
+                <QuizFormId
+                    quizId={quizId}
+                />
+                {/*퀴즈 답안*/}
+                <QuizAnswers
+                    quizType={quizType}
+                    quizMultipleChoiceContents={quizMultipleChoiceContents}
+                    setUserAnswer={setUserAnswer}/>
+            </fieldset>
             {/*채점 버튼*/}
             <CheckButtonContainer
             >
