@@ -13,7 +13,7 @@ function QuizField({
 }) {
 
     return (
-        <>
+        <section>
             <Select
                 label={"분야"}
                 options={FIELD_OPTIONS}
@@ -24,7 +24,7 @@ function QuizField({
                 name={"field"}
                 value={option.field}
             />
-        </>
+        </section>
     );
 }
 
