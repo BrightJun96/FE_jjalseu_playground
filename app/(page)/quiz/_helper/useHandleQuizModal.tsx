@@ -1,5 +1,6 @@
 import useRandomUrl from "@/app/(page)/quiz/_helper/useRandomUrl";
 import useHandleModal from "@/app/_components/modal/_hook/useHandleModal";
+import PATHS from "@/app/_constants/paths";
 import {CheckAnswerResponse} from "@/app/services/quiz/types";
 import React from "react";
 
@@ -36,12 +37,12 @@ function useHandleQuizModal() {
             [
                 {
             text:"해설",
-            href:`/quiz/${detailUrl}/explanation`,
+            href:`/${PATHS.QUIZ_EXPLANATION(detailUrl)}`,
                     color:"primarySecondary"
                 },
                 {
             text:"다음문제",
-            href:`/quiz/${randomUrl}`,
+            href:`/${PATHS.QUIZ_RANDOM(randomUrl)}`,
                     color:"primary"
                 }
         ]
