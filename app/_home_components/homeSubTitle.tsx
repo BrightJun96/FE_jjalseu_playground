@@ -1,18 +1,18 @@
 import React from 'react';
 
-// 메인 설명
-function HomeDescription({
-    description
+// 메인 부제
+function HomeSubTitle({
+    subTitle
                          }:{
-    description: string
+    subTitle: string
 }) {
     return (
-        <p
+        <h2
             className={"lg:text-headline3 md:text-title2Bold sm:text-title2Bold"}
         >
-            {description}
-        </p>
+            {subTitle}
+        </h2>
     );
 }
 
-export default HomeDescription;
+export default HomeSubTitle;

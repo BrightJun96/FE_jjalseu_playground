@@ -1,7 +1,7 @@
-import HomeDescription from "@/app/_home_components/homeDescription";
 import HomeInnerContainer from "@/app/_home_components/homeInnerContainer";
 import HomeLink from "@/app/_home_components/homeLink";
 import HomeOuterContainer from "@/app/_home_components/homeOuterContainer";
+import HomeSubTitle from "@/app/_home_components/homeSubTitle";
 import HomeTitle from "@/app/_home_components/homeTitle";
 
 
@@ -21,9 +21,9 @@ export default function Home() {
             <HomeTitle
             title={"개발자들의 아지트, 코아"}
             />
-            {/* 메인 설명 */}
-            <HomeDescription
-                description={"퀴즈로 실력을 키우고, 함께 성장하세요."}
+            {/* 부제목 */}
+            <HomeSubTitle
+                subTitle={"퀴즈로 실력을 키우고, 함께 성장하세요."}
             />
             {/* 메인 링크  */}
             <HomeLink/>
