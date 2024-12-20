@@ -1,5 +1,5 @@
 import ExceptionManager from "@/app/_utils/class/ExceptionManager";
-import {CustomRequestInit, IResponse} from "@/app/services/network.types";
+import {CustomRequestInit, IResponse} from "@/app/services/api.types";
 import QuizApi from "@/app/services/quiz/QuizApi";
 import {CheckAnswerResponse, QuizItem} from "@/app/services/quiz/types";
 

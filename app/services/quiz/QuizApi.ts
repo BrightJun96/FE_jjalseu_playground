@@ -1,5 +1,5 @@
+import {IResponse} from "@/app/services/api.types";
 import BaseApi from "@/app/services/BaseApi";
-import {IResponse} from "@/app/services/network.types";
 import {CheckAnswerResponse, QuizItem} from "@/app/services/quiz/types";
 
 export interface IQuizApi {

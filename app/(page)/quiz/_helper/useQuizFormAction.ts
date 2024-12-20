@@ -1,4 +1,4 @@
-import useHandleQuizModal from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/useHandleQuizModal";
+import useHandleQuizModal from "@/app/(page)/quiz/_helper/useHandleQuizModal";
 import {checkAnswerAction} from "@/app/(page)/quiz/action";
 import {useParams} from "next/navigation";
 import {useActionState, useEffect} from 'react';

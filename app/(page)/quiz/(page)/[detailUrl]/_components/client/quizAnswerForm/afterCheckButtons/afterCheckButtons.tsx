@@ -7,8 +7,7 @@ import React from 'react';
 
 // 채점 후 버튼(해설, 다음문제)
 function AfterCheckButtons() {
-
-
+    
     return (
         <AfterCheckButtonContainer>
              {/*해설 링크*/}

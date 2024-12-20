@@ -9,9 +9,9 @@ function useQuizOptionFormAction() {
     const router = useRouter()
     const quizStorage = useQuizStorageContext()
 
-    const [state,formAction]=useActionState(getQuizDetailUrlListAction,{urlList:[],isAction:false})
+    const [state,formAction]=useActionState(getQuizDetailUrlListAction,{urlList:[],isSubmit:false})
     useEffect(() => {
-        if(state.isAction){
+        if(state.isSubmit){
             quizStorage?.saveQuizUrlList(state.urlList)
 
             const randomOne = ArrayUtils.pickRandomOne<string>(state.urlList)
@@ -19,7 +19,7 @@ function useQuizOptionFormAction() {
             router.push(`/quiz/${randomOne}`)
 
         }
-    }, [state.isAction]);
+    }, [state.isSubmit]);
     return {formAction}
 }
 

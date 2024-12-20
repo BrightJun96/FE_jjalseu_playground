@@ -1,16 +1,16 @@
 import React from 'react';
 
 // 퀴즈 시작하기 페이지의 설명을 나타내는 컴포넌트
-function QuizStartDescription({
+function QuizStartSubTitle({
     description
                               }:{
     description: string
 }) {
     return (
-        <p className={"mb-10 text-title2Normal text-center"}>
+        <h2 className={"mb-10 text-title2Normal text-center"}>
             {description}
-        </p>
+        </h2>
     );
 }
 
-export default QuizStartDescription;
+export default QuizStartSubTitle;

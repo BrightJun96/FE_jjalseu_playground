@@ -8,7 +8,7 @@ function HomeOuterContainer({
 }) {
     return (
         <div
-            className="font-[family-name:var(--font-geist-sans)] w-full h-full
+            className="w-full h-full
     lg:pt-[250px] md:pt-[150px] sm:pt-[100px]"
         >
             {children}

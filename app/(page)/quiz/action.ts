@@ -11,12 +11,12 @@ import {CheckAnswerResponse} from "@/app/services/quiz/types";
 // 퀴즈 URL 목록
 export async function getQuizDetailUrlListAction(prevState:{
     urlList:string[],
-    isAction:boolean
+    isSubmit:boolean
 },formData:FormData){
 
     const field = formData.get("field")
     const {data:urlList} = await quizApiHandler.fetchQuizDetailUrlList()
-    return {urlList,isAction:true}
+    return {urlList,isSubmit:true}
 }
 
 interface CheckAnswerResponseExtends extends CheckAnswerResponse{

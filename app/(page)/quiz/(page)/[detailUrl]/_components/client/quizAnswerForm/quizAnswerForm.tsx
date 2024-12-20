@@ -10,7 +10,7 @@ import QuizAnswerFormContainer
     from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizAnswerFormContainer";
 import QuizAnswers from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizAnswers";
 import QuizFormId from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizFormId";
-import useQuizFormAction from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/useQuizFormAction";
+import useQuizFormAction from "@/app/(page)/quiz/_helper/useQuizFormAction";
 import {MultipleChoiceContent} from "@/app/services/quiz/types";
 import React from 'react';
 
@@ -35,15 +35,17 @@ function QuizAnswerForm({
         <QuizAnswerFormContainer
             action={formAction}
         >
-            {/*퀴즈 ID*/}
-            <QuizFormId
-                quizId={quizId}
-            />
-            {/*퀴즈 답안*/}
-            <QuizAnswers
-                quizType={quizType}
-                quizMultipleChoiceContents={quizMultipleChoiceContents}
-                setUserAnswer={setUserAnswer}/>
+            <fieldset>
+                {/*퀴즈 ID*/}
+                <QuizFormId
+                    quizId={quizId}
+                />
+                {/*퀴즈 답안*/}
+                <QuizAnswers
+                    quizType={quizType}
+                    quizMultipleChoiceContents={quizMultipleChoiceContents}
+                    setUserAnswer={setUserAnswer}/>
+            </fieldset>
             {/*채점 버튼*/}
             <CheckButtonContainer
             >

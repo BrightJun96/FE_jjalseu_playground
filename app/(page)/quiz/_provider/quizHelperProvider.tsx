@@ -1,36 +1,31 @@
 "use client"
 
-import {QuizHelper} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizHelper";
-import {QuizNavigator} from "@/app/(page)/quiz/(page)/[detailUrl]/_helper/QuizNavigator";
 import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
-import QuizHelperContext from "@/app/(page)/quiz/_context/quizHelperContext";
-import {useRouter} from "next/navigation";
+import quizStorageHelperContext from "@/app/(page)/quiz/_context/quizStorageHelperContext";
+import {QuizStorageHelper} from "@/app/(page)/quiz/_helper/QuizStorageHelper";
 import React, {useEffect} from 'react';
 
 // 퀴즈 헬퍼 프로바이더(클라이언트용)
-function QuizHelperProvider({children}:{children:React.ReactNode}) {
+function QuizStorageHelperProvider({children}:{children:React.ReactNode}) {
 
-    const router = useRouter();
     const quizStorage = useQuizStorageContext()
-    const [quizHelper, setQuizHelper] = React.useState<QuizHelper | null>(null);
+    const [quizHelper, setQuizHelper] = React.useState<QuizStorageHelper | null>(null);
 
     useEffect(() => {
         if(quizStorage) {
-            const navigator = new QuizNavigator({
-                navigate: (url: string) => router.push(url),
-            });
-            const quizHelper = new QuizHelper(quizStorage, navigator)
+
+            const quizHelper = new QuizStorageHelper(quizStorage)
             setQuizHelper(quizHelper);
         }
     }, [quizStorage]);
 
 
     return (
-        <QuizHelperContext.Provider
+        <quizStorageHelperContext.Provider
             value={quizHelper}>
             {children}
-        </QuizHelperContext.Provider>
+        </quizStorageHelperContext.Provider>
     );
 }
 
-export default QuizHelperProvider;
+export default QuizStorageHelperProvider;

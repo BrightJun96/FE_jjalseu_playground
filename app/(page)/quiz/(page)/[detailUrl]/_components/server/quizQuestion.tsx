@@ -5,8 +5,8 @@ import React from 'react';
 // 퀴즈 문제
 function QuizQuestion({question}:{question:string}) {
     return (
-        <p
-            className={"text-menu"}>{question}</p>
+        <h2
+            className={"text-menu"}>{question}</h2>
     );
 }
 
