@@ -53,7 +53,7 @@ async function Page({
 
 
     return (
-        <>
+        <article>
             {/*퀴즈 설명 타이틀*/}
             <QuizExplanationTitle
                 title={data.metaTitle}
@@ -68,7 +68,7 @@ async function Page({
                 {/*다음 퀴즈 버튼*/}
                 <NextQuizLink/>
             </ButtonContainer>
-        </>
+        </article>
     );
 }
 

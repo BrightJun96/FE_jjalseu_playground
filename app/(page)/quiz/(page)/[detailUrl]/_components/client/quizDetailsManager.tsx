@@ -38,9 +38,9 @@ function QuizDetailsManager({
         [detailUrl,allQuizUrls,quizStorageHelper]
     )
     return (
-        <>
+        <article>
             {children}
-        </>
+        </article>
     );
 }
 
