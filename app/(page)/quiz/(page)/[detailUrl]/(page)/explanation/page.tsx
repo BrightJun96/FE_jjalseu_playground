@@ -9,7 +9,6 @@ import PATHS from "@/app/_constants/paths";
 import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
 import {Metadata} from "next";
 import React from 'react';
-import 'prismjs/themes/prism.css';
 
 
 type Params = Promise<{detailUrl:string}>

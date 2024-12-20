@@ -1,3 +1,6 @@
+import 'prismjs/themes/prism.css';
+
+import sanitize from "@/app/_utils/function/sanitize";
 import React from 'react';
 
 // 퀴즈 해설 컨텐츠
@@ -9,7 +12,7 @@ function QuizExplanationContent({
     return (
         <div
             className={"prose"}
-            dangerouslySetInnerHTML={{__html:content}}
+            dangerouslySetInnerHTML={{__html:sanitize(content)}}
         />
     );
 }
