@@ -19,7 +19,9 @@ function QuizOptionForm() {
     }
 
     return (
-        <form action={formAction}>
+        <form
+        className={"w-full"}
+            action={formAction}>
             <div className={"flex flex-col gap-10 w-full"}>
                 {/*분야*/}
                 <>

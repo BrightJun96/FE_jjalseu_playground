@@ -7,11 +7,11 @@ function HomeInnerContainer({
     children: React.ReactNode
 }) {
     return (
-        <div
+        <section
             className={"flex justify-center items-center flex-col gap-[40px]"}
         >
             {children}
-        </div>
+        </section>
     );
 }
 

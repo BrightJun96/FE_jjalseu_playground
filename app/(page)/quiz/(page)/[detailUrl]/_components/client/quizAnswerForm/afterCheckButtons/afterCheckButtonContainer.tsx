@@ -6,9 +6,11 @@ function AfterCheckButtonContainer({
     children: React.ReactNode
 }) {
     return (
-        <div className={"flex justify-center items-center gap-2 w-full"}>
+        <nav
+            aria-label={"Quiz navigation"}
+            className={"flex justify-center items-center gap-2 w-full"}>
             {children}
-        </div>
+        </nav>
     );
 }
 

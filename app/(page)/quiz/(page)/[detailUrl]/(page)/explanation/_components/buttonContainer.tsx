@@ -5,9 +5,12 @@ function ButtonContainer({children}:{
     children:React.ReactNode
 }) {
     return (
-        <div className={"flex gap-2 justify-center"}>
+        <nav
+            className={"flex gap-2 justify-center"}
+            aria-label={"Quiz navigation"}
+        >
             {children}
-        </div>
+        </nav>
     );
 }
 

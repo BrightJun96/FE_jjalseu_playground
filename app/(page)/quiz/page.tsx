@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 // 퀴즈 시작하기 페이지
 async function Page (){
     return (
-            <div className={"w-full"}>
+            <>
                 {/*퀴즈 시작하기 페이지의 설명을 나타내는 컴포넌트*/}
                 <QuizIntroSection>
                     {/*타이틀*/}
@@ -30,7 +30,7 @@ async function Page (){
                     />
                 </QuizIntroSection>
                 <QuizOptionForm/>
-            </div>
+            </>
 
     );
 }
