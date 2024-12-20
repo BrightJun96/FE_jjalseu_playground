@@ -12,17 +12,21 @@ function Page() {
 
     return (
         <QuizCompletedManager>
+            {/*타이틀*/}
             <QuizCompletedTitle
             >
                 퀴즈 완료
             </QuizCompletedTitle>
+            {/*이모지*/}
             <QuizCompletedEmoji>
                 🥳
             </QuizCompletedEmoji>
+            {/*축하 메시지*/}
             <QuizCompletedDescription>
                 축하드립니다!<br/>
                 모든 퀴즈를 다 푸셨습니다.
             </QuizCompletedDescription>
+            {/*퀴즈 완료 링크*/}
             <QuizCompletedLink/>
         </QuizCompletedManager>
     );
