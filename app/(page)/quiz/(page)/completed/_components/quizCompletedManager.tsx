@@ -18,9 +18,9 @@ function QuizCompletedManager({
     }, [quizStorage]);
 
     return (
-        <>
+        <section>
             {children}
-        </>
+        </section>
     );
 }
 
