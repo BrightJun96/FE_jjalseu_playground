@@ -3,6 +3,7 @@ import QuizExplanationContent from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/
 import QuizExplanationTitle from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationTitle";
 import ReturnButton from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/returnButton";
 import NextQuizLink from "@/app/(page)/quiz/_common_ui/client/nextQuizLink";
+import { BASE_URL } from "@/app/_constants/baseURL";
 import PATHS from "@/app/_constants/paths";
 import { quizApiHandler } from "@/app/services/quiz/QuizApiHandler";
 import { Metadata } from "next";
@@ -37,7 +38,7 @@ export async function generateMetadata({
         title: `해설-${data.metaTitle}`,
         description: `해설-${data.metaDescription}`,
         alternates: {
-            canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${PATHS.QUIZ_EXPLANATION(detailUrl)}`,
+            canonical: `${BASE_URL}/${PATHS.QUIZ_EXPLANATION(detailUrl)}`,
         },
     };
 }
