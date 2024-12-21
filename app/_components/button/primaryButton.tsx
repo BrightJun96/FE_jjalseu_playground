@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import React from 'react';
+import React from "react";
 
 /**
  * 공통 버튼
@@ -12,22 +12,32 @@ interface IPrimaryButtonProps {
     className?: string;
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
-    color: "primary" |'primarySecondary';
+    color: "primary" | "primarySecondary";
+    tabIndex?: number;
 }
 
-const PrimaryButton = ({children,onClick,className,disabled,color}:IPrimaryButtonProps) => {
-
+const PrimaryButton = ({
+    children,
+    onClick,
+    className,
+    disabled,
+    color,
+    tabIndex = 0,
+}: IPrimaryButtonProps) => {
     const colors = {
-        primary: "bg-primary-normal text-black hover:bg-primary-dark disabled:bg-primary-disabled disabled:text-white",
-        primarySecondary: "bg-primary-secondary-normal text-white hover:bg-primary-secondary-dark",
+        primary:
+            "bg-primary-normal text-black hover:bg-primary-dark disabled:bg-primary-disabled disabled:text-white",
+        primarySecondary:
+            "bg-primary-secondary-normal text-white hover:bg-primary-secondary-dark",
     };
     return (
         <button
+            tabIndex={tabIndex}
             className={`${colors[color]} rounded-[8px] px-[16px] text-menu flex justify-center items-center min-w-[84px] h-[32px]  ${className}`}
             onClick={onClick}
             disabled={disabled}
         >
-         {children}
+            {children}
         </button>
     );
 };

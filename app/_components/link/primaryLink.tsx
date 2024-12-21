@@ -23,6 +23,7 @@ const PrimaryLink = forwardRef<
             children,
             color = "primary",
             className = "",
+            tabIndex = 0,
         },
         ref,
     ) => {
@@ -36,6 +37,7 @@ const PrimaryLink = forwardRef<
 
         return (
             <Link
+                tabIndex={tabIndex}
                 className={`
                 ${colors[color]} rounded-[8px] px-[16px] text-menu flex justify-center items-center min-w-[84px] h-[32px] ${className}`}
                 href={href}

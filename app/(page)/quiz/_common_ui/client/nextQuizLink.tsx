@@ -11,7 +11,9 @@ function NextQuizLink() {
 
     return (
         <PrimaryLink
-            href={`/${PATHS.QUIZ_RANDOM(randomUrl)}`}>
+            tabIndex={2}
+            href={`/${PATHS.QUIZ_RANDOM(randomUrl)}`}
+        >
             다음 문제
         </PrimaryLink>
     );

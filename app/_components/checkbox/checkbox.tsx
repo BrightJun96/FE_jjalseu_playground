@@ -13,6 +13,7 @@ interface CheckboxProps {
     value: string | number;
     onChange: (value: CheckBoxHandlerProps) => void;
     name?: string;
+    tabIndex?: number;
 }
 
 function Checkbox({
@@ -21,6 +22,7 @@ function Checkbox({
     value,
     onChange,
     name = "options",
+    tabIndex = 0,
 }: CheckboxProps) {
     return (
         <label
@@ -30,6 +32,7 @@ function Checkbox({
         >
             <input
                 name={name}
+                tabIndex={tabIndex}
                 className={"accent-orange-600 w-5 h-5"}
                 value={value}
                 type={"checkbox"}

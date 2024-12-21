@@ -1,15 +1,21 @@
 import PrimaryButton from "@/app/_components/button/primaryButton";
 import PlaceOnCenter from "@/app/_layout/placeOnCenter";
-import React from 'react';
+import React from "react";
 
 // 채점 버튼
-function BeforeCheckButton({userAnswer}:{userAnswer:number[]}) {
+function BeforeCheckButton({
+    userAnswer,
+}: {
+    userAnswer: number[];
+}) {
     return (
         <PlaceOnCenter>
             <PrimaryButton
+                tabIndex={2}
                 disabled={userAnswer.length === 0}
                 type={"submit"}
-                color={"primary"}>
+                color={"primary"}
+            >
                 채점
             </PrimaryButton>
         </PlaceOnCenter>
