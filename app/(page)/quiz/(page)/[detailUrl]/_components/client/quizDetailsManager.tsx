@@ -16,6 +16,7 @@ function QuizDetailsManager({
     const quizStorageHelper = useQuizStorageHelperContext();
     const quizStorage = useQuizStorageContext();
     const allQuizUrls = quizStorage?.getQuizUrlList();
+
     useEffect(
         () => {
             // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
@@ -35,6 +36,7 @@ function QuizDetailsManager({
             };
         },
         // 퀴즈 URL 목록을 감지해야함.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [detailUrl, allQuizUrls, quizStorageHelper],
     );
     return (
