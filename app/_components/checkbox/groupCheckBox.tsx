@@ -19,6 +19,7 @@ interface GroupCheckBoxProps {
     label?: string; //  라벨
     className?: string;
     isMultiSelect?: boolean; // 다중 선택 가능 여부
+    tabIndex?: number;
 }
 
 // 체크박스 그룹 컴포넌트
@@ -28,6 +29,7 @@ function GroupCheckBox({
     onChange,
     label,
     isMultiSelect = true, // 기본 다중 선택 가능
+    tabIndex = 0,
 }: GroupCheckBoxProps) {
     // 체크박스 그룹 상태
     const [checkedList, setCheckedList] = React.useState<
@@ -80,6 +82,7 @@ function GroupCheckBox({
                 >
                     <span>{i + 1}.</span>
                     <Checkbox
+                        tabIndex={tabIndex}
                         checked={checkedList.includes(
                             v.value,
                         )}
