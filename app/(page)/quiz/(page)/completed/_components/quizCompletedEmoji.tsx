@@ -7,9 +7,9 @@ function QuizCompletedEmoji({
 }) {
     return (
         <span
-            className={
-                "text-[120px] text-center"
-            }>
+            aria-label={"이모티콘"}
+            className={"text-[120px] text-center"}
+        >
             {children}
         </span>
     );
