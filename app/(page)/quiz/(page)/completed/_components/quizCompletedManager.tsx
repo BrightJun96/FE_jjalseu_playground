@@ -18,9 +18,11 @@ function QuizCompletedManager({
 
     return (
         <section
+            aria-label={"퀴즈 완료 페이지"}
             className={
                 "w-full flex flex-col gap-3 lg:mt-[50px]"
-            }>
+            }
+        >
             {children}
         </section>
     );

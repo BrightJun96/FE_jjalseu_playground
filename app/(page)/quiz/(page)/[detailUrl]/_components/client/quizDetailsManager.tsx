@@ -37,7 +37,11 @@ function QuizDetailsManager({
         // 퀴즈 URL 목록을 감지해야함.
         [detailUrl, allQuizUrls, quizStorageHelper],
     );
-    return <article>{children}</article>;
+    return (
+        <article aria-label={"퀴즈 상세 페이지"}>
+            {children}
+        </article>
+    );
 }
 
 export default QuizDetailsManager;

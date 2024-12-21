@@ -8,9 +8,9 @@ function QuizIntroSection({
 }) {
     return (
         <section
-            className={
-                "flex flex-col gap-2 mt-24"
-            }>
+            aria-label={"퀴즈 시작하기 페이지"}
+            className={"flex flex-col gap-2 mt-24"}
+        >
             {children}
         </section>
     );

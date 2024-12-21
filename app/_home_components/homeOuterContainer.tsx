@@ -8,6 +8,7 @@ function HomeOuterContainer({
 }) {
     return (
         <div
+            aria-label={"메인 페이지"}
             className="w-full h-full
         lg:pt-[250px] md:pt-[150px] sm:pt-[100px]"
         >
