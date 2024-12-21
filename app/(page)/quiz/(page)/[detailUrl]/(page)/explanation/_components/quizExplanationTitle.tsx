@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
 
 // 퀴즈 해설 타이틀
 function QuizExplanationTitle({
-                                    title
-                              }:{
-    title:string
+    title,
+}: {
+    title: string;
 }) {
     return (
         <h1
+            aria-live={"polite"}
             className={"text-title1"}
         >
             {title} 해설
