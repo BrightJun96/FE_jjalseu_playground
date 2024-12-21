@@ -1,4 +1,5 @@
 import QuizDetails from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizDetails";
+import { BASE_URL } from "@/app/_constants/baseURL";
 import { quizApiHandler } from "@/app/services/quiz/QuizApiHandler";
 import { Metadata } from "next";
 import React from "react";
@@ -18,9 +19,9 @@ type Params = Promise<{ detailUrl: string }>;
 // SSG 실행할 페이지 ID 추출, 서버에 받아오는 PK들은 모두 SSG 방식으로 구현
 export async function generateStaticParams() {
     const { data } =
-        await quizApiHandler.fetchQuizDetailUrlList(
-            { cache: "no-store" },
-        );
+        await quizApiHandler.fetchQuizDetailUrlList({
+            cache: "no-store",
+        });
 
     return data.map((url) => ({
         detailUrl: url,
@@ -44,16 +45,12 @@ export async function generateMetadata({
         title: data.metaTitle,
         description: data.metaDescription,
         alternates: {
-            canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/quiz/${data.detailUrl}`,
+            canonical: `${BASE_URL}/quiz/${data.detailUrl}`,
         },
     };
 }
 
-const Page = async ({
-    params,
-}: {
-    params: Params;
-}) => {
+const Page = async ({ params }: { params: Params }) => {
     const { detailUrl } = await params;
     const { data } =
         await quizApiHandler.fetchQuizDetailByUrl(
