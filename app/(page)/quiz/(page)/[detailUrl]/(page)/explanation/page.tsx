@@ -13,6 +13,7 @@ import React from 'react';
 
 type Params = Promise<{detailUrl:string}>
 
+//
 export async function generateStaticParams() {
 
     const {data} = await quizApiHandler.fetchQuizDetailUrlList({cache:"no-store"});
