@@ -6,7 +6,6 @@ import QuizContent from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server
 import QuizQuestion from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizQuestion";
 import QuizTitle from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizTitle";
 
-import 'prismjs/themes/prism.css';
 import {QuizItem} from "@/app/services/quiz/types";
 import React from 'react';
 

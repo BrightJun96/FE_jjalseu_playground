@@ -1,12 +1,16 @@
-"use server"
+"use server";
 
-import React from 'react';
+import React from "react";
 
 // 퀴즈 문제
-function QuizQuestion({question}:{question:string}) {
+function QuizQuestion({ question }: { question: string }) {
     return (
         <h2
-            className={"text-menu"}>{question}</h2>
+            aria-live={"polite"}
+            className={"text-menu"}
+        >
+            {question}
+        </h2>
     );
 }
 
