@@ -1,8 +1,7 @@
-import Checkbox, {
-    CheckBoxHandlerProps,
-} from "@/app/_components/used/checkbox/single/checkbox";
+import GroupCheckBoxContainer from "@/app/_components/used/checkbox/group/groupCheckBoxContainer";
+import GroupCheckBoxContent from "@/app/_components/used/checkbox/group/groupCheckBoxContent";
+import { CheckBoxHandlerProps } from "@/app/_components/used/checkbox/single/checkbox";
 import { primitive } from "@/app/_types/primitive";
-import { className } from "postcss-selector-parser";
 import React, { ReactNode, useEffect } from "react";
 
 // 체크박스 그룹 옵션
@@ -12,11 +11,11 @@ export interface GroupCheckBoxOption {
     // checked:boolean;
 }
 
+// 체크박스 그룹 프롭스
 interface GroupCheckBoxProps {
     direction?: "row" | "col"; // 방향
     options: GroupCheckBoxOption[]; // 체크박스 그룹 옵션
     onChange: (value: primitive[]) => void; // 체크박스 그룹 변경 핸들러
-    label?: string; //  라벨
     className?: string;
     isMultiSelect?: boolean; // 다중 선택 가능 여부
     tabIndex?: number;
@@ -27,9 +26,9 @@ function GroupCheckBox({
     direction = "col",
     options,
     onChange,
-    label,
     isMultiSelect = true, // 기본 다중 선택 가능
     tabIndex = 0,
+    className,
 }: GroupCheckBoxProps) {
     // 체크박스 그룹 상태
     const [checkedList, setCheckedList] = React.useState<
@@ -64,35 +63,21 @@ function GroupCheckBox({
     }, [checkedList]);
 
     return (
-        <div
-            className={`flex ${direction === "col" ? "flex-col" : "flex-row"}
-            w-full
-            ${className}
-            `}
+        <GroupCheckBoxContainer
+            direction={direction}
+            containerClassName={className}
         >
-            {label && (
-                <span className={"text-title3Normal"}>
-                    {label}
-                </span>
-            )}
             {options.map((v, i) => (
-                <div
-                    className={`flex items-center gap-1`}
+                <GroupCheckBoxContent
                     key={i}
-                >
-                    <span>{i + 1}.</span>
-                    <Checkbox
-                        tabIndex={tabIndex}
-                        checked={checkedList.includes(
-                            v.value,
-                        )}
-                        label={v.label}
-                        value={v.value}
-                        onChange={groupCheckHandler}
-                    />
-                </div>
+                    index={i}
+                    tabIndex={tabIndex}
+                    value={v}
+                    groupCheckHandler={groupCheckHandler}
+                    checkedList={checkedList}
+                />
             ))}
-        </div>
+        </GroupCheckBoxContainer>
     );
 }
 

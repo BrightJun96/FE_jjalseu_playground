@@ -18,9 +18,10 @@ function CheckInput({
             value,
         });
     }
+
     return (
         <input
-            id={"checkbox"}
+            id={`checkbox-${value}`}
             name={name}
             tabIndex={tabIndex}
             className={"accent-orange-600 w-5 h-5"}

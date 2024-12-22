@@ -32,7 +32,7 @@ function Checkbox({
     tabIndex = 0,
 }: CheckboxProps) {
     return (
-        <CheckboxLabel>
+        <CheckboxLabel value={value}>
             <CheckInput
                 checked={checked}
                 value={value}
