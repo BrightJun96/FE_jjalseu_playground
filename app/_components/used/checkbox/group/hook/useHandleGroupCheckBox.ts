@@ -1,5 +1,6 @@
 import useGroupCheckContext from "@/app/_components/used/checkbox/group/context/useGroupCheckContext";
 import { CheckBoxHandlerProps } from "@/app/_components/used/checkbox/single/checkbox";
+import { ArrayUtils } from "@/app/_utils/class/ArrayUtils";
 
 // 체크박스 그룹 핸들러 훅
 function useHandleGroupCheckBox(isMultiSelect: boolean) {
@@ -26,13 +27,16 @@ function useHandleGroupCheckBox(isMultiSelect: boolean) {
         // 체크한 경우
         if (value.checked) {
             setCheckedList((prev) =>
-                Array.from(new Set([...prev, value.value])),
+                ArrayUtils.removeDuplicate([
+                    ...prev,
+                    value.value,
+                ]),
             );
         }
         // 체크 해제한 경우
         else {
             setCheckedList((prev) =>
-                prev.filter((v) => v !== value.value),
+                ArrayUtils.filter(prev, value.value),
             );
         }
     }
