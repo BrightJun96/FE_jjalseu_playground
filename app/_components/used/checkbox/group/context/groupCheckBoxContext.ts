@@ -5,10 +5,16 @@ import {
     SetStateAction,
 } from "react";
 
-// 그룹 체크박스 컨텍스트
-const GroupCheckBoxContext = createContext<{
+// 그룹 체크박스 컨텍스트 상태 타입
+export interface GroupCheckBoxContextStateType {
     checkedList: primitive[];
     setCheckedList: Dispatch<SetStateAction<primitive[]>>;
-} | null>(null);
+}
+
+// 그룹 체크박스 컨텍스트
+const GroupCheckBoxContext =
+    createContext<GroupCheckBoxContextStateType | null>(
+        null,
+    );
 
 export default GroupCheckBoxContext;

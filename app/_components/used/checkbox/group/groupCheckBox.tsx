@@ -1,5 +1,6 @@
 import GroupCheckBoxContainer from "@/app/_components/used/checkbox/group/groupCheckBoxContainer";
 import GroupCheckBoxContent from "@/app/_components/used/checkbox/group/groupCheckBoxContent";
+import useGetCheckedList from "@/app/_components/used/checkbox/group/hook/useGetCheckedList";
 import useHandleGroupCheckBox from "@/app/_components/used/checkbox/group/hook/useHandleGroupCheckBox";
 import React, { ReactNode } from "react";
 
@@ -26,8 +27,10 @@ function GroupCheckBox({
     tabIndex = 0,
     className,
 }: GroupCheckBoxProps) {
-    const { groupCheckHandler, getCheckedList } =
+    const groupCheckHandler =
         useHandleGroupCheckBox(isMultiSelect);
+
+    const getCheckedList = useGetCheckedList();
 
     return (
         <GroupCheckBoxContainer
@@ -41,7 +44,7 @@ function GroupCheckBox({
                     tabIndex={tabIndex}
                     value={v}
                     groupCheckHandler={groupCheckHandler}
-                    checkedList={getCheckedList()}
+                    checkedList={getCheckedList}
                 />
             ))}
         </GroupCheckBoxContainer>

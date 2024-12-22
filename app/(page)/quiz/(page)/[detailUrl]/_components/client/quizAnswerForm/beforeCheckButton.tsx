@@ -1,27 +1,18 @@
 import PrimaryButton from "@/app/_components/used/button/primaryButton";
-import GroupCheckBoxContext from "@/app/_components/used/checkbox/group/context/groupCheckBoxContext";
+import useGetCheckedList from "@/app/_components/used/checkbox/group/hook/useGetCheckedList";
 import PlaceOnCenter from "@/app/_layout/placeOnCenter";
-import React, { useContext } from "react";
+import { ArrayUtils } from "@/app/_utils/class/ArrayUtils";
+import React from "react";
 
 // 채점 버튼
 function BeforeCheckButton() {
-    const groupCheckState = useContext(
-        GroupCheckBoxContext,
-    );
-
-    function getCheckedList() {
-        return groupCheckState
-            ? groupCheckState.checkedList
-            : [];
-    }
-
-    const disabledCondition = getCheckedList().length === 0;
+    const checkedList = useGetCheckedList();
 
     return (
         <PlaceOnCenter>
             <PrimaryButton
                 tabIndex={2}
-                disabled={disabledCondition}
+                disabled={ArrayUtils.isEmpty(checkedList)}
                 type={"submit"}
                 color={"primary"}
             >
