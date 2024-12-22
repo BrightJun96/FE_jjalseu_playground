@@ -1,11 +1,10 @@
-// 체크 박스 핸들러 클래스
 import { GroupCheckBoxContextStateType } from "@/app/_components/used/checkbox/group/context/groupCheckBoxContext";
 import { CheckBoxHandlerProps } from "@/app/_components/used/checkbox/single/checkbox";
 import { primitive } from "@/app/_types/primitive";
 import { ArrayUtils } from "@/app/_utils/class/ArrayUtils";
 
 // 체크 박스 핸들러 클래스
-export default class CheckBoxHandler {
+export default class CheckBoxGroupController {
     constructor(
         private groupCheckState: GroupCheckBoxContextStateType | null,
         private isMultiSelect: boolean,
