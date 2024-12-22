@@ -1,19 +1,25 @@
 "use client";
 
+import CheckboxLabel from "@/app/_components/used/checkbox/single/checkboxLabel";
+import CheckInput from "@/app/_components/used/checkbox/single/checkInput";
+import CheckText from "@/app/_components/used/checkbox/single/checkText";
+
 import React, { ReactNode } from "react";
 
+// 체크박스 핸들러 프롭스
 export interface CheckBoxHandlerProps {
     checked: boolean;
     value: string | number;
 }
 
-interface CheckboxProps {
-    checked: boolean;
-    label: ReactNode;
-    value: string | number;
-    onChange: (value: CheckBoxHandlerProps) => void;
-    name?: string;
-    tabIndex?: number;
+// 체크박스 프롭스
+export interface CheckboxProps {
+    checked: boolean; // 체크 여부
+    label: ReactNode; // 라벨
+    value: string | number; // 값
+    onChange: (value: CheckBoxHandlerProps) => void; // 체크박스 변경 핸들러
+    name?: string; // 이름
+    tabIndex?: number; // 탭 인덱스
 }
 
 // 체크박스 컴포넌트
@@ -26,27 +32,16 @@ function Checkbox({
     tabIndex = 0,
 }: CheckboxProps) {
     return (
-        <label
-            className={
-                "w-full flex cursor-pointer gap-2 items-center"
-            }
-        >
-            <input
+        <CheckboxLabel>
+            <CheckInput
+                checked={checked}
+                value={value}
+                onChange={onChange}
                 name={name}
                 tabIndex={tabIndex}
-                className={"accent-orange-600 w-5 h-5"}
-                value={value}
-                type={"checkbox"}
-                checked={checked}
-                onChange={(e) =>
-                    onChange({
-                        checked: e.target.checked,
-                        value,
-                    })
-                }
             />
-            {label}
-        </label>
+            <CheckText>{label}</CheckText>
+        </CheckboxLabel>
     );
 }
 
