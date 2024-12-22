@@ -1,18 +1,18 @@
-import PrimaryButton from "@/app/_components/button/primaryButton";
+import PrimaryButton from "@/app/_components/used/button/primaryButton";
+import useGetCheckedList from "@/app/_components/used/checkbox/group/hook/useGetCheckedList";
 import PlaceOnCenter from "@/app/_layout/placeOnCenter";
+import { ArrayUtils } from "@/app/_utils/class/ArrayUtils";
 import React from "react";
 
 // 채점 버튼
-function BeforeCheckButton({
-    userAnswer,
-}: {
-    userAnswer: number[];
-}) {
+function BeforeCheckButton() {
+    const checkedList = useGetCheckedList();
+
     return (
         <PlaceOnCenter>
             <PrimaryButton
                 tabIndex={2}
-                disabled={userAnswer.length === 0}
+                disabled={ArrayUtils.isEmpty(checkedList)}
                 type={"submit"}
                 color={"primary"}
             >

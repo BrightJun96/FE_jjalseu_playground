@@ -1,4 +1,4 @@
-import PrimaryLink from "@/app/_components/link/primaryLink";
+import PrimaryLink from "@/app/_components/used/link/primaryLink";
 import PATHS from "@/app/_constants/paths";
 import React from "react";
 

@@ -1,5 +1,5 @@
-import ModalProvider from "@/app/_components/modal/_provider/modalProvider";
-import { WebVitals } from "@/app/_components/webVitals/webVitails";
+import ModalProvider from "@/app/_components/used/modal/_provider/modalProvider";
+import { WebVitals } from "@/app/_components/used/webVitals/webVitails";
 import Header from "@/app/_layout/header/header";
 import MainContainer from "@/app/_layout/mainContainer";
 import type { Metadata } from "next";

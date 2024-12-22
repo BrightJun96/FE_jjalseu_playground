@@ -6,13 +6,9 @@ import React from "react";
 function QuizAnswers({
     quizType,
     quizMultipleChoiceContents,
-    setUserAnswer,
 }: {
     quizType: string;
     quizMultipleChoiceContents: MultipleChoiceContent[];
-    setUserAnswer: React.Dispatch<
-        React.SetStateAction<number[]>
-    >;
 }) {
     return (
         <>
@@ -22,7 +18,7 @@ function QuizAnswers({
                     quizMultipleChoiceContents={
                         quizMultipleChoiceContents
                     }
-                    setUserAnswer={setUserAnswer}
+                    // setUserAnswer={setUserAnswer}
                 />
             )}
         </>

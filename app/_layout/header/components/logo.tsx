@@ -1,6 +1,6 @@
-import PrimaryLink from "@/app/_components/link/primaryLink";
+import PrimaryLink from "@/app/_components/used/link/primaryLink";
 import PATHS from "@/app/_constants/paths";
-import React from 'react';
+import React from "react";
 
 // 로고
 function Logo() {
@@ -9,7 +9,9 @@ function Logo() {
             <PrimaryLink
                 href={PATHS.HOME}
                 color={"none"}
-                className={"text-primary-normal text-title1 font-bold"}
+                className={
+                    "text-primary-normal text-title1 font-bold"
+                }
             >
                 코아
             </PrimaryLink>

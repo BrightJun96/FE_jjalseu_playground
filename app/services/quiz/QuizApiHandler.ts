@@ -9,7 +9,7 @@ import {
     QuizItem,
 } from "@/app/services/quiz/types";
 
-// 예외 처리와 비즈니스 로직을 포함한 메서드
+// 퀴즈 API - 통신 + 예외 처리와 비즈니스 로직을 포함
 export class QuizApiHandler extends QuizApi {
     // 퀴즈 정답 확인
     async fetchCheckAnswer(checkAnswer: {

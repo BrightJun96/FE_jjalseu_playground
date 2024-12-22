@@ -1,7 +1,7 @@
-"use server"
+"use server";
 
-import {quizApiHandler} from "@/app/services/quiz/QuizApiHandler";
-import {CheckAnswerResponse} from "@/app/services/quiz/types";
+import { quizApiHandler } from "@/app/services/quiz/QuizApiHandler";
+import { CheckAnswerResponse } from "@/app/services/quiz/types";
 
 /**
  * @description
@@ -9,35 +9,41 @@ import {CheckAnswerResponse} from "@/app/services/quiz/types";
  */
 
 // 퀴즈 URL 목록
-export async function getQuizDetailUrlListAction(prevState:{
-    urlList:string[],
-    isSubmit:boolean
-},formData:FormData){
-
-    const field = formData.get("field")
-    const {data:urlList} = await quizApiHandler.fetchQuizDetailUrlList()
-    return {urlList,isSubmit:true}
+export async function getQuizDetailUrlListAction(
+    prevState: {
+        urlList: string[];
+        isSubmit: boolean;
+    },
+    formData: FormData,
+) {
+    const field = formData.get("field");
+    // console.log("field", field);
+    const { data: urlList } =
+        await quizApiHandler.fetchQuizDetailUrlList();
+    return { urlList, isSubmit: true };
 }
 
-interface CheckAnswerResponseExtends extends CheckAnswerResponse{
-    check:boolean
+interface CheckAnswerResponseExtends
+    extends CheckAnswerResponse {
+    check: boolean;
 }
 
 // 퀴즈 정답 확인
-export async function checkAnswerAction(prevState:CheckAnswerResponseExtends,formData:FormData){
-
-
-   const options =  formData.getAll("options").map((option) => Number(option))
+export async function checkAnswerAction(
+    prevState: CheckAnswerResponseExtends,
+    formData: FormData,
+) {
+    const options = formData
+        .getAll("options")
+        .map((option) => Number(option));
 
     const checkAnswer = {
-        quizId:Number(formData.get("quizId")),
-        userAnswer:options
-    }
+        quizId: Number(formData.get("quizId")),
+        userAnswer: options,
+    };
 
+    const { data: checkAnswerData } =
+        await quizApiHandler.fetchCheckAnswer(checkAnswer);
 
-    const {data:checkAnswerData}  = await quizApiHandler.fetchCheckAnswer(checkAnswer)
-
-
-    return {...checkAnswerData,check:true}
+    return { ...checkAnswerData, check: true };
 }
-
