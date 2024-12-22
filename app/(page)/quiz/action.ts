@@ -17,7 +17,7 @@ export async function getQuizDetailUrlListAction(
     formData: FormData,
 ) {
     const field = formData.get("field");
-    console.log("field", field);
+    // console.log("field", field);
     const { data: urlList } =
         await quizApiHandler.fetchQuizDetailUrlList();
     return { urlList, isSubmit: true };

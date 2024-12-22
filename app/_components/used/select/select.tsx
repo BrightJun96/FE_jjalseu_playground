@@ -5,7 +5,8 @@ import SelectOption from "@/app/_components/used/select/selectOption";
 import { primitive } from "@/app/_types/primitive";
 import React, { ReactNode } from "react";
 
-interface PrimarySelectProps {
+// 셀렉트 프롭스
+interface SelectProps {
     label: ReactNode; //
     options: Option[]; // 옵션
     name: string; // 이름
@@ -24,7 +25,7 @@ function Select({
     options,
     name,
     tabIndex = 0,
-}: PrimarySelectProps) {
+}: SelectProps) {
     return (
         <SelectLayout>
             <SelectLabel>{label}</SelectLabel>
