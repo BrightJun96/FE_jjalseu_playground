@@ -1,21 +1,18 @@
 import GroupCheckBoxContainer from "@/app/_components/used/checkbox/group/groupCheckBoxContainer";
 import GroupCheckBoxContent from "@/app/_components/used/checkbox/group/groupCheckBoxContent";
 import useHandleGroupCheckBox from "@/app/_components/used/checkbox/group/hook/useHandleGroupCheckBox";
-import { primitive } from "@/app/_types/primitive";
 import React, { ReactNode } from "react";
 
 // 체크박스 그룹 옵션
 export interface GroupCheckBoxOption {
     label: ReactNode;
     value: string | number;
-    // checked:boolean;
 }
 
 // 체크박스 그룹 프롭스
 interface GroupCheckBoxProps {
     direction?: "row" | "col"; // 방향
     options: GroupCheckBoxOption[]; // 체크박스 그룹 옵션
-    onChange: (value: primitive[]) => void; // 체크박스 그룹 변경 핸들러
     className?: string;
     isMultiSelect?: boolean; // 다중 선택 가능 여부
     tabIndex?: number;
@@ -25,19 +22,12 @@ interface GroupCheckBoxProps {
 function GroupCheckBox({
     direction = "col",
     options,
-    onChange,
     isMultiSelect = true, // 기본 다중 선택 가능
     tabIndex = 0,
     className,
 }: GroupCheckBoxProps) {
-    const { checkedList, groupCheckHandler } =
+    const { groupCheckHandler, getCheckedList } =
         useHandleGroupCheckBox(isMultiSelect);
-
-    // checkedList 변경 시, 부모 컴포넌트에게 변경된 checkedList 전달
-    // useEffect(() => {
-    //     onChange(checkedList);
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [checkedList]);
 
     return (
         <GroupCheckBoxContainer
@@ -51,7 +41,7 @@ function GroupCheckBox({
                     tabIndex={tabIndex}
                     value={v}
                     groupCheckHandler={groupCheckHandler}
-                    checkedList={checkedList}
+                    checkedList={getCheckedList()}
                 />
             ))}
         </GroupCheckBoxContainer>
