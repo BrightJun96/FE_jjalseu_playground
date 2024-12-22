@@ -1,13 +1,13 @@
 import Checkbox, {
     CheckBoxHandlerProps,
-} from "@/app/_components/used/checkbox/checkbox";
+} from "@/app/_components/used/checkbox/single/checkbox";
 import { primitive } from "@/app/_types/primitive";
 import { className } from "postcss-selector-parser";
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 
 // 체크박스 그룹 옵션
 export interface GroupCheckBoxOption {
-    label: string | number;
+    label: ReactNode;
     value: string | number;
     // checked:boolean;
 }

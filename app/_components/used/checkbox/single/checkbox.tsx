@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { ReactNode } from "react";
 
 export interface CheckBoxHandlerProps {
     checked: boolean;
@@ -9,13 +9,14 @@ export interface CheckBoxHandlerProps {
 
 interface CheckboxProps {
     checked: boolean;
-    label: string | number;
+    label: ReactNode;
     value: string | number;
     onChange: (value: CheckBoxHandlerProps) => void;
     name?: string;
     tabIndex?: number;
 }
 
+// 체크박스 컴포넌트
 function Checkbox({
     checked,
     label,
