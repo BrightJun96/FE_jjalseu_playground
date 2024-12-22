@@ -22,7 +22,7 @@ function MultipleChoiceAnswers({
             tabIndex={tabIndex}
             options={processedMultipleChoiceContents}
             direction={"col"}
-            isMultiSelect={true}
+            isMultiSelect={false}
         />
     );
 }

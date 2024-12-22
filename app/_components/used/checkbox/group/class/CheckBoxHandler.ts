@@ -9,10 +9,7 @@ export default class CheckBoxHandler {
     constructor(
         private groupCheckState: GroupCheckBoxContextStateType | null,
         private isMultiSelect: boolean,
-    ) {
-        this.groupCheckHandler =
-            this.groupCheckHandler.bind(this);
-    }
+    ) {}
 
     // 체크 리스트
     private get getCheckedList() {
@@ -22,30 +19,30 @@ export default class CheckBoxHandler {
     }
 
     // 체크박스 그룹 핸들러
-    groupCheckHandler(value: CheckBoxHandlerProps) {
+    groupCheckHandler = (value: CheckBoxHandlerProps) => {
         const handler = this.isMultiSelect
             ? this.multiCheckHandler
             : this.singleCheckHandler;
 
         handler(value);
-    }
+    };
 
     // 업데이트 함수
-    private updateCheckedList(values: primitive[]) {
+    private updateCheckedList = (values: primitive[]) => {
         if (!this.groupCheckState) return;
 
         this.groupCheckState.setCheckedList(values);
-    }
+    };
 
     // 단일 체크박스 핸들러
-    private singleCheckHandler(
+    private singleCheckHandler = (
         value: CheckBoxHandlerProps,
-    ) {
-        this.updateCheckedList([value.value]);
-    }
+    ) => this.updateCheckedList([value.value]);
 
     // 멀티 체크박스 핸들러
-    private multiCheckHandler(value: CheckBoxHandlerProps) {
+    private multiCheckHandler = (
+        value: CheckBoxHandlerProps,
+    ) => {
         // 체크한 경우 값
         const CheckedCaseValues =
             ArrayUtils.removeDuplicate([
@@ -66,5 +63,5 @@ export default class CheckBoxHandler {
 
         // 업데이트된 리스트 저장
         this.updateCheckedList(updatedCheckedList);
-    }
+    };
 }
