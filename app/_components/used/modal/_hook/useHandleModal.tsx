@@ -3,7 +3,7 @@ import {
     ModalContext,
     ModalLinkType,
     ModalSetContext,
-} from "@/app/_components/modal/_context/modalContext";
+} from "@/app/_components/used/modal/_context/modalContext";
 import React, { useContext, useEffect } from "react";
 
 const useHandleModal = () => {

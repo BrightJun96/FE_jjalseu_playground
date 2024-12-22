@@ -1,7 +1,7 @@
 "use client";
 
-import CheckIcon from "@/app/_components/select/_icons/checkIcon";
-import DropIcon from "@/app/_components/select/_icons/dropIcon";
+import CheckIcon from "@/app/_components/used/select/_icons/checkIcon";
+import DropIcon from "@/app/_components/used/select/_icons/dropIcon";
 import React, { useEffect, useRef, useState } from "react";
 
 interface Option {

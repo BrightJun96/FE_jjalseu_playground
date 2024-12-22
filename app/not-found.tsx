@@ -1,4 +1,4 @@
-import PrimaryLink from "@/app/_components/link/primaryLink";
+import PrimaryLink from "@/app/_components/used/link/primaryLink";
 import PATHS from "@/app/_constants/paths";
 import Image from "next/image";
 import notFoundImage from "../public/not_found.svg";
@@ -20,7 +20,8 @@ export default function NotFound() {
                 페이지를 찾을 수 없습니다
             </h2>
             <p className="mt-2 text-gray-600 text-center">
-                요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.
+                요청하신 페이지가 존재하지 않거나 이동되었을
+                수 있습니다.
             </p>
 
             {/* 메인 페이지로 이동 버튼 */}

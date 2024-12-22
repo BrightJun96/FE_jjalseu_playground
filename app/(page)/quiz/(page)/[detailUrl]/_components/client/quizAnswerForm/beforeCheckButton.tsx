@@ -1,4 +1,4 @@
-import PrimaryButton from "@/app/_components/button/primaryButton";
+import PrimaryButton from "@/app/_components/used/button/primaryButton";
 import PlaceOnCenter from "@/app/_layout/placeOnCenter";
 import React from "react";
 

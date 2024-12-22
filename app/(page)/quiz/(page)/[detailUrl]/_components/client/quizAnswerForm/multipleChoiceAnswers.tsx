@@ -1,4 +1,4 @@
-import GroupCheckBox from "@/app/_components/checkbox/groupCheckBox";
+import GroupCheckBox from "@/app/_components/used/checkbox/groupCheckBox";
 import { MultipleChoiceContent } from "@/app/services/quiz/types";
 import React from "react";
 

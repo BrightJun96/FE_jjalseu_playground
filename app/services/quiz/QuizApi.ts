@@ -29,6 +29,7 @@ export interface IQuizApi {
     ): Promise<IResponse<QuizItem>>;
 }
 
+// 퀴즈 API(통신만이 목적)
 class QuizApi extends BaseApi implements IQuizApi {
     constructor() {
         super(process.env.NEXT_PUBLIC_API_ENDPOINT!); // BaseApi에 API 엔드포인트 전달

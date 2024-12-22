@@ -1,4 +1,4 @@
-import PrimaryButton from "@/app/_components/button/primaryButton";
+import PrimaryButton from "@/app/_components/used/button/primaryButton";
 import React from "react";
 
 // 퀴즈 시작 버튼 컴포넌트

@@ -1,5 +1,5 @@
-import PrimaryLink from "@/app/_components/link/primaryLink";
-import { ModalContext } from "@/app/_components/modal/_context/modalContext";
+import PrimaryLink from "@/app/_components/used/link/primaryLink";
+import { ModalContext } from "@/app/_components/used/modal/_context/modalContext";
 import React, {
     useContext,
     useEffect,
