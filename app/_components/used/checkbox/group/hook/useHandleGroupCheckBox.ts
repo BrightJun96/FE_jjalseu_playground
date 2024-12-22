@@ -42,7 +42,7 @@ function useHandleGroupCheckBox(isMultiSelect: boolean) {
         value: CheckBoxHandlerProps,
     ) {
         // 다중 선택이 아닌 경우, 체크된 항목이 하나만 선택되도록
-        if (isMultiSelect) {
+        if (!isMultiSelect) {
             singleCheckHandler(value);
             return;
         }
