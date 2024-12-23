@@ -18,33 +18,33 @@ abstract class BaseApi {
         endpoint: string,
         options?: CustomRequestInit,
     ): Promise<IResponse<T>> {
-        try {
-            const headers = {
-                ...this.getDefaultHeaders(),
-                ...options?.headers,
-            };
+        // try {
+        const headers = {
+            ...this.getDefaultHeaders(),
+            ...options?.headers,
+        };
 
-            const processedEndpoint = options?.queryString
-                ? `${endpoint}?${this.buildQueryString(options.queryString)}`
-                : endpoint;
+        const processedEndpoint = options?.queryString
+            ? `${endpoint}?${this.buildQueryString(options.queryString)}`
+            : endpoint;
 
-            const response = await fetch(
-                `${this.baseUrl}/${processedEndpoint}`,
-                {
-                    headers,
-                    ...options,
-                },
-            );
+        const response = await fetch(
+            `${this.baseUrl}/${processedEndpoint}`,
+            {
+                headers,
+                ...options,
+            },
+        );
 
-            if (!response.ok) {
-                await this.handleErrorResponse(response);
-            }
+        // if (!response.ok) {
+        //     await this.handleErrorResponse(response);
+        // }
 
-            return response.json();
-        } catch (error) {
-            console.error("API 요청 중 에러 발생:", error);
-            throw error;
-        }
+        return response.json();
+        // } catch (error) {
+        //     console.error("API 요청 중 에러 발생:", error);
+        //     throw error;
+        // }
     }
 
     private async handleErrorResponse(
