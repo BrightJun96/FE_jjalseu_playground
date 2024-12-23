@@ -5,7 +5,7 @@ import notFoundImage from "../public/not_found.svg";
 
 export default function NotFound() {
     return (
-        <div className="flex w-full h-full flex-col items-center justify-center bg-gray-100 text-gray-800">
+        <div className="flex w-full h-full flex-col gap-6 items-center justify-center bg-gray-100 text-gray-800">
             {/* 이미지 영역 */}
             <Image
                 width={300}
@@ -25,10 +25,11 @@ export default function NotFound() {
             </p>
 
             {/* 메인 페이지로 이동 버튼 */}
-            <PrimaryLink href={PATHS.HOME}>
-                <button className="mt-6 px-6 py-3 bg-[#FF6F00] text-white rounded-lg shadow-md hover:bg-opacity-90 transition duration-300">
-                    메인 페이지로 이동하기
-                </button>
+            <PrimaryLink
+                className={"!h-[48px] "}
+                href={PATHS.HOME}
+            >
+                메인 페이지로 이동하기
             </PrimaryLink>
         </div>
     );

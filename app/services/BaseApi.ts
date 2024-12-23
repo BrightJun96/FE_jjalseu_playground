@@ -1,7 +1,11 @@
-import {CustomRequestInit, IResponse, QueryString} from "@/app/services/api.types";
+import {
+    CustomRequestInit,
+    IResponse,
+    QueryString,
+} from "@/app/services/api.types";
+import ApiError from "@/app/services/ApiError";
 
-abstract class BaseApi{
-
+abstract class BaseApi {
     private readonly baseUrl: string;
 
     protected constructor(baseUrl: string) {
@@ -11,58 +15,70 @@ abstract class BaseApi{
         this.baseUrl = baseUrl;
     }
 
-    protected async request<T=unknown>(endpoint: string, options?: CustomRequestInit):Promise<IResponse<T>>{
-
+    protected async request<T = unknown>(
+        endpoint: string,
+        options?: CustomRequestInit,
+    ): Promise<IResponse<T>> {
         try {
             const headers = {
                 ...this.getDefaultHeaders(),
                 ...options?.headers,
             };
 
-
             const processedEndpoint = options?.queryString
                 ? `${endpoint}?${this.buildQueryString(options.queryString)}`
                 : endpoint;
 
-            const response = await fetch(`${this.baseUrl}/${processedEndpoint}`, {
-                headers
-                , ...options
-            });
+            const response = await fetch(
+                `${this.baseUrl}/${processedEndpoint}`,
+                {
+                    headers,
+                    ...options,
+                },
+            );
 
             if (!response.ok) {
                 await this.handleErrorResponse(response);
             }
 
-            return response.json() ;
+            return response.json();
+        } catch (error) {
+            if (error instanceof ApiError) {
+                error.getDetailsLog();
+            } else {
+                console.error("알 수 없는 에러", error);
+            }
 
-        }
-        catch (error) {
-            console.error("API 요청 중 에러 발생:", error);
             throw error;
         }
-
     }
 
-    private async handleErrorResponse(response: Response): Promise<void> {
+    private async handleErrorResponse(
+        response: Response,
+    ): Promise<void> {
         const errorDetails = await response.text();
-        throw new Error(
-            `Network error: ${response.status} - ${response.statusText}. Details: ${errorDetails}`
+
+        throw new ApiError(
+            "API Error",
+            response.status,
+            errorDetails,
         );
     }
 
     private buildQueryString(query: QueryString): string {
         return Object.entries(query)
-            .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-            .join('&');
+            .map(
+                ([key, value]) =>
+                    `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+            )
+            .join("&");
     }
 
     private getDefaultHeaders(): Record<string, string> {
         return {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         };
     }
-
-
 }
 
 export default BaseApi;

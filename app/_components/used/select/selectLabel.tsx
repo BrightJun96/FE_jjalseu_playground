@@ -8,7 +8,7 @@ function SelectLabel({
 }) {
     return (
         <label
-            id={"select"}
+            htmlFor={"select"}
             className={"text-title3Normal px-2"}
         >
             {children}
