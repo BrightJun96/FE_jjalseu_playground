@@ -3,6 +3,7 @@ import {
     IResponse,
     QueryString,
 } from "@/app/services/api.types";
+import ApiError from "@/app/services/ApiError";
 
 abstract class BaseApi {
     private readonly baseUrl: string;
@@ -42,7 +43,12 @@ abstract class BaseApi {
 
             return response.json();
         } catch (error) {
-            console.error("API 요청 중 에러 발생:", error);
+            if (error instanceof ApiError) {
+                error.getDetailsLog();
+            } else {
+                console.error("알 수 없는 에러", error);
+            }
+
             throw error;
         }
     }
@@ -51,8 +57,11 @@ abstract class BaseApi {
         response: Response,
     ): Promise<void> {
         const errorDetails = await response.text();
-        throw new Error(
-            `Network error: ${response.status} - ${response.statusText}. Details: ${errorDetails}`,
+
+        throw new ApiError(
+            "API Error",
+            response.status,
+            errorDetails,
         );
     }
 
