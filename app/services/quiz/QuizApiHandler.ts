@@ -63,15 +63,6 @@ export class QuizApiHandler extends QuizApi {
         });
     }
 
-    // 퀴즈 상세 조회
-    async fetchQuizDetail(
-        quizId: number,
-    ): Promise<IResponse<QuizItem>> {
-        return this.request<QuizItem>(`quiz/${quizId}`, {
-            method: "GET",
-        });
-    }
-
     // 퀴즈 상세 조회(상세 URL)
     async fetchQuizDetailByUrl(
         detailUrl: string,

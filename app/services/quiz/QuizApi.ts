@@ -18,11 +18,6 @@ export interface IQuizApi {
     // 퀴즈 전체 PK 목록 조회
     fetchQuizPkList(): Promise<IResponse<number[]>>;
 
-    // 퀴즈 상세 조회
-    fetchQuizDetail(
-        quizId: number,
-    ): Promise<IResponse<QuizItem>>;
-
     // 퀴즈 상세 조회 (상세 URL)
     fetchQuizDetailByUrl(
         detailUrl: string,
@@ -64,15 +59,6 @@ class QuizApi extends BaseApi implements IQuizApi {
     // 퀴즈 전체 PK 목록 조회
     async fetchQuizPkList(): Promise<IResponse<number[]>> {
         return this.request<number[]>("quiz/list-pk", {
-            method: "GET",
-        });
-    }
-
-    // 퀴즈 상세 조회
-    async fetchQuizDetail(
-        quizId: number,
-    ): Promise<IResponse<QuizItem>> {
-        return this.request<QuizItem>(`quiz/${quizId}`, {
             method: "GET",
         });
     }
