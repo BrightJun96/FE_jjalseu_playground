@@ -19,14 +19,16 @@ type Params = Promise<{ detailUrl: string }>;
 
 // SSG 실행할 페이지 ID 추출, 서버에 받아오는 PK들은 모두 SSG 방식으로 구현
 export async function generateStaticParams() {
-    const { data } =
+    const response =
         await quizApiHandler.fetchQuizDetailUrlList({
             cache: "no-store",
         });
 
-    return data.map((url) => ({
-        detailUrl: url,
-    }));
+    return response
+        ? response.data.map((url) => ({
+              detailUrl: url,
+          }))
+        : [];
 }
 
 // SEO를 위해 메타데이터(title, description) 설정

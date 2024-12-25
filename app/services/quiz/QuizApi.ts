@@ -13,7 +13,9 @@ export interface IQuizApi {
     }): Promise<IResponse<CheckAnswerResponse>>;
 
     // 퀴즈 전체 DetailUrl 목록 조회
-    fetchQuizDetailUrlList(): Promise<IResponse<string[]>>;
+    fetchQuizDetailUrlList(): Promise<
+        IResponse<string[]> | undefined
+    >;
 
     // 퀴즈 상세 조회 (상세 URL)
     fetchQuizDetailByUrl(
@@ -43,7 +45,7 @@ class QuizApi extends BaseApi implements IQuizApi {
 
     // 퀴즈 전체 DetailUrl 목록 조회
     async fetchQuizDetailUrlList(): Promise<
-        IResponse<string[]>
+        IResponse<string[]> | undefined
     > {
         return this.request<string[]>(
             "quiz/list-detail-url",
@@ -51,13 +53,6 @@ class QuizApi extends BaseApi implements IQuizApi {
                 method: "GET",
             },
         );
-    }
-
-    // 퀴즈 전체 PK 목록 조회
-    async fetchQuizPkList(): Promise<IResponse<number[]>> {
-        return this.request<number[]>("quiz/list-pk", {
-            method: "GET",
-        });
     }
 
     // 퀴즈 상세 조회(상세 URL)

@@ -18,9 +18,13 @@ export async function getQuizDetailUrlListAction(
 ) {
     const field = formData.get("field");
     // console.log("field", field);
-    const { data: urlList } =
+    const response =
         await quizApiHandler.fetchQuizDetailUrlList();
-    return { urlList, isSubmit: true };
+
+    return {
+        urlList: response ? response.data : [],
+        isSubmit: true,
+    };
 }
 
 interface CheckAnswerResponseExtends
