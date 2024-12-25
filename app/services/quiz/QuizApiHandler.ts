@@ -45,13 +45,13 @@ export class QuizApiHandler extends QuizApi {
 
             // 배열이 비어있는 경우, 예외 처리
             ExceptionManager.throwIfArrayEmpty<string>(
-                [],
+                data,
                 "퀴즈 URL 목록이 비어있습니다.",
             );
 
             // 데이터가 없을 경우, 예외 처리
             ExceptionManager.throwIfNullOrUndefined(
-                null,
+                data,
                 "퀴즈 URL 목록이 없습니다.",
             );
 
