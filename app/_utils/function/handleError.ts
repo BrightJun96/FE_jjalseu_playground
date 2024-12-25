@@ -14,6 +14,21 @@ interface Info {
     action: () => void;
 }
 
+type ErrorClass =
+    | ApiError
+    | ArrayEmptyError
+    | NullOrUndefinedError;
+
+// 에러 핸들링 공통 메서드 추출
+function handleSpecificError(
+    error: ErrorClass,
+    message?: string,
+    action?: () => void,
+): void {
+    error.getDetailsLog(message);
+    if (action) action();
+}
+
 // 에러별 처리를 담당하는 함수
 // catch 문에서 종합적으로 error 핸들링하는 함수
 function handleError(
@@ -21,25 +36,23 @@ function handleError(
     errorInfo: IErrorInfo,
 ) {
     if (error instanceof ApiError) {
-        error.getDetailsLog(errorInfo.api?.message);
-        if (errorInfo && errorInfo.api?.action) {
-            errorInfo.api.action();
-        }
-    } else if (error instanceof ArrayEmptyError) {
-        error.getDetailsLog(errorInfo.arrayEmpty?.message);
-        if (errorInfo && errorInfo.arrayEmpty?.action) {
-            errorInfo.arrayEmpty.action();
-        }
-    } else if (error instanceof NullOrUndefinedError) {
-        error.getDetailsLog(
-            errorInfo.nullOrUndefined?.message,
+        handleSpecificError(
+            error,
+            errorInfo.api?.message,
+            errorInfo.api?.action,
         );
-        if (
-            errorInfo &&
-            errorInfo.nullOrUndefined?.action
-        ) {
-            errorInfo.nullOrUndefined.action();
-        }
+    } else if (error instanceof ArrayEmptyError) {
+        handleSpecificError(
+            error,
+            errorInfo.api?.message,
+            errorInfo.api?.action,
+        );
+    } else if (error instanceof NullOrUndefinedError) {
+        handleSpecificError(
+            error,
+            errorInfo.api?.message,
+            errorInfo.api?.action,
+        );
     } else {
         console.error("알 수 없는 에러 발생", error);
     }
