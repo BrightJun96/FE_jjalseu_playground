@@ -26,7 +26,7 @@ export interface IQuizApi {
     // 퀴즈 상세 조회 (상세 URL)
     fetchQuizDetailByUrl(
         detailUrl: string,
-    ): Promise<IResponse<QuizItem>>;
+    ): Promise<IResponse<QuizItem> | undefined>;
 }
 
 // 퀴즈 API(통신만이 목적)
@@ -80,7 +80,7 @@ class QuizApi extends BaseApi implements IQuizApi {
     // 퀴즈 상세 조회(상세 URL)
     async fetchQuizDetailByUrl(
         detailUrl: string,
-    ): Promise<IResponse<QuizItem>> {
+    ): Promise<IResponse<QuizItem> | undefined> {
         return this.request<QuizItem>(
             `quiz/detail-url/${detailUrl}`,
             {

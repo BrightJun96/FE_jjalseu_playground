@@ -3,11 +3,13 @@ import {
     CustomRequestInit,
     IResponse,
 } from "@/app/services/api.types";
+import ApiError from "@/app/services/ApiError";
 import QuizApi from "@/app/services/quiz/QuizApi";
 import {
     CheckAnswerResponse,
     QuizItem,
 } from "@/app/services/quiz/types";
+import { notFound } from "next/navigation";
 
 // 퀴즈 API - 통신 + 예외 처리와 비즈니스 로직을 포함
 export class QuizApiHandler extends QuizApi {
@@ -73,16 +75,25 @@ export class QuizApiHandler extends QuizApi {
     // 퀴즈 상세 조회(상세 URL)
     async fetchQuizDetailByUrl(
         detailUrl: string,
-    ): Promise<IResponse<QuizItem>> {
-        return this.request<QuizItem>(
-            `quiz/detail-url/${detailUrl}`,
-            {
-                method: "GET",
-                next: {
-                    revalidate: 30,
+    ): Promise<IResponse<QuizItem> | undefined> {
+        try {
+            return await this.request<QuizItem>(
+                `quiz/detail-url/${detailUrl}`,
+                {
+                    method: "GET",
+                    next: {
+                        revalidate: 30,
+                    },
                 },
-            },
-        );
+            );
+        } catch (error) {
+            if (error instanceof ApiError) {
+                error.getDetailsLog(
+                    "페이지 로드에러 - 퀴즈 상세 API 에러",
+                );
+                notFound();
+            }
+        }
     }
 }
 

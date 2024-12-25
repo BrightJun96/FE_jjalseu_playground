@@ -59,7 +59,7 @@ abstract class BaseApi {
         const errorDetails = await response.text();
 
         throw new ApiError(
-            "API Error",
+            "API ERROR",
             response.status,
             errorDetails,
         );
