@@ -15,9 +15,6 @@ export interface IQuizApi {
     // 퀴즈 전체 DetailUrl 목록 조회
     fetchQuizDetailUrlList(): Promise<IResponse<string[]>>;
 
-    // 퀴즈 전체 PK 목록 조회
-    fetchQuizPkList(): Promise<IResponse<number[]>>;
-
     // 퀴즈 상세 조회 (상세 URL)
     fetchQuizDetailByUrl(
         detailUrl: string,

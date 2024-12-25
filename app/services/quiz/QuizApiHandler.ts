@@ -56,13 +56,6 @@ export class QuizApiHandler extends QuizApi {
         return response;
     }
 
-    // 퀴즈 전체 PK 목록 조회
-    async fetchQuizPkList(): Promise<IResponse<number[]>> {
-        return this.request<number[]>("quiz/list-pk", {
-            method: "GET",
-        });
-    }
-
     // 퀴즈 상세 조회(상세 URL)
     async fetchQuizDetailByUrl(
         detailUrl: string,
