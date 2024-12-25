@@ -4,13 +4,15 @@ import { quizApiHandler } from "@/app/services/quiz/QuizApiHandler";
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const { data } =
+    const response =
         await quizApiHandler.fetchQuizDetailUrlList();
 
-    return data.map((detailUrl) => ({
-        url: `${BASE_URL}/${PATHS.QUIZ_DETAIL(detailUrl)}`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 1,
-    }));
+    return response
+        ? response.data.map((detailUrl) => ({
+              url: `${BASE_URL}/${PATHS.QUIZ_DETAIL(detailUrl)}`,
+              lastModified: new Date(),
+              changeFrequency: "daily",
+              priority: 1,
+          }))
+        : [];
 }

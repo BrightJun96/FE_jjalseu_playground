@@ -3,6 +3,7 @@ import QuizExplanationContent from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/
 import QuizExplanationTitle from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationTitle";
 import ReturnButton from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/returnButton";
 import NextQuizLink from "@/app/(page)/quiz/_common_ui/client/nextQuizLink";
+import CustomErrorUI from "@/app/_components/used/error/customErrorUI";
 import { BASE_URL } from "@/app/_constants/baseURL";
 import PATHS from "@/app/_constants/paths";
 import { quizApiHandler } from "@/app/services/quiz/QuizApiHandler";
@@ -13,12 +14,16 @@ type Params = Promise<{ detailUrl: string }>;
 
 //
 export async function generateStaticParams() {
-    const { data } =
+    const response =
         await quizApiHandler.fetchQuizDetailUrlList({
             cache: "no-store",
         });
 
-    return data.map((url) => ({ detailUrl: url }));
+    return response
+        ? response.data.map((url) => ({
+              detailUrl: url,
+          }))
+        : [];
 }
 
 // SEO를 위해 메타데이터(title, description) 설정
@@ -29,34 +34,42 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { detailUrl } = await params;
 
-    const { data } =
+    const response =
         await quizApiHandler.fetchQuizDetailByUrl(
             detailUrl,
         );
 
-    return {
-        title: `해설-${data.metaTitle}`,
-        description: `해설-${data.metaDescription}`,
-        alternates: {
-            canonical: `${BASE_URL}/${PATHS.QUIZ_EXPLANATION(detailUrl)}`,
-        },
-    };
+    return response
+        ? {
+              title: `해설-${response.data.metaTitle}`,
+              description: `해설-${response.data.metaDescription}`,
+              alternates: {
+                  canonical: `${BASE_URL}/${PATHS.QUIZ_EXPLANATION(detailUrl)}`,
+              },
+          }
+        : {
+              title: "퀴즈 에러 발생",
+              description:
+                  "퀴즈 정보를 가져오는 중 문제가 발생했습니다.",
+          };
 }
 
 async function Page({ params }: { params: Params }) {
     const { detailUrl } = await params;
-    const { data } =
+    const response =
         await quizApiHandler.fetchQuizDetailByUrl(
             detailUrl,
         );
 
-    return (
+    return response ? (
         <article aria-label={"퀴즈 해설 페이지"}>
             {/*퀴즈 설명 타이틀*/}
-            <QuizExplanationTitle title={data.metaTitle} />
+            <QuizExplanationTitle
+                title={response.data.metaTitle}
+            />
             {/*퀴즈 설명 내용*/}
             <QuizExplanationContent
-                content={data.explanation}
+                content={response.data.explanation}
             />
             <ButtonContainer>
                 {/*돌아가기 버튼*/}
@@ -65,6 +78,10 @@ async function Page({ params }: { params: Params }) {
                 <NextQuizLink />
             </ButtonContainer>
         </article>
+    ) : (
+        <CustomErrorUI>
+            퀴즈 데이터를 가져오는 중 문제가 발생하였어요.
+        </CustomErrorUI>
     );
 }
 

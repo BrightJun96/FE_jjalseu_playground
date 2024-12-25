@@ -13,20 +13,14 @@ export interface IQuizApi {
     }): Promise<IResponse<CheckAnswerResponse>>;
 
     // 퀴즈 전체 DetailUrl 목록 조회
-    fetchQuizDetailUrlList(): Promise<IResponse<string[]>>;
-
-    // 퀴즈 전체 PK 목록 조회
-    fetchQuizPkList(): Promise<IResponse<number[]>>;
-
-    // 퀴즈 상세 조회
-    fetchQuizDetail(
-        quizId: number,
-    ): Promise<IResponse<QuizItem>>;
+    fetchQuizDetailUrlList(): Promise<
+        IResponse<string[]> | undefined
+    >;
 
     // 퀴즈 상세 조회 (상세 URL)
     fetchQuizDetailByUrl(
         detailUrl: string,
-    ): Promise<IResponse<QuizItem>>;
+    ): Promise<IResponse<QuizItem> | undefined>;
 }
 
 // 퀴즈 API(통신만이 목적)
@@ -51,7 +45,7 @@ class QuizApi extends BaseApi implements IQuizApi {
 
     // 퀴즈 전체 DetailUrl 목록 조회
     async fetchQuizDetailUrlList(): Promise<
-        IResponse<string[]>
+        IResponse<string[]> | undefined
     > {
         return this.request<string[]>(
             "quiz/list-detail-url",
@@ -61,26 +55,10 @@ class QuizApi extends BaseApi implements IQuizApi {
         );
     }
 
-    // 퀴즈 전체 PK 목록 조회
-    async fetchQuizPkList(): Promise<IResponse<number[]>> {
-        return this.request<number[]>("quiz/list-pk", {
-            method: "GET",
-        });
-    }
-
-    // 퀴즈 상세 조회
-    async fetchQuizDetail(
-        quizId: number,
-    ): Promise<IResponse<QuizItem>> {
-        return this.request<QuizItem>(`quiz/${quizId}`, {
-            method: "GET",
-        });
-    }
-
     // 퀴즈 상세 조회(상세 URL)
     async fetchQuizDetailByUrl(
         detailUrl: string,
-    ): Promise<IResponse<QuizItem>> {
+    ): Promise<IResponse<QuizItem> | undefined> {
         return this.request<QuizItem>(
             `quiz/detail-url/${detailUrl}`,
             {
