@@ -62,7 +62,12 @@ async function Page({ params }: { params: Params }) {
         );
 
     return response ? (
-        <article aria-label={"퀴즈 해설 페이지"}>
+        <article
+            className={
+                "flex flex-col items-center justify-center"
+            }
+            aria-label={"퀴즈 해설 페이지"}
+        >
             {/*퀴즈 설명 타이틀*/}
             <QuizExplanationTitle
                 title={response.data.metaTitle}
