@@ -11,7 +11,7 @@ function QuizExplanationContent({
 }) {
     return (
         <div
-            className={"prose"}
+            className={"prose w-full"}
             aria-live={"polite"}
             dangerouslySetInnerHTML={{
                 __html: sanitize(content),
