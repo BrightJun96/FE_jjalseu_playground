@@ -37,6 +37,7 @@ abstract class BaseApi {
                 },
             );
 
+            console.log("response", response);
             if (!response.ok) {
                 await this.handleErrorResponse(response);
             }
@@ -45,8 +46,18 @@ abstract class BaseApi {
         } catch (error) {
             if (error instanceof ApiError) {
                 error.getDetailsLog();
+            } else if (error instanceof TypeError) {
+                console.error(`네트워크 에러 발생 ${error}\n
+                다음과 같은 사항을 확인해주세요.
+                - 네트워크 연결을 확인해주세요.
+                - API 엔드포인트가 유효한지 확인해주세요.
+                - CORS 정책을 확인해주세요.
+                `);
             } else {
-                console.error("알 수 없는 에러", error);
+                console.error(
+                    "알 수 없는 에러 발생",
+                    error,
+                );
             }
 
             throw error;
