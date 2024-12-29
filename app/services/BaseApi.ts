@@ -37,7 +37,6 @@ abstract class BaseApi {
                 },
             );
 
-            console.log("response", response);
             if (!response.ok) {
                 await this.handleErrorResponse(response);
             }
