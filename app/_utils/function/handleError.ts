@@ -4,14 +4,17 @@ import ApiError from "@/app/services/ApiError";
 
 // 에러 발생시 정보(메시지, 에러 발생 시 실행할 함수)를 담당하는 인터페이스
 interface IErrorInfo {
+    // API 에러
     api?: Info;
+    // 배열이 비어있는 경우
     arrayEmpty?: Info;
+    // 데이터가 null 또는 undefined인 경우
     nullOrUndefined?: Info;
 }
 
 interface Info {
     message: string;
-    action: () => void;
+    action?: () => void;
 }
 
 type ErrorClass =
@@ -44,15 +47,22 @@ function handleError(
     } else if (error instanceof ArrayEmptyError) {
         handleSpecificError(
             error,
-            errorInfo.api?.message,
-            errorInfo.api?.action,
+            errorInfo.arrayEmpty?.message,
+            errorInfo.arrayEmpty?.action,
         );
     } else if (error instanceof NullOrUndefinedError) {
         handleSpecificError(
             error,
-            errorInfo.api?.message,
-            errorInfo.api?.action,
+            errorInfo.nullOrUndefined?.message,
+            errorInfo.nullOrUndefined?.action,
         );
+    } else if (error instanceof TypeError) {
+        console.error(`네트워크 에러 발생 ${error}\n
+                다음과 같은 사항을 확인해주세요.
+                - 네트워크 연결을 확인해주세요.
+                - API 엔드포인트가 유효한지 확인해주세요.
+                - CORS 정책을 확인해주세요.
+                `);
     } else {
         console.error("알 수 없는 에러 발생", error);
     }
