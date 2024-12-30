@@ -3,7 +3,7 @@ import QuizExplanationContent from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/
 import QuizExplanationTitle from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationTitle";
 import ReturnButton from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/returnButton";
 import { quizApiHandler } from "@/app/(page)/quiz/_api/QuizApiHandler";
-import NextQuizLink from "@/app/(page)/quiz/_common_ui/client/nextQuizLink";
+import NextQuizLink from "@/app/(page)/quiz/_ui/client/nextQuizLink";
 import { BASE_URL } from "@/app/_shared/constants/baseURL";
 import PATHS from "@/app/_shared/constants/paths";
 import CustomErrorUI from "@/app/_shared/ui/used/error/customErrorUI";
