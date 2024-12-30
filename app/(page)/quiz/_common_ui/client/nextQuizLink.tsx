@@ -1,8 +1,8 @@
 "use client";
 
 import useRandomUrl from "@/app/(page)/quiz/_helper/useRandomUrl";
-import PrimaryLink from "@/app/_components/used/link/primaryLink";
-import PATHS from "@/app/_constants/paths";
+import PATHS from "@/app/_shared/constants/paths";
+import PrimaryLink from "@/app/_shared/ui/used/link/primaryLink";
 import React from "react";
 
 // 다음 문제 링크

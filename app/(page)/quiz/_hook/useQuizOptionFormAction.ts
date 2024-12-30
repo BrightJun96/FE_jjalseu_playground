@@ -1,7 +1,7 @@
 import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
 import { getQuizDetailUrlListAction } from "@/app/(page)/quiz/action";
-import PATHS from "@/app/_constants/paths";
-import { ArrayUtils } from "@/app/_utils/class/ArrayUtils";
+import PATHS from "@/app/_shared/constants/paths";
+import { ArrayUtils } from "@/app/_shared/utils/class/ArrayUtils";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 

@@ -1,4 +1,4 @@
-import { CheckAnswerResponse } from "@/app/services/quiz/types";
+import { CheckAnswerResponse } from "@/app/(page)/quiz/_api/types";
 import React from "react";
 
 // 사용자 정답

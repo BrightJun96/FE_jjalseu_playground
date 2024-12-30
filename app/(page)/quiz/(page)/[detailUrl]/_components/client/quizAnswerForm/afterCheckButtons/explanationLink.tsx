@@ -1,5 +1,5 @@
-import PrimaryLink from "@/app/_components/used/link/primaryLink";
-import PATHS from "@/app/_constants/paths";
+import PATHS from "@/app/_shared/constants/paths";
+import PrimaryLink from "@/app/_shared/ui/used/link/primaryLink";
 import { useParams } from "next/navigation";
 import React from "react";
 

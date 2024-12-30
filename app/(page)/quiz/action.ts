@@ -1,7 +1,7 @@
 "use server";
 
-import { quizApiHandler } from "@/app/services/quiz/QuizApiHandler";
-import { CheckAnswerResponse } from "@/app/services/quiz/types";
+import { quizApiHandler } from "@/app/(page)/quiz/_api/QuizApiHandler";
+import { CheckAnswerResponse } from "@/app/(page)/quiz/_api/types";
 
 /**
  * @description

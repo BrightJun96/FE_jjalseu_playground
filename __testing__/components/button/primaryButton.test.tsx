@@ -1,4 +1,4 @@
-import PrimaryButton from "@/app/_components/used/button/primaryButton";
+import PrimaryButton from "@/app/_shared/ui/used/button/primaryButton";
 import { render } from "@testing-library/react";
 import { expect, test } from "vitest";
 

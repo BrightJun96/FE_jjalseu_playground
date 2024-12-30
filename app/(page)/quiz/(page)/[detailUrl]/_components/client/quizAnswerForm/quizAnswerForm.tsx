@@ -6,9 +6,9 @@ import CheckButtonContainer from "@/app/(page)/quiz/(page)/[detailUrl]/_componen
 import QuizAnswerFormContainer from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizAnswerFormContainer";
 import QuizAnswers from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizAnswers";
 import QuizFormId from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizFormId";
+import { MultipleChoiceContent } from "@/app/(page)/quiz/_api/types";
 import useQuizFormAction from "@/app/(page)/quiz/_helper/useQuizFormAction";
-import GroupCheckBoxProvider from "@/app/_components/used/checkbox/group/provider/groupCheckBoxProvider";
-import { MultipleChoiceContent } from "@/app/services/quiz/types";
+import GroupCheckBoxProvider from "@/app/_shared/ui/used/checkbox/group/provider/groupCheckBoxProvider";
 import React from "react";
 
 // 퀴즈 답안 입력 폼

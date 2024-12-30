@@ -1,5 +1,5 @@
 import { FIELD_OPTIONS } from "@/app/(page)/quiz/constant";
-import Select from "@/app/_components/used/select/select";
+import Select from "@/app/_shared/ui/used/select/select";
 import React from "react";
 
 // 퀴즈 옵션 컴포넌트(분야)
