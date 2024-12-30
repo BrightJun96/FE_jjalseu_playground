@@ -1,8 +1,8 @@
 import QuizResultModalContent from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/modal/quizResultModalContent";
+import { CheckAnswerResponse } from "@/app/(page)/quiz/_api/types";
 import useRandomUrl from "@/app/(page)/quiz/_helper/useRandomUrl";
-import useHandleModal from "@/app/_components/used/modal/_hook/useHandleModal";
-import PATHS from "@/app/_constants/paths";
-import { CheckAnswerResponse } from "@/app/services/quiz/types";
+import PATHS from "@/app/_shared/constants/paths";
+import useHandleModal from "@/app/_shared/ui/used/modal/_hook/useHandleModal";
 import React from "react";
 
 // 퀴즈 모달 관련 함수

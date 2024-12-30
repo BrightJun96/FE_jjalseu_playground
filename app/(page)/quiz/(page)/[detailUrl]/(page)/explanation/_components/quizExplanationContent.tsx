@@ -1,6 +1,6 @@
 import "prismjs/themes/prism.css";
 
-import sanitize from "@/app/_utils/function/sanitize";
+import sanitize from "@/app/_shared/utils/function/sanitize";
 import React from "react";
 
 // 퀴즈 해설 컨텐츠

@@ -1,7 +1,7 @@
 import QuizDetails from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizDetails";
-import CustomErrorUI from "@/app/_components/used/error/customErrorUI";
-import { BASE_URL } from "@/app/_constants/baseURL";
-import { quizApiHandler } from "@/app/services/quiz/QuizApiHandler";
+import { quizApiHandler } from "@/app/(page)/quiz/_api/QuizApiHandler";
+import { BASE_URL } from "@/app/_shared/constants/baseURL";
+import CustomErrorUI from "@/app/_shared/ui/used/error/customErrorUI";
 import { Metadata } from "next";
 import React from "react";
 

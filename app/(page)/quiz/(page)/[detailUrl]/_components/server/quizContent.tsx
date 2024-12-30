@@ -1,6 +1,6 @@
 "use server";
 
-import sanitize from "@/app/_utils/function/sanitize";
+import sanitize from "@/app/_shared/utils/function/sanitize";
 import React from "react";
 import "prismjs/themes/prism.css";
 

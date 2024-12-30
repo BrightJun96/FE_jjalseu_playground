@@ -1,6 +1,6 @@
-import { BASE_URL } from "@/app/_constants/baseURL";
-import PATHS from "@/app/_constants/paths";
-import { quizApiHandler } from "@/app/services/quiz/QuizApiHandler";
+import { quizApiHandler } from "@/app/(page)/quiz/_api/QuizApiHandler";
+import { BASE_URL } from "@/app/_shared/constants/baseURL";
+import PATHS from "@/app/_shared/constants/paths";
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

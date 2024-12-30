@@ -1,5 +1,5 @@
-import GroupCheckBox from "@/app/_components/used/checkbox/group/groupCheckBox";
-import { MultipleChoiceContent } from "@/app/services/quiz/types";
+import { MultipleChoiceContent } from "@/app/(page)/quiz/_api/types";
+import GroupCheckBox from "@/app/_shared/ui/used/checkbox/group/groupCheckBox";
 import React from "react";
 
 // 객관식 문제 답안들
