@@ -2,8 +2,8 @@ import ButtonContainer from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explana
 import QuizExplanationContent from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationContent";
 import QuizExplanationTitle from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationTitle";
 import ReturnButton from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/returnButton";
-import { quizApiHandler } from "@/app/(page)/quiz/_api/QuizApiHandler";
-import NextQuizLink from "@/app/(page)/quiz/_ui/client/nextQuizLink";
+import NextQuizLink from "@/app/(page)/quiz/_ui/nextQuizLink";
+import { quizApiHandler } from "@/app/_features/quiz";
 import { BASE_URL } from "@/app/_shared/constants/baseURL";
 import PATHS from "@/app/_shared/constants/paths";
 import CustomErrorUI from "@/app/_shared/ui/used/error/customErrorUI";

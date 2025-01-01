@@ -1,5 +1,5 @@
 import QuizDetails from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizDetails";
-import { quizApiHandler } from "@/app/(page)/quiz/_api/QuizApiHandler";
+import { quizApiHandler } from "@/app/_features/quiz";
 import { BASE_URL } from "@/app/_shared/constants/baseURL";
 import CustomErrorUI from "@/app/_shared/ui/used/error/customErrorUI";
 import { Metadata } from "next";

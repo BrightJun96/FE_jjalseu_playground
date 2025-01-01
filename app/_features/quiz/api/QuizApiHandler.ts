@@ -1,8 +1,9 @@
-import QuizApi from "@/app/(page)/quiz/_api/QuizApi";
 import {
     CheckAnswerResponse,
+    QuizApi,
     QuizItem,
-} from "@/app/(page)/quiz/_api/types";
+} from "@/app/_entities/quiz";
+
 import {
     CustomRequestInit,
     IResponse,
@@ -12,7 +13,7 @@ import handleError from "@/app/_shared/utils/function/handleError";
 import { notFound, redirect } from "next/navigation";
 
 // 퀴즈 API - 통신 + 예외 처리와 비즈니스 로직을 포함
-export class QuizApiHandler extends QuizApi {
+class QuizApiHandler extends QuizApi {
     // 퀴즈 정답 확인
     async fetchCheckAnswer(checkAnswer: {
         quizId: number;

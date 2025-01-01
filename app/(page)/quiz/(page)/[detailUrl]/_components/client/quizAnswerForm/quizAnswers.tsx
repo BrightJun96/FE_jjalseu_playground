@@ -1,5 +1,5 @@
 import MultipleChoiceAnswers from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/multipleChoiceAnswers";
-import { MultipleChoiceContent } from "@/app/(page)/quiz/_api/types";
+import { MultipleChoiceContent } from "@/app/_entities/quiz";
 import React from "react";
 
 // 퀴즈 답안(객관식, 주관식,OX) 컴포넌트

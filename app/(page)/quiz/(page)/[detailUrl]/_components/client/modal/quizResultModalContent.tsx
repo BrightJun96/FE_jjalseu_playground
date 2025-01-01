@@ -3,7 +3,7 @@ import CorrectAnswerExpression from "@/app/(page)/quiz/(page)/[detailUrl]/_compo
 import IncorrectAnswerExpression from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/modal/answerExpression/incorrectAnswerExpression";
 import CorrectAnswer from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/modal/correctAnswer";
 import UserAnswer from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/modal/userAnswer";
-import { CheckAnswerResponse } from "@/app/(page)/quiz/_api/types";
+import { CheckAnswerResponse } from "@/app/_entities/quiz";
 import React from "react";
 
 // 퀴즈 결과 모달 컨텐츠
