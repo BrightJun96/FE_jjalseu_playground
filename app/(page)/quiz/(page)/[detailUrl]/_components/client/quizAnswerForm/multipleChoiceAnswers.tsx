@@ -1,4 +1,4 @@
-import { MultipleChoiceContent } from "@/app/(page)/quiz/_api/types";
+import { MultipleChoiceContent } from "@/app/_entities/quiz";
 import GroupCheckBox from "@/app/_shared/ui/used/checkbox/group/groupCheckBox";
 import React from "react";
 

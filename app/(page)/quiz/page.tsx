@@ -1,7 +1,7 @@
-import QuizIntroSection from "@/app/(page)/quiz/_components/quizIntroSection";
-import QuizOptionForm from "@/app/(page)/quiz/_components/quizOptionForm/quizOptionForm";
-import QuizStartSubTitle from "@/app/(page)/quiz/_components/quizStartSubTitle";
-import QuizStartTitle from "@/app/(page)/quiz/_components/quizStartTitle";
+import QuizIntroSection from "@/app/(page)/quiz/_ui/quizIntroSection";
+import QuizOptionForm from "@/app/(page)/quiz/_ui/quizOptionForm/quizOptionForm";
+import QuizStartSubTitle from "@/app/(page)/quiz/_ui/quizStartSubTitle";
+import QuizStartTitle from "@/app/(page)/quiz/_ui/quizStartTitle";
 import { Metadata } from "next";
 import React from "react";
 
@@ -21,9 +21,7 @@ async function Page() {
             {/*퀴즈 시작하기 페이지의 설명을 나타내는 컴포넌트*/}
             <QuizIntroSection>
                 {/*타이틀*/}
-                <QuizStartTitle
-                    title={"퀴즈 시작하기"}
-                />
+                <QuizStartTitle title={"퀴즈 시작하기"} />
                 {/*설명*/}
                 <QuizStartSubTitle
                     description={

@@ -1,4 +1,4 @@
-import QuizFieldOption from "@/app/(page)/quiz/_components/quizOptionForm/quizOptions/quizFieldOption";
+import QuizFieldOption from "@/app/(page)/quiz/_ui/quizOptionForm/quizOptions/quizFieldOption";
 import React from "react";
 
 // 퀴즈 옵션 컴포넌트

@@ -1,11 +1,11 @@
 import {
     CheckAnswerResponse,
     QuizItem,
-} from "@/app/(page)/quiz/_api/types";
+} from "@/app/_entities/quiz";
 import { IResponse } from "@/app/_shared/api/api.types";
 import BaseApi from "@/app/_shared/api/BaseApi";
 
-export interface IQuizApi {
+interface IQuizApi {
     // 퀴즈 정답 확인
     fetchCheckAnswer(checkAnswer: {
         quizId: number;
@@ -24,7 +24,7 @@ export interface IQuizApi {
 }
 
 // 퀴즈 API(통신만이 목적)
-class QuizApi extends BaseApi implements IQuizApi {
+export class QuizApi extends BaseApi implements IQuizApi {
     constructor() {
         super(process.env.NEXT_PUBLIC_API_ENDPOINT!); // BaseApi에 API 엔드포인트 전달
     }
@@ -67,5 +67,3 @@ class QuizApi extends BaseApi implements IQuizApi {
         );
     }
 }
-
-export default QuizApi;

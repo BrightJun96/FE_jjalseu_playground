@@ -5,8 +5,8 @@ import QuizDetailsManager from "@/app/(page)/quiz/(page)/[detailUrl]/_components
 import QuizContent from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizContent";
 import QuizQuestion from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizQuestion";
 import QuizTitle from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizTitle";
+import { QuizItem } from "@/app/_entities/quiz";
 
-import { QuizItem } from "@/app/(page)/quiz/_api/types";
 import React from "react";
 
 // 퀴즈 상세 컴포넌트

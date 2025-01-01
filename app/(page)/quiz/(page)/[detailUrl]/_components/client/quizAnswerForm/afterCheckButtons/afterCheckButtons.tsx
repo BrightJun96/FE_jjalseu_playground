@@ -1,6 +1,6 @@
 import AfterCheckButtonContainer from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/afterCheckButtonContainer";
 import ExplanationLink from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/afterCheckButtons/explanationLink";
-import NextQuizLink from "@/app/(page)/quiz/_ui/client/nextQuizLink";
+import NextQuizLink from "@/app/(page)/quiz/_ui/nextQuizLink";
 import React from "react";
 
 // 채점 후 버튼(해설, 다음문제)

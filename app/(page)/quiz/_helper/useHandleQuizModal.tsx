@@ -1,6 +1,6 @@
 import QuizResultModalContent from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/modal/quizResultModalContent";
-import { CheckAnswerResponse } from "@/app/(page)/quiz/_api/types";
 import useRandomUrl from "@/app/(page)/quiz/_helper/useRandomUrl";
+import { CheckAnswerResponse } from "@/app/_entities/quiz";
 import PATHS from "@/app/_shared/constants/paths";
 import useHandleModal from "@/app/_shared/ui/used/modal/_hook/useHandleModal";
 import React from "react";

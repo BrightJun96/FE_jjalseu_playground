@@ -1,4 +1,4 @@
-import { quizApiHandler } from "@/app/(page)/quiz/_api/QuizApiHandler";
+import { quizApiHandler } from "@/app/_features/quiz";
 import { BASE_URL } from "@/app/_shared/constants/baseURL";
 import PATHS from "@/app/_shared/constants/paths";
 import type { MetadataRoute } from "next";
