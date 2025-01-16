@@ -1,7 +1,7 @@
 import Header from "@/app/_shared/layout/header/header";
 import MainContainer from "@/app/_shared/layout/mainContainer";
+import NextUIProvider from "@/app/_shared/provider/nextUIProvider";
 import ModalProvider from "@/app/_shared/ui/used/modal/_provider/modalProvider";
-import { WebVitals } from "@/app/_shared/ui/used/webVitals/webVitails";
 import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
 import localFont from "next/font/local";
@@ -52,15 +52,15 @@ export default function RootLayout({
                 <body
                     className={`${geistMono.className} antialiased bg-gray-100`}
                 >
-                    {/*웹 성능 측정*/}
-                    <WebVitals />
-                    {/*헤더*/}
-                    <Header />
-                    <MainContainer>
-                        <ModalProvider>
-                            {children}
-                        </ModalProvider>
-                    </MainContainer>
+                    <NextUIProvider>
+                        {/*헤더*/}
+                        <Header />
+                        <MainContainer>
+                            <ModalProvider>
+                                {children}
+                            </ModalProvider>
+                        </MainContainer>
+                    </NextUIProvider>
                 </body>
             </html>
         </ViewTransitions>
