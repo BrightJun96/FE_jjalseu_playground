@@ -1,7 +1,7 @@
 "use client";
 
+import WarnIcon from "@/app/_shared/ui/used/input/icons/warnIcon";
 import React, { HTMLInputTypeAttribute } from "react";
-import WarnIcon from "@/app/_shared/ui/unused/input/icons/warnIcon";
 
 /**
  * TextInputProps는 TextInput 컴포넌트의 props를 정의합니다.
@@ -12,6 +12,7 @@ interface TextInputProps {
     isReadOnly?: boolean;
     isDisabled?: boolean;
     value?: string | number;
+    name?: string;
     onChange?: (value: string) => void;
     label?: string;
     includeButton?: React.ReactNode;
@@ -26,6 +27,7 @@ interface TextInputProps {
 
 const TextInput = ({
     value,
+    name,
     placeholder,
     isReadOnly,
     isDisabled,
@@ -67,6 +69,7 @@ const TextInput = ({
                     }
                 >
                     <input
+                        name={name}
                         type={type}
                         value={value}
                         placeholder={placeholder}

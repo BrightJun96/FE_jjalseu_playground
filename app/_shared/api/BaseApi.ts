@@ -20,9 +20,14 @@ abstract class BaseApi {
         options?: CustomRequestInit,
     ): Promise<IResponse<T>> {
         try {
+            // const cookieStore = await cookies();
+            //
+            // const accessToken = cookieStore.get("act");
+
             const headers = {
                 ...this.getDefaultHeaders(),
                 ...options?.headers,
+                // Authorization: accessToken,
             };
 
             const processedEndpoint = options?.queryString
