@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return response
         ? response.data.map((detailUrl) => ({
-              url: `${BASE_URL}/${PATHS.QUIZ_DETAIL(detailUrl)}`,
+              url: `${BASE_URL}/${PATHS.QUIZ_DETAIL(detailUrl.detailUrl)}`,
               lastModified: new Date(),
               changeFrequency: "daily",
               priority: 1,

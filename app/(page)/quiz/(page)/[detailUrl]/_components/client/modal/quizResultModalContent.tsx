@@ -16,7 +16,7 @@ function QuizResultModalContent({
         <>
             {/*답안 표현(정답과 오답에 따라 표현이 다름.)*/}
             <AnswerExpression>
-                {checkAnswerData.correct ? (
+                {checkAnswerData.isCorrect ? (
                     <CorrectAnswerExpression />
                 ) : (
                     <IncorrectAnswerExpression />
