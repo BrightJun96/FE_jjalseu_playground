@@ -41,8 +41,8 @@ export async function generateMetadata({
 
     return response
         ? {
-              title: `해설-${response.data.metaTitle}`,
-              description: `해설-${response.data.metaDescription}`,
+              title: `해설-${response.data.quizMetaData.seoMetaTitle}`,
+              description: `해설-${response.data.quizMetaData.seoMetaDescription}`,
               alternates: {
                   canonical: `${BASE_URL}/${PATHS.QUIZ_EXPLANATION(detailUrl)}`,
               },
@@ -70,11 +70,16 @@ async function Page({ params }: { params: Params }) {
         >
             {/*퀴즈 설명 타이틀*/}
             <QuizExplanationTitle
-                title={response.data.metaTitle}
+                title={
+                    response.data.quizMetaData.seoMetaTitle
+                }
             />
             {/*퀴즈 설명 내용*/}
             <QuizExplanationContent
-                content={response.data.explanation}
+                content={
+                    response.data.quizMetaData
+                        .seoMetaDescription
+                }
             />
             <ButtonContainer>
                 {/*돌아가기 버튼*/}

@@ -2,6 +2,7 @@
 
 import { CheckAnswerResponse } from "@/app/_entities/quiz";
 import { quizApiHandler } from "@/app/_features/quiz";
+import { QuizDetailURLResponseDto } from "@/app/_shared/api/generate.api.types";
 
 /**
  * @description
@@ -11,7 +12,7 @@ import { quizApiHandler } from "@/app/_features/quiz";
 // 퀴즈 URL 목록
 export async function getQuizDetailUrlListAction(
     prevState: {
-        urlList: string[];
+        urlList: QuizDetailURLResponseDto[];
         isSubmit: boolean;
     },
     formData: FormData,
@@ -43,7 +44,7 @@ export async function checkAnswerAction(
 
     const checkAnswer = {
         quizId: Number(formData.get("quizId")),
-        userAnswer: options,
+        answer: options[0],
     };
 
     const { data: checkAnswerData } =

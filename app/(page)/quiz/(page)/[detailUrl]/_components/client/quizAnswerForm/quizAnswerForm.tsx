@@ -7,19 +7,19 @@ import QuizAnswerFormContainer from "@/app/(page)/quiz/(page)/[detailUrl]/_compo
 import QuizAnswers from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizAnswers";
 import QuizFormId from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizFormId";
 import useQuizFormAction from "@/app/(page)/quiz/_helper/useQuizFormAction";
-import { MultipleChoiceContent } from "@/app/_entities/quiz";
+import { GetQuizMultipleChoiceSharedDto } from "@/app/_shared/api/generate.api.types";
 import GroupCheckBoxProvider from "@/app/_shared/ui/used/checkbox/group/provider/groupCheckBoxProvider";
 import React from "react";
 
 // 퀴즈 답안 입력 폼
 function QuizAnswerForm({
     quizId,
-    quizType,
+
     quizMultipleChoiceContents,
 }: {
     quizId: number;
-    quizType: string;
-    quizMultipleChoiceContents: MultipleChoiceContent[];
+
+    quizMultipleChoiceContents: GetQuizMultipleChoiceSharedDto[];
 }) {
     const { isAnswerCheck, formAction } =
         useQuizFormAction();
@@ -32,7 +32,6 @@ function QuizAnswerForm({
                     <QuizFormId quizId={quizId} />
                     {/*퀴즈 답안*/}
                     <QuizAnswers
-                        quizType={quizType}
                         quizMultipleChoiceContents={
                             quizMultipleChoiceContents
                         }

@@ -8,9 +8,7 @@ function CorrectAnswer({
     answer: CheckAnswerResponse["answer"];
 }) {
     return (
-        <p className={"text-title3Bold"}>
-            정답 : {answer.join(",")}
-        </p>
+        <p className={"text-title3Bold"}>정답 : {answer}</p>
     );
 }
 

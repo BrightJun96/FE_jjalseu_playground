@@ -1,3 +1,4 @@
+import { QuizDetailURLResponseDto } from "@/app/_shared/api/generate.api.types";
 import { StorageService } from "@/app/_shared/utils/StorageService";
 
 // Storage 상수
@@ -12,7 +13,9 @@ export class QuizStorage {
     constructor(private storage: StorageService) {}
 
     // 퀴즈 URL 목록 저장
-    saveQuizUrlList(quizUrlList: string[]) {
+    saveQuizUrlList(
+        quizUrlList: QuizDetailURLResponseDto[],
+    ) {
         this.storage.save(
             QUIZ_URL_LIST,
             JSON.stringify(quizUrlList),
@@ -20,16 +23,18 @@ export class QuizStorage {
     }
 
     // 퀴즈 URL 목록 조회
-    getQuizUrlList(): string[] {
+    getQuizUrlList(): QuizDetailURLResponseDto[] {
         return (
-            this.storage.getParsed<string[]>(
-                QUIZ_URL_LIST,
-            ) ?? []
+            this.storage.getParsed<
+                QuizDetailURLResponseDto[]
+            >(QUIZ_URL_LIST) ?? []
         );
     }
 
     // 푼 문제 저장
-    saveSolvedQuiz(solvedQuizList: string[]) {
+    saveSolvedQuiz(
+        solvedQuizList: QuizDetailURLResponseDto[],
+    ) {
         this.storage.save(
             SOLVED_QUIZ_LIST,
             JSON.stringify(solvedQuizList),
@@ -37,11 +42,11 @@ export class QuizStorage {
     }
 
     // 푼 문제 조회
-    getSolvedQuiz(): string[] {
+    getSolvedQuiz(): QuizDetailURLResponseDto[] {
         return (
-            this.storage.getParsed<string[]>(
-                SOLVED_QUIZ_LIST,
-            ) ?? []
+            this.storage.getParsed<
+                QuizDetailURLResponseDto[]
+            >(SOLVED_QUIZ_LIST) ?? []
         );
     }
 

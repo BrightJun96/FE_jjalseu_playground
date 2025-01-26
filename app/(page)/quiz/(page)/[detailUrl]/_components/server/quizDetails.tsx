@@ -5,7 +5,7 @@ import QuizDetailsManager from "@/app/(page)/quiz/(page)/[detailUrl]/_components
 import QuizContent from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizContent";
 import QuizQuestion from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizQuestion";
 import QuizTitle from "@/app/(page)/quiz/(page)/[detailUrl]/_components/server/quizTitle";
-import { QuizItem } from "@/app/_entities/quiz";
+import { GetQuizSharedDto } from "@/app/_shared/api/generate.api.types";
 
 import React from "react";
 
@@ -13,22 +13,23 @@ import React from "react";
 const QuizDetails = ({
     quizData,
 }: {
-    quizData: QuizItem;
+    quizData: GetQuizSharedDto;
 }) => {
     return (
         <QuizDetailsManager>
             {/*퀴즈 제목*/}
-            <QuizTitle title={quizData.metaTitle} />
+            <QuizTitle
+                title={quizData.quizMetaData.seoMetaTitle}
+            />
             {/*퀴즈 문제*/}
             <QuizQuestion question={quizData.title} />
             {/*퀴즈내용*/}
             <QuizContent content={quizData.content} />
             {/*퀴즈 답안 폼*/}
             <QuizAnswerForm
-                quizId={quizData.quizId}
-                quizType={quizData.type}
+                quizId={quizData.id}
                 quizMultipleChoiceContents={
-                    quizData.multipleChoiceContents
+                    quizData.multipleChoices
                 }
             />
         </QuizDetailsManager>

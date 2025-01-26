@@ -1,5 +1,6 @@
 import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
 import { getQuizDetailUrlListAction } from "@/app/(page)/quiz/action";
+import { QuizDetailURLResponseDto } from "@/app/_shared/api/generate.api.types";
 import PATHS from "@/app/_shared/constants/paths";
 import { ArrayUtils } from "@/app/_shared/utils/class/ArrayUtils";
 import { useRouter } from "next/navigation";
@@ -19,11 +20,13 @@ function useQuizOptionFormAction() {
             quizStorage?.saveQuizUrlList(state.urlList);
 
             const randomOne =
-                ArrayUtils.pickRandomOne<string>(
+                ArrayUtils.pickRandomOne<QuizDetailURLResponseDto>(
                     state.urlList,
                 );
 
-            router.push(`/${PATHS.QUIZ_RANDOM(randomOne)}`);
+            router.push(
+                `/${PATHS.QUIZ_RANDOM(randomOne.detailUrl)}`,
+            );
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.isSubmit]);

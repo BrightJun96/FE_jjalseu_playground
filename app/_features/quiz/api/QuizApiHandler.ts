@@ -1,13 +1,17 @@
 import {
     CheckAnswerResponse,
     QuizApi,
-    QuizItem,
 } from "@/app/_entities/quiz";
 
 import {
     CustomRequestInit,
     IResponse,
 } from "@/app/_shared/api/api.types";
+import {
+    GetQuizSharedDto,
+    QuizDetailURLResponseDto,
+} from "@/app/_shared/api/generate.api.types";
+import { API_PATHS } from "@/app/_shared/constants/api.path.const";
 import ExceptionManager from "@/app/_shared/utils/class/ExceptionManager";
 import handleError from "@/app/_shared/utils/function/handleError";
 import { notFound, redirect } from "next/navigation";
@@ -17,10 +21,10 @@ class QuizApiHandler extends QuizApi {
     // 퀴즈 정답 확인
     async fetchCheckAnswer(checkAnswer: {
         quizId: number;
-        userAnswer: number[];
+        answer: number;
     }): Promise<IResponse<CheckAnswerResponse>> {
         return this.request<CheckAnswerResponse>(
-            "quiz/check",
+            API_PATHS.QUIZ.CHECH_ANSWER,
             {
                 method: "POST",
                 body: JSON.stringify(checkAnswer),
@@ -31,21 +35,22 @@ class QuizApiHandler extends QuizApi {
     // 퀴즈 전체 DetailUrl 목록 조회
     async fetchQuizDetailUrlList(
         options?: CustomRequestInit,
-    ): Promise<IResponse<string[]> | undefined> {
+    ): Promise<
+        IResponse<QuizDetailURLResponseDto[]> | undefined
+    > {
         try {
             // 퀴즈 URL 목록 조회
-            const response = await this.request<string[]>(
-                "quiz/list-detail-url",
-                {
-                    method: "GET",
-                    ...options,
-                },
-            );
+            const response = await this.request<
+                QuizDetailURLResponseDto[]
+            >(API_PATHS.QUIZ.DETAIL_URLS, {
+                method: "GET",
+                ...options,
+            });
 
             const { data } = response;
 
             // 배열이 비어있는 경우, 예외 처리
-            ExceptionManager.throwIfArrayEmpty<string>(
+            ExceptionManager.throwIfArrayEmpty<QuizDetailURLResponseDto>(
                 data,
                 "퀴즈 URL 목록이 비어있습니다.",
             );
@@ -80,10 +85,10 @@ class QuizApiHandler extends QuizApi {
     // 퀴즈 상세 조회(상세 URL)
     async fetchQuizDetailByUrl(
         detailUrl: string,
-    ): Promise<IResponse<QuizItem> | undefined> {
+    ): Promise<IResponse<GetQuizSharedDto> | undefined> {
         try {
-            return await this.request<QuizItem>(
-                `quiz/detail-url/${detailUrl}`,
+            return await this.request<GetQuizSharedDto>(
+                `${API_PATHS.QUIZ.DETAIL_URL}/${detailUrl}`,
                 {
                     method: "GET",
                     next: {
