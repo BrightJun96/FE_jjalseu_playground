@@ -11,6 +11,6 @@ export interface CustomRequestInit extends RequestInit {
 // 응답 타입
 export interface IResponse<T> {
     data: T;
-    message: string | null;
-    isSuccess: boolean;
+    // message: string | null;
+    // isSuccess: boolean;
 }

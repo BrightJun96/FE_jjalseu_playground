@@ -25,8 +25,8 @@ export async function generateStaticParams() {
         });
 
     return response
-        ? response.data.map((url) => ({
-              detailUrl: url,
+        ? response.data.map((res) => ({
+              detailUrl: res.detailUrl,
           }))
         : [];
 }
@@ -46,8 +46,11 @@ export async function generateMetadata({
 
     return response
         ? {
-              title: response.data.metaTitle,
-              description: response.data.metaDescription,
+              title: response.data.quizMetaData
+                  .seoMetaTitle,
+              description:
+                  response.data.quizMetaData
+                      .seoMetaDescription,
               alternates: {
                   canonical: `${BASE_URL}/quiz/${response.data.detailUrl}`,
               },

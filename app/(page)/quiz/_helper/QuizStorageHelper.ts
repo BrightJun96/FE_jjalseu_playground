@@ -1,4 +1,5 @@
 import { QuizStorage } from "@/app/(page)/quiz/_helper/QuizStorage";
+import { QuizDetailURLResponseDto } from "@/app/_shared/api/generate.api.types";
 import PATHS from "@/app/_shared/constants/paths";
 import { ArrayUtils } from "@/app/_shared/utils/class/ArrayUtils";
 
@@ -7,7 +8,7 @@ export class QuizStorageHelper {
     constructor(private storageManager: QuizStorage) {}
 
     // 푼 문제 저장, 기존에 푼 문제가 있다면 추가,없다면 새로 저장
-    saveSolvedQuiz(currentQuiz: string) {
+    saveSolvedQuiz(currentQuiz: QuizDetailURLResponseDto) {
         const solvedQuizList =
             this.storageManager.getSolvedQuiz();
         const updatedList = ArrayUtils.removeDuplicate([
@@ -41,8 +42,8 @@ export class QuizStorageHelper {
         const solvedQuiz =
             this.storageManager.getSolvedQuiz();
         return ArrayUtils.getDifference<string>(
-            quizUrlList,
-            solvedQuiz,
+            quizUrlList.map((q) => q.detailUrl),
+            solvedQuiz.map((s) => s.detailUrl),
         );
     }
 
@@ -61,8 +62,8 @@ export class QuizStorageHelper {
             isNotEmptyQuizUrlList &&
             isNotEmptySolvedQuiz &&
             ArrayUtils.isEqualLength<string>(
-                quizUrlList,
-                solvedQuiz,
+                quizUrlList.map((q) => q.detailUrl),
+                solvedQuiz.map((s) => s.detailUrl),
             )
         );
     }

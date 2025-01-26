@@ -15,7 +15,7 @@ function useQuizFormAction() {
     const [state, formAction] = useActionState(
         checkAnswerAction,
         {
-            correct: false,
+            isCorrect: false,
             userAnswer: [],
             answer: [],
             check: false,

@@ -1,4 +1,4 @@
-import { MultipleChoiceContent } from "@/app/_entities/quiz";
+import { GetQuizMultipleChoiceSharedDto } from "@/app/_shared/api/generate.api.types";
 import GroupCheckBox from "@/app/_shared/ui/used/checkbox/group/groupCheckBox";
 import React from "react";
 
@@ -7,14 +7,14 @@ function MultipleChoiceAnswers({
     quizMultipleChoiceContents,
     tabIndex = 0,
 }: {
-    quizMultipleChoiceContents: MultipleChoiceContent[];
+    quizMultipleChoiceContents: GetQuizMultipleChoiceSharedDto[];
 
     tabIndex?: number;
 }) {
     const processedMultipleChoiceContents =
-        quizMultipleChoiceContents.map((v) => ({
+        quizMultipleChoiceContents.map((v, i) => ({
             label: `${v.content}`,
-            value: v.number,
+            value: i + 1,
         }));
 
     return (

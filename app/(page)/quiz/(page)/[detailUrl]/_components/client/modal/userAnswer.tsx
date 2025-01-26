@@ -9,7 +9,7 @@ function UserAnswer({
 }) {
     return (
         <p className={"text-title3Bold"}>
-            사용자 답안 :{userAnswer.join(",")}
+            사용자 답안 :{userAnswer}
         </p>
     );
 }
