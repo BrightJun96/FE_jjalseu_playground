@@ -15,7 +15,6 @@ function QuizAnswers({
                 quizMultipleChoiceContents={
                     quizMultipleChoiceContents
                 }
-                // setUserAnswer={setUserAnswer}
             />
         </>
     );

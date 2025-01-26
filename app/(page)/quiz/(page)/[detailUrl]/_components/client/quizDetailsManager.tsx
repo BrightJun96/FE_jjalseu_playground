@@ -2,6 +2,7 @@
 
 import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
 import useQuizStorageHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageHelperContext";
+import { QuizDetailURLResponseDto } from "@/app/_shared/api/generate.api.types";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -29,9 +30,9 @@ function QuizDetailsManager({
             return () => {
                 // 현재 URL 벗어날 시, 푼 문제 리스트에 저장
                 if (quizStorageHelper) {
-                    quizStorageHelper.saveSolvedQuiz(
-                        detailUrl as string,
-                    );
+                    quizStorageHelper.saveSolvedQuiz({
+                        detailUrl,
+                    } as QuizDetailURLResponseDto);
                 }
             };
         },

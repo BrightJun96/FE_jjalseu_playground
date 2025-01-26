@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 
     return response
         ? response.data.map((url) => ({
-              detailUrl: url,
+              detailUrl: url.detailUrl,
           }))
         : [];
 }
