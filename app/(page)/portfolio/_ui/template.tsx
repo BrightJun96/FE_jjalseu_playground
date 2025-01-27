@@ -1,4 +1,5 @@
 import { StringUtils } from "@/app/_shared/utils/class/StringUtils";
+import { Link } from "next-view-transitions";
 import React from "react";
 
 function Template({
@@ -15,13 +16,16 @@ function Template({
     return (
         <div
             id={id}
-            className={`min-h-screen py-[100px] ${className}`}
+            className={`min-h-screen py-[50px] ${className}`}
         >
-            <span className={"text-headline2"}>
+            <Link
+                href={`#${headline}`}
+                className={"text-headline2"}
+            >
                 {StringUtils.capitalizeFirstLetter(
                     headline,
                 )}
-            </span>
+            </Link>
             <hr />
             {children}
         </div>

@@ -2,9 +2,9 @@
 
 import Ability from "@/app/(page)/portfolio/_ui/ability";
 import Main from "@/app/(page)/portfolio/_ui/main";
-import Project from "@/app/(page)/portfolio/_ui/project";
+import Index from "@/app/(page)/portfolio/_ui/project";
 import Tech from "@/app/(page)/portfolio/_ui/tech";
-import Index from "@/app/(page)/portfolio/_ui/work";
+import Work from "@/app/(page)/portfolio/_ui/work";
 import {
     motion,
     useScroll,
@@ -22,10 +22,10 @@ function Page() {
     return (
         <div className={"h-full flex flex-col w-full"}>
             <Main />
-            <Index />
+            <Work />
             <Tech />
             <Ability />
-            <Project />
+            <Index />
             <motion.div
                 id="scroll-indicator"
                 style={{
