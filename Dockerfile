@@ -37,7 +37,7 @@ COPY --from=development /usr/src/app/tsconfig.json tsconfig.json
 COPY --from=development /usr/src/app/next.config.mjs next.config.mjs
 COPY --from=development /usr/src/app/public public
 COPY --from=development /usr/src/app/postcss.config.mjs postcss.config.mjs
-COPY --from=development /usr/src/app/build ./build
+#COPY --from=development /usr/src/app/build ./build
 COPY --from=development /usr/src/app/.next ./.next
 COPY --from=development /usr/src/app/app ./app
 
