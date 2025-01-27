@@ -1,36 +1,3 @@
-#name: Deploy to EC2
-#
-#on:
-#  push:
-#    branches:
-#      - main
-#
-#jobs:
-#  deploy:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v3
-#
-#      - name: Install SSH key
-#        run: |
-#          echo "${{ secrets.EC2_PEM_KEY }}" | tr -d '\r' > enjoyjjalseu.pem
-#          chmod 400 enjoyjjalseu.pem
-#
-#      - name: Verify SSH key creation
-#        run: ls -l enjoyjjalseu.pem
-#
-#      - name: 환경 변수를 설정합니다.
-#        run: |
-#          echo "NEXT_PUBLIC_API_ENDPOINT=$NEXT_PUBLIC_API_ENDPOINT" >> .env
-#        env:
-#          NEXT_PUBLIC_API_ENDPOINT: ${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}
-#          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
-#
-#      - name: Deploy to EC2
-#        run: |
-#          ssh -vvv -i enjoyjjalseu.pem -o StrictHostKeyChecking=no ubuntu@ec2-3-35-156-121.ap-northeast-2.compute.amazonaws.com 'cd FE_jjalseu_playground && git pull origin main && yarn install && yarn build && pm2 restart all'
 name: Build and Deploy
 
 on:
