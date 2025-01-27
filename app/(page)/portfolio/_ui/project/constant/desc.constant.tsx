@@ -294,55 +294,7 @@ const FRONT_DESC: IDESC[] = [
             </>
         ),
     },
-    {
-        id: 6,
-        title: "배포 및 파이프라인 설계",
-        content: (
-            <>
-                <UlContainer>
-                    <LiContainer>
-                        <b>
-                            EC2와 Github action을 이용한
-                            배포 파이프라인 설계
-                        </b>
-                        <li>
-                            AWS ec2에 next.js 애플리케이션
-                            배포
-                        </li>
-                        <li>
-                            github action을 사용하여 main
-                            브랜치에 PR이 되면 자동으로
-                            인스턴스에 배포가 되도록 배포
-                            파이프라인 설계
-                        </li>
-                    </LiContainer>
-                    <LiContainer>
-                        <b>nginx</b>
-                        <li>
-                            도메인으로 80포트나 443포트로
-                            요청을 받으면 3000 포트로 포트
-                            포워딩
-                        </li>
-                        <li>
-                            SSL 인증서를 설치하여 HTTPS를
-                            제공
-                        </li>
-                    </LiContainer>
-                    <LiContainer>
-                        <b>AWS API Gateway</b>
-                        <li>
-                            외부 요청을 받아 내부적으로 EC2
-                            인스턴스 엔드포인트로 전달
-                        </li>
-                        <li>
-                            도메인 이름과 백엔드 EC2
-                            인스턴스 간의 매핑
-                        </li>
-                    </LiContainer>
-                </UlContainer>
-            </>
-        ),
-    },
+
     {
         id: 7,
         title: "작고 명확한 컴포넌트 설계",
@@ -544,64 +496,7 @@ const BACK_DESC: IDESC[] = [
             </>
         ),
     },
-    {
-        id: 4,
-        title: "도커와 Github Action를 활용한 CI/CD 파이프라인 구축",
-        content: (
-            <>
-                <UlContainer>
-                    <LiContainer>
-                        <b>도커를 배포 파이프라인</b>
-                        <li>
-                            main 브랜치에 푸시되면 배포
-                            파이프라인 시작
-                        </li>
-                        <li>
-                            애플리케이션 도커 이미지로 빌드
-                        </li>
-                        <li>
-                            빌드된 이미지를 도커헙에 푸시
-                        </li>
-                        <li>
-                            푸시된 이미지를 인스턴스에서
-                            실행
-                        </li>
-                    </LiContainer>
-                    <LiContainer>
-                        <b>환경 일관성 보장</b>
-                        <li>
-                            어디서 실행하든 동일한 환경을
-                            보장
-                        </li>
-                        <li>
-                            로컬 개발 환경과 서버 환경이
-                            다를 경우 발생할 수 있는 문제를
-                            방지
-                        </li>
-                    </LiContainer>
-                    <LiContainer>
-                        <b>빠른 배포</b>
-                        <li>
-                            미리 빌드된 이미지를
-                            실행함으로써 배포 속도 향상
-                        </li>
-                    </LiContainer>
-                    <LiContainer>
-                        <b>인스턴스 리소스 절약</b>
-                        <li>
-                            인스턴스에서 불필요한 종속성
-                            설치와 빌드로 인해 발생하는
-                            CPU/메모리 리소스 낭비를 방지
-                        </li>
-                        <li>
-                            빌드와 실행이 분리되어 있으므로
-                            서버 리소스를 효율적으로 사용
-                        </li>
-                    </LiContainer>
-                </UlContainer>
-            </>
-        ),
-    },
+
     {
         id: 5,
         title: "interceptor를 통해 transaction이 필요한 API가 사용하도록 설계",
@@ -859,9 +754,124 @@ const BACK_DESC: IDESC[] = [
     },
 ];
 
+const DEV_OPS_DESC: IDESC[] = [
+    {
+        id: 1,
+        title: "Front-End > 배포 및 파이프라인 설계",
+        content: (
+            <>
+                <UlContainer>
+                    <LiContainer>
+                        <b>
+                            EC2와 Github action을 이용한
+                            배포 파이프라인 설계
+                        </b>
+                        <li>
+                            AWS ec2에 next.js 애플리케이션
+                            배포
+                        </li>
+                        <li>
+                            github action을 사용하여 main
+                            브랜치에 PR이 되면 자동으로
+                            인스턴스에 배포가 되도록 배포
+                            파이프라인 설계
+                        </li>
+                    </LiContainer>
+                    <LiContainer>
+                        <b>nginx</b>
+                        <li>
+                            도메인으로 80포트나 443포트로
+                            요청을 받으면 3000 포트로 포트
+                            포워딩
+                        </li>
+                        <li>
+                            SSL 인증서를 설치하여 HTTPS를
+                            제공
+                        </li>
+                    </LiContainer>
+                    <LiContainer>
+                        <b>AWS API Gateway</b>
+                        <li>
+                            외부 요청을 받아 내부적으로 EC2
+                            인스턴스 엔드포인트로 전달
+                        </li>
+                        <li>
+                            도메인 이름과 백엔드 EC2
+                            인스턴스 간의 매핑
+                        </li>
+                    </LiContainer>
+                </UlContainer>
+            </>
+        ),
+    },
+    {
+        id: 2,
+        title: "Back-End > 도커와 Github Action를 활용한 CI/CD 파이프라인 구축",
+        content: (
+            <>
+                <UlContainer>
+                    <LiContainer>
+                        <b>도커를 배포 파이프라인</b>
+                        <li>
+                            main 브랜치에 푸시되면 배포
+                            파이프라인 시작
+                        </li>
+                        <li>
+                            애플리케이션 도커 이미지로 빌드
+                        </li>
+                        <li>
+                            빌드된 이미지를 도커헙에 푸시
+                        </li>
+                        <li>
+                            푸시된 이미지를 인스턴스에서
+                            실행
+                        </li>
+                    </LiContainer>
+                    <LiContainer>
+                        <b>환경 일관성 보장</b>
+                        <li>
+                            어디서 실행하든 동일한 환경을
+                            보장
+                        </li>
+                        <li>
+                            로컬 개발 환경과 서버 환경이
+                            다를 경우 발생할 수 있는 문제를
+                            방지
+                        </li>
+                    </LiContainer>
+                    <LiContainer>
+                        <b>빠른 배포</b>
+                        <li>
+                            미리 빌드된 이미지를
+                            실행함으로써 배포 속도 향상
+                        </li>
+                    </LiContainer>
+                    <LiContainer>
+                        <b>인스턴스 리소스 절약</b>
+                        <li>
+                            인스턴스에서 불필요한 종속성
+                            설치와 빌드로 인해 발생하는
+                            CPU/메모리 리소스 낭비를 방지
+                        </li>
+                        <li>
+                            빌드와 실행이 분리되어 있으므로
+                            서버 리소스를 효율적으로 사용
+                        </li>
+                    </LiContainer>
+                </UlContainer>
+            </>
+        ),
+    },
+    {
+        id: 3,
+        title: "사진 및 동영상 등 파일 S3에 업로드",
+    },
+];
+
 export const Desc = {
     FRONT_DESC,
     BACK_DESC,
+    DEV_OPS_DESC,
 };
 
 function UlContainer({

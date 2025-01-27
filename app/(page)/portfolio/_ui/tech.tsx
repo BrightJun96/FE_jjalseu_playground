@@ -38,6 +38,14 @@ function Tech() {
             id: 7,
             tech: "HTML",
         },
+        {
+            id: 8,
+            tech: "Redux",
+        },
+        {
+            id: 9,
+            tech: "Jotai",
+        },
     ];
 
     const BACKEND_TECHS = [
@@ -83,6 +91,10 @@ function Tech() {
         {
             id: 5,
             tech: "Docker",
+        },
+        {
+            id: 6,
+            tech: "Redis",
         },
     ];
 
