@@ -17,7 +17,7 @@ function Main() {
                             "text-headline3 lg:pl-[200px]"
                         }
                     >
-                        풀스택 개발자 김철준입니다.
+                        웹 개발자 김철준입니다.
                     </p>
                 </div>
             </section>

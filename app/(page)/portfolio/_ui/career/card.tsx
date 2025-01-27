@@ -1,5 +1,6 @@
 "use client";
 
+import { IDESC } from "@/app/(page)/portfolio/_ui/career/constant/desc.constant";
 import Drawer from "@/app/_shared/ui/used/drawer/drawer";
 import {
     Card as CardContainer,
@@ -9,13 +10,7 @@ import {
 import { useDisclosure } from "@nextui-org/react";
 import React from "react";
 
-function Card({
-    title,
-    description,
-}: {
-    title: string;
-    description: string;
-}) {
+function Card({ desc }: { desc: IDESC }) {
     const { isOpen, onOpen, onOpenChange } =
         useDisclosure();
 
@@ -24,16 +19,18 @@ function Card({
             <CardContainer
                 isPressable
                 onPress={onOpen}
-                className={"max-w-[250px] h-[200px]"}
+                className={"w-full "}
             >
                 <CardHeader className={"font-semibold"}>
-                    {title}
+                    {desc.title}
                 </CardHeader>
                 <hr />
-                <CardBody>{description}</CardBody>
+                <CardBody>{desc.content}</CardBody>
             </CardContainer>
             <Drawer
                 isOpen={isOpen}
+                title={desc.title}
+                desc={desc.desc}
                 onOpenChange={onOpenChange}
             />
         </>

@@ -9,16 +9,12 @@ interface Menu {
 
 function Menus() {
     const menus: Menu[] = [
-        { name: "work", id: 1 },
+        { name: "career", id: 1 },
         { name: "tech", id: 2 },
 
         {
-            name: "ability",
-            id: 3,
-        },
-        {
             name: "project",
-            id: 4,
+            id: 3,
         },
     ];
 
