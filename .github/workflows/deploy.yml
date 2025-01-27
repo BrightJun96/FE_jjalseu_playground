@@ -22,12 +22,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Install Dependencies
-        run: yarn install
-
-      - name: Build Application
-        run: yarn build
-
       - name: Build And Push Docker Image
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 -t jjalseu/devlounge-front:latest -t jjalseu/devlounge-front:${{github.sha}} --push -f ./Dockerfile --target production .
