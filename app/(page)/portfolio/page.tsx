@@ -1,10 +1,9 @@
 "use client";
 
-import Ability from "@/app/(page)/portfolio/_ui/ability";
+import Career from "@/app/(page)/portfolio/_ui/career";
 import Main from "@/app/(page)/portfolio/_ui/main";
 import Project from "@/app/(page)/portfolio/_ui/project";
 import Tech from "@/app/(page)/portfolio/_ui/tech";
-import Work from "@/app/(page)/portfolio/_ui/work";
 import {
     motion,
     useScroll,
@@ -22,9 +21,9 @@ function Page() {
     return (
         <div className={"h-full flex flex-col w-full"}>
             <Main />
-            <Work />
+            <Career />
             <Tech />
-            <Ability />
+            {/*<Ability />*/}
             <Project />
             <motion.div
                 id="scroll-indicator"

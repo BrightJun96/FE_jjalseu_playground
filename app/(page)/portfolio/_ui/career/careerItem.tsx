@@ -1,4 +1,5 @@
-import Card from "@/app/(page)/portfolio/_ui/work/card";
+import Card from "@/app/(page)/portfolio/_ui/career/card";
+import { Career_Desc } from "@/app/(page)/portfolio/_ui/career/constant/desc.constant";
 import React from "react";
 
 interface Work {
@@ -10,13 +11,11 @@ interface Work {
 interface CareerProps {
     companyName: string;
     duration: string;
-    works: Work[];
 }
 
-function Career({
+function CareerItem({
     companyName,
     duration,
-    works,
 }: CareerProps) {
     return (
         <>
@@ -28,13 +27,10 @@ function Career({
                 {duration}
             </h3>
 
-            <ul className={"flex gap-5"}>
-                {works.map((w) => (
-                    <li key={w.id}>
-                        <Card
-                            title={w.title}
-                            description={w.description}
-                        />
+            <ul className={"flex flex-col gap-5"}>
+                {Career_Desc.map((desc) => (
+                    <li key={desc.id}>
+                        <Card desc={desc} />
                     </li>
                 ))}
             </ul>
@@ -42,4 +38,4 @@ function Career({
     );
 }
 
-export default Career;
+export default CareerItem;

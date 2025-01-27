@@ -1,4 +1,6 @@
 import Link from "next/link";
+import LiContainer from "../../shared/LiContainer";
+import UlContainer from "../../shared/UlContainer";
 
 export interface IDESC {
     id: number;
@@ -873,29 +875,3 @@ export const Desc = {
     BACK_DESC,
     DEV_OPS_DESC,
 };
-
-function UlContainer({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    return (
-        <ul
-            className={"list-disc flex flex-col gap-3 py-3"}
-        >
-            {children}
-        </ul>
-    );
-}
-
-function LiContainer({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    return (
-        <article className={"flex flex-col gap-1 mt-3"}>
-            {children}
-        </article>
-    );
-}
