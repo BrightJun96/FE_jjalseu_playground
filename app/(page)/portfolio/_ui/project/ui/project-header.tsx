@@ -9,8 +9,8 @@ function ProjectHeader() {
                 className={"text-title2Bold"}
                 href={"/"}
             >
-                # thedevlounge.com - 개발 퀴즈 및 여러 가지
-                코드를 구경할 수 있는 개발 플랫폼
+                # thedevlounge.com - 개발 퀴즈 및 코드를
+                구경할 수 있는 개발 플랫폼
             </Link>
         </CardHeader>
     );

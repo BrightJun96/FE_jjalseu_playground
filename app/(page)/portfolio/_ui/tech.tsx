@@ -101,7 +101,6 @@ function Tech() {
                         {FRONT_TECHS.map((tech) => (
                             <li key={tech.id}>
                                 <Chip
-                                    size={"lg"}
                                     color={"warning"}
                                     variant={"flat"}
                                 >

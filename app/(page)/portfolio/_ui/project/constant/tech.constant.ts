@@ -66,4 +66,9 @@ export const Techs: ITech[] = [
         tech: "Github Actions",
         chipColor: "success",
     },
+    {
+        id: 12,
+        tech: "redis",
+        chipColor: "success",
+    },
 ];

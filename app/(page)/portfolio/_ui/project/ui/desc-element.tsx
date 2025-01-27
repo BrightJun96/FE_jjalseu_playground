@@ -26,6 +26,7 @@ function DescElement({
             </Card>
             <Drawer
                 size={"2xl"}
+                placement={"top"}
                 title={desc.title}
                 desc={desc.content}
                 isOpen={isOpen}

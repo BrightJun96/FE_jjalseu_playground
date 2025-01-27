@@ -11,7 +11,7 @@ import React from "react";
  * 정적 렌더링 방식
  */
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export const dynamicParams = true; // or false, to 404 on unknown paths
 

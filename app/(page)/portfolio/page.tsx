@@ -2,7 +2,7 @@
 
 import Ability from "@/app/(page)/portfolio/_ui/ability";
 import Main from "@/app/(page)/portfolio/_ui/main";
-import Index from "@/app/(page)/portfolio/_ui/project";
+import Project from "@/app/(page)/portfolio/_ui/project";
 import Tech from "@/app/(page)/portfolio/_ui/tech";
 import Work from "@/app/(page)/portfolio/_ui/work";
 import {
@@ -25,7 +25,7 @@ function Page() {
             <Work />
             <Tech />
             <Ability />
-            <Index />
+            <Project />
             <motion.div
                 id="scroll-indicator"
                 style={{

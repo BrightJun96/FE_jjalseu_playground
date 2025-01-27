@@ -24,6 +24,8 @@ interface IDrawer {
         | "4xl"
         | "5xl"
         | "full";
+
+    placement?: "top" | "right" | "bottom" | "left";
 }
 
 function Drawer({
@@ -32,13 +34,16 @@ function Drawer({
     title = "",
     desc = "",
     size,
+    placement = "top",
 }: IDrawer) {
     return (
         <DrawContainer
+            placement={placement}
             size={size}
             isOpen={isOpen}
             shouldBlockScroll={false}
             onOpenChange={onOpenChange}
+            className={"lg:px-[300px]"}
         >
             <DrawerContent>
                 {(onClose) => (
