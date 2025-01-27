@@ -37,6 +37,7 @@ COPY build build
 RUN yarn install --prod
 
 COPY --from=development /usr/src/app/.next ./.next
+COPY --from=development /usr/src/app/build ./build
 
 COPY app app
 
