@@ -1,3 +1,4 @@
+import ProjectContainer from "@/app/(page)/portfolio/_ui/project/ui/project-container";
 import Template from "@/app/(page)/portfolio/_ui/template";
 import React from "react";
 
@@ -7,7 +8,7 @@ function Project() {
             headline={"project"}
             id={"project"}
         >
-            sdf
+            <ProjectContainer />
         </Template>
     );
 }

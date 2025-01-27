@@ -20,7 +20,7 @@ function Career({
 }: CareerProps) {
     return (
         <>
-            <h2 className={"text-headline3 underline"}>
+            <h2 className={"text-headline3"}>
                 {companyName}
             </h2>
 

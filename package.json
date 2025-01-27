@@ -15,8 +15,10 @@
   "dependencies": {
     "@next/bundle-analyzer": "15.1.0",
     "@nextui-org/card": "^2.2.9",
+    "@nextui-org/chip": "^2.2.6",
     "@nextui-org/drawer": "^2.2.7",
     "@nextui-org/react": "^2.6.11",
+    "@nextui-org/tabs": "^2.2.7",
     "@toast-ui/editor-plugin-code-syntax-highlight": "^3.1.0",
     "framer-motion": "^11.18.0",
     "next": "15.1.0",
@@ -26,6 +28,7 @@
     "sanitize-html": "^2.14.0"
   },
   "devDependencies": {
+    "@codemirror/lang-javascript": "^6.2.2",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -35,6 +38,7 @@
     "@types/react": "19.0.1",
     "@types/react-dom": "19.0.2",
     "@types/sanitize-html": "^2.13.0",
+    "@uiw/react-codemirror": "^4.23.7",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^8",
     "eslint-config-next": "15.1.0",

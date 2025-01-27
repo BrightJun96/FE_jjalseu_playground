@@ -133,6 +133,10 @@ const config: Config = {
         },
     },
     darkMode: "class",
-    plugins: [require("@tailwindcss/typography"), nextui()],
+    plugins: [
+        nextui({
+            defaultTheme: "light",
+        }),
+    ],
 };
 export default config;
