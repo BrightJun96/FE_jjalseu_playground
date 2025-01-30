@@ -1,3 +1,5 @@
+import { javascript } from "@codemirror/lang-javascript";
+import ReactCodeMirror from "@uiw/react-codemirror";
 import Link from "next/link";
 import LiContainer from "../../shared/LiContainer";
 import UlContainer from "../../shared/UlContainer";
@@ -7,6 +9,46 @@ export interface IDESC {
     title: string;
     content?: React.ReactNode;
 }
+
+const codeAboutTransaction =
+    "import {\n" +
+    "  CallHandler,\n" +
+    "  ExecutionContext,\n" +
+    "  Injectable,\n" +
+    "  NestInterceptor,\n" +
+    '} from "@nestjs/common";\n' +
+    'import { catchError, Observable, tap } from "rxjs";\n' +
+    'import { DataSource } from "typeorm"\n' +
+    "@Injectable()\n" +
+    "export class TransactionInterceptor\n" +
+    "  implements NestInterceptor\n" +
+    "{\n" +
+    "  constructor(private readonly dataSource: DataSource) {}\n" +
+    "  async intercept(\n" +
+    "    context: ExecutionContext,\n" +
+    "    next: CallHandler<any>,\n" +
+    "  ): Promise<Observable<any>> {\n" +
+    "    const req = context.switchToHttp().getRequest();\n" +
+    "\n" +
+    "    const qr = this.dataSource.createQueryRunner();\n" +
+    "    await qr.connect();\n" +
+    "    await qr.startTransaction();\n" +
+    "\n" +
+    "    req.queryRunner = qr;\n" +
+    "\n" +
+    "    return next.handle().pipe(\n" +
+    "      catchError(async (e) => {\n" +
+    "        await qr.rollbackTransaction();\n" +
+    "        await qr.release();\n" +
+    "        throw e;\n" +
+    "      }),\n" +
+    "      tap(async () => {\n" +
+    "        await qr.commitTransaction();\n" +
+    "        await qr.release();\n" +
+    "      }),\n" +
+    "    );\n" +
+    "  }\n" +
+    "}";
 
 const FRONT_DESC: IDESC[] = [
     {
@@ -504,6 +546,12 @@ const BACK_DESC: IDESC[] = [
         title: "interceptor를 통해 transaction이 필요한 API가 사용하도록 설계",
         content: (
             <>
+                <ReactCodeMirror
+                    theme={"dark"}
+                    value={codeAboutTransaction}
+                    extensions={[javascript({ jsx: true })]}
+                />
+                <p></p>
                 <UlContainer>
                     <LiContainer>
                         <b>
@@ -753,6 +801,10 @@ const BACK_DESC: IDESC[] = [
                 </UlContainer>
             </>
         ),
+    },
+    {
+        id: 12,
+        title: "RBAC과 커스텀 데코레이터를 통한 클라이언트 권한 부여",
     },
 ];
 

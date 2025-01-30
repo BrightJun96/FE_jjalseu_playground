@@ -69,6 +69,14 @@ function Tech() {
             id: 5,
             tech: "Mongoose",
         },
+        {
+            id: 6,
+            tech: "TypeScript",
+        },
+        {
+            id: 7,
+            tech: "JavaScript",
+        },
     ];
 
     const DEVOPS_TECHS = [

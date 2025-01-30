@@ -21,10 +21,10 @@ function Navigation() {
             title: "퀴즈",
             link: PATHS.QUIZ,
         },
-        {
-            title: "코드 템플릿",
-            link: "code-template",
-        },
+        // {
+        //     title: "코드 템플릿",
+        //     link: "code-template",
+        // },
     ];
 
     return (

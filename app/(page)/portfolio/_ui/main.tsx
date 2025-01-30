@@ -9,9 +9,9 @@ function Main() {
                 }
             >
                 <div className={"flex flex-col gap-5"}>
-                    <p className={"text-headline3"}>
-                        개발 환경 개선을 좋아하는
-                    </p>
+                    {/*<p className={"text-headline3"}>*/}
+                    {/*    개발 환경 개선을 좋아하는*/}
+                    {/*</p>*/}
                     <p
                         className={
                             "text-headline3 lg:pl-[200px]"
