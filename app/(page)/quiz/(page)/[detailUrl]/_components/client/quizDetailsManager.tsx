@@ -2,7 +2,6 @@
 
 import useQuizStorageContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageContext";
 import useQuizStorageHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageHelperContext";
-import { QuizDetailURLResponseDto } from "@/app/_shared/api/generate.api.types";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -21,19 +20,19 @@ function QuizDetailsManager({
     useEffect(
         () => {
             // 모든 퀴즈를 푼 경우, 퀴즈 완료 페이지로 이동
-            if (quizStorageHelper) {
-                quizStorageHelper.redirectToCompletionPageIfAllSolved(
-                    router.push,
-                );
-            }
+            // if (quizStorageHelper) {
+            //     quizStorageHelper.redirectToCompletionPageIfAllSolved(
+            //         router.push,
+            //     );
+            // }
 
             return () => {
                 // 현재 URL 벗어날 시, 푼 문제 리스트에 저장
-                if (quizStorageHelper) {
-                    quizStorageHelper.saveSolvedQuiz({
-                        detailUrl,
-                    } as QuizDetailURLResponseDto);
-                }
+                // if (quizStorageHelper) {
+                //     quizStorageHelper.saveSolvedQuiz({
+                //         detailUrl,
+                //     } as QuizDetailURLResponseDto);
+                // }
             };
         },
         // 퀴즈 URL 목록을 감지해야함.

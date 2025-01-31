@@ -2,6 +2,10 @@
 export class ArrayUtils {
     // 배열에서 랜덤하게 하나를 뽑아 반환
     static pickRandomOne<T>(arr: T[]): T {
+        if (arr.length === 0) {
+            throw new Error("배열이 비었습니다.");
+        }
+
         const randomIndex = Math.floor(
             Math.random() * arr.length,
         );

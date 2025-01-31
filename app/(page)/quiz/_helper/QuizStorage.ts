@@ -32,9 +32,7 @@ export class QuizStorage {
     }
 
     // 푼 문제 저장
-    saveSolvedQuiz(
-        solvedQuizList: QuizDetailURLResponseDto[],
-    ) {
+    saveSolvedQuiz(solvedQuizList: string[]) {
         this.storage.save(
             SOLVED_QUIZ_LIST,
             JSON.stringify(solvedQuizList),
@@ -42,11 +40,11 @@ export class QuizStorage {
     }
 
     // 푼 문제 조회
-    getSolvedQuiz(): QuizDetailURLResponseDto[] {
+    getSolvedQuiz(): string[] {
         return (
-            this.storage.getParsed<
-                QuizDetailURLResponseDto[]
-            >(SOLVED_QUIZ_LIST) ?? []
+            this.storage.getParsed<string[]>(
+                SOLVED_QUIZ_LIST,
+            ) ?? []
         );
     }
 
