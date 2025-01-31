@@ -8,8 +8,9 @@ import QuizAnswers from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client
 import QuizFormId from "@/app/(page)/quiz/(page)/[detailUrl]/_components/client/quizAnswerForm/quizFormId";
 import useQuizFormAction from "@/app/(page)/quiz/_helper/useQuizFormAction";
 import { GetQuizMultipleChoiceSharedDto } from "@/app/_shared/api/generate.api.types";
+import Alert from "@/app/_shared/ui/used/alert/alert";
 import GroupCheckBoxProvider from "@/app/_shared/ui/used/checkbox/group/provider/groupCheckBoxProvider";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // 퀴즈 답안 입력 폼
 function QuizAnswerForm({
@@ -21,9 +22,20 @@ function QuizAnswerForm({
 
     quizMultipleChoiceContents: GetQuizMultipleChoiceSharedDto[];
 }) {
-    const { isAnswerCheck, formAction } =
+    const { isAnswerCheck, formAction, isCorrect } =
         useQuizFormAction();
 
+    const [isAlertVisible, setIsAlertVisible] =
+        useState<boolean>(false);
+
+    useEffect(() => {
+        if (isAnswerCheck) {
+            setIsAlertVisible(true);
+            setTimeout(() => {
+                setIsAlertVisible(false);
+            }, 2000);
+        }
+    }, [isAnswerCheck]);
     return (
         <GroupCheckBoxProvider>
             <QuizAnswerFormContainer action={formAction}>
@@ -46,6 +58,17 @@ function QuizAnswerForm({
                     )}
                 </CheckButtonContainer>
             </QuizAnswerFormContainer>
+            {/*정답/오답 알럿*/}
+            {isAnswerCheck && isAlertVisible && (
+                <Alert
+                    color={isCorrect ? "success" : "danger"}
+                    title={
+                        isCorrect
+                            ? "정답입니다!"
+                            : "오답입니다."
+                    }
+                />
+            )}
         </GroupCheckBoxProvider>
     );
 }

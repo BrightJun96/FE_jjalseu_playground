@@ -12,9 +12,9 @@ function MultipleChoiceAnswers({
     tabIndex?: number;
 }) {
     const processedMultipleChoiceContents =
-        quizMultipleChoiceContents.map((v, i) => ({
+        quizMultipleChoiceContents.map((v) => ({
             label: `${v.content}`,
-            value: i + 1,
+            value: v.id,
         }));
 
     return (
