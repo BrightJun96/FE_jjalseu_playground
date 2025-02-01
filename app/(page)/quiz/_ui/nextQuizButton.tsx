@@ -13,16 +13,16 @@ function NextQuizButton() {
     const router = useRouter();
     function nextQuiz() {
         if (quizStorageHelper) {
+            // 퀴즈 저장
+            quizStorageHelper.saveSolvedQuiz(
+                detailUrl as string,
+            );
+
             // 퀴즈 다 풀면 완료 페이지 이동
             if (quizStorageHelper.isAllQuizSolved()) {
                 router.push(`/${PATHS.QUIZ_COMPLETED}`);
                 return;
             }
-
-            // 퀴즈 저장
-            quizStorageHelper.saveSolvedQuiz(
-                detailUrl as string,
-            );
 
             // 퀴즈 중 랜덤 추출
             const randomQuiz =
