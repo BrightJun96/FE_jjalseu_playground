@@ -1,7 +1,6 @@
 "use server";
 
 import QuizOptionFormContainer from "@/app/(page)/quiz/_ui/quizOptionForm/quizOptionFormContainer";
-import QuizOptions from "@/app/(page)/quiz/_ui/quizOptionForm/quizOptions/quizOptions";
 import QuizStartButton from "@/app/(page)/quiz/_ui/quizOptionForm/quizStartButton";
 import React from "react";
 
@@ -10,7 +9,7 @@ function QuizOptionForm() {
     return (
         <QuizOptionFormContainer>
             {/*옵션*/}
-            <QuizOptions />
+            {/*<QuizOptions />*/}
             {/*시작하기 버튼*/}
             <QuizStartButton>퀴즈 시작하기</QuizStartButton>
         </QuizOptionFormContainer>
