@@ -2,7 +2,7 @@ import ButtonContainer from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explana
 import QuizExplanationContent from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationContent";
 import QuizExplanationTitle from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/quizExplanationTitle";
 import ReturnButton from "@/app/(page)/quiz/(page)/[detailUrl]/(page)/explanation/_components/returnButton";
-import NextQuizLink from "@/app/(page)/quiz/_ui/nextQuizLink";
+import NextQuizButton from "@/app/(page)/quiz/_ui/nextQuizButton";
 import { quizApiHandler } from "@/app/_features/quiz";
 import { BASE_URL } from "@/app/_shared/constants/baseURL";
 import PATHS from "@/app/_shared/constants/paths";
@@ -85,7 +85,7 @@ async function Page({ params }: { params: Params }) {
                 {/*돌아가기 버튼*/}
                 <ReturnButton returnUrl={detailUrl} />
                 {/*다음 퀴즈 버튼*/}
-                <NextQuizLink />
+                <NextQuizButton />
             </ButtonContainer>
         </article>
     ) : (

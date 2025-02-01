@@ -1,18 +1,14 @@
 "use client";
 
 import useQuizStorageHelperContext from "@/app/(page)/quiz/_context/_hook/useQuizStorageHelperContext";
-import useRandomUrl from "@/app/(page)/quiz/_helper/useRandomUrl";
 import PATHS from "@/app/_shared/constants/paths";
 import PrimaryButton from "@/app/_shared/ui/used/button/primaryButton";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 
 // 다음 문제 링크
-function NextQuizLink() {
-    const randomUrl = useRandomUrl();
-
+function NextQuizButton() {
     const { detailUrl } = useParams();
-    console.log("detailUrl :", detailUrl);
     const quizStorageHelper = useQuizStorageHelperContext();
     const router = useRouter();
     function nextQuiz() {
@@ -39,11 +35,10 @@ function NextQuizLink() {
         <PrimaryButton
             color={"primary"}
             onClick={nextQuiz}
-            // href={`/${PATHS.QUIZ_RANDOM(randomUrl)}`}
         >
             다음 문제
         </PrimaryButton>
     );
 }
 
-export default NextQuizLink;
+export default NextQuizButton;
