@@ -1,13 +1,18 @@
 import React from "react";
 
 // 메인 타이틀
-function HomeTitle({ title }: { title: string }) {
+function HomeTitle({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     return (
         <h1
             className={
-                "lg:text-headline2 md:text-headline3 sm:text-headline3 text-center"
-            }>
-            {title}
+                "lg:text-headline3 md:text-title1 sm:text-title1 text-center"
+            }
+        >
+            {children}
         </h1>
     );
 }

@@ -1,16 +1,18 @@
-import React from 'react';
+import React from "react";
 
 // 메인 부제
 function HomeSubTitle({
-    subTitle
-                         }:{
-    subTitle: string
+    children,
+}: {
+    children: React.ReactNode;
 }) {
     return (
         <h2
-            className={"lg:text-headline3 md:text-title2Bold sm:text-title2Bold"}
+            className={
+                "lg:text-title1 md:text-title2Bold sm:text-title2Bold text-center"
+            }
         >
-            {subTitle}
+            {children}
         </h2>
     );
 }

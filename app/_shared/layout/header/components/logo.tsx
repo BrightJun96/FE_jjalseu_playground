@@ -13,7 +13,7 @@ function Logo() {
                     "text-primary-normal text-title1 font-bold"
                 }
             >
-                코아
+                TheDevLounge
             </PrimaryLink>
         </h1>
     );

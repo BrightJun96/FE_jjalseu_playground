@@ -16,15 +16,12 @@ export default function Home() {
             {/* 내부 카피 컨텐츠  */}
             <HomeInnerContainer>
                 {/* 메인 타이틀 */}
-                <HomeTitle
-                    title={"개발자들의 아지트, 코아"}
-                />
+                <HomeTitle>개발 핸드북</HomeTitle>
                 {/* 부제목 */}
-                <HomeSubTitle
-                    subTitle={
-                        "퀴즈로 실력을 키우고, 함께 성장하세요."
-                    }
-                />
+                <HomeSubTitle>
+                    퀴즈, 코드 템플릿, 개념, 면접 등<br />
+                    여러 개발 지식들을 구경하세요.
+                </HomeSubTitle>
                 {/* 메인 링크  */}
                 <HomeLink />
             </HomeInnerContainer>
