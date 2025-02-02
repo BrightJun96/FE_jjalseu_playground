@@ -46,6 +46,10 @@ function Tech() {
             id: 9,
             tech: "Jotai",
         },
+        {
+            id: 10,
+            tech: "React-Query",
+        },
     ];
 
     const BACKEND_TECHS = [

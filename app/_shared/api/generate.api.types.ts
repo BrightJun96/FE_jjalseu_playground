@@ -9,31 +9,19 @@
  * ---------------------------------------------------------------
  */
 
-export interface MovieDetail {
-    id: number;
-    detail: string;
-    movie: Movie;
-}
-
-export interface Director {
-    id: number;
-    name: string;
-    /** @format date-time */
-    dob: string;
-    nationality: string;
-    movies: Movie[];
-}
-
-export interface MovieUserLike {
-    movie: Movie;
-    user: User;
-    isLike: boolean;
-}
-
 export interface ChatRoom {
     id: number;
     users: User[];
     chats: Chat[];
+}
+
+export interface User {
+    id: number;
+    email: string;
+    password: string;
+    role: UserRoleEnum;
+    chats: Chat[];
+    chatRooms: ChatRoom[];
 }
 
 export interface Chat {
@@ -43,115 +31,12 @@ export interface Chat {
     chatRoom: ChatRoom;
 }
 
-export interface User {
-    id: number;
-    email: string;
-    password: string;
-    role: UserRoleEnum;
-    createdMovies: Movie[];
-    likedUsers: MovieUserLike[];
-    chats: Chat[];
-    chatRooms: ChatRoom[];
-}
-
-export interface Movie {
-    id: number;
-    title: string;
-    likeCount: number;
-    dislikeCount: number;
-    genres: Genre[];
-    detail: MovieDetail;
-    movieFilePath: string;
-    director: Director;
-    creator: User;
-    likedMovies: MovieUserLike[];
-}
-
-export interface Genre {
-    id: number;
-    name: string;
-    movies: Movie[];
-}
-
-export interface CreateMovieDto {
-    /**
-     * 제목
-     * @example "어벤져스"
-     */
-    title: string;
-    /**
-     * 상세 내용
-     * @example "어벤져스는 ..."
-     */
-    detail: string;
-    /**
-     * 감독 ID
-     * @example 1
-     */
-    directorId: number;
-    /**
-     * 장르 ID
-     * @minItems 1
-     * @example [1,2]
-     */
-    genreIds: number[];
-    /**
-     * 동영상 파일 경로
-     * @example "avengers.mp4"
-     */
-    movieFilePath: string;
-}
-
-export interface UpdateMovieDto {
-    /**
-     * 제목
-     * @example "어벤져스"
-     */
-    title?: string;
-    /**
-     * 상세 내용
-     * @example "어벤져스는 ..."
-     */
-    detail?: string;
-    /**
-     * 감독 ID
-     * @example 1
-     */
-    directorId?: number;
-    /**
-     * 장르 ID
-     * @minItems 1
-     * @example [1,2]
-     */
-    genreIds?: number[];
-    /**
-     * 동영상 파일 경로
-     * @example "avengers.mp4"
-     */
-    movieFilePath?: string;
-}
-
 export interface CreateUserDto {
     email: string;
     password: string;
 }
 
 export type UpdateUserDto = object;
-
-export interface CreateDirectorDto {
-    name: string;
-    /** @format date-time */
-    dob: string;
-    nationality: string;
-}
-
-export type UpdateDirectorDto = object;
-
-export interface CreateGenreDto {
-    name: string;
-}
-
-export type UpdateGenreDto = object;
 
 export interface GetQuizMetaDataSharedDto {
     /**
@@ -361,6 +246,219 @@ export interface DeleteQuizResponseDto {
     removeStatus: boolean;
 }
 
+export type CreateCodeDto = object;
+
+export type UpdateCodeDto = object;
+
+export interface Interview {
+    tech: InterviewTechEnum;
+    interviewMetaData: InterviewMetadata;
+    id: number;
+    title: string;
+    content: string;
+    detailUrl: string;
+    field: InterviewFieldEnum;
+}
+
+export interface InterviewMetadata {
+    id: number;
+    interview: Interview;
+    metaTitle: string;
+    metaDescription: string;
+    metaImageUrl: string;
+}
+
+export interface ListSharedResponseDto {
+    /** 데이터 목록 */
+    data: string[];
+    /**
+     * 데이터 갯수
+     * @example 10
+     */
+    count: number;
+    /**
+     * 다음 요청할 커서
+     * @example "eyJ2YWx1ZXMiOnsiaWQiOjR9LCJvcmRlcnMiOlsiaWRfREVTQyJdfQ=="
+     */
+    nextCursor: string;
+}
+
+export interface GetInterviewMetadataSharedDto {
+    /**
+     * PK
+     * @example "1"
+     */
+    id: number;
+    /**
+     * SEO 메타 제목
+     * @example "react"
+     */
+    metaTitle: string;
+    /**
+     * SEO 메타 설명
+     * @example "react 관련 면접 내용"
+     */
+    metaDescription: string;
+    /**
+     * SEO 퀴즈 이미지
+     * @example "https://s3.sdfsfsdfsdfds.com"
+     */
+    metaImageUrl?: string;
+}
+
+export interface GetInterviewSharedDto {
+    /**
+     * PK
+     * @example 1
+     */
+    id: number;
+    /**
+     * 제목
+     * @example "react를 왜 사용하는지 설명하세요."
+     */
+    title: string;
+    /**
+     * 내용
+     * @example "react는 SPA 프레임워크로서 컴포넌트 기반.."
+     */
+    content: string;
+    /**
+     * 상세 URL
+     * @example "react"
+     */
+    detailUrl: string;
+    /**
+     * 분야
+     * @example "FRONTEND"
+     */
+    field: GetInterviewSharedDtoFieldEnum;
+    /** SEO 관련 사용될 데이터 */
+    metaData: GetInterviewMetadataSharedDto;
+}
+
+export interface CreateInterviewMetadataDto {
+    metaTitle: string;
+    metaDescription: string;
+    metaImageUrl?: string;
+}
+
+export interface CreateInterviewDto {
+    title: string;
+    content: string;
+    detailUrl: string;
+    field: CreateInterviewDtoFieldEnum;
+    metaData: CreateInterviewMetadataDto;
+}
+
+export interface UpdateInterviewRequestDto {
+    title?: string;
+    content?: string;
+    detailUrl?: string;
+    field?: UpdateInterviewRequestDtoFieldEnum;
+    metaData?: CreateInterviewMetadataDto;
+}
+
+export type CreateBlogDto = object;
+
+export type UpdateBlogDto = object;
+
+export interface Concept {
+    tech: ConceptTechEnum;
+    conceptMeta: ConceptMeta;
+    id: number;
+    title: string;
+    content: string;
+    detailUrl: string;
+    field: ConceptFieldEnum;
+}
+
+export interface ConceptMeta {
+    concept: Concept;
+    id: number;
+    metaTitle: string;
+    metaDescription: string;
+    metaImageUrl: string;
+}
+
+export interface MetadataSharedDto {
+    /**
+     * SEO - 제목
+     * @example "react 관련..."
+     */
+    metaTitle: string;
+    /**
+     * SEO - 설명
+     * @example "react 관련 설명입니다."
+     */
+    metaDescription: string;
+    /**
+     * SEO - 이미지 URL
+     * @example "https://s3.efsdfs/...."
+     */
+    metaImageUrl?: string;
+}
+
+export interface GetConceptSharedDto {
+    /**
+     * PK
+     * @example 1
+     */
+    id: number;
+    /**
+     * 문제
+     * @example "다음은 react 관련 문제입니다."
+     */
+    title: string;
+    /**
+     * 내용
+     * @example "react는 SPA 프레임워크입니다.."
+     */
+    content: string;
+    /**
+     * 상세 URL
+     * @example "react"
+     */
+    detailUrl: string;
+    /**
+     * 퀴즈 분야
+     * @example "FRONTEND"
+     */
+    field: GetConceptSharedDtoFieldEnum;
+    /**
+     * 기술
+     * @example "REACTJS"
+     */
+    tech: GetConceptSharedDtoTechEnum;
+    /** SEO 관련  데이터 */
+    conceptMeta: MetadataSharedDto;
+}
+
+export interface CreateConceptRequestDto {
+    title: string;
+    content: string;
+    detailUrl: string;
+    field: CreateConceptRequestDtoFieldEnum;
+    tech: CreateConceptRequestDtoTechEnum;
+    metaData: MetadataSharedDto;
+}
+
+export interface UpdateConceptRequestDto {
+    title?: string;
+    content?: string;
+    detailUrl?: string;
+    field?: UpdateConceptRequestDtoFieldEnum;
+    tech?: UpdateConceptRequestDtoTechEnum;
+    metaData?: MetadataSharedDto;
+}
+
+export interface DeleteResponseDto {
+    /**
+     * 삭제 상태
+     * @example true
+     */
+    removeStatus: boolean;
+}
+
 export enum UserRoleEnum {
     Value0 = 0,
     Value1 = 1,
@@ -393,29 +491,104 @@ export enum UpdateQuizRequestDtoFieldEnum {
     DATABASE = "DATABASE",
 }
 
-export interface MovieControllerGetMoviesParams {
-    /**
-     * 커서
-     * @example "eyJ2YWx1ZXMiOnsiaWQiOjR9LCJvcmRlcnMiOlsiaWRfREVTQyJdfQ=="
-     */
-    cursor?: string;
-    /**
-     * 정렬 기준(내림 차순/오름 차순)
-     * @default ["id_DESC"]
-     * @example ["id_DESC"]
-     */
-    order?: string[];
-    /**
-     * 가져올 데이터 수
-     * @default 5
-     * @example 5
-     */
-    take?: number;
-    /**
-     * 제목
-     * @example "어벤져스"
-     */
-    title?: string;
+export enum InterviewTechEnum {
+    JAVASCRIPT = "JAVASCRIPT",
+    Typescript = "Typescript",
+    REACTJS = "REACTJS",
+    NEXTJS = "NEXTJS",
+    NESTJS = "NESTJS",
+}
+
+export enum InterviewFieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+/**
+ * 분야
+ * @example "FRONTEND"
+ */
+export enum GetInterviewSharedDtoFieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+export enum CreateInterviewDtoFieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+export enum UpdateInterviewRequestDtoFieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+export enum ConceptTechEnum {
+    JAVASCRIPT = "JAVASCRIPT",
+    Typescript = "Typescript",
+    REACTJS = "REACTJS",
+    NEXTJS = "NEXTJS",
+    NESTJS = "NESTJS",
+}
+
+export enum ConceptFieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+/**
+ * 퀴즈 분야
+ * @example "FRONTEND"
+ */
+export enum GetConceptSharedDtoFieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+/**
+ * 기술
+ * @example "REACTJS"
+ */
+export enum GetConceptSharedDtoTechEnum {
+    JAVASCRIPT = "JAVASCRIPT",
+    Typescript = "Typescript",
+    REACTJS = "REACTJS",
+    NEXTJS = "NEXTJS",
+    NESTJS = "NESTJS",
+}
+
+export enum CreateConceptRequestDtoFieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+export enum CreateConceptRequestDtoTechEnum {
+    JAVASCRIPT = "JAVASCRIPT",
+    Typescript = "Typescript",
+    REACTJS = "REACTJS",
+    NEXTJS = "NEXTJS",
+    NESTJS = "NESTJS",
+}
+
+export enum UpdateConceptRequestDtoFieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+export enum UpdateConceptRequestDtoTechEnum {
+    JAVASCRIPT = "JAVASCRIPT",
+    Typescript = "Typescript",
+    REACTJS = "REACTJS",
+    NEXTJS = "NEXTJS",
+    NESTJS = "NESTJS",
 }
 
 export interface QuizControllerFindAllParams {
@@ -783,145 +956,57 @@ export class HttpClient<SecurityDataType = unknown> {
 export class Api<
     SecurityDataType extends unknown,
 > extends HttpClient<SecurityDataType> {
-    movie = {
+    auth = {
         /**
          * No description
          *
-         * @tags 영화
-         * @name MovieControllerGetMovies
-         * @request GET:/movie
+         * @tags Auth
+         * @name AuthControllerRegisterUser
+         * @request POST:/auth/register
          * @secure
          */
-        movieControllerGetMovies: (
-            query: MovieControllerGetMoviesParams,
+        authControllerRegisterUser: (
+            params: RequestParams = {},
+        ) =>
+            this.request<User, any>({
+                path: `/auth/register`,
+                method: "POST",
+                secure: true,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags Auth
+         * @name AuthControllerLoginUser
+         * @request POST:/auth/login
+         * @secure
+         */
+        authControllerLoginUser: (
             params: RequestParams = {},
         ) =>
             this.request<void, any>({
-                path: `/movie`,
-                method: "GET",
-                query: query,
-                secure: true,
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 영화
-         * @name MovieControllerPostMovie
-         * @request POST:/movie
-         * @secure
-         */
-        movieControllerPostMovie: (
-            data: CreateMovieDto,
-            params: RequestParams = {},
-        ) =>
-            this.request<Movie, any>({
-                path: `/movie`,
+                path: `/auth/login`,
                 method: "POST",
-                body: data,
                 secure: true,
-                type: ContentType.Json,
-                format: "json",
                 ...params,
             }),
 
         /**
-         * @description 최신 영화 조회 API
+         * @description 특정 사용자 차단/토큰(관리자용)
          *
-         * @tags 영화
-         * @name MovieControllerGetRecentMovies
-         * @request GET:/movie/recent
+         * @tags Auth
+         * @name AuthControllerBlockToken
+         * @request POST:/auth/token-block
          * @secure
          */
-        movieControllerGetRecentMovies: (
+        authControllerBlockToken: (
             params: RequestParams = {},
         ) =>
-            this.request<UpdateUserDto, any>({
-                path: `/movie/recent`,
-                method: "GET",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 영화
-         * @name MovieControllerGetMovie
-         * @request GET:/movie/{id}
-         * @secure
-         */
-        movieControllerGetMovie: (
-            id: number,
-            params: RequestParams = {},
-        ) =>
-            this.request<Movie, any>({
-                path: `/movie/${id}`,
-                method: "GET",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 영화
-         * @name MovieControllerPatchMovie
-         * @request PATCH:/movie/{id}
-         * @secure
-         */
-        movieControllerPatchMovie: (
-            id: number,
-            data: UpdateMovieDto,
-            params: RequestParams = {},
-        ) =>
-            this.request<Movie, any>({
-                path: `/movie/${id}`,
-                method: "PATCH",
-                body: data,
-                secure: true,
-                type: ContentType.Json,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 영화
-         * @name MovieControllerDeleteMovie
-         * @request DELETE:/movie/{id}
-         * @secure
-         */
-        movieControllerDeleteMovie: (
-            id: number,
-            params: RequestParams = {},
-        ) =>
-            this.request<Movie, any>({
-                path: `/movie/${id}`,
-                method: "DELETE",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * @description 좋아요 API
-         *
-         * @tags 영화
-         * @name MovieControllerLikeMovie
-         * @request POST:/movie/{id}/like
-         * @secure
-         */
-        movieControllerLikeMovie: (
-            id: number,
-            params: RequestParams = {},
-        ) =>
-            this.request<UpdateUserDto, any>({
-                path: `/movie/${id}/like`,
+            this.request<boolean, any>({
+                path: `/auth/token-block`,
                 method: "POST",
                 secure: true,
                 format: "json",
@@ -929,39 +1014,38 @@ export class Api<
             }),
 
         /**
-         * @description 싫어요 API
+         * @description accessToken 재발급
          *
-         * @tags 영화
-         * @name MovieControllerDislikeMovie
-         * @request POST:/movie/{id}/dislike
+         * @tags Auth
+         * @name AuthControllerRotateAccessToken
+         * @request POST:/auth/reissue-accessToken
          * @secure
          */
-        movieControllerDislikeMovie: (
-            id: number,
-            params: RequestParams = {},
-        ) =>
-            this.request<UpdateUserDto, any>({
-                path: `/movie/${id}/dislike`,
-                method: "POST",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-    };
-    shared = {
-        /**
-         * No description
-         *
-         * @tags Shared
-         * @name SharedControllerCreatePresignedUrl
-         * @request GET:/shared/presigned-url
-         */
-        sharedControllerCreatePresignedUrl: (
+        authControllerRotateAccessToken: (
             params: RequestParams = {},
         ) =>
             this.request<void, any>({
-                path: `/shared/presigned-url`,
-                method: "GET",
+                path: `/auth/reissue-accessToken`,
+                method: "POST",
+                secure: true,
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags Auth
+         * @name AuthControllerLoginUserPassport
+         * @request POST:/auth/login/passport
+         * @secure
+         */
+        authControllerLoginUserPassport: (
+            params: RequestParams = {},
+        ) =>
+            this.request<void, any>({
+                path: `/auth/login/passport`,
+                method: "POST",
+                secure: true,
                 ...params,
             }),
     };
@@ -1070,312 +1154,9 @@ export class Api<
                 ...params,
             }),
     };
-    director = {
-        /**
-         * No description
-         *
-         * @tags 감독
-         * @name DirectorControllerCreate
-         * @request POST:/director
-         * @secure
-         */
-        directorControllerCreate: (
-            data: CreateDirectorDto,
-            params: RequestParams = {},
-        ) =>
-            this.request<UpdateUserDto, any>({
-                path: `/director`,
-                method: "POST",
-                body: data,
-                secure: true,
-                type: ContentType.Json,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 감독
-         * @name DirectorControllerFindAll
-         * @request GET:/director
-         * @secure
-         */
-        directorControllerFindAll: (
-            params: RequestParams = {},
-        ) =>
-            this.request<Director[], any>({
-                path: `/director`,
-                method: "GET",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 감독
-         * @name DirectorControllerFindOne
-         * @request GET:/director/{id}
-         * @secure
-         */
-        directorControllerFindOne: (
-            id: number,
-            params: RequestParams = {},
-        ) =>
-            this.request<Director, any>({
-                path: `/director/${id}`,
-                method: "GET",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 감독
-         * @name DirectorControllerUpdate
-         * @request PATCH:/director/{id}
-         * @secure
-         */
-        directorControllerUpdate: (
-            id: number,
-            data: UpdateDirectorDto,
-            params: RequestParams = {},
-        ) =>
-            this.request<Director, any>({
-                path: `/director/${id}`,
-                method: "PATCH",
-                body: data,
-                secure: true,
-                type: ContentType.Json,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 감독
-         * @name DirectorControllerRemove
-         * @request DELETE:/director/{id}
-         * @secure
-         */
-        directorControllerRemove: (
-            id: number,
-            params: RequestParams = {},
-        ) =>
-            this.request<Director, any>({
-                path: `/director/${id}`,
-                method: "DELETE",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-    };
-    genre = {
-        /**
-         * No description
-         *
-         * @tags 장르
-         * @name GenreControllerCreate
-         * @request POST:/genre
-         * @secure
-         */
-        genreControllerCreate: (
-            data: CreateGenreDto,
-            params: RequestParams = {},
-        ) =>
-            this.request<UpdateUserDto, any>({
-                path: `/genre`,
-                method: "POST",
-                body: data,
-                secure: true,
-                type: ContentType.Json,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 장르
-         * @name GenreControllerFindAll
-         * @request GET:/genre
-         * @secure
-         */
-        genreControllerFindAll: (
-            params: RequestParams = {},
-        ) =>
-            this.request<Genre[], any>({
-                path: `/genre`,
-                method: "GET",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 장르
-         * @name GenreControllerFindOne
-         * @request GET:/genre/{id}
-         * @secure
-         */
-        genreControllerFindOne: (
-            id: number,
-            params: RequestParams = {},
-        ) =>
-            this.request<Genre, any>({
-                path: `/genre/${id}`,
-                method: "GET",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 장르
-         * @name GenreControllerUpdate
-         * @request PATCH:/genre/{id}
-         * @secure
-         */
-        genreControllerUpdate: (
-            id: number,
-            data: UpdateGenreDto,
-            params: RequestParams = {},
-        ) =>
-            this.request<Genre, any>({
-                path: `/genre/${id}`,
-                method: "PATCH",
-                body: data,
-                secure: true,
-                type: ContentType.Json,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags 장르
-         * @name GenreControllerRemove
-         * @request DELETE:/genre/{id}
-         * @secure
-         */
-        genreControllerRemove: (
-            id: number,
-            params: RequestParams = {},
-        ) =>
-            this.request<number, any>({
-                path: `/genre/${id}`,
-                method: "DELETE",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-    };
-    auth = {
-        /**
-         * No description
-         *
-         * @tags Auth
-         * @name AuthControllerRegisterUser
-         * @request POST:/auth/register
-         * @secure
-         */
-        authControllerRegisterUser: (
-            params: RequestParams = {},
-        ) =>
-            this.request<User, any>({
-                path: `/auth/register`,
-                method: "POST",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags Auth
-         * @name AuthControllerLoginUser
-         * @request POST:/auth/login
-         * @secure
-         */
-        authControllerLoginUser: (
-            params: RequestParams = {},
-        ) =>
-            this.request<void, any>({
-                path: `/auth/login`,
-                method: "POST",
-                secure: true,
-                ...params,
-            }),
-
-        /**
-         * @description 특정 사용자 차단/토큰(관리자용)
-         *
-         * @tags Auth
-         * @name AuthControllerBlockToken
-         * @request POST:/auth/token-block
-         * @secure
-         */
-        authControllerBlockToken: (
-            params: RequestParams = {},
-        ) =>
-            this.request<boolean, any>({
-                path: `/auth/token-block`,
-                method: "POST",
-                secure: true,
-                format: "json",
-                ...params,
-            }),
-
-        /**
-         * @description accessToken 재발급
-         *
-         * @tags Auth
-         * @name AuthControllerRotateAccessToken
-         * @request POST:/auth/reissue-accessToken
-         * @secure
-         */
-        authControllerRotateAccessToken: (
-            params: RequestParams = {},
-        ) =>
-            this.request<void, any>({
-                path: `/auth/reissue-accessToken`,
-                method: "POST",
-                secure: true,
-                ...params,
-            }),
-
-        /**
-         * No description
-         *
-         * @tags Auth
-         * @name AuthControllerLoginUserPassport
-         * @request POST:/auth/login/passport
-         * @secure
-         */
-        authControllerLoginUserPassport: (
-            params: RequestParams = {},
-        ) =>
-            this.request<void, any>({
-                path: `/auth/login/passport`,
-                method: "POST",
-                secure: true,
-                ...params,
-            }),
-    };
     fileUpload = {
         /**
-         * @description 영화 파일 업로드 API(mp4 파일만 업로드 가능)
+         * @description 동영상 업로드 API(mp4 파일만 업로드 가능)
          *
          * @tags 파일 업로드
          * @name FileUploadControllerCreate
@@ -1539,6 +1320,402 @@ export class Api<
         ) =>
             this.request<DeleteQuizResponseDto, any>({
                 path: `/quiz/${id}`,
+                method: "DELETE",
+                format: "json",
+                ...params,
+            }),
+    };
+    shared = {
+        /**
+         * No description
+         *
+         * @tags Shared
+         * @name SharedControllerCreatePresignedUrl
+         * @request GET:/shared/presigned-url
+         */
+        sharedControllerCreatePresignedUrl: (
+            params: RequestParams = {},
+        ) =>
+            this.request<void, any>({
+                path: `/shared/presigned-url`,
+                method: "GET",
+                ...params,
+            }),
+    };
+    code = {
+        /**
+         * No description
+         *
+         * @tags 코드 템플릿
+         * @name CodeControllerCreate
+         * @request POST:/code
+         */
+        codeControllerCreate: (
+            data: CreateCodeDto,
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/code`,
+                method: "POST",
+                body: data,
+                type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags 코드 템플릿
+         * @name CodeControllerFindAll
+         * @request GET:/code
+         */
+        codeControllerFindAll: (
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/code`,
+                method: "GET",
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags 코드 템플릿
+         * @name CodeControllerFindOne
+         * @request GET:/code/{id}
+         */
+        codeControllerFindOne: (
+            id: string,
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/code/${id}`,
+                method: "GET",
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags 코드 템플릿
+         * @name CodeControllerUpdate
+         * @request PATCH:/code/{id}
+         */
+        codeControllerUpdate: (
+            id: string,
+            data: UpdateCodeDto,
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/code/${id}`,
+                method: "PATCH",
+                body: data,
+                type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags 코드 템플릿
+         * @name CodeControllerRemove
+         * @request DELETE:/code/{id}
+         */
+        codeControllerRemove: (
+            id: string,
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/code/${id}`,
+                method: "DELETE",
+                format: "json",
+                ...params,
+            }),
+    };
+    interview = {
+        /**
+         * @description 사용자-인터뷰 목록
+         *
+         * @tags 면접
+         * @name InterviewControllerFindAll
+         * @request GET:/interview
+         */
+        interviewControllerFindAll: (
+            params: RequestParams = {},
+        ) =>
+            this.request<Interview[], any>({
+                path: `/interview`,
+                method: "GET",
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 관리자-인터뷰 생성
+         *
+         * @tags 면접
+         * @name InterviewControllerCreate
+         * @request POST:/interview
+         */
+        interviewControllerCreate: (
+            data: CreateInterviewDto,
+            params: RequestParams = {},
+        ) =>
+            this.request<GetInterviewSharedDto, any>({
+                path: `/interview`,
+                method: "POST",
+                body: data,
+                type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 관리자-인터뷰 상세 조회
+         *
+         * @tags 면접
+         * @name InterviewControllerFindOne
+         * @request GET:/interview/{id}
+         */
+        interviewControllerFindOne: (
+            id: number,
+            params: RequestParams = {},
+        ) =>
+            this.request<Interview, any>({
+                path: `/interview/${id}`,
+                method: "GET",
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 관리자-인터뷰 수정
+         *
+         * @tags 면접
+         * @name InterviewControllerUpdate
+         * @request PATCH:/interview/{id}
+         */
+        interviewControllerUpdate: (
+            id: number,
+            data: UpdateInterviewRequestDto,
+            params: RequestParams = {},
+        ) =>
+            this.request<Interview, any>({
+                path: `/interview/${id}`,
+                method: "PATCH",
+                body: data,
+                type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 관리자-인터뷰 삭제
+         *
+         * @tags 면접
+         * @name InterviewControllerRemove
+         * @request DELETE:/interview/{id}
+         */
+        interviewControllerRemove: (
+            id: number,
+            params: RequestParams = {},
+        ) =>
+            this.request<void, any>({
+                path: `/interview/${id}`,
+                method: "DELETE",
+                ...params,
+            }),
+    };
+    blog = {
+        /**
+         * No description
+         *
+         * @tags 블로그
+         * @name BlogControllerCreate
+         * @request POST:/blog
+         */
+        blogControllerCreate: (
+            data: CreateBlogDto,
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/blog`,
+                method: "POST",
+                body: data,
+                type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags 블로그
+         * @name BlogControllerFindAll
+         * @request GET:/blog
+         */
+        blogControllerFindAll: (
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/blog`,
+                method: "GET",
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags 블로그
+         * @name BlogControllerFindOne
+         * @request GET:/blog/{id}
+         */
+        blogControllerFindOne: (
+            id: string,
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/blog/${id}`,
+                method: "GET",
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags 블로그
+         * @name BlogControllerUpdate
+         * @request PATCH:/blog/{id}
+         */
+        blogControllerUpdate: (
+            id: string,
+            data: UpdateBlogDto,
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/blog/${id}`,
+                method: "PATCH",
+                body: data,
+                type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * No description
+         *
+         * @tags 블로그
+         * @name BlogControllerRemove
+         * @request DELETE:/blog/{id}
+         */
+        blogControllerRemove: (
+            id: string,
+            params: RequestParams = {},
+        ) =>
+            this.request<string, any>({
+                path: `/blog/${id}`,
+                method: "DELETE",
+                format: "json",
+                ...params,
+            }),
+    };
+    concept = {
+        /**
+         * @description 사용자-개념 목록
+         *
+         * @tags 개발 개념
+         * @name ConceptControllerFindAll
+         * @request GET:/concept
+         */
+        conceptControllerFindAll: (
+            params: RequestParams = {},
+        ) =>
+            this.request<Concept[], any>({
+                path: `/concept`,
+                method: "GET",
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 관리자-개념 생성
+         *
+         * @tags 개발 개념
+         * @name ConceptControllerCreate
+         * @request POST:/concept
+         */
+        conceptControllerCreate: (
+            data: CreateConceptRequestDto,
+            params: RequestParams = {},
+        ) =>
+            this.request<Concept, any>({
+                path: `/concept`,
+                method: "POST",
+                body: data,
+                type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 관리자-개념 수정
+         *
+         * @tags 개발 개념
+         * @name ConceptControllerUpdate
+         * @request PATCH:/concept/{id}
+         */
+        conceptControllerUpdate: (
+            id: number,
+            data: UpdateConceptRequestDto,
+            params: RequestParams = {},
+        ) =>
+            this.request<Concept, any>({
+                path: `/concept/${id}`,
+                method: "PATCH",
+                body: data,
+                type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 관리자-개념 상세 조회
+         *
+         * @tags 개발 개념
+         * @name ConceptControllerFindOne
+         * @request GET:/concept/{id}
+         */
+        conceptControllerFindOne: (
+            id: number,
+            params: RequestParams = {},
+        ) =>
+            this.request<Concept, any>({
+                path: `/concept/${id}`,
+                method: "GET",
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 관리자-개념 삭제
+         *
+         * @tags 개발 개념
+         * @name ConceptControllerRemove
+         * @request DELETE:/concept/{id}
+         */
+        conceptControllerRemove: (
+            id: number,
+            params: RequestParams = {},
+        ) =>
+            this.request<DeleteResponseDto, any>({
+                path: `/concept/${id}`,
                 method: "DELETE",
                 format: "json",
                 ...params,

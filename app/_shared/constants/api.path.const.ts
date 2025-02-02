@@ -8,6 +8,12 @@ const QUIZ = {
     CHECH_ANSWER,
 };
 
+const CONCEPT = {
+    LIST: "concept",
+    DETAIL: "concept/url",
+};
+
 export const API_PATHS = {
     QUIZ,
+    CONCEPT,
 };

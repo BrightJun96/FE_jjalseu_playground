@@ -13,7 +13,7 @@ function Logo() {
                     "text-primary-normal text-title1 font-bold"
                 }
             >
-                TheDevLounge
+                TDL
             </PrimaryLink>
         </h1>
     );

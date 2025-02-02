@@ -8,9 +8,10 @@ import React from "react";
 // export const config = { amp: true }
 /**
  * 퀴즈 문제 페이지
- * 정적 렌더링 방식
- */
+ * 렌더링 방식 :ISR
+ * */
 
+// 재검증 주기 1시간
 export const revalidate = 3600;
 
 export const dynamicParams = true; // or false, to 404 on unknown paths
