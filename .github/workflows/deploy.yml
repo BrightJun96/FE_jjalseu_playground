@@ -36,18 +36,22 @@ jobs:
 
       - name: Deploy to EC2
         run: |
-          ssh -vvv -i enjoyjjalseu.pem \
-          -o StrictHostKeyChecking=no \
-          ubuntu@ec2-43-203-238-138.ap-northeast-2.compute.amazonaws.com '
-            cd /home/ubuntu/devlounge-front-app &&
-#           Docker 컨테이너 중지 및 삭제
-            sudo docker stop devlounge-container || true && 
-            sudo docker rm -f devlounge-container || true &&
-        #   Docker 시스템 정리 (디스크 공간 확보)
-            sudo docker system prune -a -f &&
-            sudo docker volume prune -f &&
-#           최신 Docker 이미지 다운로드      
-            sudo docker pull jjalseu/devlounge-front:latest && 
-#           새로운 컨테이너 실행
-            sudo docker run --name devlounge-container -d -p 3000:3000 jjalseu/devlounge-front:latest'
+          ssh -vvv -i enjoyjjalseu.pem -o StrictHostKeyChecking=no ubuntu@ec2-43-203-238-138.ap-northeast-2.compute.amazonaws.com << 'EOF'
+            cd /home/ubuntu/devlounge-front-app
+          
+            # Docker 컨테이너 중지 및 삭제
+            sudo docker stop devlounge-container || true
+            sudo docker rm -f devlounge-container || true
+          
+            # Docker 시스템 정리 (디스크 공간 확보)
+            sudo docker system prune -a -f
+            sudo docker volume prune -f
+          
+            # 최신 Docker 이미지 다운로드
+            sudo docker pull jjalseu/devlounge-front:latest
+          
+            # 새로운 컨테이너 실행
+            sudo docker run --name devlounge-container -d -p 3000:3000 jjalseu/devlounge-front:latest
+          EOF
+
 
