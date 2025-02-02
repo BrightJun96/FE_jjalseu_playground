@@ -10,7 +10,7 @@
     "analyze": "ANALYZE=true yarn build",
     "test": "vitest",
     "prod-generate-api-type": "swagger-typescript-api -p https://api.main.thedevlounge.com/doc-json -o ./app/_shared/api -n generate.api.types.ts --extract-request-params --extract-enums",
-    "dev-generate-api-type": "swagger-typescript-api -p http://localhost:8000/doc-json -o ./app/_shared/api -n generate.api.types.ts --extract-request-params --extract-enums"
+    "dev-generate-api-type": "swagger-typescript-api -p http://localhost:8080/doc-json -o ./app/_shared/api -n generate.api.types.ts --extract-request-params --extract-enums"
   },
   "dependencies": {
     "@next/bundle-analyzer": "15.1.0",
