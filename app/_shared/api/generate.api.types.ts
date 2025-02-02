@@ -635,6 +635,45 @@ export enum QuizControllerFindAllParams1FieldEnum {
     DATABASE = "DATABASE",
 }
 
+export interface ConceptControllerFindAllParams {
+    /** 분야 필터 */
+    field?: FieldEnum1;
+    /** 기술 필터 */
+    tech?: TechEnum;
+}
+
+/** 분야 필터 */
+export enum FieldEnum1 {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+/** 기술 필터 */
+export enum TechEnum {
+    JAVASCRIPT = "JAVASCRIPT",
+    Typescript = "Typescript",
+    REACTJS = "REACTJS",
+    NEXTJS = "NEXTJS",
+    NESTJS = "NESTJS",
+}
+
+/** 분야 필터 */
+export enum ConceptControllerFindAllParams1FieldEnum {
+    FRONTEND = "FRONTEND",
+    BACKEND = "BACKEND",
+    DATABASE = "DATABASE",
+}
+
+/** 기술 필터 */
+export enum ConceptControllerFindAllParams1TechEnum {
+    JAVASCRIPT = "JAVASCRIPT",
+    Typescript = "Typescript",
+    REACTJS = "REACTJS",
+    NEXTJS = "NEXTJS",
+    NESTJS = "NESTJS",
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<
     Body,
@@ -1635,11 +1674,13 @@ export class Api<
          * @request GET:/concept
          */
         conceptControllerFindAll: (
+            query: ConceptControllerFindAllParams,
             params: RequestParams = {},
         ) =>
             this.request<Concept[], any>({
                 path: `/concept`,
                 method: "GET",
+                query: query,
                 format: "json",
                 ...params,
             }),
@@ -1660,6 +1701,24 @@ export class Api<
                 method: "POST",
                 body: data,
                 type: ContentType.Json,
+                format: "json",
+                ...params,
+            }),
+
+        /**
+         * @description 사용자-상세
+         *
+         * @tags 개발 개념
+         * @name ConceptControllerFindDetailByUrl
+         * @request GET:/concept/url/{url}
+         */
+        conceptControllerFindDetailByUrl: (
+            url: string,
+            params: RequestParams = {},
+        ) =>
+            this.request<Concept, any>({
+                path: `/concept/url/${url}`,
+                method: "GET",
                 format: "json",
                 ...params,
             }),
