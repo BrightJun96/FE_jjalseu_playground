@@ -13,7 +13,13 @@ const CONCEPT = {
     DETAIL: "concept/url",
 };
 
+const ROADMAP = {
+    LIST: "roadmap",
+    DETAIL: "roadmap/title",
+};
+
 export const API_PATHS = {
     QUIZ,
     CONCEPT,
+    ROADMAP,
 };

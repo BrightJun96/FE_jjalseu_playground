@@ -25,6 +25,7 @@
     "next": "15.1.0",
     "next-view-transitions": "^0.3.4",
     "react": "19.0.0",
+    "react-d3-tree": "^3.6.3",
     "react-dom": "19.0.0",
     "sanitize-html": "^2.14.0"
   },

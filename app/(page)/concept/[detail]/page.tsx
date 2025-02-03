@@ -71,7 +71,9 @@ async function ConceptDetailPage({
                 </Chip>
             </ConceptCategory>
             <div
-                className={"prose prose-base sm:prose-sm"}
+                className={
+                    "prose prose-base sm:prose-sm max-w-full"
+                }
                 dangerouslySetInnerHTML={{
                     __html: sanitize(data.content),
                 }}
