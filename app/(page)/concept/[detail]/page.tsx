@@ -1,9 +1,11 @@
 import { conceptApi } from "@/app/_features/concept/api";
 import ConceptCategory from "@/app/_features/concept/ui/concept-category";
+import CopyCode from "@/app/_shared/ui/used/copy-code";
 import sanitize from "@/app/_shared/utils/function/sanitize";
 import { Chip } from "@nextui-org/chip";
 import { Metadata } from "next";
 import React from "react";
+import "prismjs/themes/prism-tomorrow.css";
 
 /**
  * 개념 상세 페이지
@@ -45,7 +47,6 @@ async function ConceptDetailPage({
     const response =
         await conceptApi.fetchConceptByUrl(detail);
 
-    console.log("response :", response);
     const { data } = response;
     return (
         <div
@@ -70,10 +71,12 @@ async function ConceptDetailPage({
                 </Chip>
             </ConceptCategory>
             <div
+                className={"prose prose-base sm:prose-sm"}
                 dangerouslySetInnerHTML={{
                     __html: sanitize(data.content),
                 }}
             />
+            <CopyCode />
         </div>
     );
 }
