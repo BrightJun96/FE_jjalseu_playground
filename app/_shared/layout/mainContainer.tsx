@@ -17,7 +17,7 @@ function MainContainer({
         "portfolio";
 
     const generalCaseCls =
-        "w-full lg:h-[calc(100vh-80px)] md:h-[calc(100vh-60px)] sm:h-[calc(100vh-60px)] lg:flex lg:justify-center md:flex md:justify-center sm:px-[10px]";
+        "w-full lg:min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-60px)] sm:min-h-[calc(100vh-60px)] lg:flex lg:justify-center md:flex md:justify-center sm:px-[10px]";
 
     const portfolioPathCaseCls =
         "w-full lg:h-[100vh] md:h-[100vh] sm:h-[100vh] lg:flex lg:justify-center lg:items-center md:flex md:justify-center md:items-center sm:px-[10px]";
