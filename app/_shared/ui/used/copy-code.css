@@ -1,0 +1,33 @@
+/* pre 태그를 감싸는 wrapper */
+.pre-wrapper {
+    position: relative;  /* 버튼이 올바르게 정렬되도록 설정 */
+    display: inline-block;  /* pre 태그 크기에 맞게 래퍼 크기 조정 */
+    width: 100%;
+}
+
+/* 복사 버튼 스타일 */
+.copy-btn {
+    position: absolute;
+    top: 8px; /* 위쪽 정렬 */
+    right: 8px; /* 오른쪽 정렬 */
+    background: #ffcc00;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease-in-out, transform 0.1s;
+}
+
+/* 버튼 hover 스타일 */
+.copy-btn:hover {
+    background: #ffaa00;
+    transform: scale(1.05);
+}
+
+/* 복사 성공 스타일 */
+.copy-btn:active {
+    background: #ff9900;
+}
